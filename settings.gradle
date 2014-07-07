@@ -1,2 +1,2 @@
-include ':zipato_android_v2'
+include ':zipato_android_v2', ':iconicDroid'
 include ':sliding_menu'
