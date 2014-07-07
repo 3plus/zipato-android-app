@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/iconicDroid/iconicDroid.iml" filepath="$PROJECT_DIR$/iconicDroid/iconicDroid.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sliding_menu/sliding_menu.iml" filepath="$PROJECT_DIR$/sliding_menu/sliding_menu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zipato-android-v2.iml" filepath="$PROJECT_DIR$/zipato-android-v2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zipato_android_v2/zipato_android_v2.iml" filepath="$PROJECT_DIR$/zipato_android_v2/zipato_android_v2.iml" />
+    </modules>
+  </component>
+</project>
+
