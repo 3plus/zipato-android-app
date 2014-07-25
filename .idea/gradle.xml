@@ -8,7 +8,6 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/iconicDroid" />
             <option value="$PROJECT_DIR$/sliding_menu" />
             <option value="$PROJECT_DIR$/zipato_android_v2" />
           </set>
