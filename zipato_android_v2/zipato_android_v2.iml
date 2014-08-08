@@ -8,10 +8,11 @@
     </facet>
     <facet type="android" name="Android">
       <configuration>
-        <option name="SELECTED_BUILD_VARIANT" value="zipatoBeta" />
-        <option name="ASSEMBLE_TASK_NAME" value="assembleZipatoBeta" />
-        <option name="COMPILE_JAVA_TASK_NAME" value="compileZipatoBetaJava" />
-        <option name="SOURCE_GEN_TASK_NAME" value="generateZipatoBetaSources" />
+        <option name="SELECTED_BUILD_VARIANT" value="zipatoDebug" />
+        <option name="ASSEMBLE_TASK_NAME" value="assembleZipatoDebug" />
+        <option name="COMPILE_JAVA_TASK_NAME" value="compileZipatoDebugJava" />
+        <option name="ASSEMBLE_TEST_TASK_NAME" value="assembleZipatoDebugTest" />
+        <option name="SOURCE_GEN_TASK_NAME" value="generateZipatoDebugSources" />
         <option name="ALLOW_USER_CONFIGURATION" value="false" />
         <option name="MANIFEST_FILE_RELATIVE_PATH" value="/src/main/AndroidManifest.xml" />
         <option name="RES_FOLDER_RELATIVE_PATH" value="/src/main/res" />
@@ -21,21 +22,26 @@
     </facet>
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="false">
-    <output url="file://$MODULE_DIR$/build/intermediates/classes/zipato/beta" />
+    <output url="file://$MODULE_DIR$/build/intermediates/classes/zipato/debug" />
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/r/zipato/beta" isTestSource="false" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/aidl/zipato/beta" isTestSource="false" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/buildConfig/zipato/beta" isTestSource="false" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/rs/zipato/beta" isTestSource="false" generated="true" />
-      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/rs/zipato/beta" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/zipatoBeta/res" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/zipatoBeta/resources" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/zipatoBeta/aidl" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/zipatoBeta/assets" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/zipatoBeta/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/zipatoBeta/jni" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/zipatoBeta/rs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/r/zipato/debug" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/aidl/zipato/debug" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/buildConfig/zipato/debug" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/rs/zipato/debug" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/rs/zipato/debug" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/zipatoDebug/res" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/zipatoDebug/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/zipatoDebug/aidl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/zipatoDebug/assets" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/zipatoDebug/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/zipatoDebug/jni" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/zipatoDebug/rs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/r/test/zipato/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/aidl/test/zipato/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/buildConfig/test/zipato/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/source/rs/test/zipato/debug" isTestSource="true" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/res/rs/test/zipato/debug" type="java-test-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/zipato/res" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/zipato/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/zipato/aidl" isTestSource="false" />
@@ -50,13 +56,13 @@
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestZipato/java" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestZipato/jni" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/src/androidTestZipato/rs" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/beta/res" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/beta/resources" type="java-resource" />
-      <sourceFolder url="file://$MODULE_DIR$/src/beta/aidl" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/beta/assets" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/beta/java" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/beta/jni" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/beta/rs" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/debug/res" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/debug/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/debug/aidl" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/debug/assets" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/debug/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/debug/jni" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/debug/rs" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/res" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/aidl" isTestSource="false" />
