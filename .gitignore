@@ -10,7 +10,7 @@
 
 # built native files
 *.o
-*.so
+#*.so
 
 # generated files
 bin/
