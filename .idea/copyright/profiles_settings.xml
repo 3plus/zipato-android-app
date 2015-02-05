@@ -1,3 +1,7 @@
 <component name="CopyrightManager">
-  <settings default="" />
+  <settings default="Tri plus d.o.o">
+    <module2copyright>
+      <element module="All" copyright="Tri plus d.o.o" />
+    </module2copyright>
+  </settings>
 </component>
