@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<module external.linked.project.path="$MODULE_DIR$" external.root.project.path="$MODULE_DIR$/.." external.system.id="GRADLE" external.system.module.group="zipato-android-v2" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
+<module external.linked.project.id=":zipato_android_v2" external.linked.project.path="$MODULE_DIR$" external.root.project.path="$MODULE_DIR$/.." external.system.id="GRADLE" external.system.module.group="zipato-android-v2" external.system.module.version="unspecified" type="JAVA_MODULE" version="4">
   <component name="FacetManager">
     <facet type="android-gradle" name="Android-Gradle">
       <configuration>
@@ -9,10 +9,12 @@
     <facet type="android" name="Android">
       <configuration>
         <option name="SELECTED_BUILD_VARIANT" value="zipatoDebug" />
+        <option name="SELECTED_TEST_ARTIFACT" value="_android_test_" />
         <option name="ASSEMBLE_TASK_NAME" value="assembleZipatoDebug" />
         <option name="COMPILE_JAVA_TASK_NAME" value="compileZipatoDebugSources" />
-        <option name="ASSEMBLE_TEST_TASK_NAME" value="assembleZipatoDebugTest" />
         <option name="SOURCE_GEN_TASK_NAME" value="generateZipatoDebugSources" />
+        <option name="ASSEMBLE_TEST_TASK_NAME" value="assembleZipatoDebugTest" />
+        <option name="COMPILE_JAVA_TEST_TASK_NAME" value="compileZipatoDebugTestSources" />
         <option name="TEST_SOURCE_GEN_TASK_NAME" value="generateZipatoDebugTestSources" />
         <option name="ALLOW_USER_CONFIGURATION" value="false" />
         <option name="MANIFEST_FILE_RELATIVE_PATH" value="/src/main/AndroidManifest.xml" />
@@ -24,6 +26,7 @@
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/build/intermediates/classes/zipato/debug" />
+    <output-test url="file://$MODULE_DIR$/build/intermediates/classes/test/zipato/debug" />
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/build/generated/source/r/zipato/debug" isTestSource="false" generated="true" />
@@ -106,9 +109,9 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="play-services-base-6.5.87" level="project" />
     <orderEntry type="library" exported="" name="dexmaker-1.1" level="project" />
-    <orderEntry type="library" exported="" name="picasso-2.3.4" level="project" />
     <orderEntry type="library" exported="" name="mqtt-client-1.10" level="project" />
     <orderEntry type="library" exported="" name="spring-android-auth-1.0.1.RELEASE" level="project" />
+    <orderEntry type="library" exported="" name="picasso-2.4.0" level="project" />
     <orderEntry type="library" exported="" name="spring-social-core-1.0.2.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="hawtdispatch-1.20" level="project" />
     <orderEntry type="library" exported="" name="floatingactionbutton-1.0.4" level="project" />
@@ -123,7 +126,8 @@
     <orderEntry type="library" exported="" name="jackson-core-2.2.4" level="project" />
     <orderEntry type="library" exported="" name="library-2.4.1" level="project" />
     <orderEntry type="library" exported="" name="dagger-1.2.1" level="project" />
-    <orderEntry type="library" exported="" name="support-v4-21.0.2" level="project" />
+    <orderEntry type="library" exported="" name="gson-2.3" level="project" />
+    <orderEntry type="library" exported="" name="support-v4-21.0.3" level="project" />
     <orderEntry type="library" exported="" name="hawtbuf-1.10" level="project" />
     <orderEntry type="library" exported="" name="stickylistheaders-2.1.5" level="project" />
     <orderEntry type="library" exported="" name="spring-android-rest-template-1.0.1.RELEASE" level="project" />
@@ -132,8 +136,10 @@
     <orderEntry type="library" exported="" name="jackson-databind-2.2.4" level="project" />
     <orderEntry type="library" exported="" name="guava-15.0" level="project" />
     <orderEntry type="library" exported="" name="library-2.0.1" level="project" />
+    <orderEntry type="library" exported="" name="androidasync-2.1.3" level="project" />
+    <orderEntry type="library" exported="" name="ion-2.1.3" level="project" />
     <orderEntry type="library" exported="" name="javawriter-2.3.0" level="project" />
-    <orderEntry type="library" exported="" name="support-annotations-21.0.2" level="project" />
+    <orderEntry type="library" exported="" name="support-annotations-21.0.3" level="project" />
     <orderEntry type="library" exported="" name="spring-security-crypto-3.1.3.RELEASE" level="project" />
     <orderEntry type="library" exported="" name="jmdns-3.4.1" level="project" />
     <orderEntry type="library" exported="" name="dagger-compiler-1.2.1" level="project" />
@@ -145,4 +151,3 @@
     <orderEntry type="module" module-name="vitamio" exported="" />
   </component>
 </module>
-
