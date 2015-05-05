@@ -8,8 +8,89 @@ You are probably wondering what is type? Right we introduced types in api v2, a 
 
 Json example of a type fetch from the API: 
  
-```{ "entityType": "ENDPOINT", "link": "http://staging.zipato.com/zipato-web/v2/endpoints/d69dc105-536d-4361-96b8-1d6701d44988", "name": "Zipato AirCondition IR", "room": 15432, "uuid": "d69dc105-536d-4361-96b8-1d6701d44988", "templateId": "", "endpointType": "meter", "attributes": [ { "link": "http://staging.zipato.com/zipato-web/v2/attributes/27d673bb-26cc-4174-8b1d-1d92b27cd7bb", "name": "SETPOINT_COOLING", "attributeId": 169, "attributeName": "value2", "room": 15432, "uuid": "27d673bb-26cc-4174-8b1d-1d92b27cd7bb", "master": false }, { "link": "http://staging.zipato.com/zipato-web/v2/attributes/7bc2340e-f1bd-495a-af31-40e26545f023", "name": "SETPOINT_DRY_AIR", "attributeId": 170, "attributeName": "value3", "room": 15432, "uuid": "7bc2340e-f1bd-495a-af31-40e26545f023", "master": false }, { "link": "http://staging.zipato.com/zipato-web/v2/attributes/c107951a-f662-4f7b-a7b3-4a5aec2efcf3", "name": "SETPOINT_HEATING", "attributeId": 168, "attributeName": "value1", "room": 15432, "uuid": "c107951a-f662-4f7b-a7b3-4a5aec2efcf3", "master": false }, { "link": "http://staging.zipato.com/zipato-web/v2/attributes/ef682f0c-e382-4429-998b-6311f24ce1e4", "name": "TEMPERATURE", "attributeId": 95, "attributeName": "value1", "room": 15432, "uuid": "ef682f0c-e382-4429-998b-6311f24ce1e4", "master": true }, { "link": "http://staging.zipato.com/zipato-web/v2/attributes/83c7e7cc-0815-4584-b056-93e54bbe2902", "name": "THERMOSTAT_FAN_MODE", "attributeId": 193, "attributeName": "mode", "room": 15432, "uuid": "83c7e7cc-0815-4584-b056-93e54bbe2902", "master": false }, { "link": "http://staging.zipato.com/zipato-web/v2/attributes/208dcce8-225b-4dab-bf15-3a6c020b1829", "name": "THERMOSTAT_MODE", "attributeId": 192, "attributeName": "mode", "room": 15432, "uuid": "208dcce8-225b-4dab-bf15-3a6c020b1829", "master": false }, { "link": "http://staging.zipato.com/zipato-web/v2/attributes/72c1671f-5fab-4741-99c4-f1b73059556c", "name": "value", "attributeId": 185, "attributeName": "value", "room": 15432, "uuid": "72c1671f-5fab-4741-99c4-f1b73059556c", "master": false } ], "show": true, "uiType": { "link": "http://staging.zipato.com/zipato-web/v2/types/system/Generic+meter", "name": "Generic meter", "endpointType": "meter", "relativeUrl": "/meter.png" } } ```
-
+``` JSON
+{
+    "entityType": "ENDPOINT",
+    "link": "http://staging.zipato.com/zipato-web/v2/endpoints/d69dc105-536d-4361-96b8-1d6701d44988",
+    "name": "Zipato AirCondition IR",
+    "room": 15432,
+    "uuid": "d69dc105-536d-4361-96b8-1d6701d44988",
+    "templateId": "",
+    "endpointType": "meter",
+    "attributes": [
+        {
+            "link": "http://staging.zipato.com/zipato-web/v2/attributes/27d673bb-26cc-4174-8b1d-1d92b27cd7bb",
+            "name": "SETPOINT_COOLING",
+            "attributeId": 169,
+            "attributeName": "value2",
+            "room": 15432,
+            "uuid": "27d673bb-26cc-4174-8b1d-1d92b27cd7bb",
+            "master": false
+        },
+        {
+            "link": "http://staging.zipato.com/zipato-web/v2/attributes/7bc2340e-f1bd-495a-af31-40e26545f023",
+            "name": "SETPOINT_DRY_AIR",
+            "attributeId": 170,
+            "attributeName": "value3",
+            "room": 15432,
+            "uuid": "7bc2340e-f1bd-495a-af31-40e26545f023",
+            "master": false
+        },
+        {
+            "link": "http://staging.zipato.com/zipato-web/v2/attributes/c107951a-f662-4f7b-a7b3-4a5aec2efcf3",
+            "name": "SETPOINT_HEATING",
+            "attributeId": 168,
+            "attributeName": "value1",
+            "room": 15432,
+            "uuid": "c107951a-f662-4f7b-a7b3-4a5aec2efcf3",
+            "master": false
+        },
+        {
+            "link": "http://staging.zipato.com/zipato-web/v2/attributes/ef682f0c-e382-4429-998b-6311f24ce1e4",
+            "name": "TEMPERATURE",
+            "attributeId": 95,
+            "attributeName": "value1",
+            "room": 15432,
+            "uuid": "ef682f0c-e382-4429-998b-6311f24ce1e4",
+            "master": true
+        },
+        {
+            "link": "http://staging.zipato.com/zipato-web/v2/attributes/83c7e7cc-0815-4584-b056-93e54bbe2902",
+            "name": "THERMOSTAT_FAN_MODE",
+            "attributeId": 193,
+            "attributeName": "mode",
+            "room": 15432,
+            "uuid": "83c7e7cc-0815-4584-b056-93e54bbe2902",
+            "master": false
+        },
+        {
+            "link": "http://staging.zipato.com/zipato-web/v2/attributes/208dcce8-225b-4dab-bf15-3a6c020b1829",
+            "name": "THERMOSTAT_MODE",
+            "attributeId": 192,
+            "attributeName": "mode",
+            "room": 15432,
+            "uuid": "208dcce8-225b-4dab-bf15-3a6c020b1829",
+            "master": false
+        },
+        {
+            "link": "http://staging.zipato.com/zipato-web/v2/attributes/72c1671f-5fab-4741-99c4-f1b73059556c",
+            "name": "value",
+            "attributeId": 185,
+            "attributeName": "value",
+            "room": 15432,
+            "uuid": "72c1671f-5fab-4741-99c4-f1b73059556c",
+            "master": false
+        }
+    ],
+    "show": true,
+    "uiType": {
+        "link": "http://staging.zipato.com/zipato-web/v2/types/system/Generic+meter",
+        "name": "Generic meter",
+        "endpointType": "meter",
+        "relativeUrl": "/meter.png"
+    }
+} 
+```
 In this example our type above is  an Endpoint as entity but of type meter (see uiType) and it will be categorize as meter on the left view with any other meter but the name shown to the user will be "Generic meter" , and if we look a little bit up with can see that this entity(Enpoint ) has a name  of "Zipato AirCondition IR" , belong to the room with id = 15432, show is set to true(so it will appear on the browser manager) and has 7 attributes. 
 
 To get the full list of type use the webservice https://my.zipato.com/zipato-web/v2/types/search/all 
