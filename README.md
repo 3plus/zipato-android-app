@@ -11,6 +11,9 @@ We hope the source code for this app is useful for you as a reference or startin
 * [Update data](https://github.com/3plus/zipato-android-v2/blob/murielm/doc/UPDATEUSERDATA.md)
 * [Set Attributes](https://github.com/3plus/zipato-android-v2/blob/murielm/doc/SETATTRIBUTES.md)
 
+
+#Copyright
+
 Copyright 2014 Tri plus grup d.o.o. All rights reserved.
 
 Licensed under the Apache License, Version 2.0 (the "License");
