@@ -6,8 +6,8 @@ Control your home security, lighting, climate..., by using your smartphone.
 
 We hope the source code for this app is useful for you as a reference or starting point for creating your own apps using our API. Here is some additional reading to help you better understand our app is working in genral.
 
-* [Login](https://github.com/3plus/zipato-android-v2/blob/murielm/doc/BROWSERMANAGER.md)
-* [Browser Manager](https://github.com/3plus/zipato-android-v2/blob/murielm/doc/LOGIN.md)
+* [Login](https://github.com/3plus/zipato-android-v2/blob/murielm/doc/LOGIN.md)
+* [Browser Manager](https://github.com/3plus/zipato-android-v2/blob/murielm/doc/BROWSERMANAGER.md)
 * [Update data](https://github.com/3plus/zipato-android-v2/blob/murielm/doc/UPDATEUSERDATA.md)
 * [Set Attributes](https://github.com/3plus/zipato-android-v2/blob/murielm/doc/SETATTRIBUTES.md)
 
