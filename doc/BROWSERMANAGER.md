@@ -14,7 +14,7 @@ In this example our type above is  an Endpoint as entity but of type meter (see 
 
 To get the full list of type use the webservice https://my.zipato.com/zipato-web/v2/types/search/all 
  
-![Figure 1](https://ca352418-a-15d1cd11-s-sites.googlegroups.com/a/3plus.hr/mobile/api/Screenshot_2014-12-11-17-13-53.png?attachauth=ANoY7coneVyYYzuklcZP6JQXsbJQHpoit6Uswo1nGmNhiLXb4XHulVIpi35JGUX7ZznjGdfiFISDuaVNwTIxHLurQkETmrdDcPmt3bcWIzgCz5hy26sEAny5lJ69wVxwfVYHaj6bSKKKvRze2apm5WRg6vi8JRT0XA_Agm8J-KcrRMqGkaVcHpNu-mn2zImMDdh5zbPdfSGM9v1REQpbV7NYec6p7dwsfvC082oe6-FakKikud3Luxw%3D&attredirects=0)
+![Figure 1](https://github.com/3plus/zipato-android-v2/blob/237bc95a7a5117b48f54507b3783a5c24d681702/media/figure_1.png)
 
  **Figure 1**
  
