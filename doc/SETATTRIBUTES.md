@@ -5,11 +5,70 @@ To load the controller for a type with first look at his template id, for exampl
 
 **For example** : 
 
-```{ "entityType": "ENDPOINT", "link": "http://staging.zipato.com/zipato-web/v2/endpoints/71acb04d-ab8f-4e74-921a-3f5f13a7c08e", "name": "GEplus", "room": 14928, "uuid": "71acb04d-ab8f-4e74-921a-3f5f13a7c08e", "templateId": "", "endpointType": "actuator.onoff", "attributes": [ { "link": "http://staging.zipato.com/zipato-web/v2/attributes/51545411-7dde-40b3-8669-a11705b4e451", "name": "STATE", "attributeId": 11, "attributeName": "state", "room": 14928, "uuid": "51545411-7dde-40b3-8669-a11705b4e451", "master": false } ], "show": true, "uiType": { "link": "http://staging.zipato.com/zipato-web/v2/types/system/OnOff+switch", "name": "OnOff switch", "endpointType": "actuator.onoff", "relativeUrl": "/actuator.onoff.png" } } ```
+```JSON
+{
+    "entityType": "ENDPOINT",
+    "link": "http://staging.zipato.com/zipato-web/v2/endpoints/71acb04d-ab8f-4e74-921a-3f5f13a7c08e",
+    "name": "GEplus",
+    "room": 14928,
+    "uuid": "71acb04d-ab8f-4e74-921a-3f5f13a7c08e",
+    "templateId": "",
+    "endpointType": "actuator.onoff",
+    "attributes": [
+        {
+            "link": "http://staging.zipato.com/zipato-web/v2/attributes/51545411-7dde-40b3-8669-a11705b4e451",
+            "name": "STATE",
+            "attributeId": 11,
+            "attributeName": "state",
+            "room": 14928,
+            "uuid": "51545411-7dde-40b3-8669-a11705b4e451",
+            "master": false
+        }
+    ],
+    "show": true,
+    "uiType": {
+        "link": "http://staging.zipato.com/zipato-web/v2/types/system/OnOff+switch",
+        "name": "OnOff switch",
+        "endpointType": "actuator.onoff",
+        "relativeUrl": "/actuator.onoff.png"
+    }
+} 
+```
  
 Above is a type (OnOff switch)  with attribute *uuid* 51545411-7dde-40b3-8669-a11705b4e451 and when retrieving that particular attribute on server we should have something like this in *json*: 
-```{ "uuid": "51545411-7dde-40b3-8669-a11705b4e451", "name": "STATE", "definition": { "id": 11, "attribute": "state", "attributeType": "BOOLEAN", "cluster": "com.zipato.cluster.OnOff", "readable": true, "reportable": true, "writable": true }, "config": { "name": null, "master": false, "hidden": false, "reported": true, "expire": null, "compression": null, "unit": null, "enumValues": { "true": "On", "false": "Off" }, "scale": 0, "precision": 0, "room": 14928 }, "attributeId": 11 }``` 
 
+```JSON
+{
+    "uuid": "51545411-7dde-40b3-8669-a11705b4e451",
+    "name": "STATE",
+    "definition": {
+        "id": 11,
+        "attribute": "state",
+        "attributeType": "BOOLEAN",
+        "cluster": "com.zipato.cluster.OnOff",
+        "readable": true,
+        "reportable": true,
+        "writable": true
+    },
+    "config": {
+        "name": null,
+        "master": false,
+        "hidden": false,
+        "reported": true,
+        "expire": null,
+        "compression": null,
+        "unit": null,
+        "enumValues": {
+            "true": "On",
+            "false": "Off"
+        },
+        "scale": 0,
+        "precision": 0,
+        "room": 14928
+    },
+    "attributeId": 11
+}
+``` 
 In this particular attribute we can see  on its definition that the cluster is "com.zipato.cluster.onoff", this is how we know that we should load the OnOff controller so that the user can turn On or turn Off a light  for example. 
 
 As mentioned earlier most of types should have their controllers so that the user can for example turn off/on a light. In order for that magic to happen you need to send a message to the server  saying "turn on light for device x",  well not exactly in this word but the idea is the same. 
