@@ -1,4 +1,4 @@
-# How to build Zipato For Android
+# How to build Zipato
 
 This is a Gradle-based project that works best with [Android Studio].
 
