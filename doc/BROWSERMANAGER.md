@@ -95,7 +95,7 @@ In this example our type above is  an Endpoint as entity but of type meter (see 
 
 To get the full list of type use the webservice https://my.zipato.com/zipato-web/v2/types/search/all 
  
-![Figure 1](https://github.com/3plus/zipato-android-v2/blob/237bc95a7a5117b48f54507b3783a5c24d681702/media/figure_1.png)
+<img src="https://github.com/3plus/zipato-android-v2/blob/237bc95a7a5117b48f54507b3783a5c24d681702/media/figure_1.png" width="450">
 
  **Figure 1**
  
