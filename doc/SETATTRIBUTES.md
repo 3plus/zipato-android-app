@@ -84,4 +84,5 @@ Example to turn on the actuator above we use this web service
 `https://my.zipato.com:443/zipato-web/v2/attributes/51545411-7dde-40b3-8669-a11705b4e451/value 
  and in the body we put the specific json {"value" : "true"} and voila! 
  
-> __PS__: please note that some attribute.definition has writable field set to false, which mean that the value of that >specific attribute cannot be altered
+> __PS__: please note that some attribute.definition has writable field set to false, which mean that the value of that   
+> specific attribute cannot be altered
