@@ -1,8 +1,8 @@
 #Set attributes
 
-When a user click on a list (in the right) the proper controller for that is display on the screen if exist of course or the list of its attributes + value is display as default. 
+When a user click on a list (in the right) the proper controller for that particular entity is displayed on the screen if it exist or the list of its attributes and their values is display as default. 
 
-To load the controller for a type with first look at his template id, for example if templateid = "camera" we load the camera controller where the user will be able to stream a video on that particular camera. If template ID is missing we loop trough its attribute.definition.cluster to load the proper controller.  
+To load the controller for a type with first look at it's template id, for example if templateid = "camera" we load the camera controller where the user will be able to stream a video from it. If template ID is missing we then0 loop trough it's attribute.definition.cluster to find and load the proper controller.  
 
 __Example__ :
 
@@ -36,7 +36,7 @@ __Example__ :
 } 
 ```
  
-Above is a type (OnOff switch)  with attribute *uuid* 51545411-7dde-40b3-8669-a11705b4e451 and when retrieving that particular attribute on server we should have something like this in *json*: 
+Above is a type (OnOff switch)  with attribute *uuid*=51545411-7dde-40b3-8669-a11705b4e451 and when we request that particular attribute on the server we should have something like this (bellow) in *JSON*: 
 
 ```JSON
 {
@@ -70,18 +70,18 @@ Above is a type (OnOff switch)  with attribute *uuid* 51545411-7dde-40b3-8669-a1
     "attributeId": 11
 }
 ``` 
-In this particular attribute we can see  on its definition that the cluster is "com.zipato.cluster.onoff", this is how we know that we should load the OnOff controller so that the user can turn On or turn Off a light  for example. 
+We can see on it's definition that the cluster = "com.zipato.cluster.onoff", this is how we know that we should load the OnOff controller so that the user can turn On or turn Off a light  for example. 
 
 As mentioned earlier most of types should have their controllers so that the user can for example turn off/on a light. In order for that magic to happen you need to send a message to the server  saying "turn on light for device x",  well not exactly in this word but the idea is the same. 
 
-First of all lets talk a little bit more about attribute. An attribute in a device is the last child of the tree and its the one which define which kind of device we are dealing in general base on its AtrributType filed found on attribute.definition.  
-There are 5 types of  attributeType in our system: '**BOOLEAN**','**INTEGER**', '**DOUBLE**', '**STRING**' or '**NUMBER**' (in the example above we can see that we have boolean as attributeType). For example an attribute with attributeType = boolean, can store only two type of values, which are true or false, and that can be translated to either a sensor device (door sensor for example than can be either open or close) or an actuator (plug device for example that can turn  on or off ) or any type of device which require two state. 
+Lets talk a little bit more about attributes. An attribute in a device is the last child in the tree and it is the one which kind of defining what kind of device we are dealing with in general base on its AtrributType filed found on attribute.definition.  
+There are 5 types of  attributeType in our system: '**BOOLEAN**','**INTEGER**', '**DOUBLE**', '**STRING**' or '**NUMBER**' (in the example above we can see that we have boolean as attributeType). For example an attribute with attributeType = boolean, can store only two type of values, which are true or false, and that can be translated to either an on/off in case of plug_in device or open/close in case of a door/windows sensor device for example. 
 
 So in order to let say switch an actuator device with attributeType boolean we need to send either true or false to server right? so the question is how do we do that. 
 
-First we need to know what kind of attribute we are dealing with (most of the time we already know via either the templateID of the type or via the attribute>definition>cluster) for attributeTYpe then base on its UUID send a put request with the corresponding value in the body to  the server. 
+First we need to know what kind of attribute we are dealing with (most of the time we already know it via either the templateID of the type or via the attribute>definition>cluster), then we use its UUID to send a put request with the appropriate value in the body to the server. 
 
-Example to turn on the actuator above we use this web service 
+__Example__ : turn on the actuator above with the use of our API 
 `https://my.zipato.com:443/zipato-web/v2/attributes/51545411-7dde-40b3-8669-a11705b4e451/value 
  and in the body we put the specific json {"value" : "true"} and voila! 
  
