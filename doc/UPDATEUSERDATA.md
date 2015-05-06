@@ -1,3 +1,5 @@
+#Update user data
+
 A separate service has to be implemented to collect all user attributes values and all device state data with their respectively UUID value to map them later with proper attribute (to retrieve a value of a attribute) or device (to retrieve a state of a device) where the changed are updated every x second (this should not be store locally as subject to change at any moment) 
 
 API used for both attributes values and devices statuses are: 

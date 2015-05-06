@@ -1,3 +1,4 @@
+#Browser Manager
 
 The browser manager is one of the most important screen in our mobile system because it is the screen which will interact the most with the user and properly understand it is critical in order to fully understand how our mobile system work. 
 
@@ -6,7 +7,7 @@ The first view on the left is where all user types are display! shorted in alpha
 
 You are probably wondering what is type? Right we introduced types in api v2, a type is just like a kind of entity(can be a device,an endpoint, a cluster  or an attribute for example) with certain sets of configurations and fields where some can be set by the user like the "Show as Device" (set to true if the user want to see a particular type in the browser manager for example), icon (the user can choose which icon to display and color instead of the default one), uiType( what kind of entity it is? is it a Light, a sensor or camera? etc) and some that cannot be modify by the user like templateID (used to specify and differentiate certain entity from others) . Every type  fetch from the servers should contains a name , link, uuid and uitype by default at least and  all its attributes if exist and if itself is not an attribute. 
 
-Json example of a type fetch from the API: 
+Json example of a type fetched from the types API:
  
 ``` JSON
 {
@@ -91,7 +92,7 @@ Json example of a type fetch from the API:
     }
 } 
 ```
-In this example our type above is  an Endpoint as entity but of type meter (see uiType) and it will be categorize as meter on the left view with any other meter but the name shown to the user will be "Generic meter" , and if we look a little bit up with can see that this entity(Enpoint ) has a name  of "Zipato AirCondition IR" , belong to the room with id = 15432, show is set to true(so it will appear on the browser manager) and has 7 attributes. 
+In this example our type above is  an Endpoint as entity but of type meter (see uiType) and it will be categorize as meter on the left view with any other meter but the name shown to the user will be "Generic meter" , and if we look a little bit up with can see that this entity(Endpoint) has a name  of "Zipato AirCondition IR" , belong to the room with id = 15432, show is set to true(so it will appear on the browser manager) and has 7 attributes.
 
 To get the full list of type use the webservice https://my.zipato.com/zipato-web/v2/types/search/all 
  

@@ -1,9 +1,10 @@
+#Set attributes
 
 When a user click on a list (in the right) the proper controller for that is display on the screen if exist of course or the list of its attributes + value is display as default. 
 
 To load the controller for a type with first look at his template id, for example if templateid = "camera" we load the camera controller where the user will be able to stream a video on that particular camera. If template ID is missing we loop trough its attribute.definition.cluster to load the proper controller.  
 
-**Example** : 
+[Example] :
 
 ```JSON
 {
