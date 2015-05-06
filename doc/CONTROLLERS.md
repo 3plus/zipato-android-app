@@ -15,7 +15,7 @@ To get the full list of type use the webservice https://my.zipato.com/zipato-web
  
 <img src="https://github.com/3plus/zipato-android-v2/blob/237bc95a7a5117b48f54507b3783a5c24d681702/media/figure_1.png" width="450">
 
- [Figure 1]
+ __Figure 1__
  
 Figure 1 is and example on how a list of type is categorize and shown to the user. 
 

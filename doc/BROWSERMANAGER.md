@@ -8,6 +8,8 @@ The first view on the left is where all user types are display! shorted in alpha
 You are probably wondering what is type? Right we introduced types in api v2, a type is just like a kind of entity(can be a device,an endpoint, a cluster  or an attribute for example) with certain sets of configurations and fields where some can be set by the user like the "Show as Device" (set to true if the user want to see a particular type in the browser manager for example), icon (the user can choose which icon to display and color instead of the default one), uiType( what kind of entity it is? is it a Light, a sensor or camera? etc) and some that cannot be modify by the user like templateID (used to specify and differentiate certain entity from others) . Every type  fetch from the servers should contains a name , link, uuid and uitype by default at least and  all its attributes if exist and if itself is not an attribute. 
 
 Json example of a type fetched from the types API:
+
+__Example__
  
 ``` JSON
 {
@@ -98,7 +100,7 @@ To get the full list of type use the webservice https://my.zipato.com/zipato-web
  
 <img src="https://github.com/3plus/zipato-android-v2/blob/237bc95a7a5117b48f54507b3783a5c24d681702/media/figure_1.png" width="450">
 
- **Figure 1**
+ __Figure 1__
  
 Figure 1 is and example on how a list of type is categorize and shown to the user. 
 
