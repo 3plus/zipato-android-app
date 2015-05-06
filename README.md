@@ -10,6 +10,7 @@ We hope the source code for this app is useful for you as a reference or startin
 * [Browser Manager](https://github.com/3plus/zipato-android-v2/blob/murielm/doc/BROWSERMANAGER.md)
 * [Update data](https://github.com/3plus/zipato-android-v2/blob/murielm/doc/UPDATEUSERDATA.md)
 * [Set Attributes](https://github.com/3plus/zipato-android-v2/blob/murielm/doc/SETATTRIBUTES.md)
+* [Controllers](https://github.com/3plus/zipato-android-v2/blob/murielm/doc/CONTROLLERS.md)
 
 
 #Copyright
