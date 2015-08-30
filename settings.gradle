@@ -1,1 +1,1 @@
-include ':zipato_android_v2', ':sliding_menu', ':vitamio'
+include ':zipato_android_v2', ':vitamio'
