@@ -10,7 +10,6 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/sliding_menu" />
             <option value="$PROJECT_DIR$/vitamio" />
             <option value="$PROJECT_DIR$/zipato_android_v2" />
           </set>
