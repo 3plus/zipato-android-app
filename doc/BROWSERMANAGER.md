@@ -113,6 +113,6 @@ You need to create a repository that will store the full types and the full tree
 
 Use the network API : https://my.zipato.com/zipato-web/v2/networks/trees  to retrieve the full network trees 
 
-This data should be store locally so that the app will only load them once and refresh the data only when there is a change on the server side or when requested by the server. 
+This data should be store locally so that the app will only load them once and reset the data only when there is a change on the server side or when requested by the server.
 
 On figure 1 i bet that you already noticed the value below each items and wondering what is it about, this value is the master value of attributes of each type (as i already mention a type can be either a device , endpoint,cluster,attribute) .An attribute in a type is master when its field master is set to true (can be configure by the user), in some case all attributes can have master attribute set to true, in that case the first one will be display on that container. 
