@@ -33,8 +33,11 @@ proguard/
 *.DS_Store
 
 # Intellij IDEA (see https://intellij-support.jetbrains.com/entries/23393067)
-.idea/workspace.xml
+*.iws
+.idea/libraries
+.idea/tasks.xml
+.idea/vcs.xml
 .idea/tasks.xml
 .idea/datasources.xml
 .idea/dataSources.ids
-
+.idea/workspace.xml
