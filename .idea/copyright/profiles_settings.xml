@@ -1,7 +1,10 @@
 <component name="CopyrightManager">
-  <settings default="Tri plus d.o.o">
-    <module2copyright>
-      <element module="All" copyright="Tri plus d.o.o" />
-    </module2copyright>
+  <settings default="zipato">
+    <LanguageOptions name="Properties">
+      <option name="fileTypeOverride" value="1" />
+    </LanguageOptions>
+    <LanguageOptions name="XML">
+      <option name="prefixLines" value="false" />
+    </LanguageOptions>
   </settings>
 </component>
