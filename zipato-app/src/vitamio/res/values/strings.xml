@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~  Copyright (C) 2011-2014 Tri plus grupa d.o.o <info@3plus.hr>
+  ~  All rights reserved.
+  ~
+  -->
+
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="camera_activity_class">com.zipato.appv2.activities.VitamioCameraActivity</string>
+</resources>

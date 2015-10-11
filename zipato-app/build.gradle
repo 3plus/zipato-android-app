@@ -1,0 +1,106 @@
+
+/*
+ *  Copyright (C) 2011-2015 Tri plus grupa d.o.o <info@3plus.hr>
+ *  All rights reserved.
+ */
+
+apply plugin: 'com.android.application'
+
+android {
+
+    def code
+    def versionPropsFile = file('code.properties');
+    if (versionPropsFile.exists()) {
+        def Properties versionProps = new Properties()
+        versionProps.load(new FileInputStream(versionPropsFile))
+        code = versionProps['VERSION_CODE'].toInteger() + 1
+        versionProps['VERSION_CODE'] = code.toString()
+        versionProps.store(versionPropsFile.newWriter(), null)
+    } else {
+        throw new GradleException("Could not read code.properties!")
+    }
+
+    compileSdkVersion 22
+    buildToolsVersion '21.1.2'
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 22
+        // Enabling multidex support.
+        //       multiDexEnabled true
+    }
+
+    productFlavors {
+        zipato {
+            applicationId "com.triplus.android.client.v2.zipato"
+            minSdkVersion 14
+            versionName "4.0"
+            versionCode
+        }
+        vitamio {
+            applicationId "com.triplus.android.client.v2.zipato"
+            minSdkVersion 14
+            versionName "4.0"
+        }
+    }
+
+    dexOptions {
+        preDexLibraries = false
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    aaptOptions {
+        useNewCruncher = false
+        noCompress 'png', 'jpg'
+        ignoreAssetsPattern "!.svn:!.git:!.ds_store:!*.scc:.*:<dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"
+    }
+
+    packagingOptions {
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/NOTICE'
+    }
+
+    applicationVariants.all { v ->
+        println "****************************"
+        println "variant: ${v.name}"
+        println "flavor: ${v.flavorName}"
+        println "****************************"
+        if (v.buildType.name.equals("debug")) {
+            v.outputs.each { output ->
+                def outputFile = output.outputFile
+                if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                    def fileName = "${v.productFlavors.applicationId}-${v.buildType.name}-version_${productFlavors.versionName}.apk"
+                    fileName = fileName.replace("[", "")
+                    fileName = fileName.replace("]", "")
+                    output.outputFile = new File(outputFile.parent, fileName)
+                }
+            }
+        } else {
+            v.outputs.each { output ->
+                def outputFile = output.outputFile
+                if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                    def fileName = "${v.productFlavors.applicationId}-${v.buildType.name}-version_${productFlavors.versionName}-vCode${productFlavors.versionCode}.apk"
+                    fileName = fileName.replace("[", "")
+                    fileName = fileName.replace("]", "")
+                    output.outputFile = new File(outputFile.parent, fileName)
+                }
+            }
+        }
+    }
+
+    dependencies {
+        //compile fileTree(dir: 'libs', include: ['*.jar'])
+        vitamioCompile project(':vitamio')
+        compile project(':zipato-lib')
+        //compile 'com.android.support:multidex:1.0.1'
+    }
+}
+
+
+
