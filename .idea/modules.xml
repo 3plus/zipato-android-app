@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/vitamio/vitamio.iml" filepath="$PROJECT_DIR$/vitamio/vitamio.iml" />
+      <module fileurl="file://$PROJECT_DIR$/vitamio/vitamio.iml" filepath="$PROJECT_DIR$/vitamio/vitamio.iml" />
       <module fileurl="file://$PROJECT_DIR$/zipato-android-app.iml" filepath="$PROJECT_DIR$/zipato-android-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/zipato-app/zipato-app.iml" filepath="$PROJECT_DIR$/zipato-app/zipato-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/zipato-lib/zipato-lib.iml" filepath="$PROJECT_DIR$/zipato-lib/zipato-lib.iml" />
