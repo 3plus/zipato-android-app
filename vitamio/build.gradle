@@ -1,0 +1,22 @@
+apply plugin: 'com.android.library'
+
+
+android {
+    compileSdkVersion 22
+    buildToolsVersion '21.1.2'
+
+    defaultConfig {
+        minSdkVersion 14
+        targetSdkVersion 22
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'fake/AndroidManifest.xml'
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}

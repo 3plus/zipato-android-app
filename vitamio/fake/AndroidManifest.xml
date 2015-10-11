@@ -1,0 +1,6 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="fake.vitamio"
+          android:versionCode="400"
+          android:versionName="4.0">
+
+</manifest>
