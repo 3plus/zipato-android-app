@@ -1,1 +1,1 @@
-include ':zipato_android_v2', ':vitamio'
+include ':zipato-lib', ':vitamio', ':zipato-app'

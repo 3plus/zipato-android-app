@@ -16,7 +16,7 @@
 #   public *;
 #}
 
--dontwarn butterknife.internal.**
+-dontwarn butterfork.internal.**
 -dontwarn org.fusesource.**
 -dontwarn com.actionbarsherlock.internal.ActionBarSherlockCompat
 -dontwarn com.fasterxml.jackson.databind.ext.DOMSerializer
@@ -26,14 +26,14 @@
 -dontwarn dagger.internal.**
 
 -keep class **$$ViewInjector { *; }
--keepnames class * { @butterknife.InjectView *;}
+-keepnames class * { @butterfork.Bind *;}
 -keep class android.support.v4.app.** { *; }
 -keep interface android.support.v4.app.** { *; }
 -keep class com.actionbarsherlock.** { *; }
 -keep interface com.actionbarsherlock.** { *; }
 -keep class javax.** {*;}
 
--keep class butterknife.** {*;}
+-keep class butterfork.** {*;}
 -keep class org.springframework.** { *; }
 -keep class org.codehaus.** { *; }
 -keep class org.fusesource.**{*;}

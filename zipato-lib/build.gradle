@@ -3,303 +3,41 @@
  *  All rights reserved.
  */
 
-apply plugin: 'com.android.application'
+buildscript {
+    repositories {
+        mavenLocal()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.oguzbabaoglu:butterfork-plugin:1.0.0'
+        classpath 'com.android.tools.build:gradle:1.3.0'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.7'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.3.1'
+    }
+}
+
+// It is important that the library plugin is applied before butterfork-plugin
+apply plugin: 'android-library'
+
 
 android {
-    signingConfigs {
-
-        bft_release {
-
-            def singingFile = file('buildsigning.properties')
-            if (singingFile.exists() && singingFile.canRead()) {
-
-                Properties signingProps = new Properties()
-                signingProps.load(new FileInputStream(singingFile))
-                storeFile file(signingProps['bft_release_keystore'])
-                storePassword signingProps['bft_release_keystore.password']
-                keyAlias signingProps['bft_release_keyAlias']
-                keyPassword signingProps['bft_release_keyPassword']
-
-            } else {
-                throw new GradleException("Could not read buildsigning.properties!")
-            }
-        }
-
-        thombox_release {
-
-            def singingFile = file('buildsigning.properties')
-            if (singingFile.exists() && singingFile.canRead()) {
-
-                Properties signingProps = new Properties()
-                signingProps.load(new FileInputStream(singingFile))
-                storeFile file(signingProps['thombox_release_keystore'])
-                storePassword signingProps['thombox_release_keystore.password']
-                keyAlias signingProps['thombox_release_keyAlias']
-                keyPassword signingProps['thombox_release_keyPassword']
-
-
-            } else {
-                throw new GradleException("Could not read buildsigning.properties!")
-            }
-        }
-
-        zipato_release {
-            def singingFile = file('buildsigning.properties')
-            if (singingFile.exists() && singingFile.canRead()) {
-
-                Properties signingProps = new Properties()
-                signingProps.load(new FileInputStream(singingFile))
-                storeFile file(signingProps['zipato_release_keystore'])
-                storePassword signingProps['zipato_release_keystore.password']
-                keyAlias signingProps['zipato_release_keyAlias']
-                keyPassword signingProps['zipato_release_keyPassword']
-
-
-            } else {
-                throw new GradleException("Could not read buildsigning.properties!")
-            }
-        }
-        betas {
-            def singingFile = file('buildsigning.properties')
-            if (singingFile.exists() && singingFile.canRead()) {
-
-                Properties signingProps = new Properties()
-                signingProps.load(new FileInputStream(singingFile))
-                storeFile file(signingProps['betas_keystore'])
-                storePassword signingProps['betas_keystore.password']
-                keyAlias signingProps['betas_keyAlias']
-                keyPassword signingProps['betas_keyPassword']
-
-
-            } else {
-                throw new GradleException("Could not read buildsigning.properties!")
-            }
-        }
-
-        debug {
-            def singingFile = file('buildsigning.properties')
-            if (singingFile.exists() && singingFile.canRead()) {
-                Properties signingProps = new Properties()
-                signingProps.load(new FileInputStream(singingFile))
-
-
-                storeFile file(signingProps['debug_keystore'])
-                storePassword signingProps['debug_keystore.password']
-                keyAlias signingProps['debug_keyAlias']
-                keyPassword signingProps['debug_keyPassword']
-
-
-            } else {
-                throw new GradleException("Could not read buildsigning.properties!")
-            }
-
-        }
-    }
-    def code
-    def versionPropsFile = file('code.properties');
-    if (versionPropsFile.exists()) {
-        def Properties versionProps = new Properties()
-        versionProps.load(new FileInputStream(versionPropsFile))
-        code = versionProps['VERSION_CODE'].toInteger() + 1
-        versionProps['VERSION_CODE'] = code.toString()
-        versionProps.store(versionPropsFile.newWriter(), null)
-    } else {
-        throw new GradleException("Could not read code.properties!")
-    }
 
     compileSdkVersion 22
     buildToolsVersion '21.1.2'
     //useLibrary 'org.apache.http.legacy'
 
     defaultConfig {
-//        ...
         minSdkVersion 14
         targetSdkVersion 22
-//        ...
-//
-//        // Enabling multidex support.
-        //       multiDexEnabled true
     }
 
     dexOptions {
         preDexLibraries = false
     }
 
-    productFlavors {
-
-        domomea {
-            applicationId "com.triplus.android.client.v2.domomea"
-
-            minSdkVersion 14
-            versionName "1.0"
-            versionCode code
-        }
-
-        dakota {
-            applicationId "com.triplus.android.client.v2.dakota"
-
-            minSdkVersion 14
-            versionName "3.0"
-            versionCode code
-        }
-
-
-        hdl {
-            applicationId "com.triplus.android.client.v2.hdl"
-
-            minSdkVersion 14
-            versionName "3.1"
-            versionCode code
-        }
-
-        technicolor {
-            applicationId "com.triplus.android.client.v2.technicolor"
-
-            minSdkVersion 14
-            versionName "3.0"
-            versionCode code
-        }
-
-        thomson {
-            applicationId "com.thombox.thombox"
-
-            minSdkVersion 14
-            versionName "3.2"
-            versionCode code
-        }
-        hauppauge {
-            applicationId "com.triplus.android.client.v2.hauppauge"
-            minSdkVersion 14
-            versionName "3.2"
-            versionCode code
-
-        }
-        zipato {
-            applicationId "com.triplus.android.client.v2.zipato"
-            minSdkVersion 14
-            versionName "4.0"
-            versionCode code
-        }
-        zipato_china {
-            applicationId "com.triplus.android.client.v2.zipato.china"
-            minSdkVersion 14
-            versionName "3.0.6_CH"
-            versionCode code
-        }
-
-//        zipato_ha {
-//            applicationId "com.triplus.android.client.v2.zipato.ha"
-//            minSdkVersion 14
-//            targetSdkVersion 19
-//            versionName "3.1.2_AH"
-//            versionCode code
-//        }
-
-        bft {
-            applicationId "com.bft.bft"
-            minSdkVersion 14
-            versionName "3.0"
-            versionCode code
-
-
-        }
-        mate {
-            applicationId "com.triplus.android.client.v2.mate"
-            minSdkVersion 14
-            versionName "1.1"
-            versionCode code
-
-        }
-        icasa {
-            applicationId "com.triplus.android.client.v2.icasa"
-            minSdkVersion 14
-            versionName "3.0"
-            versionCode code
-
-        }
-        crtlhome {
-            applicationId "com.triplus.android.client.v2.crtlhome"
-            minSdkVersion 14
-            versionName "3.0"
-            versionCode code
-
-        }
-        thuga {
-            applicationId "com.triplus.android.client.v2.thuga"
-            minSdkVersion 14
-            versionName "3.0"
-            versionCode code
-
-        }
-        bezeq {
-            applicationId "com.triplus.android.client.v2.bezeq"
-            minSdkVersion 14
-            versionName "3.0"
-            versionCode code
-
-        }
-        umniah {
-            applicationId "com.triplus.android.client.v2.umniah"
-            minSdkVersion 14
-            versionName "3.1"
-            versionCode code
-        }
-
-    }
-
-    buildTypes {
-
-        debug {
-            applicationIdSuffix ".debug"
-            versionNameSuffix "-debug-vcode-" + code.toString()
-            signingConfig signingConfigs.debug
-            zipAlignEnabled true
-            debuggable true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
-//            shrinkResources true
-//            minifyEnabled true
-
-        }
-
-        betaPlayStore {
-            signingConfig signingConfigs.zipato_release
-            versionNameSuffix "-beta-vcode-" + code.toString()
-            zipAlignEnabled true
-            debuggable false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
-        }
-        beta {
-
-            signingConfig signingConfigs.betas
-            versionNameSuffix "-beta-vcode-" + code.toString()
-            zipAlignEnabled true
-            debuggable false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
-        }
-
-        release {
-            productFlavors.domomea.signingConfig signingConfigs.zipato_release
-            productFlavors.zipato.signingConfig signingConfigs.zipato_release
-            productFlavors.thomson.signingConfig signingConfigs.thombox_release
-            productFlavors.hauppauge.signingConfig signingConfigs.zipato_release
-            productFlavors.bft.signingConfig signingConfigs.bft_release
-            productFlavors.mate.signingConfig signingConfigs.zipato_release
-            productFlavors.icasa.signingConfig signingConfigs.zipato_release
-            productFlavors.crtlhome.signingConfig signingConfigs.zipato_release
-            productFlavors.thuga.signingConfig signingConfigs.zipato_release
-            productFlavors.bezeq.signingConfig signingConfigs.zipato_release
-            productFlavors.zipato_china.signingConfig signingConfigs.zipato_release
-            productFlavors.umniah.signingConfig signingConfigs.zipato_release
-            productFlavors.dakota.signingConfig signingConfigs.zipato_release
-            productFlavors.hdl.signingConfig signingConfigs.zipato_release
-            productFlavors.technicolor.signingConfig signingConfigs.zipato_release
-            zipAlignEnabled true
-            debuggable false
-            //shrinkResources true
-            //minifyEnabled true
-            // runProguard false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
-        }
+    lintOptions {
+        disable 'InvalidPackage'
+        abortOnError false
     }
 
     packagingOptions {
@@ -308,81 +46,59 @@ android {
         exclude 'META-INF/ASL2.0'
         exclude 'META-INF/LICENSE'
         exclude 'META-INF/NOTICE'
-
-
     }
 
-    applicationVariants.all { v ->
-        println "****************************"
-        println "variant: ${v.name}"
-        println "flavor: ${v.flavorName}"
-        println "****************************"
-        if (v.buildType.name.equals("debug")) {
-            v.outputs.each { output ->
-                def outputFile = output.outputFile
-                if (outputFile != null && outputFile.name.endsWith('.apk')) {
-                    def fileName = "${v.productFlavors.applicationId}-${v.buildType.name}-version_${productFlavors.versionName}.apk"
-                    fileName = fileName.replace("[", "")
-                    fileName = fileName.replace("]", "")
-                    output.outputFile = new File(outputFile.parent, fileName)
-                }
-            }
-        } else {
-            v.outputs.each { output ->
-                def outputFile = output.outputFile
-                if (outputFile != null && outputFile.name.endsWith('.apk')) {
-                    def fileName = "${v.productFlavors.applicationId}-${v.buildType.name}-version_${productFlavors.versionName}-vCode${productFlavors.versionCode}.apk"
-                    fileName = fileName.replace("[", "")
-                    fileName = fileName.replace("]", "")
-                    output.outputFile = new File(outputFile.parent, fileName)
-                }
-            }
-        }
-    }
-
-    dependencies {
-
-        //compile fileTree(dir: 'libs', include: ['*.jar'])
-        compile project(':vitamio')
-
-        compile('org.springframework.android:spring-android-auth:2.0.0.M1') {
-            exclude group: 'org.springframework', module: 'commons-logging'
-            exclude group: 'org.springframework', module: 'spring-core'
-            exclude group: 'org.springframework', module: 'spring-web'
-        }
-        provided 'com.squareup.dagger:dagger-compiler:1.2.2'
-        compile 'de.greenrobot:eventbus:2.4.0'
-        compile 'com.sothree.slidinguppanel:library:3.1.0'
-        compile 'org.springframework.android:spring-android-rest-template:2.0.0.M1'
-        compile 'org.springframework.android:spring-android-core:2.0.0.M1'
-        compile 'com.fasterxml.jackson.core:jackson-databind:2.2.4'
-        compile 'com.fasterxml.jackson.core:jackson-core:2.2.4'
-        compile 'com.fasterxml.jackson.core:jackson-annotations:2.2.4'
-        compile 'javax.jmdns:jmdns:3.4.1'
-        compile 'org.fusesource.mqtt-client:mqtt-client:1.10'
-        compile 'com.squareup.dagger:dagger:1.2.2'
-        compile 'com.google.dexmaker:dexmaker:1.1'
-        compile 'com.jakewharton:butterknife:5.1.0'
-
-        compile 'com.squareup.picasso:picasso:2.4.0'
-        compile 'com.nhaarman.listviewanimations:library:2.6.0'
-        compile 'com.andreabaccega:android-form-edittext:1.0.5@aar'
-        compile 'com.google.android.gms:play-services-gcm:7.8.+'
-        compile 'se.emilsjolander:stickylistheaders:2.7.0'
-        compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
-        compile 'com.squareup.okhttp:okhttp:2.0.0'
-        compile 'com.squareup.okhttp:okhttp-urlconnection:2.0.0'
-        compile 'com.viewpagerindicator:library:2.4.1@aar'
-        compile 'com.melnykov:floatingactionbutton:1.3.0'
-        compile 'com.jeremyfeinstein.slidingmenu:library:1.3@aar'
-        compile 'com.android.support:support-v4:23.0.0'
-        compile 'com.android.support:support-annotations:23.+'
-        compile 'com.android.support:recyclerview-v7:23.+'
-        compile 'com.android.support:cardview-v7:23.+'
-        compile 'com.android.support:appcompat-v7:22.+'
-        //compile 'com.android.support:multidex:1.0.1'
+    aaptOptions {
+        useNewCruncher = false
+        noCompress 'png', 'jpg'
+        ignoreAssetsPattern "!.svn:!.git:!.ds_store:!*.scc:.*:<dir>_*:!CVS:!thumbs.db:!picasa.ini:!*~"
     }
 }
 
+apply plugin: 'com.android.library'
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'com.oguzbabaoglu.butterfork-plugin'
 
+dependencies {
+
+    compile('org.springframework.android:spring-android-auth:2.0.0.M1') {
+        exclude group: 'org.springframework', module: 'commons-logging'
+        exclude group: 'org.springframework', module: 'spring-core'
+        exclude group: 'org.springframework', module: 'spring-web'
+    }
+    provided 'com.squareup.dagger:dagger-compiler:1.2.2'
+    compile 'de.greenrobot:eventbus:2.4.0'
+    compile 'com.sothree.slidinguppanel:library:3.1.0'
+    compile 'org.springframework.android:spring-android-rest-template:2.0.0.M1'
+    compile 'org.springframework.android:spring-android-core:2.0.0.M1'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.2.4'
+    compile 'com.fasterxml.jackson.core:jackson-core:2.2.4'
+    compile 'com.fasterxml.jackson.core:jackson-annotations:2.2.4'
+    compile 'javax.jmdns:jmdns:3.4.1'
+    compile 'org.fusesource.mqtt-client:mqtt-client:1.10'
+    compile 'com.squareup.dagger:dagger:1.2.2'
+    compile 'com.google.dexmaker:dexmaker:1.1'
+    compile('com.oguzbabaoglu:butterfork-binder:1.0.0') {
+        exclude group: 'com.google.android', module: 'android'
+    }
+    apt 'com.oguzbabaoglu:butterfork-compiler:1.0.0'
+
+    compile 'com.squareup.picasso:picasso:2.4.0'
+    compile 'com.nhaarman.listviewanimations:library:2.6.0'
+    compile 'com.andreabaccega:android-form-edittext:1.0.5@aar'
+    compile 'com.google.android.gms:play-services-gcm:7.8.+'
+    compile 'se.emilsjolander:stickylistheaders:2.7.0'
+    compile 'com.readystatesoftware.systembartint:systembartint:1.0.3'
+    compile 'com.squareup.okhttp:okhttp:2.0.0'
+    compile 'com.squareup.okhttp:okhttp-urlconnection:2.0.0'
+    compile 'com.viewpagerindicator:library:2.4.1@aar'
+    compile 'com.melnykov:floatingactionbutton:1.3.0'
+    compile 'com.jeremyfeinstein.slidingmenu:library:1.3@aar'
+    compile 'com.android.support:support-v4:23.0.0'
+    compile 'com.android.support:support-annotations:23.+'
+    compile 'com.android.support:recyclerview-v7:23.+'
+    compile 'com.android.support:cardview-v7:23.+'
+    compile 'com.android.support:appcompat-v7:22.+'
+    //compile 'com.android.support:multidex:1.0.1'
+}
 
