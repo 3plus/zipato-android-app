@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~  Copyright (C) 2011-2015 Tri plus grupa d.o.o <info@3plus.hr>
+  ~  All rights reserved.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutLogo"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/start_screen_zipato_logo_margin"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:background="@color/color_offline">
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/content_description_log_in_image"
+        android:src="@drawable/log_login_screen" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textViewLogInTextMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:singleLine="false"
+            android:text=""
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@android:color/background_light"
+            android:textSize="@dimen/zipato_logo_screen_text_message_size"
+            tools:ellipsize="end"
+            tools:maxLines="3"
+            tools:text="In general, you can set any Android framework attribute as a designtime attribute; just use the tools: namespace rather than the android: namespace. Note also that you don't have to choose either/or; you can set both the Android namespace attribute (which will be used at runtime) and a tools attribute (which will override the runtime attribute at designtime only)." />
+
+    </LinearLayout>
+</LinearLayout>

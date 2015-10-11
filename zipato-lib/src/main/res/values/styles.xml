@@ -1,0 +1,70 @@
+<!--
+  ~  Copyright (C) 2011-2015 Tri plus grupa d.o.o <info@3plus.hr>
+  ~  All rights reserved.
+  -->
+
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="windowActionModeOverlay">true</item>
+        <item name="android:actionModeBackground">@color/toolbar_color</item>
+        <item name="actionModeBackground">@color/toolbar_color</item>
+        <!--<item name="android:theme">@style/ThemeOverlay.AppCompat.Dark</item>-->
+    </style>
+
+    <style name="App.Theme.Translucent" parent="AppTheme">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <!--<item name="android:windowIsFloating">true</item>-->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
+    <style name="App.Theme.Dialog" parent="App.Theme.Translucent">
+        <!--<item name="android:windowIsFloating">true</item>-->
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@style/Animation.AppCompat.Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+
+        <item name="windowActionBar">false</item>
+        <item name="windowActionModeOverlay">true</item>
+
+        <!--<item name="listPreferredItemPaddingLeft">24dip</item>-->
+        <!--<item name="listPreferredItemPaddingRight">24dip</item>-->
+
+    </style>
+    <!--<style name="MyActionBar" parent="Widget.Sherlock.ActionBar">-->
+    <!--<item name="android:background">#1a000000</item>-->
+    <!--<item name="background">#1a000000</item>-->
+    <!--</style>-->
+    <!--<style name="customSpinner" parent ="Widget.Sherlock.Light.Spinner.DropDown.ActionBar">-->
+    <!--<item name="android:background">@drawable/custom_config_spinner_selectable</item>-->
+    <!--</style>-->
+
+    <style name="custom.scene.textView.background" parent="android:TextAppearance.Large">
+        <item name="android:topLeftRadius">5dp</item>
+        <item name="android:topRightRadius">5dp</item>
+        <item name="android:bottomLeftRadius">5dp</item>
+        <item name="android:bottomRightRadius">5dp</item>
+    </style>
+
+    <style name="SeekArc">
+        <item name="arcColor">@color/progress_gray_dark</item>
+    </style>
+    -
+
+    <style name="SeekArcLight">
+        <item name="arcColor">@color/progress_gray</item>
+    </style>
+
+    <style name="popupAnimation" parent="android:Animation">
+        <item name="@android:windowEnterAnimation">@anim/popup_in</item>
+        <item name="@android:windowExitAnimation">@anim/popup_out</item>
+    </style>
+
+
+</resources>

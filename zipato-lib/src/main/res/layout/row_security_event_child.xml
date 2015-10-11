@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~  Copyright (C) 2011-2015 Tri plus grupa d.o.o <info@3plus.hr>
+  ~  All rights reserved.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/full_transparent"
+    android:orientation="horizontal"
+    android:padding="@dimen/fragment_row_security_event_child_padding">
+
+
+    <TextView
+        android:id="@+id/textViewMessage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/row_controller_event_text_size" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/fragment_row_security_event_child_margin"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textViewTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/row_controller_event_text_size" />
+
+        <ImageView
+            android:id="@+id/imageEventStatus"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="@dimen/fragment_row_security_event_child_margin2"
+            android:background="@drawable/custom_status"
+            android:visibility="visible" />
+
+        <Button
+            android:id="@+id/buttonAck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fragment_row_security_event_child_margin2"
+            android:background="?android:selectableItemBackground"
+            android:padding="@dimen/view_controller_footer_but_padding"
+            android:text="@string/acknowledge"
+            android:textColor="@color/light_grey"
+            android:textSize="@dimen/fragment_row_zone_button_textSize"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</LinearLayout>

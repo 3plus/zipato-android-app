@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~  Copyright (C) 2011-2015 Tri plus grupa d.o.o <info@3plus.hr>
+  ~  All rights reserved.
+  -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/view_controller_dimen5dp"
+    android:paddingRight="@dimen/view_controller_dimen5dp">
+
+    <ProgressBar
+        android:id="@+id/progressBarBrowser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:indeterminate="true"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:id="@+id/leftFrame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="@integer/activity_browser_manager_layout_weight1" />
+
+        <LinearLayout
+            android:layout_width="@dimen/activity_bm_separator_width"
+            android:layout_height="match_parent" />
+
+        <FrameLayout
+            android:id="@+id/rightFrame"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="@integer/activity_browser_manager_layout_weight2" />
+    </LinearLayout>
+
+</LinearLayout>

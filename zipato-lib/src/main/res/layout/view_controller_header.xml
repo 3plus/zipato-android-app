@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~  Copyright (C) 2011-2015 Tri plus grupa d.o.o <info@3plus.hr>
+  ~  All rights reserved.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingBottom="@dimen/view_controller_layout_margin"
+    android:paddingTop="@dimen/view_controller_header_margin1"
+    tools:background="@color/color_view_controller_item_background">
+
+    <FrameLayout
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <ImageView
+            android:id="@+id/imageViewIC"
+            android:layout_width="@dimen/view_controller_header_icon_width"
+            android:layout_height="@dimen/view_controller_header_icon_height"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:id="@+id/textViewKK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:focusable="false"
+            android:gravity="center"
+            android:padding="10dp"
+            android:shadowColor="@color/text_shadow"
+            android:shadowDx="-1"
+            android:shadowDy="-1"
+            android:shadowRadius="1"
+            android:textColor="@color/light_grey"
+            android:textSize="@dimen/view_controller_header_kk_texSize"
+            android:visibility="gone" />
+
+        <ProgressBar
+            android:id="@+id/progressBarVC"
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+
+    <!--<View-->
+    <!--android:layout_width="0.1dp"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_marginLeft="@dimen/view_controller_header_margin1"-->
+    <!--android:layout_marginRight="@dimen/view_controller_header_margin1"-->
+    <!--android:background="@color/color_view_controller_stroke" />-->
+
+    <TextView
+        android:id="@+id/textViewDName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/view_controller_header_margin2"
+        android:layout_marginRight="@dimen/view_controller_header_margin2"
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:maxLines="2"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/row_browser_right_name_text_size"
+        tools:text="Device 1245" />
+
+    <ImageButton
+        android:id="@+id/imgSubMenu"
+        android:layout_width="@dimen/view_controller_img_width"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="?android:selectableItemBackground"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_vc_sub_menu" />
+
+</LinearLayout>

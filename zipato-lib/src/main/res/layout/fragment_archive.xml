@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~  Copyright (C) 2011-2015 Tri plus grupa d.o.o <info@3plus.hr>
+  ~  All rights reserved.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_view_controller_item_background"
+        android:minHeight="?attr/actionBarSize"
+        android:orientation="horizontal"
+        android:padding="@dimen/show_activity_margin">
+
+        <TextView
+            android:id="@+id/textArchiveDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/fragment_archive_margin"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/row_controller_event_text_size" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0">
+
+        <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/swipe_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <GridView
+            android:id="@+id/gridViewThumb"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:horizontalSpacing="5dp"
+            android:numColumns="@integer/thumb_num_columns"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="5dp" />
+        </android.support.v4.widget.SwipeRefreshLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBarMiddle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+        <com.melnykov.fab.FloatingActionButton
+            android:id="@+id/buttonCalendar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            android:background="?android:selectableItemBackground"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_calendar"
+            fab:fab_colorNormal="@color/vc_fab_normal_color"
+            fab:fab_colorPressed="@color/color_view_controller_item_background"
+            fab:fab_shadow="true"
+            fab:fab_type="normal" />
+    </FrameLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBarBottom"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+</LinearLayout>

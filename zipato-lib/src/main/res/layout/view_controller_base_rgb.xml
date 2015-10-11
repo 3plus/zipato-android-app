@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~  Copyright (C) 2011-2015 Tri plus grupa d.o.o <info@3plus.hr>
+  ~  All rights reserved.
+  -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:others="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_view_controller_item_background"
+    android:orientation="vertical">
+
+    <include layout="@layout/view_controller_header" />
+
+    <include layout="@layout/view_controller_text_value" />
+
+    <include layout="@layout/view_controller_level_controls" />
+
+    <View
+        android:id="@+id/rgbWStatus"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_controller_rgb_color_status_height"
+        android:layout_marginBottom="@dimen/view_controller_rgb_padding"
+        android:layout_marginTop="@dimen/view_controller_rgb_padding" />
+
+    <FrameLayout
+        android:id="@+id/frameRGBW"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_controller_base_status_height"
+        android:visibility="gone">
+
+        <!--<include layout="@layout/view_controller_rgbw_status" />-->
+
+        <com.zipato.customview.ColorPickerView
+            android:id="@+id/colorPicker"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:visibility="visible" />
+
+        <com.zipato.customview.TempPickerView
+            android:id="@+id/wcPicker"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:visibility="gone"
+            others:wcPosition="fromLeft" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/whiteButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?android:selectableItemBackground"
+            android:gravity="center"
+            android:padding="@dimen/view_controller_footer_but_padding"
+            android:singleLine="true"
+            android:text="White"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/view_controller_control_but_text_size" />
+
+        <TextView
+            android:id="@+id/rgbButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?android:selectableItemBackground"
+            android:gravity="center"
+            android:padding="@dimen/view_controller_footer_but_padding"
+            android:singleLine="true"
+            android:text="RGB"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/view_controller_control_but_text_size" />
+    </LinearLayout>
+</LinearLayout>

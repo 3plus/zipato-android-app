@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~  Copyright (C) 2011-2015 Tri plus grupa d.o.o <info@3plus.hr>
+  ~  All rights reserved.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/pop_up_background"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:padding="@dimen/photo_controller_padding">
+
+    <ImageButton
+        android:id="@+id/imageButtonDel"
+        android:layout_width="@dimen/photo_controller_width"
+        android:layout_height="wrap_content"
+        android:background="?android:selectableItemBackground"
+        android:padding="@dimen/photo_controller_padding"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_delete_big" />
+
+    <ImageButton
+        android:id="@+id/imageButtonDl"
+        android:layout_width="@dimen/photo_controller_width"
+        android:layout_height="wrap_content"
+        android:background="?android:selectableItemBackground"
+        android:padding="@dimen/photo_controller_padding"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_download_big"
+        android:visibility="gone" />
+
+</LinearLayout>

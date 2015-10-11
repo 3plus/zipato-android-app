@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~  Copyright (C) 2011-2015 Tri plus grupa d.o.o <info@3plus.hr>
+  ~  All rights reserved.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_view_controller_item_background"
+    android:orientation="vertical">
+
+    <!--android:layout_marginBottom="@dimen/view_controller_layout_margin"-->
+    <!--android:layout_marginLeft="@dimen/view_controller_layout_margin"-->
+    <!--android:layout_marginRight="@dimen/view_controller_layout_margin"-->
+
+    <include layout="@layout/view_controller_header" />
+
+    <TextView
+        android:id="@+id/textViewCurrentValue"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/view_controller_thermo_current_value_margin"
+        android:gravity="center"
+        android:textColor="@color/color_white"
+        android:textSize="@dimen/view_controller_text_size_status"
+        tools:text="Currently 27.8" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <include layout="@layout/view_controller_thermo_single_control" />
+
+        <include layout="@layout/view_controller_thermo_dual_control" />
+    </FrameLayout>
+
+    <Spinner
+        android:id="@+id/spinnerOperation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:gravity="center" />
+
+    <Spinner
+        android:id="@+id/spinnerMode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:gravity="center" />
+
+
+</LinearLayout>

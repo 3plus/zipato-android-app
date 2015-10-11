@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~  Copyright (C) 2011-2015 Tri plus grupa d.o.o <info@3plus.hr>
+  ~  All rights reserved.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_view_controller_item_background"
+    android:orientation="vertical">
+
+    <!--android:layout_marginBottom="@dimen/view_controller_layout_margin"-->
+    <!--android:layout_marginLeft="@dimen/view_controller_layout_margin"-->
+    <!--android:layout_marginRight="@dimen/view_controller_layout_margin"-->
+
+    <include layout="@layout/view_controller_header" />
+
+    <include layout="@layout/view_controller_text_value" />
+
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="horizontal">-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/butIndex0"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:layout_margin="@dimen/view_controller_index_margin"-->
+    <!--android:layout_weight="1"-->
+    <!--android:background="?android:selectableItemBackground"-->
+    <!--android:gravity="center"-->
+    <!--android:padding="@dimen/view_controller_index_padding"-->
+    <!--android:textColor="@color/color_white"-->
+    <!--android:textSize="@dimen/view_controller_ir_textSize"-->
+    <!--tools:text="1" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/butIndex1"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:layout_margin="@dimen/view_controller_index_margin"-->
+    <!--android:layout_weight="1"-->
+    <!--android:background="?android:selectableItemBackground"-->
+    <!--android:gravity="center"-->
+    <!--android:padding="@dimen/view_controller_index_padding"-->
+    <!--android:textColor="@color/color_white"-->
+    <!--android:textSize="@dimen/view_controller_ir_textSize"-->
+    <!--tools:text="2" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/butIndex2"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_margin="@dimen/view_controller_index_margin"-->
+    <!--android:layout_weight="1"-->
+    <!--android:background="?android:selectableItemBackground"-->
+    <!--android:gravity="center"-->
+    <!--android:padding="@dimen/view_controller_index_padding"-->
+    <!--android:textColor="@color/color_white"-->
+    <!--android:textSize="@dimen/view_controller_ir_textSize"-->
+    <!--tools:text="3" />-->
+    <!--</LinearLayout>-->
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_marginBottom="@dimen/view_controller_dimen7dp"-->
+    <!--android:orientation="horizontal">-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/butIndex3"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:layout_margin="@dimen/view_controller_index_margin"-->
+    <!--android:layout_weight="1"-->
+    <!--android:background="?android:selectableItemBackground"-->
+    <!--android:gravity="center"-->
+    <!--android:padding="@dimen/view_controller_index_padding"-->
+    <!--android:textColor="@color/color_white"-->
+    <!--android:textSize="@dimen/view_controller_ir_textSize"-->
+    <!--tools:text="4" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/butIndex4"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:layout_margin="@dimen/view_controller_index_margin"-->
+    <!--android:layout_weight="1"-->
+    <!--android:background="?android:selectableItemBackground"-->
+    <!--android:gravity="center"-->
+    <!--android:padding="@dimen/view_controller_index_padding"-->
+    <!--android:textColor="@color/color_white"-->
+    <!--android:textSize="@dimen/view_controller_ir_textSize"-->
+    <!--tools:text="5" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/butIndex5"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_gravity="center"-->
+    <!--android:layout_margin="@dimen/view_controller_index_margin"-->
+    <!--android:layout_weight="1"-->
+    <!--android:background="?android:selectableItemBackground"-->
+    <!--android:gravity="center"-->
+    <!--android:padding="@dimen/view_controller_index_padding"-->
+    <!--android:textColor="@color/color_white"-->
+    <!--android:textSize="@dimen/view_controller_ir_textSize"-->
+    <!--tools:text="6" />-->
+    <!--</LinearLayout>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/butIndex0"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/view_controller_index_margin"
+            android:layout_weight="1"
+            android:background="?android:selectableItemBackground"
+            android:gravity="center"
+            android:padding="@dimen/view_controller_index_padding"
+            android:singleLine="true"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/view_controller_control_but_text_size"
+            tools:text="1" />
+
+        <TextView
+            android:id="@+id/butIndex1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/view_controller_index_margin"
+            android:layout_weight="1"
+            android:background="?android:selectableItemBackground"
+            android:gravity="center"
+            android:padding="@dimen/view_controller_index_padding"
+            android:singleLine="true"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/view_controller_control_but_text_size"
+            tools:text="2" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/view_controller_dimen7dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/butIndex2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/view_controller_index_margin"
+            android:layout_weight="1"
+            android:background="?android:selectableItemBackground"
+            android:gravity="center"
+            android:padding="@dimen/view_controller_index_padding"
+            android:singleLine="true"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/view_controller_control_but_text_size"
+            tools:text="3" />
+
+        <TextView
+            android:id="@+id/butIndex3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/view_controller_index_margin"
+            android:layout_weight="1"
+            android:background="?android:selectableItemBackground"
+            android:gravity="center"
+            android:padding="@dimen/view_controller_index_padding"
+            android:singleLine="true"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/view_controller_control_but_text_size"
+            tools:text="4" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/view_controller_dimen7dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/butIndex4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/view_controller_index_margin"
+            android:layout_weight="1"
+            android:background="?android:selectableItemBackground"
+            android:gravity="center"
+            android:padding="@dimen/view_controller_index_padding"
+            android:singleLine="true"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/view_controller_control_but_text_size"
+            tools:text="5" />
+
+        <TextView
+            android:id="@+id/butIndex5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/view_controller_index_margin"
+            android:layout_weight="1"
+            android:background="?android:selectableItemBackground"
+            android:gravity="center"
+            android:padding="@dimen/view_controller_index_padding"
+            android:singleLine="true"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/view_controller_control_but_text_size"
+            tools:text="6" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textViewPage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="1"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/view_controller_text_size_status" />
+
+        <TextView
+            android:id="@+id/textViewSeparator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="/"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/view_controller_text_size_status" />
+
+        <TextView
+            android:id="@+id/textViewNPages"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="1"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/view_controller_text_size_status" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/butPrev"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="?android:selectableItemBackground"
+            android:gravity="center"
+            android:padding="@dimen/view_controller_footer_but_padding"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_ir_left" />
+
+        <TextView
+            android:id="@+id/butIREdit"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="?android:selectableItemBackground"
+            android:gravity="center"
+            android:padding="@dimen/view_controller_footer_but_padding"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/view_controller_control_but_text_size"
+            tools:text="Edit" />
+
+        <ImageButton
+            android:id="@+id/butNext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="?android:selectableItemBackground"
+            android:gravity="center"
+            android:padding="@dimen/view_controller_footer_but_padding"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_ir_right" />
+    </LinearLayout>
+
+</LinearLayout>

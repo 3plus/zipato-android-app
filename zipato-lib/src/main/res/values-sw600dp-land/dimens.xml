@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~  Copyright (C) 2011-2015 Tri plus grupa d.o.o <info@3plus.hr>
+  ~  All rights reserved.
+  -->
+
+<resources>
+
+    <dimen name="fragment_rgb_controller_margin2">5dp</dimen>
+    <dimen name="lc_controller_controller_high">210dp</dimen>
+    <dimen name="fragment_control_security_text_size">15sp</dimen>
+    <dimen name="fragment_control_security_margin1">60dp</dimen>
+    <dimen name="fragment_control_security_margin3">85dp</dimen>
+    <dimen name="thermos_value_text_size_int">30sp</dimen>
+    <dimen name="thermos_value_text_size_dec">20sp</dimen>
+    <dimen name="thermos_value_current_text_size_int">40sp</dimen>
+    <dimen name="thermos_value_current_text_size_dec">25sp</dimen>
+    <dimen name="thermos_value_current_margin_botton">12dp</dimen>
+    <dimen name="thermos_inside_text">13sp</dimen>
+    <dimen name="fragment_thermo_text_size">15sp</dimen>
+    <dimen name="fragment_thermos_controller_margin2">5dp</dimen>
+    <dimen name="thermos_value_text_size_unit">30sp</dimen>
+    <dimen name="thermo_controller_controller_high">180dp</dimen>
+    <dimen name="thermo_controller_controller_padding">25dp</dimen>
+    <dimen name="lc_arc_width">11dp</dimen>
+    <dimen name="lc_progress_width">7dp</dimen>
+    <dimen name="lc_controller_controller_marginTop">5dp</dimen>
+    <dimen name="fragment_roller_margin1">3dp</dimen>
+    <dimen name="fragment_roller_dim_height">15dp</dimen>
+    <dimen name="fragment_blinder_controller_margin">20dp</dimen>
+
+
+</resources>

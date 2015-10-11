@@ -1,0 +1,17 @@
+<!--
+  ~  Copyright (C) 2011-2015 Tri plus grupa d.o.o <info@3plus.hr>
+  ~  All rights reserved.
+  -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:activity="android.zipato_android_v2.app.LogInActivity">
+
+    <item
+        android:id="@+id/menu_menu"
+        android:icon="@drawable/menu_icon"
+        android:orderInCategory="100"
+        android:title="Menu"
+        app:showAsAction="always" />
+</menu>

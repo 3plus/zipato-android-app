@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~  Copyright (C) 2011-2015 Tri plus grupa d.o.o <info@3plus.hr>
+  ~  All rights reserved.
+  -->
+
+<resources>
+    <dimen name="lc_controller_controller_high">230dp</dimen>
+    <dimen name="thermo_controller_controller_high">230dp</dimen>
+    <dimen name="base_remove_text_size">100sp</dimen>
+    <dimen name="fragment_control_security_margin2">25dp</dimen>
+    <dimen name="fragment_control_security_margin3">90dp</dimen>
+    <dimen name="fragment_control_security_margin1">65dp</dimen>
+    <dimen name="thermos_inside_text">12sp</dimen>
+    <dimen name="thermos_value_current_margin_botton">30dp</dimen>
+    <dimen name="thermos_value_current_text_size_int">50sp</dimen>
+    <dimen name="thermos_value_current_text_size_dec">25sp</dimen>
+    <dimen name="thermos_value_text_size_int">35sp</dimen>
+    <dimen name="fragment_joining_margin2">10dp</dimen>
+    <dimen name="lc_arc_width">10dp</dimen>
+    <dimen name="lc_progress_width">7dp</dimen>
+    <dimen name="row_choose_camera_thumb_width">225dp</dimen>
+    <dimen name="row_choose_camera_thumb_height">180dp</dimen>
+
+    <dimen name="fragment_cam_live_thumb_width">225dp</dimen>
+    <dimen name="fragment_cam_live_thumb_height">200dp</dimen>
+
+    <dimen name="row_archive_thumb_width">150dp</dimen>
+    <dimen name="row_archive_thumb_height">100dp</dimen>
+
+    <dimen name="ph_arc_width">4dp</dimen>
+    <dimen name="ph_progress_width">3dp</dimen>
+    <dimen name="ph_button_width">85dp</dimen>
+    <dimen name="ph_button_height">85dp</dimen>
+</resources>

@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~  Copyright (C) 2011-2015 Tri plus grupa d.o.o <info@3plus.hr>
+  ~  All rights reserved.
+  -->
+
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="navigation_drawer_width">240dp</dimen>
+
+
+    <dimen name="slidingmenu_offset">60dp</dimen>
+    <dimen name="list_padding">10dp</dimen>
+    <dimen name="shadow_width">10dp</dimen>
+    <integer name="num_cols">1</integer>
+
+    <dimen name="row_browser_left_image_width">70dp</dimen>
+    <dimen name="row_browser_left_image_high">70dp</dimen>
+
+    <dimen name="row_browser_left_name_text_size2">10sp</dimen>
+    <dimen name="view_controller_header_icon_width">40dp</dimen>
+    <dimen name="view_controller_header_icon_height">40dp</dimen>
+    <dimen name="row_browser_right_uitype_margin_left">0dp</dimen>
+    <dimen name="row_browser_right_name_text_size">16sp</dimen>
+    <dimen name="row_browser_right_description_text_size">12sp</dimen>
+    <dimen name="row_browser_right_value_text_size">12sp</dimen>
+
+    <dimen name="row_device_manager_uitype_width">30dp</dimen>
+    <dimen name="row_device_manager_uitype_height">30dp</dimen>
+    <dimen name="row_device_manager_uitype_margin_left">10dp</dimen>
+    <dimen name="row_device_manager_layout_margin1">10dp</dimen>
+    <dimen name="row_device_manager_layout_margin2">5dp</dimen>
+    <dimen name="row_device_manager_status_image_width">10dp</dimen>
+    <dimen name="row_device_manager_status_image_height">10dp</dimen>
+    <dimen name="row_device_manager_arrow_image_width">20dp</dimen>
+    <dimen name="row_device_manager_arrow_image_height">20dp</dimen>
+    <dimen name="row_device_manager_text_name_size">15sp</dimen>
+
+    <dimen name="row_exp_group_icon_size">30dp</dimen>
+    <dimen name="row_exp_group_img__group_margin1">10dp</dimen>
+    <dimen name="row_exp_group_img_margin">10dp</dimen>
+    <dimen name="row_exp_group_img__group_margin2">15dp</dimen>
+    <dimen name="row_exp_item_text_margin1">10dp</dimen>
+    <dimen name="row_exp_item_edit_margin1">10dp</dimen>
+    <dimen name="row_exp_item_edit_margin2">15dp</dimen>
+
+    <dimen name="row_local_ls_10dp">10dp</dimen>
+
+    <dimen name="row_login_pane_margin1">10dp</dimen>
+    <dimen name="row_login_pane_text_size">10sp</dimen>
+
+
+    <dimen name="thermos_value_text_size_int">35sp</dimen>
+    <dimen name="thermos_value_text_size_dec">20sp</dimen>
+    <dimen name="thermos_value_current_text_size_int">50sp</dimen>
+    <dimen name="thermos_value_current_text_size_dec">25sp</dimen>
+    <dimen name="thermos_value_current_margin_botton">30dp</dimen>
+    <dimen name="thermos_inside_text">12sp</dimen>
+
+    <dimen name="lc_controller_text_per_size">60sp</dimen>
+    <dimen name="lc_controller_text">14sp</dimen>
+    <dimen name="lc_controller_controller_padding">30dp</dimen>
+    <dimen name="lc_controller_controller_high">230dp</dimen>
+    <dimen name="lc_controller_controller_marginTop">5dp</dimen>
+
+
+    <dimen name="States_controller_text_size1">14sp</dimen>
+    <dimen name="States_controller_text_size2">45sp</dimen>
+    <dimen name="States_controller_padding">30dp</dimen>
+
+    <dimen name="scene_row_icon_layout_width_height">50dp</dimen>
+    <dimen name="scene_row_text_size">20sp</dimen>
+
+    <!--<dimen name="row_scene_color_text_width">40dp</dimen>-->
+    <!--<dimen name="row_scene_color_text_height">40dp</dimen>-->
+    <!--<dimen name="row_scene_color_text_size">30dp</dimen>-->
+    <dimen name="row_scene_color_margin1">5dp</dimen>
+
+    <dimen name="row_scene_icon_text_width">50dp</dimen>
+    <dimen name="row_scene_icon_text_height">42dp</dimen>
+    <dimen name="row_scene_icon_text_size">25dp</dimen>
+    <dimen name="row_scene_icon_margin1">5dp</dimen>
+
+    <dimen name="row_scene_layout_margin_left">20dp</dimen>
+    <dimen name="row_scene_button_run_margin_top">10dp</dimen>
+    <dimen name="row_scene_button_run_padding2">3dp</dimen>
+    <dimen name="row_scene_button_run_padding1">5dp</dimen>
+    <dimen name="row_scene_button_run_textSize">12sp</dimen>
+    <dimen name="row_scene_layout_padding">10dp</dimen>
+
+    <dimen name="row_color_icon_margin1">10dp</dimen>
+    <dimen name="row_color_icon_margin2">10dp</dimen>
+    <dimen name="row_color_icon_spacing1">10dp</dimen>
+    <dimen name="row_color_icon_column_width">50dp</dimen>
+
+
+    <dimen name="row_filter_text_margin_bottom">10dp</dimen>
+    <dimen name="row_filter_text_margin_top">5dp</dimen>
+    <dimen name="row_filter_text_margin_left">10dp</dimen>
+
+    <dimen name="zipato_logo_screen_text_message_size">17sp</dimen>
+    <dimen name="zipato_logo_screen_margin1">5dp</dimen>
+    <dimen name="fragment_menu_margin2">3dp</dimen>
+    <dimen name="fragment_menu_margin1">10dp</dimen>
+    <dimen name="fragment_menu_text_size">20sp</dimen>
+    <dimen name="fragment_menu_margin3">45dp</dimen>
+    <dimen name="fragment_rgb_controller_margin1">20dp</dimen>
+    <dimen name="fragment_rgb_controller_margin2">10dp</dimen>
+    <dimen name="fragment_controller_text_value_size">60sp</dimen>
+
+
+    <dimen name="fragment_default_controller_text_value_size">20sp</dimen>
+    <dimen name="fragment_default_controller_margin1">10dp</dimen>
+
+    <dimen name="fragment_thermos_controller_margin1">10dp</dimen>
+
+    <dimen name="activity_dis_but_cancel_height">30dp</dimen>
+    <dimen name="activity_dis_margin1">10dp</dimen>
+    <dimen name="activity_dis_butt_tex_size">16sp</dimen>
+
+    <dimen name="row_sd_child_margin1">12dp</dimen>
+    <dimen name="fragment_sd_margin1">10dp</dimen>
+
+    <dimen name="fragment_joining_margin1">10dp</dimen>
+    <dimen name="fragment_joining_margin2">5dp</dimen>
+    <dimen name="fragment_joining_counter_size">300dp</dimen>
+    <dimen name="fragment_security_key_pad_padding1">5dp</dimen>
+    <dimen name="fragment_security_key_pad_margin1">10dp</dimen>
+    <dimen name="fragment_security_key_pad_margin2">10dp</dimen>
+    <dimen name="fragment_security_key_pad_margin3">5dp</dimen>
+    <dimen name="fragment_security_key_pad_padding2">5dp</dimen>
+    <dimen name="fragment_security_key_pad_but_width">80dp</dimen>
+    <dimen name="fragment_security_key_pad_text_size">30dp</dimen>
+
+    <dimen name="fragment_control_security_text_size">12sp</dimen>
+    <dimen name="fragment_control_security_margin1">65dp</dimen>
+    <dimen name="fragment_control_security_margin3">90dp</dimen>
+    <dimen name="fragment_control_security_margin2">25dp</dimen>
+    <dimen name="fragment_control_security_margin4">20dp</dimen>
+    <dimen name="fragment_control_security_margin5">5dp</dimen>
+    <dimen name="fragment_control_security_text_size2">35sp</dimen>
+
+    <dimen name="fragment_row_zone_button_height">23dp</dimen>
+    <dimen name="fragment_row_zone_button_width">85dp</dimen>
+    <dimen name="fragment_row_zone_button_textSize">11dp</dimen>
+
+    <dimen name="fragment_row_security_event_child_padding">10dp</dimen>
+    <dimen name="fragment_row_security_event_child_margin">10dp</dimen>
+    <dimen name="fragment_row_security_event_child_margin2">10dp</dimen>
+    <dimen name="row_event_header_margin">10dp</dimen>
+
+    <dimen name="row_choose_camera_margin1">3dp</dimen>
+    <dimen name="row_choose_camera_margin2">6dp</dimen>
+    <dimen name="row_choose_camera_padding1">5dp</dimen>
+    <dimen name="row_choose_camera_thumb_width">225dp</dimen>
+    <dimen name="row_choose_camera_thumb_height">200dp</dimen>
+    <dimen name="row_choose_camera_status_image_width">65dp</dimen>
+    <dimen name="row_choose_camera_status_padding2">3dp</dimen>
+    <dimen name="row_choose_camera_status_text_size">12sp</dimen>
+
+    <dimen name="fragment_cam_live_margin1">3dp</dimen>
+    <dimen name="fragment_cam_live_margin2">10dp</dimen>
+    <dimen name="fragment_cam_live_margin3">20dp</dimen>
+
+    <dimen name="fragment_cam_live_thumb_width">225dp</dimen>
+    <dimen name="fragment_cam_live_thumb_height">200dp</dimen>
+    <dimen name="login_image_margin_button">3dp</dimen>
+    <dimen name="state_controller_text">14sp</dimen>
+    <dimen name="fragment_config_margin1">7dp</dimen>
+    <dimen name="fragment_config_margin2">4dp</dimen>
+    <dimen name="row_controller_event_margin1">5dp</dimen>
+    <dimen name="fragment_roller_dim_windows_width">160dp</dimen>
+    <dimen name="fragment_roller_margin1">3dp</dimen>
+    <dimen name="fragment_roller_margin2">1dp</dimen>
+    <dimen name="fragment_roller_dim_margin3">40dp</dimen>
+    <dimen name="fragment_roller_dim_height">15dp</dimen>
+    <dimen name="fragment_thermo_padding">7dp</dimen>
+    <dimen name="thermos_value_text_size_unit">30sp</dimen>
+    <dimen name="fragment_thermos_controller_margin2">10dp</dimen>
+    <dimen name="thermo_controller_controller_high">230dp</dimen>
+    <dimen name="thermo_controller_controller_padding">30dp</dimen>
+    <integer name="activity_browser_manager_layout_weight1">10</integer>
+    <integer name="activity_browser_manager_layout_weight2">4</integer>
+    <dimen name="layout_login_text_size">15sp</dimen>
+    <dimen name="layout_login_text_size2">20sp</dimen>
+    <dimen name="layout_login_text_amrgin1">5dp</dimen>
+    <dimen name="layout_login_text_margin2">10dp</dimen>
+    <dimen name="layout_login_butt_connect_height">45dp</dimen>
+    <dimen name="fragment_setting_menu_text_size">20sp</dimen>
+    <dimen name="row_setting_menu_text_size">16sp</dimen>
+    <dimen name="row_login_pane_text_size1">15sp</dimen>
+    <dimen name="row_browser_status_width">10dp</dimen>
+    <dimen name="row_browser_status_height">10dp</dimen>
+    <dimen name="fragment_itmes_filet_text_height">30dp</dimen>
+    <dimen name="row_controller_event_text_size">15sp</dimen>
+    <dimen name="row_browser_right_layout_margin">5dp</dimen>
+    <dimen name="row_browser_right_layout_margin1">2dp</dimen>
+    <dimen name="filter_panel_height">45dp</dimen>
+    <dimen name="lc_fragment_text_value">45sp</dimen>
+    <dimen name="lc_arc_width">10dp</dimen>
+    <dimen name="lc_progress_width">7dp</dimen>
+    <dimen name="fragment_thermo_text_size">12sp</dimen>
+    <dimen name="row_device_manager_uitype_margin_left1">5dp</dimen>
+    <dimen name="fragment_itmes_filer_layout_height">30dp</dimen>
+    <dimen name="fragment_remotec_text_size">20sp</dimen>
+    <dimen name="fragment_remotec_key_pad_margin">7dp</dimen>
+    <dimen name="fragment_remotec_text_size2">15sp</dimen>
+    <dimen name="fragment_remotec_key_pad_margin1">3dp</dimen>
+    <dimen name="row_browser_right_layout_padding">5dp</dimen>
+    <dimen name="fragment_remotec_text_size3">17sp</dimen>
+    <dimen name="fragment_remotec_text_size4">20sp</dimen>
+    <dimen name="row_enum_button_text_size">17sp</dimen>
+    <dimen name="row_enum_button_margin">10dp</dimen>
+    <dimen name="fragment_blinder_controller_margin">30dp</dimen>
+
+    <dimen name="row_weather_margin">5dp</dimen>
+    <dimen name="row_weather_margin4">8dp</dimen>
+    <dimen name="row_weather_margin3">2dp</dimen>
+    <dimen name="row_weather_layout_margin1">10dp</dimen>
+    <dimen name="row_weather_textsize">18sp</dimen>
+    <dimen name="row_weather_textsize3">10sp</dimen>
+    <dimen name="row_weather_textsize4">13sp</dimen>
+    <dimen name="row_weather_textsize5">10sp</dimen>
+    <dimen name="row_weather_margin2">10dp</dimen>
+    <dimen name="row_weather_textsize6">30sp</dimen>
+
+    <dimen name="row_weather_children_padding">5dp</dimen>
+    <dimen name="row_weather_children_margin">5dp</dimen>
+    <dimen name="row_weather_children_textsize">12sp</dimen>
+    <dimen name="row_weather_children_textsize2">15sp</dimen>
+    <dimen name="base_remove_text_size">100sp</dimen>
+    <dimen name="switch_min_width">60dp</dimen>
+    <dimen name="row_archive_thumb_width">120dp</dimen>
+    <dimen name="row_archive_thumb_height">80dp</dimen>
+    <dimen name="photo_controller_width">80dp</dimen>
+    <dimen name="photo_controller_padding">5dp</dimen>
+    <dimen name="fragment_archive_margin">5dp</dimen>
+    <dimen name="fragment_archive_margin2">8dp</dimen>
+    <dimen name="header_menu_width">60dp</dimen>
+    <dimen name="row_exp_group_icon_size1">40dp</dimen>
+    <dimen name="header_size_width">20dp</dimen>
+    <dimen name="header_size_height">20dp</dimen>
+    <dimen name="header_margin1">15dp</dimen>
+    <dimen name="row_exp_group_padding">5dp</dimen>
+    <dimen name="layout_about_padding">12dp</dimen>
+    <dimen name="layout_about_margin">10dp</dimen>
+    <dimen name="layout_about_margin1">5dp</dimen>
+    <dimen name="layout_fw_up_msg_padding">15dp</dimen>
+    <dimen name="fragment_media_player_margin">5dp</dimen>
+    <dimen name="ph_arc_width">4dp</dimen>
+    <dimen name="ph_progress_width">3dp</dimen>
+    <dimen name="ph_controller_controller_padding">10dp</dimen>
+    <dimen name="ph_button_width">80dp</dimen>
+    <dimen name="ph_button_height">80dp</dimen>
+    <dimen name="wizard_margin">6dp</dimen>
+    <dimen name="row_filed_type_text_size">17sp</dimen>
+    <dimen name="wizard_margin2">10dp</dimen>
+    <dimen name="wizard_counter_text_size">45sp</dimen>
+    <dimen name="remotec_columnWidth">55dp</dimen>
+
+    <!--===================================================== for new controllers ====================================-->
+
+    <dimen name="row_browser_left_name_text_margin">4dp</dimen>
+    <dimen name="row_browser_left_name_text_size">12sp</dimen>
+    <dimen name="view_controller_header_margin1">5dp</dimen>
+    <dimen name="view_controller_header_margin2">10dp</dimen>
+    <dimen name="view_controller_img_width">25dp</dimen>
+    <dimen name="view_controller_img_height">25dp</dimen>
+    <dimen name="view_controller_status_img_width">80dp</dimen>
+    <dimen name="view_controller_status_img_height">80dp</dimen>
+    <dimen name="view_controller_text_size_value">35sp</dimen>
+    <dimen name="view_controller_base_status_height">90dp</dimen>
+    <dimen name="view_controller_rgb_back_width">35dp</dimen>
+    <dimen name="view_controller_rgb_back_height">35dp</dimen>
+    <dimen name="activity_alarm_trigger_padding">60dp</dimen>
+    <dimen name="activity_alarm_trigger_textSize">35sp</dimen>
+    <dimen name="activity_alarm_trigger_margin">10dp</dimen>
+    <dimen name="activity_alarm_trigger_textSize2">22sp</dimen>
+    <dimen name="view_controller_text_value_margin">10dp</dimen>
+    <dimen name="view_controller_control_plus_minus_textSize">22sp</dimen>
+    <dimen name="view_controller_control_but_text_size">17sp</dimen>
+    <dimen name="view_controller_rgb_padding">7dp</dimen>
+    <dimen name="view_controller_rgb_padding2">10dp</dimen>
+    <dimen name="view_controller_rgb_color_status_height">10dp</dimen>
+    <dimen name="view_controller_dimen7dp">7dp</dimen>
+    <dimen name="view_controller_dimen5dp">5dp</dimen>
+    <dimen name="view_controller_ir_textSize">25sp</dimen>
+    <dimen name="view_controller_index_padding">10dp</dimen>
+    <dimen name="view_controller_index_margin">2dp</dimen>
+    <dimen name="view_controller_footer_but_padding">10dp</dimen>
+    <dimen name="view_controller_layout_margin">5dp</dimen>
+    <dimen name="view_controller_text_size_status">14sp</dimen>
+    <dimen name="view_controller_thermo_current_value_margin">5dp</dimen>
+    <dimen name="separator_height">0.1dp</dimen>
+    <dimen name="separator_margin">10dp</dimen>
+    <dimen name="room_button_height">80dp</dimen>
+    <dimen name="view_controller_header_kk_texSize">18sp</dimen>
+    <dimen name="start_screen_zipato_logo_margin">20dp</dimen>
+    <dimen name="login_layout_margin">45dp</dimen>
+    <dimen name="show_activity_margin">10dp</dimen>
+    <dimen name="view_controller_footer_but_padding_scenes">16dp</dimen>
+    <dimen name="activity_bm_separator_width">5dp</dimen>
+    <dimen name="line_separator_height">5dp</dimen>
+    <dimen name="tab_text_size">16sp</dimen>
+
+    <dimen name="tab_padding">13dp</dimen>
+    <dimen name="row_scene_kk_text_size">22sp</dimen>
+    <dimen name="activity_show_dialog_padding">40dp</dimen>
+    <dimen name="activity_show_dialog_padding_2">50dp</dimen>
+
+</resources>

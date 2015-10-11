@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~  Copyright (C) 2011-2015 Tri plus grupa d.o.o <info@3plus.hr>
+  ~  All rights reserved.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/full_transparent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="1">
+
+        <ProgressBar
+            android:id="@+id/progressBar3"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/layoutListViews"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/row_color_icon_margin1"
+                android:layout_marginTop="@dimen/row_color_icon_margin1"
+                android:text="@string/choose_icon"
+                android:textColor="@color/color_white"
+                android:textSize="@dimen/row_controller_event_text_size" />
+
+            <GridView
+                android:id="@+id/gridViewSceneIcon"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="@dimen/row_color_icon_margin2"
+                android:layout_marginLeft="@dimen/row_color_icon_margin1"
+                android:layout_marginRight="@dimen/row_color_icon_margin1"
+                android:layout_marginTop="@dimen/row_color_icon_margin1"
+                android:layout_weight="6"
+                android:columnWidth="@dimen/row_scene_icon_text_width"
+                android:gravity="center"
+                android:horizontalSpacing="5dp"
+                android:numColumns="auto_fit"
+                android:stretchMode="columnWidth"
+                android:verticalSpacing="5dp" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/separator_height"
+                android:layout_marginTop="@dimen/row_color_icon_margin1"
+                android:background="@color/ui_type_transparent"
+                android:orientation="vertical" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/row_color_icon_margin1"
+                android:layout_marginTop="@dimen/row_color_icon_margin1"
+                android:text="@string/choose_background_color"
+                android:textColor="@color/color_white"
+                android:textSize="@dimen/row_controller_event_text_size" />
+
+            <GridView
+                android:id="@+id/gridViewSceneColor"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="@dimen/row_color_icon_margin2"
+                android:layout_marginLeft="@dimen/row_color_icon_margin1"
+                android:layout_marginRight="@dimen/row_color_icon_margin1"
+                android:layout_marginTop="@dimen/row_color_icon_margin1"
+                android:layout_weight="4"
+                android:columnWidth="@dimen/row_scene_icon_text_width"
+                android:gravity="center"
+                android:horizontalSpacing="5dp"
+                android:numColumns="auto_fit"
+                android:stretchMode="columnWidth"
+                android:verticalSpacing="5dp" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/fragment_config_margin1"
+        android:layout_marginRight="@dimen/fragment_config_margin1"
+        android:layout_marginTop="@dimen/fragment_config_margin1"
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:background="?android:selectableItemBackground"
+            android:enabled="false"
+            android:padding="@dimen/view_controller_footer_but_padding"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/activity_dis_butt_tex_size" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:enabled="false"
+            android:padding="@dimen/view_controller_footer_but_padding"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/activity_dis_butt_tex_size" />
+    </LinearLayout>
+</LinearLayout>

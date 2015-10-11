@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~  Copyright (C) 2011-2015 Tri plus grupa d.o.o <info@3plus.hr>
+  ~  All rights reserved.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layoutSubHeader"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="?android:selectableItemBackground"
+    android:orientation="horizontal">
+
+    <ImageView
+        android:id="@+id/buttonsBack"
+        android:layout_width="@dimen/header_size_width"
+        android:layout_height="@dimen/header_size_height"
+        android:layout_gravity="center"
+
+        android:layout_marginLeft="@dimen/fragment_menu_margin1"
+        android:scaleType="centerInside"
+        android:src="@drawable/back2_icon" />
+
+    <TextView
+        android:id="@+id/textViewTitleSub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/fragment_menu_margin1"
+        android:layout_marginLeft="@dimen/header_margin1"
+        android:layout_marginRight="@dimen/header_margin1"
+        android:layout_marginTop="@dimen/fragment_menu_margin1"
+        android:text="@string/main_menu"
+        android:textColor="@color/menu_group_text_color"
+        android:textSize="@dimen/fragment_setting_menu_text_size" />
+
+</LinearLayout>

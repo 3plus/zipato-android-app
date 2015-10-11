@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~  Copyright (C) 2011-2015 Tri plus grupa d.o.o <info@3plus.hr>
+  ~  All rights reserved.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:validated="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/register_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_view_controller_main_background"
+    android:clipToPadding="false"
+    android:fitsSystemWindows="true"
+    android:focusableInTouchMode="true"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <include layout="@layout/zipato_logo_screen" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="35dp"
+
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/username_icon" />
+
+                <com.andreabaccega.widget.FormEditText
+                    android:id="@+id/editTextFirstName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/custom_edit_text"
+                    android:hint="@string/first_name"
+                    android:singleLine="true"
+                    android:textColor="@android:color/background_light"
+                    android:textSize="@dimen/layout_login_text_size"
+                    validated:emptyErrorString="@string/empty_field"
+                    validated:testErrorString="@string/incorrect_name"
+                    validated:testType="personName" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/separator_height"
+                android:layout_marginTop="@dimen/separator_margin"
+                android:background="@color/color_white"
+                android:orientation="horizontal" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <ImageView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/username_icon" />
+
+                <com.andreabaccega.widget.FormEditText
+                    android:id="@+id/editTextLastName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/custom_edit_text"
+                    android:hint="@string/last_name"
+                    android:singleLine="true"
+                    android:textColor="@android:color/background_light"
+                    android:textSize="@dimen/layout_login_text_size"
+                    validated:emptyErrorString="@string/empty_field"
+                    validated:testErrorString="@string/incorrect_surname"
+                    validated:testType="personName" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/separator_height"
+                android:layout_marginTop="@dimen/separator_margin"
+                android:background="@color/color_white"
+                android:orientation="horizontal" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageViewUserName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/username_icon" />
+
+                <com.andreabaccega.widget.FormEditText
+                    android:id="@+id/editTextEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/custom_edit_text"
+                    android:hint="@string/email_address"
+                    android:inputType="textEmailAddress"
+                    android:singleLine="true"
+                    android:textColor="@android:color/background_light"
+                    android:textSize="@dimen/layout_login_text_size"
+                    validated:emptyErrorString="@string/empty_field"
+                    validated:testErrorString="@string/incorrect_email"
+                    validated:testType="email" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/separator_height"
+                android:layout_marginTop="@dimen/separator_margin"
+                android:background="@color/color_white"
+                android:orientation="horizontal" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageViewPassword"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/password_icon" />
+
+                <com.andreabaccega.widget.FormEditText
+                    android:id="@+id/editTextPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:background="@drawable/custom_edit_text"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:singleLine="true"
+                    android:textColor="@android:color/background_light"
+                    android:textSize="@dimen/layout_login_text_size"
+                    validated:customRegexp="[^ ]{8,}"
+                    validated:emptyErrorString="@string/empty_field"
+                    validated:testErrorString="@string/incorrect_password"
+                    validated:testType="regexp" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout10"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/separator_height"
+                android:layout_marginTop="@dimen/separator_margin"
+                android:background="@color/color_white"
+                android:orientation="horizontal" />
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/buttonRegister"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:background="?android:selectableItemBackground"
+            android:padding="@dimen/view_controller_footer_but_padding"
+            android:text="@string/register"
+            android:textAllCaps="false"
+            android:textColor="@android:color/background_light"
+            android:textSize="@dimen/layout_login_text_size2" />
+    </LinearLayout>
+</LinearLayout>

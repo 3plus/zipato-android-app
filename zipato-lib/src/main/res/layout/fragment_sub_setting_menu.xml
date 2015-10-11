@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~  Copyright (C) 2011-2015 Tri plus grupa d.o.o <info@3plus.hr>
+  ~  All rights reserved.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/row_select_device_child"
+    android:orientation="vertical">
+
+    <include layout="@layout/header_sub_menu" />
+
+    <!--<LinearLayout-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="0.01dp"-->
+    <!--android:layout_marginLeft="@dimen/fragment_menu_margin1"-->
+    <!--android:layout_marginRight="@dimen/fragment_menu_margin1"-->
+    <!--android:layout_marginTop="@dimen/fragment_menu_margin2"-->
+    <!--android:background="@color/fragment_menu_title_divider" />-->
+    <!--<com.zipato.appv2.ui.fragments.settings.AnimatedExpandableListView-->
+    <!--android:layout_weight="1.0"-->
+    <!--android:id="@+id/expandableListViewBox"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:groupIndicator="@null" />-->
+    <com.zipato.appv2.ui.fragments.settings.AnimatedExpandableListView
+        android:id="@+id/expandableListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:groupIndicator="@null" />
+
+</LinearLayout>

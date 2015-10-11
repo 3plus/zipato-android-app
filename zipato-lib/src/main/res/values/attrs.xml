@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~  Copyright (C) 2011-2015 Tri plus grupa d.o.o <info@3plus.hr>
+  ~  All rights reserved.
+  -->
+
+<resources>
+    <declare-styleable name="CircularController">
+        <attr name="thumb" format="reference" />
+        <attr name="thumbOffset" format="dimension" />
+        <attr name="max" format="integer" />
+        <attr name="progressWidth" format="dimension" />
+        <attr name="arcWidth" format="dimension" />
+        <attr name="progress" format="integer" />
+        <attr name="rotation" format="integer" />
+        <attr name="startAngle" format="integer" />
+        <attr name="sweepAngle" format="integer" />
+        <attr name="arcColor" format="color" />
+        <attr name="sweepColor1" format="color" />
+        <attr name="sweepColor2" format="color" />
+        <attr name="sweepColor3" format="color" />
+        <attr name="progressColor" format="color" />
+        <attr name="roundEdges" format="boolean" />
+        <attr name="touchInside" format="boolean" />
+        <attr name="clockwise" format="boolean" />
+        <attr name="CMode" format="enum">
+            <enum name="NORMAL" value="0" />
+            <enum name="COLOR_PICKER" value="1" />
+            <enum name="WARM_COLD_PICKER" value="2" />
+        </attr>
+
+        <attr name="progressTypeFill" format="boolean" />
+        <attr name="startAnimation" format="boolean" />
+    </declare-styleable>
+    -
+    <declare-styleable name="SeekArcTheme">
+        <attr name="seekArcStyle" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="ThermosController">
+        <attr name="thermos_thumb" format="reference" />
+        <attr name="thermos_thumbOffset" format="dimension" />
+        <attr name="thermos_max" format="integer" />
+        <attr name="thermos_progressWidth" format="dimension" />
+        <attr name="thermos_arcWidth" format="dimension" />
+        <attr name="mProgressCooling" format="integer" />
+        <attr name="mProgressHeating" format="integer" />
+        <attr name="mProgressCoolingMargin" format="integer" />
+        <attr name="mProgressHeatingMargin" format="integer" />
+        <attr name="thermos_rotation" format="integer" />
+        <attr name="thermos_startAngle" format="integer" />
+        <attr name="thermos_sweepAngle" format="integer" />
+        <attr name="thermos_arcColor" format="color" />
+        <attr name="progressCoolingColor" format="color" />
+        <attr name="progressHeatingColor" format="color" />
+        <attr name="progressMiddleColor" format="color" />
+        <attr name="thermos_roundEdges" format="boolean" />
+        <attr name="thermos_touchInside" format="boolean" />
+        <attr name="thermos_min" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="StateController">
+        <attr name="stateController_icon" format="reference" />
+        <attr name="stateController_iconOff" format="reference" />
+        <attr name="stateController_middleWidth" format="dimension" />
+        <attr name="stateController_arcWidth" format="dimension" />
+        <attr name="stateController_arcColor" format="color" />
+        <attr name="stateController_customColor" format="boolean" />
+        <attr name="stateController_stateTrueColor" format="color" />
+        <attr name="stateController_stateFalseColor" format="color" />
+        <attr name="stateController_statePressedColor" format="color" />
+        <attr name="stateController_textColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="SecurityController">
+        <attr name="drawable_normal" format="reference" />
+        <attr name="drawable_onDisarm" format="reference" />
+        <attr name="drawable_onArmHome" format="reference" />
+        <attr name="drawable_onArmAway" format="reference" />
+        <attr name="drawable_onDisarmPress" format="reference" />
+        <attr name="drawable_onArmHomePress" format="reference" />
+        <attr name="drawable_getOnArmAwayPress" format="reference" />
+        <attr name="drawable_locker" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="BaseCWRGBView">
+        <attr name="cursorRadius" format="dimension" />
+        <attr name="cursorStrokeSize" format="dimension" />
+        <attr name="cursorColor" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="TempPickerView">
+        <attr name="wcPosition" format="enum">
+            <enum name="fromLeft" value="0" />
+            <enum name="fromRight" value="1" />
+            <enum name="fromTop" value="2" />
+            <enum name="fromBottom" value="3" />
+        </attr>
+    </declare-styleable>
+
+</resources>

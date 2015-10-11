@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~  Copyright (C) 2011-2015 Tri plus grupa d.o.o <info@3plus.hr>
+  ~  All rights reserved.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/color_view_controller_item_background"
+    android:orientation="vertical">
+
+    <!--android:layout_marginBottom="@dimen/view_controller_layout_margin"-->
+    <!--android:layout_marginLeft="@dimen/view_controller_layout_margin"-->
+    <!--android:layout_marginRight="@dimen/view_controller_layout_margin"-->
+
+    <include layout="@layout/view_controller_header" />
+
+    <!--<include layout="@layout/view_controller_simple_status" />-->
+
+    <include layout="@layout/view_controller_text_value" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/buttonPause"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?android:selectableItemBackground"
+            android:gravity="center"
+            android:padding="@dimen/view_controller_footer_but_padding"
+            android:text="Pause"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/view_controller_control_but_text_size" />
+
+        <TextView
+            android:id="@+id/buttonPlay"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?android:selectableItemBackground"
+            android:gravity="center"
+            android:padding="@dimen/view_controller_footer_but_padding"
+            android:text="Play"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/view_controller_control_but_text_size" />
+
+
+        <TextView
+            android:id="@+id/buttonStop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="?android:selectableItemBackground"
+            android:gravity="center"
+            android:padding="@dimen/view_controller_footer_but_padding"
+            android:text="Stop"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/view_controller_control_but_text_size" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/buttonBack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?android:selectableItemBackground"
+            android:gravity="center"
+            android:padding="@dimen/view_controller_footer_but_padding"
+            android:text="Back"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/view_controller_control_but_text_size" />
+
+        <TextView
+            android:id="@+id/buttonMute"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?android:selectableItemBackground"
+            android:gravity="center"
+            android:padding="@dimen/view_controller_footer_but_padding"
+            android:text="Mute"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/view_controller_control_but_text_size" />
+
+        <TextView
+            android:id="@+id/buttonNext"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="?android:selectableItemBackground"
+            android:gravity="center"
+            android:padding="@dimen/view_controller_footer_but_padding"
+            android:text="Next"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/view_controller_control_but_text_size" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/buttonMinus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?android:selectableItemBackground"
+            android:gravity="center"
+            android:padding="@dimen/view_controller_footer_but_padding"
+            android:text="-"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/view_controller_control_plus_minus_textSize" />
+
+
+        <TextView
+            android:id="@+id/buttonPlus"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="?android:selectableItemBackground"
+            android:gravity="center"
+            android:padding="@dimen/view_controller_footer_but_padding"
+            android:text="+"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/view_controller_control_plus_minus_textSize" />
+    </LinearLayout>
+
+
+</LinearLayout>

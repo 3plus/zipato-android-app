@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~  Copyright (C) 2011-2015 Tri plus grupa d.o.o <info@3plus.hr>
+  ~  All rights reserved.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_view_controller_main_background"
+    android:clipToPadding="false"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/ui_type_filter_selected">
+
+        <Button
+            android:id="@+id/buttonStep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_dis_margin1"
+            android:background="?android:selectableItemBackground"
+            android:padding="@dimen/view_controller_footer_but_padding"
+            android:text="@string/step"
+            android:textAllCaps="false"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/activity_dis_butt_tex_size" />
+
+        <TextView
+            android:id="@+id/textViewID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_dis_margin1"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/color_white" />
+
+        <Button
+            android:id="@+id/buttonCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/activity_dis_margin1"
+            android:background="?android:selectableItemBackground"
+            android:padding="@dimen/view_controller_footer_but_padding"
+            android:text="@string/cancel"
+            android:textAllCaps="false"
+            android:textColor="@color/light_grey"
+            android:textSize="@dimen/activity_dis_butt_tex_size" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/discoveryFrame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

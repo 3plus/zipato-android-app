@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~  Copyright (C) 2011-2015 Tri plus grupa d.o.o <info@3plus.hr>
+  ~  All rights reserved.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tcDual"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:visibility="gone">
+
+    <include
+        android:id="@+id/tcDualHeating"
+        layout="@layout/view_controller_thermo_single_control" />
+
+    <include
+        android:id="@+id/tcDualCooling"
+        layout="@layout/view_controller_thermo_single_control" />
+
+</LinearLayout>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~  Copyright (C) 2011-2015 Tri plus grupa d.o.o <info@3plus.hr>
+  ~  All rights reserved.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@color/color_view_controller_main_background"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textViewJoin1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="@dimen/fragment_joining_margin1"
+        android:layout_marginRight="@dimen/fragment_joining_margin1"
+        android:layout_marginTop="@dimen/fragment_joining_margin2"
+        android:gravity="center"
+        android:text="Medium Text"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/color_white"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textViewJoin2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginLeft="@dimen/fragment_joining_margin1"
+        android:layout_marginRight="@dimen/fragment_joining_margin1"
+        android:layout_marginTop="@dimen/fragment_joining_margin2"
+        android:gravity="center"
+        android:text="@string/join_device_text1"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/light_grey" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/fragment_joining_margin2"
+        android:layout_marginTop="@dimen/fragment_joining_margin2"
+        android:layout_weight="1.0"
+        android:gravity="bottom|center_horizontal"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imageViewCir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/circle_gradient" />
+
+            <TextView
+                android:id="@+id/textViewCounterText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textColor="@color/color_white"
+                android:textSize="100dp" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+
+        <Button
+            android:id="@+id/buttonFD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?android:selectableItemBackground"
+            android:padding="@dimen/view_controller_footer_but_padding"
+            android:text="@string/force_discovery"
+            android:textColor="@color/light_grey"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</LinearLayout>

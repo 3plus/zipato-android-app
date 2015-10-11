@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~  Copyright (C) 2011-2015 Tri plus grupa d.o.o <info@3plus.hr>
+  ~  All rights reserved.
+  -->
+
+<resources>
+    <string name="searching_device">Recherche de Dispositifs…</string>//////////////////
+    <string name="discovery_fail">Découverte echoué</string>/////////////////
+    <string name="device_remove">Dispositif supprimé</string>////////////////////////////////
+    <string name="restart_fail">Redémarrage echoué</string>//////////////////
+    <string name="cancel">Annuler</string>
+    <string name="step">Etape</string>
+    <string name="main_menu">Menu principal</string>
+    <string name="stating_discovery">Découverte lancé…</string>
+    <string name="device_joined">Dispositif ajouté</string>//////////////////
+    <string name="done">OK</string>////////////////////////
+    <string name="stating_removal">Suppression lancé…</string>/////////////////
+    <string name="device_found">Dispositif trouvé</string>/////////
+</resources>

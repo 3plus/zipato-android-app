@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~  Copyright (C) 2011-2015 Tri plus grupa d.o.o <info@3plus.hr>
+  ~  All rights reserved.
+  -->
+
+<resources>
+    <color name="light_grey">#D3D3D3</color>
+    <color name="soft_grey">#424242</color>
+    <color name="soft_green">#aad019</color>
+    <color name="default_scenes_color">#a44b1f</color>
+    <color name="color_offline">#e37b1500</color>
+    <color name="light_font">#FBFBFB</color>
+    <color name="color_trouble_offline">#FF6600</color>
+    <color name="grey_font">#ff9e9e9e</color>
+    <color name="text_shadow">#7F9e9e9e</color>
+    <color name="text_shadow_white">#FFFFFF</color>
+    <color name="click_transparent">#32FFFFFF</color>
+    <color name="arc_color">#32000000</color>
+    <color name="full_transparent">#00000000</color>
+    <color name="ui_type_transparent">#20FFFFFF</color>
+    <color name="ui_filter">#32000000</color>
+    <color name="ui_type_filter_selected">#1a000000</color>
+    <color name="progress_gray">#FFD8D8D8</color>
+    <color name="progress_gray_dark">#FF383838</color>
+    <color name="progress_heating_color">#ff802910</color>
+    <color name="progress_cooling_color">#ff114280</color>
+    <color name="progress_middle_color">#88bd3d</color>
+    <color name="progress_middle_back">#80000000</color>
+    <color name="heating_start">#FAD608</color>
+    <color name="heating_end">#FC6901</color>
+    <color name="cooling_start">#ff114280</color>
+    <color name="cooling_end">#8added</color>
+    <color name="state_true">#FC6901</color>
+    <color name="state_false">#808080</color>
+    <color name="state_pressed">#FFD8D8D8</color>
+    <color name="stat_circle">#26FFFFFF</color>
+    <color name="state_text_color">#80000000</color>
+    <color name="fragment_menu_title_divider">#1a000000</color>
+    <color name="step_green_color">#9ac325</color>
+    <color name="row_select_device_child_click">#454545</color>
+    <color name="row_select_device_child">#383838</color>
+    <color name="header_security_even">#80000000</color>
+    <color name="room_filter">#66000000</color>
+    <color name="click_color">#50FFFFFF</color>
+    <color name="config_spinner_color">#ff020303</color>
+    <color name="ui_type_filter_selected_2">#0D000000</color>
+    <color name="grey">#808080</color>
+    <color name="pop_up_background">#99000000</color>
+    <color name="menu_group_text_color">#FFFFFF</color>
+    <color name="lc_sweep_color_1">#1AFAE349</color>
+    <color name="lc_sweep_color_2">#FAD608</color>
+    <color name="lc_sweep_color_3">#FC6901</color>
+    <color name="scene_but_disable">#329e9e9e</color>
+    <color name="layout_about_text_color">#FF000000</color>
+    <color name="dm_bg_color">#2e2e2e</color>
+    <color name="dm_bg_color_parent">#202020</color>
+
+    <!--====================================== for new design ===========================================-->
+    <color name="color_view_controller_select">#3a3a3a</color>
+    <color name="color_view_controller_item_background">#1e1e1e</color>
+    <color name="color_view_controller_main_background">#111111</color>
+    <color name="color_view_controller_pressed">#171717</color>
+    <color name="color_view_controller_box_color">#1e1e1e</color>
+    <color name="color_view_controller_rgbw_off">#696969</color>
+    <color name="color_white">#FFFFFF</color>
+    <color name="color_view_controller_light_grey">#ff9e9e9e</color>
+    <color name="toolbar_color">#1e1e1e</color>
+    <color name="color_view_controller_thermo_cooling">#00aeff</color>
+    <color name="color_view_controller_thermo_heating">#f4480b</color>
+    <color name="color_view_controller_thermo_disable">#808080</color>
+    <color name="color_view_controller_item_background_trans">#991e1e1e</color>
+    <color name="color_view_controller_item_background_50">#B31e1e1e</color>
+
+    <color name="color_view_controller_device_offline">#F44336</color>
+
+    <color name="color_view_controller_device_battery_low_trouble">#FF9800</color>
+
+    <color name="vc_fab_normal_color">#3c3c3c</color>
+    <color name="tab_unselected_text_color">#ff9e9e9e</color>
+
+</resources>

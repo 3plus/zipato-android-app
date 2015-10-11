@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~  Copyright (C) 2011-2015 Tri plus grupa d.o.o <info@3plus.hr>
+  ~  All rights reserved.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/row_select_device_child"
+    android:orientation="vertical">
+
+    <include layout="@layout/header_sub_menu" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0.01dp"
+        android:layout_marginLeft="@dimen/fragment_menu_margin1"
+        android:layout_marginRight="@dimen/fragment_menu_margin1"
+        android:layout_marginTop="@dimen/fragment_menu_margin2"
+        android:background="@color/fragment_menu_title_divider" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="@dimen/row_exp_group_img_margin"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textViewName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Medium Text"
+            android:textColor="@color/menu_group_text_color"
+            android:textSize="@dimen/row_setting_menu_text_size" />
+
+        <TextView
+            android:id="@+id/textViewNValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/row_exp_group_img_margin"
+            android:text="Medium Text"
+            android:textColor="@color/light_grey"
+            android:textSize="@dimen/row_setting_menu_text_size" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0.01dp"
+        android:layout_marginLeft="@dimen/fragment_menu_margin1"
+        android:layout_marginRight="@dimen/fragment_menu_margin1"
+        android:layout_marginTop="@dimen/fragment_menu_margin2"
+        android:background="@color/fragment_menu_title_divider" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="@dimen/row_exp_group_img_margin"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textViewSerial"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Medium Text"
+            android:textColor="@color/menu_group_text_color"
+            android:textSize="@dimen/row_setting_menu_text_size" />
+
+        <TextView
+            android:id="@+id/textViewSValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/row_exp_group_img_margin"
+            android:text="Medium Text"
+            android:textColor="@color/light_grey"
+            android:textSize="@dimen/row_setting_menu_text_size" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0.01dp"
+        android:layout_marginLeft="@dimen/fragment_menu_margin1"
+        android:layout_marginRight="@dimen/fragment_menu_margin1"
+        android:layout_marginTop="@dimen/fragment_menu_margin2"
+        android:background="@color/fragment_menu_title_divider" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="@dimen/row_exp_group_img_margin"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textViewFirmware"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Medium Text"
+            android:textColor="@color/menu_group_text_color"
+            android:textSize="@dimen/row_setting_menu_text_size" />
+
+        <TextView
+            android:id="@+id/textViewFVersionValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/row_exp_group_img_margin"
+            android:text="Medium Text"
+            android:textColor="@color/light_grey"
+            android:textSize="@dimen/row_setting_menu_text_size" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0.01dp"
+        android:layout_marginLeft="@dimen/fragment_menu_margin1"
+        android:layout_marginRight="@dimen/fragment_menu_margin1"
+        android:layout_marginTop="@dimen/fragment_menu_margin2"
+        android:background="@color/fragment_menu_title_divider" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="@dimen/row_exp_group_img_margin"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textViewLocalIp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Medium Text"
+            android:textColor="@color/menu_group_text_color"
+            android:textSize="@dimen/row_setting_menu_text_size" />
+
+        <TextView
+            android:id="@+id/textViewLIPValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/row_exp_group_img_margin"
+            android:text="Medium Text"
+            android:textColor="@color/light_grey"
+            android:textSize="@dimen/row_setting_menu_text_size" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0.01dp"
+        android:layout_marginLeft="@dimen/fragment_menu_margin1"
+        android:layout_marginRight="@dimen/fragment_menu_margin1"
+        android:layout_marginTop="@dimen/fragment_menu_margin2"
+        android:background="@color/fragment_menu_title_divider" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="@dimen/row_exp_group_img_margin"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textViewRemoteIp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Medium Text"
+            android:textColor="@color/menu_group_text_color"
+            android:textSize="@dimen/row_setting_menu_text_size" />
+
+        <TextView
+            android:id="@+id/textViewRIPValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/row_exp_group_img_margin"
+            android:text="Medium Text"
+            android:textColor="@color/light_grey"
+            android:textSize="@dimen/row_setting_menu_text_size" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0.01dp"
+        android:layout_marginLeft="@dimen/fragment_menu_margin1"
+        android:layout_marginRight="@dimen/fragment_menu_margin1"
+        android:layout_marginTop="@dimen/fragment_menu_margin2"
+        android:background="@color/fragment_menu_title_divider" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="@dimen/row_exp_group_img_margin"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textViewTImeZone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Medium Text"
+            android:textColor="@color/menu_group_text_color"
+            android:textSize="@dimen/row_setting_menu_text_size" />
+
+        <TextView
+            android:id="@+id/textViewTZValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/row_exp_group_img_margin"
+            android:text="Medium Text"
+            android:textColor="@color/light_grey"
+            android:textSize="@dimen/row_setting_menu_text_size" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutFWUpDivider"
+        android:layout_width="match_parent"
+        android:layout_height="0.01dp"
+        android:layout_marginLeft="@dimen/fragment_menu_margin1"
+        android:layout_marginRight="@dimen/fragment_menu_margin1"
+        android:layout_marginTop="@dimen/fragment_menu_margin2"
+        android:background="@color/fragment_menu_title_divider" />
+
+    <LinearLayout
+        android:id="@+id/layoutNewFirmware"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="@dimen/row_exp_group_img_margin"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textViewNewFirmware"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Medium Text"
+            android:textColor="@color/menu_group_text_color"
+            android:textSize="@dimen/row_setting_menu_text_size" />
+
+        <TextView
+            android:id="@+id/textViewNFValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/row_exp_group_img_margin"
+            android:text="Medium Text"
+            android:textColor="@color/light_grey"
+            android:textSize="@dimen/row_setting_menu_text_size" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0.01dp"
+        android:layout_marginLeft="@dimen/fragment_menu_margin1"
+        android:layout_marginRight="@dimen/fragment_menu_margin1"
+        android:layout_marginTop="@dimen/fragment_menu_margin2"
+        android:background="@color/fragment_menu_title_divider" />
+
+    <Button
+        android:id="@+id/buttonUpdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/light_grey"
+        android:textSize="@dimen/row_setting_menu_text_size" />
+
+
+</LinearLayout>

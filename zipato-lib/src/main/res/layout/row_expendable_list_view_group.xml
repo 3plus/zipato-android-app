@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~  Copyright (C) 2011-2015 Tri plus grupa d.o.o <info@3plus.hr>
+  ~  All rights reserved.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LayoutRowGroup"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:selectableItemBackground"
+    android:focusable="false"
+    android:orientation="horizontal">
+
+
+    <ImageView
+        android:id="@+id/imageViewGroupImg"
+        android:layout_width="@dimen/row_exp_group_icon_size"
+        android:layout_height="@dimen/row_exp_group_icon_size"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/row_exp_group_img__group_margin1"
+        android:layout_marginLeft="@dimen/row_exp_group_img_margin"
+        android:layout_marginTop="@dimen/row_exp_group_img__group_margin1"
+        android:background="@drawable/server_url_group_icon" />
+
+
+    <TextView
+        android:id="@+id/textViewGroup"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1.0"
+        android:gravity="center"
+        android:textColor="@color/menu_group_text_color"
+        android:textSize="@dimen/row_setting_menu_text_size" />
+
+    <LinearLayout
+        android:id="@+id/layoutRowArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="?android:selectableItemBackground"
+        android:gravity="center"
+        android:padding="@dimen/row_exp_group_padding">
+
+        <ImageView
+            android:id="@+id/imageViewGroupArrow"
+            android:layout_width="@dimen/row_exp_group_icon_size1"
+            android:layout_height="@dimen/row_exp_group_icon_size"
+            android:focusable="false" />
+    </LinearLayout>
+
+</LinearLayout>

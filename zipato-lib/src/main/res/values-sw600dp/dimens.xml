@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~  Copyright (C) 2011-2015 Tri plus grupa d.o.o <info@3plus.hr>
+  ~  All rights reserved.
+  -->
+
+<resources>
+    <integer name="activity_browser_manager_layout_weight1">10</integer>
+    <integer name="activity_browser_manager_layout_weight2">4</integer>
+    <dimen name="activity_dis_but_cancel_height">40dp</dimen>
+    <dimen name="activity_dis_margin1">10dp</dimen>
+    <dimen name="activity_dis_butt_tex_size">19sp</dimen>
+    <dimen name="zipato_logo_screen_text_message_size">23sp</dimen>
+    <dimen name="layout_login_text_size">22sp</dimen>
+    <dimen name="layout_login_text_amrgin1">10dp</dimen>
+    <dimen name="layout_login_text_margin2">15dp</dimen>
+    <dimen name="layout_login_butt_connect_height">55dp</dimen>
+    <dimen name="layout_login_text_size2">30sp</dimen>
+    <dimen name="fragment_cam_live_margin1">3dp</dimen>
+    <dimen name="fragment_cam_live_margin2">10dp</dimen>
+    <dimen name="fragment_cam_live_margin3">20dp</dimen>
+    <dimen name="fragment_cam_live_thumb_width">310dp</dimen>
+    <dimen name="fragment_cam_live_thumb_height">250dp</dimen>
+    <dimen name="fragment_setting_menu_text_size">30sp</dimen>
+    <dimen name="row_setting_menu_text_size">20sp</dimen>
+    <dimen name="row_exp_group_icon_size">50dp</dimen>
+    <dimen name="row_login_pane_text_size1">20sp</dimen>
+    <dimen name="row_login_pane_text_size">15sp</dimen>
+
+    <dimen name="row_browser_left_name_text_size">17sp</dimen>
+    <dimen name="row_browser_left_image_width">100dp</dimen>
+    <dimen name="row_browser_left_image_high">100dp</dimen>
+    <dimen name="row_browser_left_name_text_size2">14sp</dimen>
+    <dimen name="view_controller_header_icon_width">50dp</dimen>
+    <dimen name="view_controller_header_icon_height">50dp</dimen>
+    <dimen name="scene_row_text_size">40sp</dimen>
+    <dimen name="row_browser_right_name_text_size">22sp</dimen>
+    <dimen name="row_browser_right_description_text_size">17sp</dimen>
+    <dimen name="row_browser_right_value_text_size">20sp</dimen>
+    <dimen name="row_browser_status_width">15dp</dimen>
+    <dimen name="row_browser_status_height">15dp</dimen>
+    <dimen name="fragment_itmes_filet_text_height">40dp</dimen>
+    <dimen name="lc_controller_text">20sp</dimen>
+    <dimen name="fragment_default_controller_text_value_size">25sp</dimen>
+    <dimen name="row_controller_event_text_size">20sp</dimen>
+    <dimen name="row_browser_right_layout_margin2">5dp</dimen>
+    <dimen name="filter_panel_height">50dp</dimen>
+    <dimen name="lc_fragment_text_value">55sp</dimen>
+    <dimen name="lc_controller_controller_high">310dp</dimen>
+    <dimen name="lc_arc_width">14dp</dimen>
+    <dimen name="lc_progress_width">10dp</dimen>
+    <dimen name="fragment_thermo_text_size">20sp</dimen>
+    <dimen name="thermos_value_text_size_int">50sp</dimen>
+    <dimen name="thermos_value_text_size_dec">30sp</dimen>
+    <dimen name="thermos_value_text_size_unit">45sp</dimen>
+    <dimen name="thermos_value_current_text_size_int">60sp</dimen>
+    <dimen name="thermos_value_current_text_size_dec">30sp</dimen>
+    <dimen name="thermos_value_current_margin_botton">30dp</dimen>
+    <dimen name="thermo_controller_controller_high">310dp</dimen>
+    <dimen name="thermos_inside_text">18sp</dimen>
+    <dimen name="state_controller_text">20sp</dimen>
+    <dimen name="States_controller_text_size2">55sp</dimen>
+    <dimen name="fragment_roller_dim_windows_width">220dp</dimen>
+    <dimen name="fragment_roller_margin1">6dp</dimen>
+    <dimen name="fragment_blinder_controller_margin">80dp</dimen>
+    <dimen name="fragment_roller_dim_height">25dp</dimen>
+    <dimen name="lc_controller_controller_marginTop">10dp</dimen>
+    <dimen name="fragment_remotec_text_size">25sp</dimen>
+    <dimen name="fragment_remotec_key_pad_margin">10dp</dimen>
+    <dimen name="fragment_remotec_text_size2">20sp</dimen>
+    <dimen name="fragment_remotec_text_size3">20sp</dimen>
+    <dimen name="fragment_remotec_text_size4">30sp</dimen>
+    <dimen name="fragment_rgb_controller_margin2">80dp</dimen>
+    <dimen name="scene_row_icon_layout_width_height">80dp</dimen>
+    <dimen name="row_scene_button_run_textSize">18sp</dimen>
+    <dimen name="row_scene_icon_text_width">70dp</dimen>
+    <dimen name="row_scene_icon_text_height">70dp</dimen>
+    <dimen name="row_scene_icon_text_size">30dp</dimen>
+    <dimen name="row_scene_icon_margin1">12dp</dimen>
+    <dimen name="fragment_control_security_text_size2">45sp</dimen>
+    <dimen name="fragment_control_security_text_size">17sp</dimen>
+    <dimen name="fragment_control_security_margin1">75dp</dimen>
+    <dimen name="fragment_control_security_margin3">120dp</dimen>
+    <dimen name="fragment_control_security_margin2">25dp</dimen>
+    <dimen name="fragment_security_key_pad_margin2">20dp</dimen>
+    <dimen name="fragment_security_key_pad_padding2">15dp</dimen>
+    <dimen name="thermo_controller_controller_padding">50dp</dimen>
+    <dimen name="slidingmenu_offset">250dp</dimen>
+    <dimen name="row_device_manager_arrow_image_width">30dp</dimen>
+    <dimen name="row_device_manager_arrow_image_height">30dp</dimen>
+
+    <dimen name="row_device_manager_text_name_size">19sp</dimen>
+
+    <dimen name="row_choose_camera_thumb_width">310dp</dimen>
+    <dimen name="row_choose_camera_thumb_height">240dp</dimen>
+    <dimen name="fragment_rgb_controller_margin1">60dp</dimen>
+
+    <dimen name="row_weather_margin">5dp</dimen>
+    <dimen name="row_weather_margin4">8dp</dimen>
+    <dimen name="row_weather_margin3">2dp</dimen>
+    <dimen name="row_weather_layout_margin1">10dp</dimen>
+    <dimen name="row_weather_textsize">25sp</dimen>
+    <dimen name="row_weather_textsize3">17sp</dimen>
+    <dimen name="row_weather_textsize4">18sp</dimen>
+    <dimen name="row_weather_textsize5">17sp</dimen>
+    <dimen name="row_weather_margin2">15dp</dimen>
+    <dimen name="row_weather_textsize6">35sp</dimen>
+
+    <dimen name="row_weather_children_padding">7dp</dimen>
+    <dimen name="row_weather_children_margin">5dp</dimen>
+    <dimen name="row_weather_children_textsize">17sp</dimen>
+    <dimen name="row_weather_children_textsize2">20sp</dimen>
+    <dimen name="base_remove_text_size">100sp</dimen>
+    <dimen name="switch_min_width">70dp</dimen>
+    <dimen name="row_scene_button_run_padding1">7dp</dimen>
+
+    <dimen name="row_archive_thumb_width">200dp</dimen>
+    <dimen name="row_archive_thumb_height">110dp</dimen>
+    <dimen name="photo_controller_width">100dp</dimen>
+    <dimen name="row_exp_group_icon_size1">60dp</dimen>
+    <dimen name="header_size_width">30dp</dimen>
+    <dimen name="header_size_height">30dp</dimen>
+
+    <dimen name="ph_arc_width">5dp</dimen>
+    <dimen name="ph_progress_width">4dp</dimen>
+    <dimen name="ph_button_width">100dp</dimen>
+    <dimen name="ph_button_height">100dp</dimen>
+    <dimen name="row_filed_type_text_size">25sp</dimen>
+
+    <dimen name="wizard_counter_text_size">65sp</dimen>
+
+    <dimen name="remotec_columnWidth">65dp</dimen>
+
+
+    <!--=========== new ====================-->
+
+    <dimen name="row_browser_left_name_text_margin">5dp</dimen>
+    <dimen name="view_controller_control_but_text_size">19sp</dimen>
+    <dimen name="view_controller_footer_but_padding_scenes">18dp</dimen>
+
+    <dimen name="view_controller_img_width">35dp</dimen>
+    <dimen name="view_controller_img_height">35dp</dimen>
+    <dimen name="room_button_height">105dp</dimen>
+    <dimen name="view_controller_layout_margin">7dp</dimen>
+    <dimen name="view_controller_footer_but_padding">14dp</dimen>
+    <dimen name="view_controller_header_kk_texSize">20sp</dimen>
+
+    <dimen name="view_controller_base_status_height">120dp</dimen>
+    <dimen name="line_separator_height">8dp</dimen>
+
+    <dimen name="tab_text_size">18sp</dimen>
+
+    <dimen name="tab_padding">16dp</dimen>
+
+</resources>

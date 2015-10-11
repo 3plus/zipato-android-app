@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~  Copyright (C) 2011-2015 Tri plus grupa d.o.o <info@3plus.hr>
+  ~  All rights reserved.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/full_transparent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="1">
+
+        <com.melnykov.fab.ObservableScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:padding="@dimen/view_controller_dimen7dp">
+
+                <FrameLayout
+                    android:id="@+id/frameRoom"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/fragment_config_margin1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textViewRoom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text="Small Text"
+
+                            android:textColor="@color/light_grey"
+                            android:textSize="@dimen/row_controller_event_text_size" />
+
+                        <Spinner
+                            android:id="@+id/spinnerRoom"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/frameType"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.1dp"
+                        android:background="@color/ui_type_transparent" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/fragment_config_margin1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textViewType"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:text="Small Text"
+                            android:textColor="@color/light_grey"
+                            android:textSize="@dimen/row_controller_event_text_size" />
+
+                        <Spinner
+                            android:id="@+id/spinnerType"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content" />
+                    </LinearLayout>
+                </FrameLayout>
+
+                <!--<View-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="0.1dp"-->
+                <!--android:background="@color/ui_type_transparent" />-->
+
+                <!--<LinearLayout-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_margin="@dimen/fragment_config_margin1"-->
+                <!--android:orientation="vertical">-->
+
+                <!--<TextView-->
+                <!--android:id="@+id/textViewIcon"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:singleLine="true"-->
+                <!--android:text="Small Text"-->
+                <!--android:textColor="@color/light_grey"-->
+                <!--android:textSize="@dimen/row_controller_event_text_size" />-->
+
+                <!--<Spinner-->
+                <!--android:id="@+id/spinnerIcon"-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:popupBackground="@drawable/custom_config_spinner_selectable" />-->
+                <!--</LinearLayout>-->
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.1dp"
+                    android:background="@color/ui_type_transparent" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/fragment_config_margin1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textViewTypeName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/fragment_config_margin2"
+                        android:singleLine="true"
+                        android:text="Small Text"
+                        android:textColor="@color/light_grey"
+                        android:textSize="@dimen/row_controller_event_text_size" />
+
+                    <EditText
+                        android:id="@+id/editTextTypeName"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/full_transparent"
+                        android:singleLine="true"
+                        android:textColor="@color/color_white"
+                        android:textSize="@dimen/row_controller_event_text_size" />
+
+                </LinearLayout>
+
+                <FrameLayout
+                    android:id="@+id/frameDescription"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.1dp"
+                        android:background="@color/ui_type_transparent" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/fragment_config_margin1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textViewTypeDesc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/fragment_config_margin2"
+                            android:singleLine="true"
+                            android:text="Small Text"
+                            android:textColor="@color/light_grey"
+                            android:textSize="@dimen/row_controller_event_text_size" />
+
+                        <EditText
+                            android:id="@+id/editTextTypeDesc"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/full_transparent"
+                            android:singleLine="true"
+                            android:textColor="@color/color_white"
+                            android:textSize="@dimen/row_controller_event_text_size" />
+                    </LinearLayout>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/frameMaster"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone">
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.1dp"
+                        android:background="@color/ui_type_transparent" />
+
+                    <RelativeLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/fragment_config_margin1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textViewMaster"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentStart="true"
+                            android:layout_alignParentTop="true"
+                            android:singleLine="true"
+                            android:textColor="@color/color_white"
+                            android:textSize="@dimen/row_controller_event_text_size" />
+
+                        <Switch
+                            android:id="@+id/switchMaster"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentTop="true"
+                            android:focusable="false"
+                            android:switchMinWidth="@dimen/switch_min_width"
+                            android:textOff="  "
+                            android:textOn="  " />
+
+
+                    </RelativeLayout>
+                </FrameLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.1dp"
+                    android:background="@color/ui_type_transparent" />
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/fragment_config_margin1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textViewHidden"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:singleLine="true"
+                        android:textColor="@color/color_white"
+                        android:textSize="@dimen/row_controller_event_text_size" />
+
+                    <Switch
+                        android:id="@+id/switchHidden"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:focusable="false"
+                        android:switchMinWidth="@dimen/switch_min_width"
+                        android:textOff="  "
+                        android:textOn="  " />
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.1dp"
+                    android:background="@color/ui_type_transparent" />
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/fragment_config_margin1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textViewShow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentTop="true"
+                        android:singleLine="true"
+                        android:textColor="@color/color_white"
+                        android:textSize="@dimen/row_controller_event_text_size" />
+
+                    <Switch
+                        android:id="@+id/switchShow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:focusable="false"
+                        android:switchMinWidth="@dimen/switch_min_width"
+                        android:textOff="  "
+                        android:textOn="  " />
+
+
+                </RelativeLayout>
+
+                <FrameLayout
+                    android:id="@+id/frameDevice"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="0.1dp"
+                        android:background="@color/ui_type_transparent" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/fragment_config_margin1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textViewTypeDevName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/fragment_config_margin2"
+                            android:singleLine="true"
+                            android:text="Small Text"
+                            android:textColor="@color/light_grey"
+                            android:textSize="@dimen/row_controller_event_text_size" />
+
+                        <TextView
+                            android:id="@+id/textViewDeviceValue"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:singleLine="true"
+                            android:textColor="@color/color_white"
+                            android:textSize="@dimen/row_controller_event_text_size" />
+                    </LinearLayout>
+                </FrameLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.1dp"
+                    android:background="@color/ui_type_transparent" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/fragment_config_margin1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textViewEntityType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/fragment_config_margin2"
+                        android:singleLine="true"
+                        android:text="Small Text"
+                        android:textColor="@color/light_grey"
+                        android:textSize="@dimen/row_controller_event_text_size" />
+
+                    <TextView
+                        android:id="@+id/textViewEntityTypeVal"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:textColor="@color/color_white"
+                        android:textSize="@dimen/row_controller_event_text_size" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.1dp"
+                    android:background="@color/ui_type_transparent" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/fragment_config_margin1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textViewUUID"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/fragment_config_margin2"
+                        android:singleLine="true"
+                        android:text="Small Text"
+                        android:textColor="@color/light_grey"
+                        android:textSize="@dimen/row_controller_event_text_size" />
+
+                    <TextView
+                        android:id="@+id/textViewUUIDValue"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:textColor="@color/color_white"
+                        android:textSize="@dimen/row_controller_event_text_size" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="0.1dp"
+                    android:background="@color/ui_type_transparent" />
+            </LinearLayout>
+        </com.melnykov.fab.ObservableScrollView>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
+
+        <com.melnykov.fab.FloatingActionButton
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="@dimen/activity_vertical_margin"
+            android:background="?android:selectableItemBackground"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_save"
+            fab:fab_colorNormal="@color/vc_fab_normal_color"
+            fab:fab_colorPressed="@color/color_view_controller_item_background"
+            fab:fab_shadow="true"
+            fab:fab_type="normal" />
+    </FrameLayout>
+
+
+</LinearLayout>

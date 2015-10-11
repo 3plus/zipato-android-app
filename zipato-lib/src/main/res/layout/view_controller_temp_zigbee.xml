@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~  Copyright (C) 2011-2015 Tri plus grupa d.o.o <info@3plus.hr>
+  ~  All rights reserved.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!--android:layout_marginBottom="@dimen/view_controller_layout_margin"-->
+    <!--android:layout_marginLeft="@dimen/view_controller_layout_margin"-->
+    <!--android:layout_marginRight="@dimen/view_controller_layout_margin"-->
+
+    <include layout="@layout/view_controller_base_rgb" />
+
+</LinearLayout>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~  Copyright (C) 2011-2015 Tri plus grupa d.o.o <info@3plus.hr>
+  ~  All rights reserved.
+  -->
+
+<resources>
+    <bool name="menu_on_log_in">true</bool>
+    <bool name="menu_show_server_url">true</bool>
+    <bool name="menu_show_language">true</bool>
+    <bool name="language_force_default_en">false</bool>
+
+    <bool name="menu_on_pasword_rec">true</bool>
+    <bool name="menu_on_reg">true</bool>
+    <bool name="menu_add_new_device">true</bool>
+    <bool name="display_layout_bottom">true</bool>
+    <bool name="feedback">false</bool>
+    <bool name="push_enable">true</bool>
+
+    <bool name="show_wizard">true</bool>
+</resources>

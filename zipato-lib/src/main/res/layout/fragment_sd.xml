@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~  Copyright (C) 2011-2015 Tri plus grupa d.o.o <info@3plus.hr>
+  ~  All rights reserved.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.zipato.appv2.ui.fragments.settings.AnimatedExpandableListView
+            android:id="@+id/expandableListViewSD"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@color/full_transparent"
+            android:dividerHeight="1dp"
+            android:groupIndicator="@null"
+            android:visibility="gone" />
+
+        <ProgressBar
+            android:id="@+id/progressBarSD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true"
+            android:visibility="gone" />
+    </FrameLayout>
+
+</LinearLayout>

@@ -1,0 +1,77 @@
+[
+    {
+        "code": "en",
+        "language": "English",
+        "modified": "2015-09-30T08:06:09Z"
+    },
+    {
+        "code": "de",
+        "language": "German",
+        "modified": "2015-09-30T08:06:09Z"
+    },
+    {
+        "code": "es",
+        "language": "Español",
+        "modified": "2015-09-30T08:06:09Z"
+    },
+    {
+        "code": "fr",
+        "language": "Français",
+        "modified": "2015-09-30T08:06:09Z"
+    },
+    {
+        "code": "it",
+        "language": "Italiano",
+        "modified": "2015-09-30T08:06:09Z"
+    },
+    {
+        "code": "bg",
+        "language": "Български",
+        "modified": "2015-09-30T08:06:09Z"
+    },
+    {
+        "code": "lt",
+        "language": "Lietuvių",
+        "modified": "2015-09-30T08:06:09Z"
+    },
+    {
+        "code": "mk",
+        "language": "Македонски",
+        "modified": "2015-09-30T08:06:09Z"
+    },
+    {
+        "code": "nl",
+        "language": "Nederlands",
+        "modified": "2015-09-30T08:06:09Z"
+    },
+    {
+        "code": "pl",
+        "language": "Polski",
+        "modified": "2015-09-30T08:06:09Z"
+    },
+    {
+        "code": "pt",
+        "language": "Português",
+        "modified": "2015-09-30T08:06:09Z"
+    },
+    {
+        "code": "ru",
+        "language": "Pусский",
+        "modified": "2015-09-30T08:06:09Z"
+    },
+    {
+        "code": "sv",
+        "language": "Swedish",
+        "modified": "2015-09-30T08:06:09Z"
+    },
+    {
+        "code": "tr",
+        "language": "Türkçe",
+        "modified": "2015-09-30T08:06:09Z"
+    },
+    {
+        "code": "zh",
+        "language": "中文",
+        "modified": "2015-09-30T08:06:09Z"
+    }
+]

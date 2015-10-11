@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~  Copyright (C) 2011-2015 Tri plus grupa d.o.o <info@3plus.hr>
+  ~  All rights reserved.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/soft_green"
+    android:gravity="center"
+    android:orientation="vertical">
+
+
+    <EditText
+        android:id="@+id/editTextChild"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginBottom="@dimen/row_exp_item_edit_margin1"
+        android:layout_marginLeft="@dimen/row_exp_item_edit_margin2"
+        android:layout_marginRight="@dimen/row_exp_item_edit_margin2"
+        android:layout_marginTop="@dimen/row_exp_item_edit_margin1"
+        android:background="@drawable/custom_edit_text"
+        android:gravity="center"
+        android:inputType="textNoSuggestions"
+        android:singleLine="true"
+        android:textColor="@color/menu_group_text_color"
+        android:textSize="@dimen/row_setting_menu_text_size" />
+</LinearLayout>

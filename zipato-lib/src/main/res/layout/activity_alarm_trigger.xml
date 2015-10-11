@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~  Copyright (C) 2011-2015 Tri plus grupa d.o.o <info@3plus.hr>
+  ~  All rights reserved.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/keypadLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_view_controller_item_background"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="@dimen/activity_alarm_trigger_padding"
+    android:paddingLeft="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_vertical_margin"
+    android:visibility="invisible">
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:fillViewport="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/fragment_security_key_pad_margin2"
+                android:layout_marginTop="@dimen/lc_controller_controller_marginTop"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textViewEnterPin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/enter_pin"
+                    android:textColor="@color/light_grey"
+                    android:textSize="@dimen/row_controller_event_text_size" />
+
+                <TextView
+                    android:id="@+id/imageViewPin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/fragment_security_key_pad_margin1"
+                    android:background="?android:selectableItemBackground"
+                    android:textColor="@color/color_white" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textViewPad0"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="?android:selectableItemBackground"
+                    android:gravity="center"
+                    android:padding="@dimen/activity_alarm_trigger_margin"
+                    android:text="0"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/activity_alarm_trigger_textSize" />
+
+                <TextView
+                    android:id="@+id/textViewPad1"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="?android:selectableItemBackground"
+                    android:gravity="center"
+                    android:padding="@dimen/activity_alarm_trigger_margin"
+                    android:text="0"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/activity_alarm_trigger_textSize" />
+
+                <TextView
+                    android:id="@+id/textViewPad2"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="?android:selectableItemBackground"
+                    android:gravity="center"
+                    android:padding="@dimen/activity_alarm_trigger_margin"
+                    android:text="0"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/activity_alarm_trigger_textSize" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textViewPad3"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="?android:selectableItemBackground"
+                    android:gravity="center"
+                    android:padding="@dimen/activity_alarm_trigger_margin"
+                    android:text="0"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/activity_alarm_trigger_textSize" />
+
+                <TextView
+                    android:id="@+id/textViewPad4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="?android:selectableItemBackground"
+                    android:gravity="center"
+                    android:padding="@dimen/activity_alarm_trigger_margin"
+                    android:text="0"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/activity_alarm_trigger_textSize" />
+
+                <TextView
+                    android:id="@+id/textViewPad5"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="?android:selectableItemBackground"
+                    android:gravity="center"
+                    android:padding="@dimen/activity_alarm_trigger_margin"
+                    android:text="0"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/activity_alarm_trigger_textSize" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textViewPad6"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="?android:selectableItemBackground"
+                    android:gravity="center"
+                    android:padding="@dimen/activity_alarm_trigger_margin"
+                    android:text="0"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/activity_alarm_trigger_textSize" />
+
+                <TextView
+                    android:id="@+id/textViewPad7"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="?android:selectableItemBackground"
+                    android:gravity="center"
+                    android:padding="@dimen/activity_alarm_trigger_margin"
+                    android:text="0"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/activity_alarm_trigger_textSize" />
+
+                <TextView
+                    android:id="@+id/textViewPad8"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="?android:selectableItemBackground"
+                    android:gravity="center"
+                    android:padding="@dimen/activity_alarm_trigger_margin"
+                    android:text="0"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/activity_alarm_trigger_textSize" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textViewPad9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?android:selectableItemBackground"
+                    android:gravity="center"
+                    android:padding="@dimen/activity_alarm_trigger_margin"
+                    android:text="0"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/activity_alarm_trigger_textSize" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/buttonPinClear"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="?android:selectableItemBackground"
+                android:gravity="center"
+                android:padding="@dimen/activity_alarm_trigger_margin"
+                android:text="@string/clear"
+                android:textColor="@color/color_white"
+                android:textSize="@dimen/activity_alarm_trigger_textSize2" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
