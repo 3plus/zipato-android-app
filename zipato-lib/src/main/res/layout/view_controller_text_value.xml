@@ -43,6 +43,5 @@
         android:textSize="@dimen/view_controller_text_size_status"
         tools:text="Status" />
 
-
 </LinearLayout>
 
