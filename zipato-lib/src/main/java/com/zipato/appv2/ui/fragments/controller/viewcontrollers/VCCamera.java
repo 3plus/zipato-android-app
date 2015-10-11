@@ -5,6 +5,7 @@
 
 package com.zipato.appv2.ui.fragments.controller.viewcontrollers;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
@@ -19,15 +20,19 @@ import com.squareup.picasso.Picasso;
 import com.zipato.annotation.SetTypeFace;
 import com.zipato.annotation.Translated;
 import com.zipato.annotation.ViewType;
+import com.zipato.appv2.B;
+import com.zipato.appv2.R;
 import com.zipato.appv2.R.drawable;
 import com.zipato.appv2.R.id;
 import com.zipato.appv2.R.layout;
+import com.zipato.appv2.ZipatoApplication;
 import com.zipato.appv2.activities.BaseCameraActivity;
 import com.zipato.appv2.activities.CameraActivity;
 import com.zipato.appv2.activities.MjpegStreamActivity;
 import com.zipato.appv2.activities.ShowVCMenu;
 import com.zipato.appv2.ui.fragments.BaseFragment;
 import com.zipato.appv2.ui.fragments.adapters.controllers.GenericAdapter;
+import com.zipato.appv2.ui.fragments.adapters.controllers.TypeViewControllerFactory;
 import com.zipato.appv2.ui.fragments.controller.ViewControllerLogic;
 import com.zipato.model.camera.Camera;
 import com.zipato.model.camera.CameraRepository;
@@ -41,14 +46,14 @@ import java.util.concurrent.ExecutorService;
 
 import javax.inject.Inject;
 
-import butterknife.InjectView;
-import butterknife.OnClick;
+import butterfork.Bind;
+import butterfork.OnClick;
 
 /**
  * Created by murielK on 8/18/2015.
  */
 
-@ViewType(layout.view_controller_camera)
+@ViewType("view_controller_camera")
 public class VCCamera extends AbsHeader implements ViewControllerLogic {
 
     private static final String TAG = TagFactoryUtils.getTag(VCCamera.class);
@@ -61,19 +66,19 @@ public class VCCamera extends AbsHeader implements ViewControllerLogic {
     @Inject
     Picasso picasso;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.butSD)
+    @Bind(B.id.butSD)
     TextView textViewSD;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.butHD)
+    @Bind(B.id.butHD)
     TextView textViewHD;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.butMjpeg)
+    @Bind(B.id.butMjpeg)
     TextView textViewMjpeg;
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @Translated("take_snap_shot")
-    @InjectView(id.butTakSnapshot)
+    @Bind(B.id.butTakSnapshot)
     TextView textViewTakeSnapShot;
-    @InjectView(id.imageViewCam)
+    @Bind(B.id.imageViewCam)
     ImageView imageView;
 
     private int logicID;
@@ -140,30 +145,37 @@ public class VCCamera extends AbsHeader implements ViewControllerLogic {
     private void startStream(int quality) {
         final GenericAdapter genericAdapter = getAdapter();
         final TypeReportItem item = getTypeReportItem();
-        Intent intent = new Intent(genericAdapter.getContext(), CameraActivity.class);
+        String className = getContext().getResources().getString(R.string.camera_activity_class);
+        Class<? extends Activity> clazz;
+        try {
+            clazz = (Class<? extends Activity>) Class.forName(className);
+        } catch (Exception e) {
+            Log.e(TAG, "no class " + className);
+           clazz = CameraActivity.class;
+        }
+        Intent intent = new Intent(genericAdapter.getContext(), clazz);
         intent.putExtra(BaseFragment.PARCELABLE_KEY, item.getKey());
         intent.putExtra(BaseCameraActivity.STREAMING_TYPE_KEY, quality);
         genericAdapter.getContext().startActivity(intent);
-
     }
 
-    @OnClick(id.butTakSnapshot)
+    @OnClick(B.id.butTakSnapshot)
     public void onSnapShot(final View v) {
         final TypeReportItem item = getTypeReportItem();
         takeSnapshot(item.getUuid());
     }
 
-    @OnClick(id.butHD)
+    @OnClick(B.id.butHD)
     public void onClickHI(final View v) {
         startStream(CameraActivity.HIGH_STREAM);
     }
 
-    @OnClick(id.butSD)
+    @OnClick(B.id.butSD)
     public void onClickLow(final View v) {
         startStream(CameraActivity.LOW_STREAM);
     }
 
-    @OnClick(id.butMjpeg)
+    @OnClick(B.id.butMjpeg)
     public void onClickMjpeg(final View v) {
         final GenericAdapter genericAdapter = getAdapter();
         final TypeReportItem item = getTypeReportItem();
@@ -209,20 +221,20 @@ public class VCCamera extends AbsHeader implements ViewControllerLogic {
     public void run() {
         final ThreadLocal<Integer> localLogicID = new ThreadLocal<>();
         localLogicID.set(logicID);
-        final int viewTye = VCCamera.class.getAnnotation(ViewType.class).value();
+        final String viewTypeStr = VCCamera.class.getAnnotation(ViewType.class).value();
+        int viewType = TypeViewControllerFactory.idOf(getContext(), viewTypeStr);
         final GenericAdapter genericAdapter = getAdapter();
         try {
             cameraRepository.fetchAll();
             cameraRepository.write();
             logicExecuted = true;
             Log.d(TAG, "=== camera logic updater DONE!!! ===");
-
         } catch (Exception e) {
             logicExecuted = false;
             Log.d(TAG, "", e);
         } finally {
             if (genericAdapter != null)
-                genericAdapter.logicExecuted(viewTye, true, localLogicID.get());
+                genericAdapter.logicExecuted(viewType, true, localLogicID.get());
         }
     }
 

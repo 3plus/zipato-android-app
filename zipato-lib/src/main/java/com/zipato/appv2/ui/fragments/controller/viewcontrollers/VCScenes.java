@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.zipato.annotation.SetTypeFace;
 import com.zipato.annotation.ViewType;
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.model.scene.SceneRepository;
 import com.zipato.model.typereport.TypeReportItem;
 import com.zipato.util.TagFactoryUtils;
@@ -22,19 +22,19 @@ import java.util.concurrent.ExecutorService;
 
 import javax.inject.Inject;
 
-import butterknife.InjectView;
-import butterknife.OnClick;
+import butterfork.Bind;
+import butterfork.OnClick;
 
 import static com.zipato.util.Utils.capitalizer;
 
 /**
  * Created by murielK on 9/14/2015.
  */
-@ViewType(R.layout.view_controller_scenes)
+@ViewType("view_controller_scenes")
 public class VCScenes extends AbsHeader {
 
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.butRunScene)
+    @Bind(B.id.butRunScene)
     TextView butRunScene;
 
     @Inject
@@ -48,7 +48,7 @@ public class VCScenes extends AbsHeader {
         buttonSubMenu.setVisibility(View.INVISIBLE); // temporary disabling scenes Menu
     }
 
-    @OnClick(R.id.butRunScene)
+    @OnClick(B.id.butRunScene)
     public void onRunSceneClick(View v) {
         final TypeReportItem item = getTypeReportItem();
         if (item != null)

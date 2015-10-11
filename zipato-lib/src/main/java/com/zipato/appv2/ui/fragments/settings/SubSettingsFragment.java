@@ -25,7 +25,7 @@ import android.widget.ExpandableListView.OnChildClickListener;
 import android.widget.ExpandableListView.OnGroupClickListener;
 import android.widget.TextView;
 
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.R.bool;
 import com.zipato.appv2.R.drawable;
 import com.zipato.appv2.R.id;
@@ -51,7 +51,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.InjectView;
+import butterfork.Bind;
 
 /**
  * Created by murielK on 2/25/2015.
@@ -61,7 +61,7 @@ public class SubSettingsFragment extends AbsBaseSubMenu implements OnServerUrlCh
     private static final String TAG = SubSettingsFragment.class.getSimpleName();
     private static final String SUBJECT = "[Android feedback]";
     private final List<Helper> groupList = new ArrayList<>();
-    @InjectView(id.expandableListView)
+    @Bind(B.id.expandableListView)
     AnimatedExpandableListView expandableListView;
     @Inject
     PreferenceHelper preferenceHelper;
@@ -141,22 +141,20 @@ public class SubSettingsFragment extends AbsBaseSubMenu implements OnServerUrlCh
             public void onGroupClick(int position) {
 
                 if ((groupList.get(position).children == null) || groupList.get(position).children.isEmpty()) {
-                    switch (groupList.get(position).groupImage) {
+                    int i = groupList.get(position).groupImage;
+                    if (i == drawable.ic_about) {
+                        showAbout();
 
-                        case drawable.ic_about:
-                            showAbout();
-                            break;
+                    } else if (i == drawable.ic_feedback) {
+                        sendFeedback();
 
-                        case drawable.ic_feedback:
-                            sendFeedback();
-                            break;
-                        default:
-                            try {
-                                eventBus.post(map.get(groupList.get(position).getSelected()));//
-                            } catch (Exception e) {
-                                Log.d(TAG, "", e);
-                            }
-                            break;
+                    } else {
+                        try {
+                            eventBus.post(map.get(groupList.get(position).getSelected()));//
+                        } catch (Exception e) {
+                            Log.d(TAG, "", e);
+                        }
+
                     }
                     return;
                 }
@@ -180,17 +178,17 @@ public class SubSettingsFragment extends AbsBaseSubMenu implements OnServerUrlCh
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 //the default clicked language will be set here of course
-                switch (groupList.get(groupPosition).groupImage) {
-                    case drawable.language_group_icon:
-                        listerViewCustomAdapter.toggleSelection(childPosition);
-                        groupList.get(groupPosition).selected = groupList.get(groupPosition).children.get(childPosition);
-                        expandableListView.setSelectedChild(groupPosition, childPosition, true);
-                        preferenceHelper.putStringPref(Preference.LANGUAGE,
-                                ((Language) groupList.get(groupPosition).children.get(childPosition))
-                                        .getCode());
-                        listerViewCustomAdapter.notifyDataSetChanged();
-                        getActivity().recreate();
-                        break;
+                int i = groupList.get(groupPosition).groupImage;
+                if (i == drawable.language_group_icon) {
+                    listerViewCustomAdapter.toggleSelection(childPosition);
+                    groupList.get(groupPosition).selected = groupList.get(groupPosition).children.get(childPosition);
+                    expandableListView.setSelectedChild(groupPosition, childPosition, true);
+                    preferenceHelper.putStringPref(Preference.LANGUAGE,
+                                                   ((Language) groupList.get(groupPosition).children.get(childPosition))
+                                                           .getCode());
+                    listerViewCustomAdapter.notifyDataSetChanged();
+                    getActivity().recreate();
+
                 }
 
                 return false;

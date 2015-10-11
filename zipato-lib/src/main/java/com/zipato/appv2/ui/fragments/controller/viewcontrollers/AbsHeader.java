@@ -18,6 +18,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.zipato.annotation.SetTypeFace;
+import com.zipato.appv2.B;
 import com.zipato.appv2.R.id;
 import com.zipato.appv2.activities.ShowVCMenu;
 import com.zipato.appv2.ui.fragments.controller.ViewController;
@@ -29,8 +30,8 @@ import com.zipato.util.Utils;
 
 import javax.inject.Inject;
 
-import butterknife.InjectView;
-import butterknife.OnClick;
+import butterfork.Bind;
+import butterfork.OnClick;
 
 /**
  * Created by murielK on 7/15/2015.
@@ -40,17 +41,17 @@ public abstract class AbsHeader extends ViewController {
     @Inject
     AssetLoaderHelper assetLoaderHelper;
 
-    @InjectView(id.imageViewIC)
+    @Bind(B.id.imageViewIC)
     ImageView imageIC;
     @SetTypeFace("icomoon.ttf")
-    @InjectView(id.textViewKK)
+    @Bind(B.id.textViewKK)
     TextView textViewKK;
-    @InjectView(id.progressBarVC)
+    @Bind(B.id.progressBarVC)
     ProgressBar progressBar;
     @SetTypeFace("helvetica_neue_light.otf")
-    @InjectView(id.textViewDName)
+    @Bind(B.id.textViewDName)
     TextView textViewDNAme;
-    @InjectView(id.imgSubMenu)
+    @Bind(B.id.imgSubMenu)
     ImageButton buttonSubMenu;
 
     public AbsHeader(View itemView, RecyclerView recyclerView) {
@@ -91,7 +92,7 @@ public abstract class AbsHeader extends ViewController {
         return true;
     }
 
-    @OnClick(id.imgSubMenu)
+    @OnClick(B.id.imgSubMenu)
     public void onMenuClick(View v) {
         showMenuDialog();
     }

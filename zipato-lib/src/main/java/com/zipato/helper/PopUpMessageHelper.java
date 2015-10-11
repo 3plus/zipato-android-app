@@ -10,6 +10,7 @@ import android.app.Activity;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,11 +20,9 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 
 import java.lang.reflect.Method;
-
-import io.vov.vitamio.utils.Log;
 
 /**
  * Created by murielK on 1/14/2015.

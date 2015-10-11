@@ -16,21 +16,17 @@ import com.zipato.model.typereport.TypeReportItem;
 /**
  * Created by murielK on 7/15/2015.
  */
-@ViewType(R.layout.view_controller_default)
+@ViewType("view_controller_default")
 public class VCDefault extends AbsBaseSimpleStatus {
-
-    public static final int DEFAULT_VIEW_TYPE = R.layout.view_controller_default;
 
     public VCDefault(View itemView, RecyclerView recyclerView) {
         super(itemView, recyclerView);
     }
 
-
     @Override
     public boolean hasLogic() {
         return false;
     }
-
 
     @Override
     protected boolean isCustomUnit() {

@@ -5,6 +5,7 @@
 
 package com.zipato.appv2.ui.fragments.adapters.controllers;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -53,6 +54,8 @@ public final class TypeViewControllerFactory {
     private static final Map<Integer, Class<? extends ViewController>> VIEW_TYPE_MAP = new HashMap<>();
     private static HashMap<UUID, Integer> cache;
 
+    public static int defaultViewType;
+
     static {
 
         /* this is not going to be very good idea with a huge map (size = 20-30+)but there is much more chances that a user do not have that much types of devices or that much
@@ -85,10 +88,17 @@ public final class TypeViewControllerFactory {
     }
 
     static {
-        VIEW_TYPE_MAP.put(VCDefault.DEFAULT_VIEW_TYPE, VCDefault.class);
+        VIEW_TYPE_MAP.put(defaultViewType, VCDefault.class);
     }
 
+
     private TypeViewControllerFactory() {
+    }
+
+    public static void setContext(Context context) {
+        if (defaultViewType == 0) {
+            defaultViewType = idOf(context, "view_controller_default");
+        }
     }
 
     public static Class<? extends ViewController> getCachedVCCls(int viewType) {
@@ -107,16 +117,25 @@ public final class TypeViewControllerFactory {
                 Log.d(TAG, "Moderfucker!", e);
             }
         }
-        return (T) new VCDefault(LayoutInflater.from(viewGroup.getContext()).inflate(VCDefault.DEFAULT_VIEW_TYPE, viewGroup, false), recyclerView);
+        return (T) new VCDefault(LayoutInflater.from(viewGroup.getContext()).inflate(defaultViewType, viewGroup, false), recyclerView);
     }
 
-    private static int findViewType(String key) {
+    private static int findViewType(Context context, String key) {
         Class<? extends ViewController> cls = VIEW_CONTROLLER_MAP.get(key);
-        final int viewType = cls.getAnnotation(ViewType.class).value();
+        final int viewType = idOf(context, cls.getAnnotation(ViewType.class).value());
         if (viewType == 0)
             throw new IllegalStateException("Invalid resource ID for a layout (ViewType) please make sure you properly use @ViewType(R.layout.example) in your class type to pass the res ID of the desire layout");
         VIEW_TYPE_MAP.put(viewType, cls);
         return viewType;
+    }
+
+    public static int idOf(Context context, String viewType) {
+        int id = context.getResources().getIdentifier(viewType, "layout", context.getPackageName());
+        if (id == 0) {
+            Log.e(TAG, "could not find resource id." + viewType);
+            // this will crash sooner or later
+        }
+        return id;
     }
 
     public static <T extends ViewController> void onViewRecycled(T t) {
@@ -129,21 +148,21 @@ public final class TypeViewControllerFactory {
 //        }
     }
 
-    public static int getViewType(TypeReportItem item, Map attributeRepository) {
+    public static int getViewType(Context context, TypeReportItem item, Map attributeRepository) {
         if (item == null)
-            return VCDefault.DEFAULT_VIEW_TYPE;
+            return defaultViewType;
 
         Log.d(TAG, String.format("item name = %s entityType %s", item.getName(), item.getEntityType()));
 
         if (item.getEntityType() == EntityType.ATTRIBUTE) {// in case the controller it is an attribute itself
             try {
                 final Attribute attribute = (Attribute) attributeRepository.get(item.getUuid());
-                final int viewType = findViewType(attribute.getDefinition().getCluster());
+                final int viewType = findViewType(context, attribute.getDefinition().getCluster());
                 Log.d(TAG, String.format("item  viewType found = %d", viewType));
                 return viewType;
             } catch (Exception e) {
                 //
-                return VCDefault.DEFAULT_VIEW_TYPE;
+                return defaultViewType;
             }
         }
 
@@ -151,17 +170,17 @@ public final class TypeViewControllerFactory {
             Log.d(TAG, String.format("item  has templateID = %s", item.getTemplateId()));
 
             try {
-                final int viewType = findViewType(item.getTemplateId());
+                final int viewType = findViewType(context, item.getTemplateId());
                 Log.d(TAG, String.format("item  viewType found = %d", viewType));
                 return viewType;
             } catch (Exception e) {
-                return VCDefault.DEFAULT_VIEW_TYPE;
+                return defaultViewType;
 
             }
         }
 
         if (item.getAttributes() == null)
-            return VCDefault.DEFAULT_VIEW_TYPE;
+            return defaultViewType;
 
         //look on cache to speedup attributes look up!
         if ((cache != null) && cache.containsKey(item.getUuid())) {
@@ -172,7 +191,7 @@ public final class TypeViewControllerFactory {
         for (Attribute attr : item.getAttributes()) {
             try {
                 final Attribute attribute = (Attribute) attributeRepository.get(attr.getUuid());
-                final int viewType = findViewType(attribute.getDefinition().getCluster());
+                final int viewType = findViewType(context, attribute.getDefinition().getCluster());
                 Log.d(TAG, String.format("item  viewType found = %d", viewType));
                 if (viewType != 0) {
                     if (cache == null)
@@ -185,8 +204,7 @@ public final class TypeViewControllerFactory {
             }
         }
 
-        return VCDefault.DEFAULT_VIEW_TYPE;
+        return defaultViewType;
     }
-
 
 }

@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.zipato.annotation.SetTypeFace;
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.ui.fragments.adapters.BaseListAdapter;
 import com.zipato.helper.AttributesHelper;
 import com.zipato.model.attribute.AttrLogValue;
@@ -33,8 +33,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterfork.ButterFork;
+import butterfork.Bind;
 import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
 import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
 
@@ -51,9 +51,9 @@ public class EventFragment extends BaseTypesFragment {
     @Inject
     TypeFaceUtils typeFaceUtils;
 
-    @InjectView(R.id.headerListView)
+    @Bind(B.id.headerListView)
     StickyListHeadersListView listHeadersListView;
-    @InjectView(R.id.swipe_container)
+    @Bind(B.id.swipe_container)
     SwipeRefreshLayout swipeRefreshLayout;
 
     HeaderListAdapter headerAdapter;
@@ -256,33 +256,33 @@ public class EventFragment extends BaseTypesFragment {
 
     class HeaderHolder {
         @SetTypeFace("helvetica_neue_light.otf")
-        @InjectView(R.id.textViewDate)
+        @Bind(B.id.textViewDate)
         TextView date;
 
         public HeaderHolder(View v) {
 
-            ButterKnife.inject(this, v);
+            ButterFork.bind(this, v);
             typeFaceUtils.applyTypefaceFor(this);
         }
     }
 
     class ChildViewHolder {
         @SetTypeFace("helveticaneue_ultra_light.otf")
-        @InjectView(R.id.textView)
+        @Bind(B.id.textView)
         TextView entityName;
         @SetTypeFace("helveticaneue_ultra_light.otf")
-        @InjectView(R.id.textView2)
+        @Bind(B.id.textView2)
         TextView time;
         @SetTypeFace("helveticaneue_ultra_light.otf")
-        @InjectView(R.id.textView3)
+        @Bind(B.id.textView3)
         TextView attrName;
         @SetTypeFace("helveticaneue_ultra_light.otf")
-        @InjectView(R.id.textView4)
+        @Bind(B.id.textView4)
         TextView attrValue;
 
         public ChildViewHolder(View v) {
 
-            ButterKnife.inject(this, v);
+            ButterFork.bind(this, v);
             typeFaceUtils.applyTypefaceFor(this);
         }
     }

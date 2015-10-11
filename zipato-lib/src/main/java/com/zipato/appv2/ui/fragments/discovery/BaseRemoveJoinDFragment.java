@@ -18,7 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.zipato.annotation.SetTypeFace;
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.model.device.Device;
 import com.zipato.model.network.DiscoveryRest;
 import com.zipato.model.network.DiscoveryStatus;
@@ -31,8 +31,8 @@ import java.util.concurrent.ExecutorService;
 
 import javax.inject.Inject;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterfork.ButterFork;
+import butterfork.Bind;
 
 /**
  * Created by murielK on 8/21/2014.
@@ -49,19 +49,19 @@ public abstract class BaseRemoveJoinDFragment extends BaseDiscoveryFragment {
     protected ApiV2RestTemplate restTemplate;
     @Inject
     protected NetworkRepository networkRepository;
-    @InjectView(R.id.imageViewCir)
+    @Bind(B.id.imageViewCir)
     protected ImageView imageCir;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.textViewCounterText)
+    @Bind(B.id.textViewCounterText)
     protected TextView counterText;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.textViewJoin1)
+    @Bind(B.id.textViewJoin1)
     protected TextView text1;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.textViewJoin2)
+    @Bind(B.id.textViewJoin2)
     protected TextView text2;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.buttonFD)
+    @Bind(B.id.buttonFD)
     protected Button butFD;
     protected ObjectParcel objectParcel;
     protected boolean counterStopped;
@@ -84,7 +84,7 @@ public abstract class BaseRemoveJoinDFragment extends BaseDiscoveryFragment {
             text2String = text2.getText().toString();
         } catch (Exception e) {
         }
-        ButterKnife.inject(this, v);
+        ButterFork.bind(this, v);
         typeFaceUtils.applyTypefaceFor(this);
         setView();
         counterText.setText(counter);

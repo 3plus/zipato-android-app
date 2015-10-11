@@ -15,16 +15,16 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.zipato.annotation.SetTypeFace;
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.R.color;
 import com.zipato.appv2.R.id;
 import com.zipato.appv2.ui.fragments.adapters.controllers.GenericAdapter;
 import com.zipato.model.typereport.TypeReportItem;
 import com.zipato.util.TagFactoryUtils;
 
-import butterknife.InjectView;
-import butterknife.OnClick;
-import butterknife.OnLongClick;
+import butterfork.Bind;
+import butterfork.OnClick;
+import butterfork.OnLongClick;
 
 /**
  * Created by Mur0 on 8/22/2015.
@@ -37,36 +37,36 @@ public abstract class AbsPagePointerAdapter extends AbsHeader {
     private static final long PP_RESET_UPDATE_DELAY = 5000L;
     private final SparseArray<TextView> viewMap = new SparseArray<>(); //
 
-    @InjectView(R.id.butNext)
+    @Bind(B.id.butNext)
     ImageButton butNext;
-    @InjectView(id.butPrev)
+    @Bind(B.id.butPrev)
     ImageButton butPrev;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.butIndex0)
+    @Bind(B.id.butIndex0)
     TextView index0;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.butIndex1)
+    @Bind(B.id.butIndex1)
     TextView index1;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.butIndex2)
+    @Bind(B.id.butIndex2)
     TextView index2;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.butIndex3)
+    @Bind(B.id.butIndex3)
     TextView index3;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.butIndex4)
+    @Bind(B.id.butIndex4)
     TextView index4;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.butIndex5)
+    @Bind(B.id.butIndex5)
     TextView index5;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.textViewPage)
+    @Bind(B.id.textViewPage)
     TextView textViewPage;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.textViewNPages)
+    @Bind(B.id.textViewNPages)
     TextView textViewNPages;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.textViewSeparator)
+    @Bind(B.id.textViewSeparator)
     TextView textViewSeparator;
 
     private int page;
@@ -123,90 +123,90 @@ public abstract class AbsPagePointerAdapter extends AbsHeader {
         adapter.resetUpdate(PP_RESET_UPDATE_DELAY);
     }
 
-    @OnClick(id.butNext)
+    @OnClick(B.id.butNext)
     public void onClickNext() {
         delayedUpdates();
         pageNext();
     }
 
-    @OnClick(id.butPrev)
+    @OnClick(B.id.butPrev)
     public void onClickPrev(View v) {
         delayedUpdates();
         pagePrev();
     }
 
-    @OnClick(id.butIndex0)
+    @OnClick(B.id.butIndex0)
     public void onClickButIndex0(View v) {
         delayedUpdates();
         handleViewClick((TextView) v);
     }
 
-    @OnClick(id.butIndex1)
+    @OnClick(B.id.butIndex1)
     public void onClickButIndex1(View v) {
         delayedUpdates();
         handleViewClick((TextView) v);
     }
 
-    @OnClick(id.butIndex2)
+    @OnClick(B.id.butIndex2)
     public void onClickButIndex2(View v) {
         delayedUpdates();
         handleViewClick((TextView) v);
     }
 
-    @OnClick(id.butIndex3)
+    @OnClick(B.id.butIndex3)
     public void onClickButIndex3(View v) {
         delayedUpdates();
         handleViewClick((TextView) v);
     }
 
-    @OnClick(id.butIndex4)
+    @OnClick(B.id.butIndex4)
     public void onClickButIndex4(View v) {
         delayedUpdates();
         handleViewClick((TextView) v);
     }
 
-    @OnClick(id.butIndex5)
+    @OnClick(B.id.butIndex5)
     public void onClickButIndex5(View v) {
         delayedUpdates();
         handleViewClick((TextView) v);
     }
 
-    @OnLongClick(id.butIndex0)
+    @OnLongClick(B.id.butIndex0)
     public boolean onLongClickButIndex0(View v) {
         delayedUpdates();
         handleLongClick((TextView) v);
         return true;
     }
 
-    @OnLongClick(id.butIndex1)
+    @OnLongClick(B.id.butIndex1)
     public boolean onLongClickButIndex1(View v) {
         delayedUpdates();
         handleLongClick((TextView) v);
         return true;
     }
 
-    @OnLongClick(id.butIndex2)
+    @OnLongClick(B.id.butIndex2)
     public boolean onLongClickButIndex2(View v) {
         delayedUpdates();
         handleLongClick((TextView) v);
         return true;
     }
 
-    @OnLongClick(id.butIndex3)
+    @OnLongClick(B.id.butIndex3)
     public boolean onLongClickButIndex3(View v) {
         delayedUpdates();
         handleLongClick((TextView) v);
         return true;
     }
 
-    @OnLongClick(id.butIndex4)
+    @OnLongClick(B.id.butIndex4)
     public boolean onLongClickButIndex4(View v) {
         delayedUpdates();
         handleLongClick((TextView) v);
         return true;
     }
 
-    @OnLongClick(id.butIndex5)
+    @OnLongClick(B.id.butIndex5)
     public boolean onLongClickButIndex5(View v) {
         delayedUpdates();
         handleLongClick((TextView) v);

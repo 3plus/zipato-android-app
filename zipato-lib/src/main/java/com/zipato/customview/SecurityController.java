@@ -16,7 +16,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 
 /**
  * Created by murielK on 8/18/2014.

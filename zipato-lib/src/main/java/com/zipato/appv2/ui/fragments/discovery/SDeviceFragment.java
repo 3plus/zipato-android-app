@@ -17,7 +17,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.activities.BaseActivity;
 import com.zipato.appv2.ui.fragments.BaseFragment;
 import com.zipato.appv2.ui.fragments.settings.AnimatedExpandableListView;
@@ -37,9 +37,8 @@ import java.util.concurrent.ExecutorService;
 
 import javax.inject.Inject;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-import hr.flavor.discovery.CustomBrandList;
+import butterfork.ButterFork;
+import butterfork.Bind;
 
 /**
  * Created by murielK on 8/13/2014.
@@ -86,9 +85,9 @@ public class SDeviceFragment extends BaseDiscoveryFragment {
 
     @Inject
     BrandRepository brandRepository;
-    @InjectView(R.id.expandableListViewSD)
+    @Bind(B.id.expandableListViewSD)
     AnimatedExpandableListView exListViewBrand;
-    @InjectView(R.id.progressBarSD)
+    @Bind(B.id.progressBarSD)
     ProgressBar progressBar;
     @Inject
     ExecutorService executor;
@@ -238,9 +237,9 @@ public class SDeviceFragment extends BaseDiscoveryFragment {
                 });
                 if (brandRepository.isEmpty()) {
                     try {
-                        if (CustomBrandList.isCustomList && (CustomBrandList.brandList != null)) {
-                            for (String brandName : CustomBrandList.brandList) {
-
+                        String[] brands = getResources().getStringArray(R.array.custom_brand_list);
+                        if (brands.length > 0) {
+                            for (String brandName : brands) {
                                 brandRepository.fetchBrand(brandName);
                             }
                         } else {
@@ -402,19 +401,19 @@ public class SDeviceFragment extends BaseDiscoveryFragment {
         }
 
         class ParentHolder {
-            @InjectView(R.id.imageBrand)
+            @Bind(B.id.imageBrand)
             ImageView logo;
             public ParentHolder(View v) {
-                ButterKnife.inject(this, v);
+                ButterFork.bind(this, v);
             }
         }
 
         class ChildHolder {
-            @InjectView(R.id.textViewBrandDevice)
+            @Bind(B.id.textViewBrandDevice)
             TextView textViewDevicesName;
 
             public ChildHolder(View v) {
-                ButterKnife.inject(this, v);
+                ButterFork.bind(this, v);
 
             }
         }

@@ -11,7 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.helper.PreferenceHelper;
 import com.zipato.helper.PreferenceHelper.Preference;
 import com.zipato.model.event.Event;
@@ -28,7 +28,7 @@ import java.util.concurrent.ExecutorService;
 
 import javax.inject.Inject;
 
-import butterknife.OnItemClick;
+import butterfork.OnItemClick;
 
 /**
  * Created by murielK on 11/4/2014.
@@ -55,7 +55,7 @@ public class IconConfigColorFragment extends ScenesIconColorFragment implements 
     }
 
     @Override
-    @OnItemClick(R.id.gridViewSceneColor)
+    @OnItemClick(B.id.gridViewSceneColor)
     public void onColorClick(int position) {
         checkUserIcon();
         colorGridAdapter.removeSelection();
@@ -65,7 +65,7 @@ public class IconConfigColorFragment extends ScenesIconColorFragment implements 
     }
 
     @Override
-    @OnItemClick(R.id.gridViewSceneIcon)
+    @OnItemClick(B.id.gridViewSceneIcon)
     public void onIconClick(int position) {
         checkUserIcon();
         iconGridAdapter.removeSelection();

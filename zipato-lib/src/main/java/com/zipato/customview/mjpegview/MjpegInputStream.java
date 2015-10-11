@@ -10,6 +10,7 @@ package com.zipato.customview.mjpegview;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -22,8 +23,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
 import java.util.Properties;
-
-import io.vov.vitamio.utils.Log;
 
 public class MjpegInputStream extends DataInputStream {
     private final static int HEADER_MAX_LENGTH = 100;

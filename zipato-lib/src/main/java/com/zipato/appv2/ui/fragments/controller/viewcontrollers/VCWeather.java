@@ -8,6 +8,7 @@ package com.zipato.appv2.ui.fragments.controller.viewcontrollers;
 import android.content.Context;
 import android.support.v4.util.ArrayMap;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,7 +16,7 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import com.zipato.annotation.SetTypeFace;
 import com.zipato.annotation.ViewType;
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.R.drawable;
 import com.zipato.appv2.ui.fragments.controller.ViewController;
 import com.zipato.appv2.ui.fragments.vcmenu.BaseTypesFragment;
@@ -30,13 +31,12 @@ import java.util.UUID;
 
 import javax.inject.Inject;
 
-import butterknife.InjectView;
-import io.vov.vitamio.utils.Log;
+import butterfork.Bind;
 
 /**
  * Created by murielK on 8/26/2015.
  */
-@ViewType(R.layout.view_controller_weather_station)
+@ViewType("view_controller_weather_station")
 public class VCWeather extends ViewController {
 
     private static final String TAG = TagFactoryUtils.getTag(VCWeather.class);
@@ -48,53 +48,53 @@ public class VCWeather extends ViewController {
     private final DateFormat formatter;
 
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.textViewCity)
+    @Bind(B.id.textViewCity)
     TextView city;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.textViewCountry)
+    @Bind(B.id.textViewCountry)
     TextView country;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.textViewTime)
+    @Bind(B.id.textViewTime)
     TextView timeTextView;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.textViewDate)
+    @Bind(B.id.textViewDate)
     TextView dateTexTView;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.textViewHumi)
+    @Bind(B.id.textViewHumi)
     TextView humidity;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.textViewRain)
+    @Bind(B.id.textViewRain)
     TextView precipitation;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.textViewWind1)
+    @Bind(B.id.textViewWind1)
     TextView wind1;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.textViewWind2)
+    @Bind(B.id.textViewWind2)
     TextView wind2;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.textViewUV)
+    @Bind(B.id.textViewUV)
     TextView textUv;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.textViewSunRise)
+    @Bind(B.id.textViewSunRise)
     TextView sunRise1;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.textViewSunRise2)
+    @Bind(B.id.textViewSunRise2)
     TextView sunRise2;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.textViewSunSet1)
+    @Bind(B.id.textViewSunSet1)
     TextView sunSet1;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.textViewSunSet2)
+    @Bind(B.id.textViewSunSet2)
     TextView sunSet2;
-    @InjectView(R.id.imageViewMeteoMini)
+    @Bind(B.id.imageViewMeteoMini)
     ImageView imgMeteoMini;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.textViewMetoMini)
+    @Bind(B.id.textViewMetoMini)
     TextView meteoMini;
-    @InjectView(R.id.imageViewMetoe)
+    @Bind(B.id.imageViewMetoe)
     ImageView meteo;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.textViewTemperature)
+    @Bind(B.id.textViewTemperature)
     TextView currentTemperature;
 
     @Inject

@@ -26,6 +26,7 @@ import android.widget.TimePicker;
 
 import com.zipato.annotation.SetTypeFace;
 import com.zipato.annotation.ViewType;
+import com.zipato.appv2.B;
 import com.zipato.appv2.R;
 import com.zipato.appv2.R.color;
 import com.zipato.appv2.R.id;
@@ -62,16 +63,16 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.InjectView;
-import butterknife.OnItemSelected;
-import butterknife.OnTouch;
+import butterfork.Bind;
+import butterfork.OnItemSelected;
+import butterfork.OnTouch;
 
 import static com.zipato.util.Utils.capitalizer;
 
 /**
  * Created by murielK on 8/27/2015.
  */
-@ViewType(R.layout.view_controller_thermostat)
+@ViewType("view_controller_thermostat")
 public class VCThermostat extends AbsHeader implements ViewControllerLogic, OnClickListener, OnLongClickListener, OnTouchListener, LongPressController {
 
     private static final String TAG = TagFactoryUtils.getTag(VCThermostat.class);
@@ -88,14 +89,14 @@ public class VCThermostat extends AbsHeader implements ViewControllerLogic, OnCl
     private final List<ThermostatOperation> thermostatOperations = new ArrayList<>();
     private final LongPressHelper longPressHelper;
     private final Queuer queuer;
-    @InjectView(id.spinnerMode)
+    @Bind(B.id.spinnerMode)
     protected Spinner spinnerMode;
-    @InjectView(id.spinnerOperation)
+    @Bind(B.id.spinnerOperation)
     protected Spinner spinnerOperation;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.textViewCurrentValue)
+    @Bind(B.id.textViewCurrentValue)
     TextView textCurrentValue;
-    @InjectView(id.tcSingle)
+    @Bind(B.id.tcSingle)
     LinearLayout layoutSingle;
     @SetTypeFace("helveticaneue_ultra_light.otf")
     TextView textValueSingle;
@@ -105,7 +106,7 @@ public class VCThermostat extends AbsHeader implements ViewControllerLogic, OnCl
     TextView textPlusSingle;
     @SetTypeFace("helveticaneue_ultra_light.otf")
     TextView textMinusSingle;
-    @InjectView(id.tcDual)
+    @Bind(B.id.tcDual)
     LinearLayout layoutDual;
     @SetTypeFace("helveticaneue_ultra_light.otf")
     TextView textValueHeating;
@@ -144,7 +145,9 @@ public class VCThermostat extends AbsHeader implements ViewControllerLogic, OnCl
     }
 
     public static double round(double value, int places) {
-        if (places < 0) throw new IllegalArgumentException();
+        if (places < 0) {
+            throw new IllegalArgumentException();
+        }
 
         BigDecimal bd = new BigDecimal(value);
         bd = bd.setScale(places, RoundingMode.HALF_UP);
@@ -152,10 +155,12 @@ public class VCThermostat extends AbsHeader implements ViewControllerLogic, OnCl
     }
 
     protected static Operation getOperation(final Thermostat thermostat, final EnumOperation enumOperation) {
-        if (thermostat == null)
+        if (thermostat == null) {
             return null;
-        if ((thermostat.getOperations() == null) || (thermostat.getOperations().length == 0))
+        }
+        if ((thermostat.getOperations() == null) || (thermostat.getOperations().length == 0)) {
             return null;
+        }
         final int index;
         try {
             index = resolveIndex(thermostat.getOperationIntMap(), enumOperation);
@@ -166,8 +171,9 @@ public class VCThermostat extends AbsHeader implements ViewControllerLogic, OnCl
     }
 
     private static <E extends Enum> int resolveIndex(final HashMap<E, Integer> map, final E enm) {
-        if (map.get(enm) != null)
+        if (map.get(enm) != null) {
             return map.get(enm);
+        }
         throw new NullPointerException("No index found");
     }
 
@@ -271,12 +277,14 @@ public class VCThermostat extends AbsHeader implements ViewControllerLogic, OnCl
         switch (thermostatOperation) {
             case OFF:
                 try {
-                    sendAttributeValue(heatingOperation.getAttributes()[heatingOperation.getAttributeIntMap().get(BaseTypesFragment.DISABLE)].getUuid(), "true");
+                    sendAttributeValue(heatingOperation.getAttributes()[heatingOperation.getAttributeIntMap().get(BaseTypesFragment.DISABLE)].getUuid(),
+                                       "true");
                 } catch (Exception e) {
                     Log.d(TAG, "", e);
                 }
                 try {
-                    sendAttributeValue(coolingOperation.getAttributes()[coolingOperation.getAttributeIntMap().get(BaseTypesFragment.DISABLE)].getUuid(), "true");
+                    sendAttributeValue(coolingOperation.getAttributes()[coolingOperation.getAttributeIntMap().get(BaseTypesFragment.DISABLE)].getUuid(),
+                                       "true");
                 } catch (Exception e) {
                     Log.d(TAG, "", e);
                 }
@@ -285,8 +293,10 @@ public class VCThermostat extends AbsHeader implements ViewControllerLogic, OnCl
                 heatOpDisable = false;
                 coolOpDisable = false;
                 try {
-                    sendAttributeValue(heatingOperation.getAttributes()[heatingOperation.getAttributeIntMap().get(BaseTypesFragment.DISABLE)].getUuid(), "false");
-                    sendAttributeValue(coolingOperation.getAttributes()[coolingOperation.getAttributeIntMap().get(BaseTypesFragment.DISABLE)].getUuid(), "false");
+                    sendAttributeValue(heatingOperation.getAttributes()[heatingOperation.getAttributeIntMap().get(BaseTypesFragment.DISABLE)].getUuid(),
+                                       "false");
+                    sendAttributeValue(coolingOperation.getAttributes()[coolingOperation.getAttributeIntMap().get(BaseTypesFragment.DISABLE)].getUuid(),
+                                       "false");
                 } catch (Exception e) {
                     Log.d(TAG, "", e);
                 }
@@ -295,8 +305,10 @@ public class VCThermostat extends AbsHeader implements ViewControllerLogic, OnCl
                 heatOpDisable = true;
                 coolOpDisable = false;
                 try {
-                    sendAttributeValue(coolingOperation.getAttributes()[coolingOperation.getAttributeIntMap().get(BaseTypesFragment.DISABLE)].getUuid(), "false");
-                    sendAttributeValue(heatingOperation.getAttributes()[heatingOperation.getAttributeIntMap().get(BaseTypesFragment.DISABLE)].getUuid(), "true");
+                    sendAttributeValue(coolingOperation.getAttributes()[coolingOperation.getAttributeIntMap().get(BaseTypesFragment.DISABLE)].getUuid(),
+                                       "false");
+                    sendAttributeValue(heatingOperation.getAttributes()[heatingOperation.getAttributeIntMap().get(BaseTypesFragment.DISABLE)].getUuid(),
+                                       "true");
                 } catch (Exception e) {
                     Log.d(TAG, "", e);
                 }
@@ -305,8 +317,10 @@ public class VCThermostat extends AbsHeader implements ViewControllerLogic, OnCl
                 heatOpDisable = false;
                 coolOpDisable = true;
                 try {
-                    sendAttributeValue(heatingOperation.getAttributes()[heatingOperation.getAttributeIntMap().get(BaseTypesFragment.DISABLE)].getUuid(), "false");
-                    sendAttributeValue(coolingOperation.getAttributes()[coolingOperation.getAttributeIntMap().get(BaseTypesFragment.DISABLE)].getUuid(), "true");
+                    sendAttributeValue(heatingOperation.getAttributes()[heatingOperation.getAttributeIntMap().get(BaseTypesFragment.DISABLE)].getUuid(),
+                                       "false");
+                    sendAttributeValue(coolingOperation.getAttributes()[coolingOperation.getAttributeIntMap().get(BaseTypesFragment.DISABLE)].getUuid(),
+                                       "true");
                 } catch (Exception e) {
                     Log.d(TAG, "", e);
                 }
@@ -319,8 +333,9 @@ public class VCThermostat extends AbsHeader implements ViewControllerLogic, OnCl
     @Override
     public void longPressUpdate(final double current, final int viewID) {
         final Handler handler = getHandler();
-        if (handler == null)
+        if (handler == null) {
             return;
+        }
         handler.post(new Runnable() {
             @Override
             public void run() {
@@ -340,14 +355,16 @@ public class VCThermostat extends AbsHeader implements ViewControllerLogic, OnCl
         final Operation heatingOperation = getOperation(getThermostat(), EnumOperation.HEATING);
         DataObject dataCooling = null;
         try {
-            dataCooling = new DataObject(heatingOperation.getAttributes()[heatingOperation.getAttributeIntMap().get(BaseTypesFragment.TARGET)].getUuid(), String.valueOf(heating));
+            dataCooling = new DataObject(heatingOperation.getAttributes()[heatingOperation.getAttributeIntMap().get(BaseTypesFragment.TARGET)].getUuid(),
+                                         String.valueOf(heating));
         } catch (Exception e) {
             Log.d(TAG, "", e);
         }
 
         DataObject dataHeating = null;
         try {
-            dataHeating = new DataObject(coolingOperation.getAttributes()[coolingOperation.getAttributeIntMap().get(BaseTypesFragment.TARGET)].getUuid(), String.valueOf(cooling));
+            dataHeating = new DataObject(coolingOperation.getAttributes()[coolingOperation.getAttributeIntMap().get(BaseTypesFragment.TARGET)].getUuid(),
+                                         String.valueOf(cooling));
         } catch (Exception e) {
             Log.d(TAG, "", e);
         }
@@ -358,46 +375,51 @@ public class VCThermostat extends AbsHeader implements ViewControllerLogic, OnCl
     private void updateLocalTargetValues(double value) {
         final double marginLefRight = marginCool + marginHeat;
 
-        switch (currentInteractingControlID) {
-            case id.tcDualHeating:
+        if (currentInteractingControlID == id.tcDualHeating) {
+            heating = value;
+            if ((heating + marginLefRight) > (cooling)) {
+                cooling = heating + marginLefRight;
+            }
+
+        } else if (currentInteractingControlID == id.tcDualCooling) {
+            cooling = value;
+            if ((cooling - marginLefRight) < (heating)) {
+                heating = cooling - marginLefRight;
+            }
+
+        } else if (currentInteractingControlID == id.tcSingle) {
+            if (thermostatOperations.contains(ThermostatOperation.HEATING)) {
                 heating = value;
-                if ((heating + marginLefRight) > (cooling))
-                    cooling = heating + marginLefRight;
-                break;
-            case id.tcDualCooling:
+            } else {
                 cooling = value;
-                if ((cooling - marginLefRight) < (heating))
-                    heating = cooling - marginLefRight;
-                break;
-            case id.tcSingle:
-                if (thermostatOperations.contains(ThermostatOperation.HEATING))
-                    heating = value;
-                else cooling = value;
-                break;
+            }
+
         }
 
-        if (heating < (double) MIN_THERMO_VALUE)
+        if (heating < (double) MIN_THERMO_VALUE) {
             heating = (double) MIN_THERMO_VALUE;
-        if (heating > ((double) MAX_THERMO_VALUE - (marginLefRight)))
+        }
+        if (heating > ((double) MAX_THERMO_VALUE - (marginLefRight))) {
             heating = (double) MAX_THERMO_VALUE - (marginLefRight);
-        if (cooling > (double) MAX_THERMO_VALUE)
+        }
+        if (cooling > (double) MAX_THERMO_VALUE) {
             cooling = (double) MAX_THERMO_VALUE;
-        if (cooling < (MIN_THERMO_VALUE + (marginLefRight)))
+        }
+        if (cooling < (MIN_THERMO_VALUE + (marginLefRight))) {
             cooling = (double) MIN_THERMO_VALUE + (marginLefRight);
+        }
         heating = round(heating, 1);
         cooling = round(cooling, 1);
-
 
     }
 
     private void onClickPlusMinisControl(int id, double value) {
-        switch (id) {
-            case R.id.buttonMinus:
-                value -= DEFAULT_STEP;
-                break;
-            case R.id.buttonPlus:
-                value += DEFAULT_STEP;
-                break;
+        if (id == R.id.buttonMinus) {
+            value -= DEFAULT_STEP;
+
+        } else if (id == R.id.buttonPlus) {
+            value += DEFAULT_STEP;
+
         }
 
         updateLocalTargetValues(value);
@@ -406,28 +428,25 @@ public class VCThermostat extends AbsHeader implements ViewControllerLogic, OnCl
     }
 
     private void onLongClickPlusMinisControl(int id, double value) {
-        switch (id) {
-            case R.id.buttonMinus:
-                longPressHelper.start(value, true, id);
-                break;
-            case R.id.buttonPlus:
-                longPressHelper.start(value, false, id);
-                break;
+        if (id == R.id.buttonMinus) {
+            longPressHelper.start(value, true, id);
+
+        } else if (id == R.id.buttonPlus) {
+            longPressHelper.start(value, false, id);
+
         }
     }
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         final int id = v.getId();
-        switch (id) {
-            case R.id.buttonPlus:
-            case R.id.buttonMinus:
-                if ((event.getAction() == MotionEvent.ACTION_CANCEL) || ((event.getAction() == MotionEvent.ACTION_UP))) {
-                    longPressHelper.cancel();
-                    enableRecyclerScrolling();
-                    resetAdapterUpdate(ViewController.DEFAULT_RESET_DELAY);
-                }
-                break;
+        if (id == R.id.buttonPlus || id == R.id.buttonMinus) {
+            if ((event.getAction() == MotionEvent.ACTION_CANCEL) || ((event.getAction() == MotionEvent.ACTION_UP))) {
+                longPressHelper.cancel();
+                enableRecyclerScrolling();
+                resetAdapterUpdate(ViewController.DEFAULT_RESET_DELAY);
+            }
+
         }
         return false;
     }
@@ -441,18 +460,19 @@ public class VCThermostat extends AbsHeader implements ViewControllerLogic, OnCl
 
         final int childID = v.getId();
 
-        switch (currentInteractingControlID) {
-            case id.tcDualHeating:
-                onLongClickPlusMinisControl(childID, heating);
-                break;
-            case id.tcDualCooling:
+        if (currentInteractingControlID == id.tcDualHeating) {
+            onLongClickPlusMinisControl(childID, heating);
+
+        } else if (currentInteractingControlID == id.tcDualCooling) {
+            onLongClickPlusMinisControl(childID, cooling);
+
+        } else if (currentInteractingControlID == id.tcSingle) {
+            if (thermostatOperations.contains(ThermostatOperation.COOLING)) {
                 onLongClickPlusMinisControl(childID, cooling);
-                break;
-            case id.tcSingle:
-                if (thermostatOperations.contains(ThermostatOperation.COOLING))
-                    onLongClickPlusMinisControl(childID, cooling);
-                else onLongClickPlusMinisControl(childID, heating);
-                break;
+            } else {
+                onLongClickPlusMinisControl(childID, heating);
+            }
+
         }
 
         return true;
@@ -466,43 +486,45 @@ public class VCThermostat extends AbsHeader implements ViewControllerLogic, OnCl
 
         final int childID = v.getId();
 
-        switch (currentInteractingControlID) {
-            case id.tcDualHeating:
+        if (currentInteractingControlID == id.tcDualHeating) {
+            onClickPlusMinisControl(childID, heating);
+
+        } else if (currentInteractingControlID == id.tcDualCooling) {
+            onClickPlusMinisControl(childID, cooling);
+
+        } else if (currentInteractingControlID == id.tcSingle) {
+            if (thermostatOperations.contains(ThermostatOperation.HEATING)) {
                 onClickPlusMinisControl(childID, heating);
-                break;
-            case id.tcDualCooling:
+            } else {
                 onClickPlusMinisControl(childID, cooling);
-                break;
-            case id.tcSingle:
-                if (thermostatOperations.contains(ThermostatOperation.HEATING))
-                    onClickPlusMinisControl(childID, heating);
-                else onClickPlusMinisControl(childID, cooling);
-                break;
+            }
+
         }
     }
 
-
-    @OnItemSelected(id.spinnerMode)
+    @OnItemSelected(B.id.spinnerMode)
     public void onSpinnerModeItemSelected(int position) {
         handleSpinnerModeSelect(position);
     }
 
-    @OnItemSelected(id.spinnerOperation)
+    @OnItemSelected(B.id.spinnerOperation)
     public void onSpinnerOperationItemSelected(int position) {
         handleSpinnerOpClick(position);
     }
 
-    @OnTouch(id.spinnerMode)
+    @OnTouch(B.id.spinnerMode)
     public boolean onSpinnerModeTouch(View v, MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_UP)
+        if (event.getAction() == MotionEvent.ACTION_UP) {
             defaultBlockResetUpdate();
+        }
         return false;
     }
 
-    @OnTouch(id.spinnerOperation)
+    @OnTouch(B.id.spinnerOperation)
     public boolean onSpinneOperationTouch(View v, MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_UP)
+        if (event.getAction() == MotionEvent.ACTION_UP) {
             defaultBlockResetUpdate();
+        }
         return false;
     }
 
@@ -535,8 +557,9 @@ public class VCThermostat extends AbsHeader implements ViewControllerLogic, OnCl
         local.set(logicQueueID);
         boolean success = false;
         try {
-            if (thermostatRepository.isEmpty())
+            if (thermostatRepository.isEmpty()) {
                 thermostatRepository.fetchAll();
+            }
             success = true;
         } catch (Exception e) {
             Log.e(TAG, "", e);
@@ -544,16 +567,18 @@ public class VCThermostat extends AbsHeader implements ViewControllerLogic, OnCl
             final int viewType = layout.view_controller_thermostat;
             if ((genericAdapter != null) && success) {
                 genericAdapter.logicExecuted(viewType, true, local.get());
-            } else if (genericAdapter != null)
+            } else if (genericAdapter != null) {
                 genericAdapter.logicFailExecution(viewType, local.get());
+            }
 
         }
     }
 
     private void sendMode(final int attrID, final String value) {
         final Operation masterOperation = getOperation(getThermostat(), EnumOperation.MASTER);
-        if (masterOperation == null)
+        if (masterOperation == null) {
             return;
+        }
         Attribute attr = masterOperation.getAttributes()[masterOperation.getAttributeIntMap().get(attrID)];
         if (attr.getAttributeId() == attrID) {
             sendAttributeValue(attr.getUuid(), value);
@@ -584,11 +609,13 @@ public class VCThermostat extends AbsHeader implements ViewControllerLogic, OnCl
         //TODO verify value base on margins
         switch (controllerViewType) {
             case THERMOSTAT_VIEW_TYPE_SINGLE:
-                if (thermostatOperations.contains(ThermostatOperation.HEATING))
+                if (thermostatOperations.contains(ThermostatOperation.HEATING)) {
                     textValueSingle.setText(heating + BaseTypesFragment.DEGREE);
-                else if (thermostatOperations.contains(ThermostatOperation.COOLING))
+                } else if (thermostatOperations.contains(ThermostatOperation.COOLING)) {
                     textValueSingle.setText(cooling + BaseTypesFragment.DEGREE);
-                else textValueSingle.setText("- -");
+                } else {
+                    textValueSingle.setText("- -");
+                }
                 break;
             case THERMOSTAT_VIEW_TYPE_DUAL:
                 textValueHeating.setText(heating + BaseTypesFragment.DEGREE);
@@ -616,20 +643,21 @@ public class VCThermostat extends AbsHeader implements ViewControllerLogic, OnCl
 
     private String getMode(int mode) {
         final Operation masterOperation = getOperation(getThermostat(), EnumOperation.MASTER);
-        if (masterOperation == null)
+        if (masterOperation == null) {
             return "";
+        }
 
         final Attribute attribute = masterOperation.getAttributes()[masterOperation.getAttributeIntMap().get(mode)];
         return getValueForAttr(attribute.getUuid());
     }
 
-
     private void applyControllerMode() {
         final String mode = getMode(BaseTypesFragment.MODE);
         final int index = modeAdapter.getSelectedItemPosition(mode);
 
-        if (index >= 0)
+        if (index >= 0) {
             setSelectionWithoutCallBack(spinnerMode, index);
+        }
 
         modeAdapter.notifyDataSetChanged();
     }
@@ -687,18 +715,19 @@ public class VCThermostat extends AbsHeader implements ViewControllerLogic, OnCl
                     layoutSingle.setVisibility(View.VISIBLE);
                 }
 
-                if (thermostatOperations.contains(ThermostatOperation.COOLING))
+                if (thermostatOperations.contains(ThermostatOperation.COOLING)) {
                     textStatusSingle.setText(capitalizer(languageManager.translate("cooling_at")));
-                else if (thermostatOperations.contains(ThermostatOperation.HEATING))
+                } else if (thermostatOperations.contains(ThermostatOperation.HEATING)) {
                     textStatusSingle.setText(capitalizer(languageManager.translate("heating_at")));
-                else {
+                } else {
                     textStatusSingle.setText(capitalizer(languageManager.translate("- -")));
                     textValueSingle.setText("- -");
                 }
                 break;
             case THERMOSTAT_VIEW_TYPE_DUAL:
-                if (View.VISIBLE == layoutDual.getVisibility())
+                if (View.VISIBLE == layoutDual.getVisibility()) {
                     return;
+                }
 
                 layoutDual.setVisibility(View.VISIBLE);
                 layoutSingle.setVisibility(View.GONE);
@@ -720,8 +749,9 @@ public class VCThermostat extends AbsHeader implements ViewControllerLogic, OnCl
             heatingOperation = getOperation(thermostat, EnumOperation.HEATING);
         } catch (Exception e) {
             Log.d(TAG, "", e);
-            if (coolingOperation == null)
+            if (coolingOperation == null) {
                 return;
+            }
         }
 
         boolean tempNotSet = true;
@@ -734,8 +764,9 @@ public class VCThermostat extends AbsHeader implements ViewControllerLogic, OnCl
             Log.d(TAG, "", e);
         } finally {
             try {
-                if (tempNotSet)
+                if (tempNotSet) {
                     updateCurrentTemperature(getActualValueFor(coolingOperation));
+                }
             } catch (Exception e) {
                 Log.d(TAG, "", e);
             }
@@ -783,10 +814,11 @@ public class VCThermostat extends AbsHeader implements ViewControllerLogic, OnCl
                 textPlusSingle.setEnabled(false);
 
                 if (!coolOpDisable || !heatOpDisable) {
-                    if (!coolOpDisable)
+                    if (!coolOpDisable) {
                         textValueSingle.setTextColor(context.getResources().getColor(color.color_view_controller_thermo_cooling));
-                    else
+                    } else {
                         textValueSingle.setTextColor(context.getResources().getColor(color.color_view_controller_thermo_heating));
+                    }
                     textPlusSingle.setTextColor(context.getResources().getColor(color.color_white));
                     textMinusSingle.setTextColor(context.getResources().getColor(color.color_white));
                     textStatusSingle.setTextColor(context.getResources().getColor(color.color_white));
@@ -831,28 +863,33 @@ public class VCThermostat extends AbsHeader implements ViewControllerLogic, OnCl
                 break;
         }
 
-        if (fromUser)
+        if (fromUser) {
             return;
+        }
 
         if (heatOpDisable && coolOpDisable) {
             setSelectionWithoutCallBack(spinnerOperation, 0);
         } else if (heatOpDisable) {
             final int index = operationAdapter.getSelectedItemPosition(ThermostatOperation.COOLING.name());
-            if (index >= 0)
+            if (index >= 0) {
                 setSelectionWithoutCallBack(spinnerOperation, index);
+            }
         } else if (coolOpDisable) {
             final int index = operationAdapter.getSelectedItemPosition(ThermostatOperation.HEATING.name());
-            if (index >= 0)
+            if (index >= 0) {
                 setSelectionWithoutCallBack(spinnerOperation, index);
+            }
         } else {
             final int index = operationAdapter.getSelectedItemPosition(ThermostatOperation.AUTO.name());
-            if (index >= 0)
+            if (index >= 0) {
                 setSelectionWithoutCallBack(spinnerOperation, index);
+            }
         }
     }
 
     private void updateCurrentTemperature(double temperature) {
-        final String currentTemp = languageManager.translate("t_currently_value").replace("{temp_value}", String.valueOf(temperature + BaseTypesFragment.DEGREE));
+        final String currentTemp = languageManager.translate("t_currently_value").replace("{temp_value}",
+                                                                                          String.valueOf(temperature + BaseTypesFragment.DEGREE));
         textCurrentValue.setText(currentTemp);
     }
 
@@ -873,7 +910,6 @@ public class VCThermostat extends AbsHeader implements ViewControllerLogic, OnCl
     public enum ThermostatOperation {
         HEATING, COOLING, AUTO, OFF
     }
-
 
     protected enum ThermostatMode {
         PROGRAM, HOLD_PERIOD, HOLD_PERMANENT, HOLD_UNTIL

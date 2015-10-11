@@ -15,7 +15,7 @@ import com.zipato.model.typereport.TypeReportItem;
 /**
  * Created by murielK on 8/20/2015.
  */
-@ViewType(layout.view_controller_ir)
+@ViewType("view_controller_ir")
 public class VCRemotec extends AbsIR {
 
     public VCRemotec(View itemView, RecyclerView recyclerView) {

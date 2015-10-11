@@ -9,13 +9,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.zipato.annotation.ViewType;
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.model.typereport.TypeReportItem;
 
 /**
  * Created by murielK on 10/1/2015.
  */
-@ViewType(R.layout.view_controller_rgb_zigbee)
+@ViewType("view_controller_rgb_zigbee")
 public class VCOsRamRGB extends VCOsRamRGBW {
 
     public VCOsRamRGB(View itemView, RecyclerView recyclerView) {

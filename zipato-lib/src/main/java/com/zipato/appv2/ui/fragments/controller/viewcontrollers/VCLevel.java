@@ -18,7 +18,7 @@ import com.zipato.model.typereport.TypeReportItem;
  * Created by murielK on 7/17/2015.
  */
 
-@ViewType(layout.view_controller_level)
+@ViewType("view_controller_level")
 public class VCLevel extends AbsLevelWithOnOff {
 
 

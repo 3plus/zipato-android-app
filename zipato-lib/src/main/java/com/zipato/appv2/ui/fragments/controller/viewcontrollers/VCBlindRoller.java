@@ -17,7 +17,7 @@ import com.zipato.model.typereport.TypeReportItem;
 /**
  * Created by murielK on 8/24/2015.
  */
-@ViewType(layout.view_controller_level_no_onoff)
+@ViewType("view_controller_level_no_onoff")
 public class VCBlindRoller extends AbsLevel {
 
     public VCBlindRoller(View itemView, RecyclerView recyclerView) {

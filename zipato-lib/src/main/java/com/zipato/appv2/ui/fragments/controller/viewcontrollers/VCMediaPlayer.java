@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.zipato.annotation.SetTypeFace;
 import com.zipato.annotation.ViewType;
+import com.zipato.appv2.B;
 import com.zipato.appv2.R;
 import com.zipato.appv2.ui.fragments.adapters.controllers.GenericAdapter;
 import com.zipato.appv2.ui.fragments.controller.ViewControllerLogic;
@@ -31,13 +32,13 @@ import java.util.concurrent.ExecutorService;
 
 import javax.inject.Inject;
 
-import butterknife.InjectView;
-import butterknife.OnClick;
+import butterfork.Bind;
+import butterfork.OnClick;
 
 /**
  * Created by murielK on 8/21/2015.
  */
-@ViewType(R.layout.view_controller_media)
+@ViewType("view_controller_media")
 public class VCMediaPlayer extends AbsLevel implements ViewControllerLogic {
 
     private static final String VC_CACHE_ENTRY_ACTIONS = "VC_CACHE_ENTRY_ACTIONS";
@@ -45,29 +46,28 @@ public class VCMediaPlayer extends AbsLevel implements ViewControllerLogic {
     private final ArrayMap<String, TextView> actionViewMap = new ArrayMap<>();
 
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.buttonPlay)
+    @Bind(B.id.buttonPlay)
     TextView butPlay;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.buttonPause)
+    @Bind(B.id.buttonPause)
     TextView butPause;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.buttonStop)
+    @Bind(B.id.buttonStop)
     TextView butStop;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.buttonBack)
+    @Bind(B.id.buttonBack)
     TextView butBack;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.buttonNext)
+    @Bind(B.id.buttonNext)
     TextView butNext;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.buttonMute)
+    @Bind(B.id.buttonMute)
     TextView butMute;
 
     @Inject
     ExecutorService executor;
     @Inject
     ApiV2RestTemplate restTemplate;
-
 
     private int logicQueueID;
 
@@ -104,8 +104,9 @@ public class VCMediaPlayer extends AbsLevel implements ViewControllerLogic {
         disableAllButtons();
         try {
             final Action[] actions = (Action[]) getValueFromVCCache(item.getKey(), VC_CACHE_ENTRY_ACTIONS);
-            if ((actions == null) || (actions.length == 0))
+            if ((actions == null) || (actions.length == 0)) {
                 return;
+            }
             for (Action a : actions) {
                 actionViewMap.get(a.getName().name()).setEnabled(true);
             }
@@ -114,36 +115,35 @@ public class VCMediaPlayer extends AbsLevel implements ViewControllerLogic {
         }
     }
 
-    @OnClick(R.id.buttonPlay)
+    @OnClick(B.id.buttonPlay)
     public void onClickPlay(View v) {
         handleOnClickEvent(Actions.play);
     }
 
-    @OnClick(R.id.buttonPause)
+    @OnClick(B.id.buttonPause)
     public void onClickPause(View v) {
         handleOnClickEvent(Actions.pause);
     }
 
-    @OnClick(R.id.buttonStop)
+    @OnClick(B.id.buttonStop)
     public void onClickStop(View v) {
         handleOnClickEvent(Actions.stop);
     }
 
-    @OnClick(R.id.buttonBack)
+    @OnClick(B.id.buttonBack)
     public void onClickBack(View v) {
         handleOnClickEvent(Actions.prev);
     }
 
-    @OnClick(R.id.buttonNext)
+    @OnClick(B.id.buttonNext)
     public void onClickNext(View v) {
         handleOnClickEvent(Actions.next);
     }
 
-    @OnClick(R.id.buttonMute)
+    @OnClick(B.id.buttonMute)
     public void onClickMute(View v) {
         handleOnClickEvent(Actions.mute);
     }
-
 
     private void handleOnClickEvent(final Actions action) {
         final TypeReportItem item = getTypeReportItem();
@@ -152,7 +152,8 @@ public class VCMediaPlayer extends AbsLevel implements ViewControllerLogic {
             public void run() {
                 try {
                     Log.d(TAG, "Sending action: " + action.name() + " for player: " + item.getName());
-                    RestObject restObject = restTemplate.postForObject("v2/clusterEndpoints/{uuid}/actions/{action}", new HashMap<>(), RestObject.class, item.getUuid(), action.name());
+                    RestObject restObject = restTemplate.postForObject("v2/clusterEndpoints/{uuid}/actions/{action}", new HashMap<>(), RestObject.class,
+                                                                       item.getUuid(), action.name());
                     Log.d(TAG, String.format("Sending action successful? %s", (restObject != null) && restObject.isSuccess()));
                 } catch (Exception e) {
                     Log.d(TAG, "", e);
@@ -203,7 +204,8 @@ public class VCMediaPlayer extends AbsLevel implements ViewControllerLogic {
             for (int i = 0; i < itemCount; i++) {
                 final TypeReportItem item = genericAdapter.getTypeReportItem(i);
                 if ((item == null) || !"IP_MEDIA_PLAYER".equals(item.getTemplateId()) || isEntryInVCCache(item.getKey(), VC_CACHE_ENTRY_ACTIONS)) {
-                    Log.d(TAG, String.format("Skipping item: %s ... probably already loaded", (item == null) ? null : ((item.getName() == null) ? item.getUuid() : item.getName())));
+                    Log.d(TAG, String.format("Skipping item: %s ... probably already loaded",
+                                             (item == null) ? null : ((item.getName() == null) ? item.getUuid() : item.getName())));
                     continue;
                 }
                 Log.d(TAG, String.format("fetching actions for item: %s ...", (item.getName() == null) ? item.getUuid() : item.getName()));
@@ -216,9 +218,11 @@ public class VCMediaPlayer extends AbsLevel implements ViewControllerLogic {
         } finally {
             if (genericAdapter != null) {
                 final int viewTye = R.layout.view_controller_media;
-                if (isSuccess)
+                if (isSuccess) {
                     genericAdapter.logicExecuted(viewTye, true, localLogicID.get());
-                else genericAdapter.logicFailExecution(viewTye, localLogicID.get());
+                } else {
+                    genericAdapter.logicFailExecution(viewTye, localLogicID.get());
+                }
             }
         }
     }

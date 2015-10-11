@@ -28,7 +28,7 @@ import com.melnykov.fab.FloatingActionButton;
 import com.melnykov.fab.ObservableScrollView;
 import com.zipato.annotation.SetTypeFace;
 import com.zipato.annotation.Translated;
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.ui.fragments.adapters.BaseListAdapter;
 import com.zipato.helper.PreferenceHelper;
 import com.zipato.helper.PreferenceHelper.Preference;
@@ -64,8 +64,8 @@ import java.util.WeakHashMap;
 
 import javax.inject.Inject;
 
-import butterknife.InjectView;
-import butterknife.OnClick;
+import butterfork.Bind;
+import butterfork.OnClick;
 
 /**
  * Created by murielK on 7/29/2014.
@@ -77,40 +77,40 @@ public class ConfigFragment extends BaseTypesFragment {
 
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @Translated("room")
-    @InjectView(R.id.textViewRoom)
+    @Bind(B.id.textViewRoom)
     protected TextView textViewRoom;
 
-    @InjectView(R.id.spinnerRoom)
+    @Bind(B.id.spinnerRoom)
     protected Spinner spinnerRoom;
-    @InjectView(R.id.spinnerType)
+    @Bind(B.id.spinnerType)
     protected Spinner spinnerType;
 
     @SetTypeFace("helvetica_neue_light.otf")
-    @InjectView(R.id.editTextTypeName)
+    @Bind(B.id.editTextTypeName)
     protected EditText editTextTypeName;
     @SetTypeFace("helvetica_neue_light.otf")
-    @InjectView(R.id.editTextTypeDesc)
+    @Bind(B.id.editTextTypeDesc)
     protected EditText editTextTypeDesc;
 
-    @InjectView(R.id.switchHidden)
+    @Bind(B.id.switchHidden)
     protected Switch switchHidden;
-    @InjectView(R.id.switchMaster)
+    @Bind(B.id.switchMaster)
     protected Switch switchMaster;
-    @InjectView(R.id.switchShow)
+    @Bind(B.id.switchShow)
     protected Switch switchShow;
     @SetTypeFace("helvetica_neue_light.otf")
-    @InjectView(R.id.textViewDeviceValue)
+    @Bind(B.id.textViewDeviceValue)
     protected TextView textViewDeviceValue;
     @SetTypeFace("helvetica_neue_light.otf")
-    @InjectView(R.id.textViewEntityTypeVal)
+    @Bind(B.id.textViewEntityTypeVal)
     protected TextView textViewEntityTypeVal;
     @SetTypeFace("helvetica_neue_light.otf")
-    @InjectView(R.id.textViewUUIDValue)
+    @Bind(B.id.textViewUUIDValue)
     protected TextView textViewUUIDValue;
 
-    @InjectView(R.id.progressBar)
+    @Bind(B.id.progressBar)
     protected ProgressBar progressBar;
-    @InjectView(R.id.scrollView)
+    @Bind(B.id.scrollView)
     protected ObservableScrollView scrollView;
     protected boolean isStarted;
     @Inject
@@ -121,57 +121,57 @@ public class ConfigFragment extends BaseTypesFragment {
     protected ClusterEndpointRepository clusterEndpointRepository;
     @Inject
     PreferenceHelper preferenceHelper;
-    @InjectView(R.id.frameDevice)
+    @Bind(B.id.frameDevice)
     FrameLayout frameDevice;
-    @InjectView(R.id.frameRoom)
+    @Bind(B.id.frameRoom)
     FrameLayout frameRoom;
-    @InjectView(R.id.frameType)
+    @Bind(B.id.frameType)
     FrameLayout frameDType;
-    @InjectView(R.id.frameMaster)
+    @Bind(B.id.frameMaster)
     FrameLayout frameMaster;
-    @InjectView(R.id.frameDescription)
+    @Bind(B.id.frameDescription)
     FrameLayout frameDescription;
     @Inject
     ApiV2RestTemplate restTemplate;
     @SetTypeFace("helveticaneue_ultra_light.otf")
     //@Translated("save")
-    @InjectView(R.id.button2)
+    @Bind(B.id.button2)
     FloatingActionButton buttonSave;
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @Translated("type")
-    @InjectView(R.id.textViewType)
+    @Bind(B.id.textViewType)
     TextView textViewType;
     @Translated("name")
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.textViewTypeName)
+    @Bind(B.id.textViewTypeName)
     TextView textViewTypeName;
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @Translated("description")
-    @InjectView(R.id.textViewTypeDesc)
+    @Bind(B.id.textViewTypeDesc)
     TextView textViewTypeDesc;
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @Translated("hidden")
-    @InjectView(R.id.textViewHidden)
+    @Bind(B.id.textViewHidden)
     TextView textViewHidden;
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @Translated("show")
-    @InjectView(R.id.textViewShow)
+    @Bind(B.id.textViewShow)
     TextView textViewShow;
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @Translated("device")
-    @InjectView(R.id.textViewTypeDevName)
+    @Bind(B.id.textViewTypeDevName)
     TextView textViewTypeDevName;
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @Translated("entity_type")
-    @InjectView(R.id.textViewEntityType)
+    @Bind(B.id.textViewEntityType)
     TextView textViewEntityType;
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @Translated("uuid")
-    @InjectView(R.id.textViewUUID)
+    @Bind(B.id.textViewUUID)
     TextView textViewUUID;
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @Translated("master")
-    @InjectView(R.id.textViewMaster)
+    @Bind(B.id.textViewMaster)
     TextView textViewMaster;
     RoomListAdapter roomAdapter;
     // IconAdapter iconAdapter;
@@ -242,7 +242,7 @@ public class ConfigFragment extends BaseTypesFragment {
     }
 
 
-    @OnClick(R.id.button2)
+    @OnClick(B.id.button2)
     public void onSaveClick(View v) {
         onSave();
     }

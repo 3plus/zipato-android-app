@@ -41,7 +41,7 @@ import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu.OnClosedListener;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu.OnOpenedListener;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 import com.readystatesoftware.systembartint.SystemBarTintManager.SystemBarConfig;
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.R.anim;
 import com.zipato.appv2.R.bool;
 import com.zipato.appv2.R.color;
@@ -233,7 +233,11 @@ public abstract class BaseActivity extends AppCompatActivity implements OnShakeL
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
+        try {
+            super.onDestroy();
+        } catch (Exception e) {
+            Log.e(TAG, "onDestroy crashed",e);
+        }
         isDestroyed = true;
     }
 
@@ -320,12 +324,11 @@ public abstract class BaseActivity extends AppCompatActivity implements OnShakeL
         // as you specify a parent activity in AndroidManifest.xml.
 
         int id = item.getItemId();
-        switch (id) {
-            case R.id.menu_menu:
-                if (slidingMenu != null) {
-                    slidingMenu.toggle();
-                }
-                return true;
+        if (id == R.id.menu_menu) {
+            if (slidingMenu != null) {
+                slidingMenu.toggle();
+            }
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }

@@ -10,7 +10,7 @@ import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.support.v7.widget.RecyclerView.RecycledViewPool;
 
 import com.melnykov.fab.FloatingActionButton;
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.ui.fragments.BaseFragment;
 import com.zipato.appv2.ui.fragments.adapters.DividerItemDecoration;
 import com.zipato.appv2.ui.fragments.adapters.controllers.GenericAdapterImp;
@@ -25,7 +25,7 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import butterknife.InjectView;
+import butterfork.Bind;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -33,9 +33,9 @@ import de.greenrobot.event.EventBus;
  */
 public class TypesScenesFragment extends BaseFragment {
 
-    @InjectView(R.id.recyclerViewScenes)
+    @Bind(B.id.recyclerViewScenes)
     CustomRecyclerView recyclerView;
-    @InjectView(R.id.fbTypesscenes)
+    @Bind(B.id.fbTypesscenes)
 
     FloatingActionButton fab;
     @Inject

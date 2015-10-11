@@ -8,7 +8,7 @@ package com.zipato.appv2.ui.fragments.vcmenu;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.ui.fragments.BaseFragment;
 import com.zipato.helper.CheckLastUpdateHelper;
 import com.zipato.model.attribute.AttributeRepository;

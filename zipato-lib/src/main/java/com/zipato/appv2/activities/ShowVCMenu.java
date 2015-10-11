@@ -18,7 +18,8 @@ import android.widget.TextView;
 
 import com.zipato.annotation.SetTypeFace;
 import com.zipato.annotation.VCMenuID;
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.ui.fragments.BaseFragment;
 import com.zipato.appv2.ui.fragments.cameras.ArchiveFragment;
 import com.zipato.appv2.ui.fragments.security.SecurityEventFragment;
@@ -38,7 +39,7 @@ import java.io.Serializable;
 
 import javax.inject.Inject;
 
-import butterknife.InjectView;
+import butterfork.Bind;
 
 /**
  * Created by murielK on 9/28/2015.
@@ -59,13 +60,13 @@ public class ShowVCMenu extends AbsMenuActivity {
     @Inject
     TypeReportRepository typeReportRepository;
 
-    @InjectView(R.id.imageViewIC)
+    @Bind(B.id.imageViewIC)
     ImageView imageIC;
     @SetTypeFace("icomoon.ttf")
-    @InjectView(R.id.textViewKK)
+    @Bind(B.id.textViewKK)
     TextView textViewKK;
     @SetTypeFace("helvetica_neue_light.otf")
-    @InjectView(R.id.textViewDName)
+    @Bind(B.id.textViewDName)
     TextView textViewDNAme;
 
     public static void show(Context context, Parcelable parcelable, @VCMenuID int showID) {

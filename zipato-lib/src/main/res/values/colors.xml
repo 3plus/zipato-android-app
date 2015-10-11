@@ -5,6 +5,7 @@
   -->
 
 <resources>
+    <color name="transparent">#00000000</color>
     <color name="light_grey">#D3D3D3</color>
     <color name="soft_grey">#424242</color>
     <color name="soft_green">#aad019</color>

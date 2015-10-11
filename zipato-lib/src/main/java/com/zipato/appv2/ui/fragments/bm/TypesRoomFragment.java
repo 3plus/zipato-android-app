@@ -16,7 +16,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.melnykov.fab.FloatingActionButton;
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.R.id;
 import com.zipato.appv2.ui.fragments.BaseFragment;
 import com.zipato.appv2.ui.fragments.adapters.DividerItemDecoration;
@@ -33,8 +33,8 @@ import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import butterknife.InjectView;
-import butterknife.OnClick;
+import butterfork.Bind;
+import butterfork.OnClick;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -46,9 +46,9 @@ public class TypesRoomFragment extends BaseFragment {
     private static final long ADAPTER_REFRESH_DELAY_MILLIS = 400L;
     private static final long DELAY_TO_UPDATE_SINCE_LAST = 1000L;
 
-    @InjectView(id.recyclerView)
+    @Bind(B.id.recyclerView)
     CustomRecyclerView recyclerView;
-    @InjectView(id.fbTypesRoom)
+    @Bind(B.id.fbTypesRoom)
     FloatingActionButton fab;
     @Inject
     EventBus eventBus;
@@ -84,7 +84,7 @@ public class TypesRoomFragment extends BaseFragment {
 
     private boolean wasPaused;
 
-    @OnClick(id.fbTypesRoom)
+    @OnClick(B.id.fbTypesRoom)
     public void onClick(View v) {
         eventBus.post(new Event(new ObjectItemsClick(ObjectItemsClick.FAVORITE_BUTTON), Event.EVENT_TYPE_ITEM_CLICK));
     }

@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.customview.mjpegview.MjpegView;
 import com.zipato.customview.mjpegview.MjpegViewListener;
 

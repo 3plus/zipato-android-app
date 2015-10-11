@@ -18,7 +18,8 @@ import com.andreabaccega.widget.FormEditText;
 import com.zipato.annotation.SetTypeFace;
 import com.zipato.annotation.Translated;
 import com.zipato.annotation.TranslatedHint;
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.R.anim;
 import com.zipato.appv2.R.bool;
 import com.zipato.appv2.R.id;
@@ -30,60 +31,60 @@ import com.zipato.util.Utils;
 
 import javax.inject.Inject;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-import butterknife.OnClick;
-import butterknife.OnFocusChange;
+import butterfork.ButterFork;
+import butterfork.Bind;
+import butterfork.OnClick;
+import butterfork.OnFocusChange;
 
 public class RegisterActivity extends BaseActivity {
 
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @TranslatedHint("first_name")
-    @InjectView(id.editTextFirstName)
+    @Bind(B.id.editTextFirstName)
     FormEditText firstNameEditText;
 
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @TranslatedHint("last_name")
-    @InjectView(id.editTextLastName)
+    @Bind(B.id.editTextLastName)
     FormEditText lastNameEditText;
 
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @TranslatedHint("email_address")
-    @InjectView(id.editTextEmail)
+    @Bind(B.id.editTextEmail)
     FormEditText emailEditText;
 
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @TranslatedHint("LoginScreenPasswordLabel")
-    @InjectView(id.editTextPassword)
+    @Bind(B.id.editTextPassword)
     FormEditText passwordEditText;
 
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.buttonRegister)
+    @Bind(B.id.buttonRegister)
     Button registerButton;
 
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @Translated("reg_success_text1")
-    @InjectView(id.textViewRegSuccessText1)
+    @Bind(B.id.textViewRegSuccessText1)
     TextView textViewRegSuccessTest1;
 
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @Translated("thank_you")
-    @InjectView(id.textViewRegSuccessThank)
+    @Bind(B.id.textViewRegSuccessThank)
     TextView textViewRegThank;
 
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @Translated("reg_success_text2")
-    @InjectView(id.textViewRegSuccessText2)
+    @Bind(B.id.textViewRegSuccessText2)
     TextView textViewRegSuccessTest2;
 
-    @InjectView(id.reg_success_layout)
+    @Bind(B.id.reg_success_layout)
     LinearLayout regSuccessLayout;
 
-    @InjectView(id.register_layout)
+    @Bind(B.id.register_layout)
     LinearLayout layout;
 
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.textViewLogInTextMessage)
+    @Bind(B.id.textViewLogInTextMessage)
     TextView textViewLogInTextMessage;
 
     @Inject
@@ -105,7 +106,7 @@ public class RegisterActivity extends BaseActivity {
 
     @Override
     protected void onPostContentView(Bundle savedInstanceState) {
-        ButterKnife.inject(this);
+        ButterFork.bind(this);
         registerButton.setText(Utils.capitalizer(languageManager.translate("register").toLowerCase()));
         handler = new Handler();
     }
@@ -134,7 +135,7 @@ public class RegisterActivity extends BaseActivity {
         languageManager.translateFields(this);
     }
 
-    @OnClick(id.buttonRegister)
+    @OnClick(B.id.buttonRegister)
     public void onRegisterButton() {
         if (!checkAllValid()) {
             toast(getResources().getString(string.fill_field_properly));
@@ -153,25 +154,25 @@ public class RegisterActivity extends BaseActivity {
         });
     }
 
-    @OnFocusChange(id.editTextPassword)
+    @OnFocusChange(B.id.editTextPassword)
     public void onFocusPass(boolean focused) {
         if (!focused)
             passwordEditText.testValidity();
     }
 
-    @OnFocusChange(id.editTextFirstName)
+    @OnFocusChange(B.id.editTextFirstName)
     public void onFocusFirst(boolean focused) {
         if (!focused)
             firstNameEditText.testValidity();
     }
 
-    @OnFocusChange(id.editTextLastName)
+    @OnFocusChange(B.id.editTextLastName)
     public void onFocusLast(boolean focused) {
         if (!focused)
             lastNameEditText.testValidity();
     }
 
-    @OnFocusChange(id.editTextEmail)
+    @OnFocusChange(B.id.editTextEmail)
     public void onFocusEmail(boolean focused) {
         if (!focused)
             emailEditText.testValidity();

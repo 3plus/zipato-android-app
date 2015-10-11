@@ -14,7 +14,7 @@ import android.os.Message;
 import android.os.Process;
 import android.util.Log;
 
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.ZipatoApplication;
 import com.zipato.helper.InternetConnectionHelper;
 import com.zipato.model.attribute.AttributeValueRepository;

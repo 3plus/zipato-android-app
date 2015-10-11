@@ -17,6 +17,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.zipato.annotation.SetTypeFace;
+import com.zipato.appv2.B;
 import com.zipato.appv2.R.color;
 import com.zipato.appv2.R.id;
 import com.zipato.appv2.activities.BaseActivity;
@@ -29,8 +30,8 @@ import com.zipato.customview.TempPickerView.WCPickerListener;
 import com.zipato.model.typereport.TypeReportItem;
 import com.zipato.util.TagFactoryUtils;
 
-import butterknife.InjectView;
-import butterknife.OnClick;
+import butterfork.Bind;
+import butterfork.OnClick;
 
 import static com.zipato.util.Utils.capitalizer;
 
@@ -47,19 +48,19 @@ public abstract class AbsRGBW extends AbsLevelWithOnOff implements ColorPickerLi
     static final int MODE_WC = 1;
     private static final String TAG = TagFactoryUtils.getTag(AbsRGBW.class);
     private static final long DURATION = 400L;
-    @InjectView(id.rgbWStatus)
+    @Bind(B.id.rgbWStatus)
     View rgbWStatus;
-    @InjectView(id.frameRGBW)
+    @Bind(B.id.frameRGBW)
     FrameLayout controllersLayout;
-    @InjectView(id.colorPicker)
+    @Bind(B.id.colorPicker)
     ColorPickerView colorPickerView;
-    @InjectView(id.wcPicker)
+    @Bind(B.id.wcPicker)
     TempPickerView wcPickerView;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.whiteButton)
+    @Bind(B.id.whiteButton)
     TextView whiteButton;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.rgbButton)
+    @Bind(B.id.rgbButton)
     TextView rgbButton;
     private boolean rgbWCMode;
 
@@ -338,7 +339,7 @@ public abstract class AbsRGBW extends AbsLevelWithOnOff implements ColorPickerLi
     }
 
 
-    @OnClick(id.whiteButton)
+    @OnClick(B.id.whiteButton)
     public void onClickWhite(View v) {
         defaultBlockResetUpdate();
         if (wcPickerView.getVisibility() == View.VISIBLE) {
@@ -370,7 +371,7 @@ public abstract class AbsRGBW extends AbsLevelWithOnOff implements ColorPickerLi
         moveUp();
     }
 
-    @OnClick(id.rgbButton)
+    @OnClick(B.id.rgbButton)
     public void onClickRGB(View v) {
         defaultBlockResetUpdate();
         if (colorPickerView.getVisibility() == View.VISIBLE) {

@@ -25,7 +25,8 @@ import com.sothree.slidinguppanel.SlidingUpPanelLayout.PanelState;
 import com.zipato.annotation.SetTypeFace;
 import com.zipato.annotation.Translated;
 import com.zipato.annotation.TranslatedHint;
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.R.bool;
 import com.zipato.appv2.R.id;
 import com.zipato.appv2.R.layout;
@@ -45,10 +46,10 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-import butterknife.OnClick;
-import butterknife.OnItemClick;
+import butterfork.ButterFork;
+import butterfork.Bind;
+import butterfork.OnClick;
+import butterfork.OnItemClick;
 
 public class LogInActivity extends BaseActivity {
     public static final String LOGOUT_ACTION = "LOG_OUT_ACTION";
@@ -56,58 +57,58 @@ public class LogInActivity extends BaseActivity {
     private static final String TAG = LogInActivity.class.getSimpleName();
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @Translated("register")
-    @InjectView(id.textViewRegister)
+    @Bind(B.id.textViewRegister)
     TextView register;
-    @InjectView(id.listViewLogInPane)
+    @Bind(B.id.listViewLogInPane)
     ListView serviceInfoListView;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.buttonConnect)
+    @Bind(B.id.buttonConnect)
     Button connectButton;
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @TranslatedHint("email_username")
-    @InjectView(id.editTextUserName)
+    @Bind(B.id.editTextUserName)
     EditText userName;
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @TranslatedHint("LoginScreenPasswordLabel")
-    @InjectView(id.editTextPassword)
+    @Bind(B.id.editTextPassword)
     EditText password;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.textViewSNValue)
+    @Bind(B.id.textViewSNValue)
     TextView textViewSNValue;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.textViewMacValue)
+    @Bind(B.id.textViewMacValue)
     TextView textViewMacValue;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.textViewIPValue)
+    @Bind(B.id.textViewIPValue)
     TextView textViewIpValue;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.textViewZipaBox)
+    @Bind(B.id.textViewZipaBox)
     TextView textViewZipaBox;
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @Translated("remote_connection")
-    @InjectView(id.textViewConnectionType)
+    @Bind(B.id.textViewConnectionType)
     TextView textViewConnectionType;
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @Translated("login_pane_title")
-    @InjectView(id.textViewPaneTitle)
+    @Bind(B.id.textViewPaneTitle)
     TextView textViewRemoteConnection;
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @Translated("forgot_password")
-    @InjectView(id.textViewForgotPassword)
+    @Bind(B.id.textViewForgotPassword)
     TextView textViewForgetPassword;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.textViewLogInTextMessage)
+    @Bind(B.id.textViewLogInTextMessage)
     TextView textViewLogInTextMessage;
 
-    @InjectView(id.imageButtonLogToSlideUp)
+    @Bind(B.id.imageButtonLogToSlideUp)
     ImageView imageViewButtonForPane; //
 
-    @InjectView(id.login_sliding_panel)
+    @Bind(B.id.login_sliding_panel)
     SlidingUpPanelLayout slidingUpPanelLayout;
     @Inject
     DiscoveryManager discoveryManager;
 
-    @InjectView(id.layout_bottom)
+    @Bind(B.id.layout_bottom)
     LinearLayout linearLayout;
 
     private List<ZipatoServiceInfo> zipatoServiceInfoList;
@@ -139,7 +140,7 @@ public class LogInActivity extends BaseActivity {
 
     @Override
     protected void onPostContentView(Bundle savedInstanceState) {
-        ButterKnife.inject(this);
+        ButterFork.bind(this);
 
         connectButton.setText(Utils.capitalizer(languageManager.translate("LoginScreenButtonConnect").toLowerCase()));
 
@@ -226,7 +227,7 @@ public class LogInActivity extends BaseActivity {
             @Override
             public void onPanelCollapsed(View view) {
 //                setContentView(R.layout.activity_start);
-//                ButterKnife.inject(LogInActivity.this);
+//                ButterFork.bind(LogInActivity.this);
             }
 
             @Override
@@ -314,7 +315,7 @@ public class LogInActivity extends BaseActivity {
         super.onResume();
     }
 
-    @OnClick(id.buttonConnect)
+    @OnClick(B.id.buttonConnect)
     public void connectClicked() {
         handleOnclickLogin();
     }
@@ -332,22 +333,22 @@ public class LogInActivity extends BaseActivity {
             loginInteractor.login(userNameInput, passwordInput);
     }
 
-    @OnClick(id.imageButtonLogToSlideUp)
+    @OnClick(B.id.imageButtonLogToSlideUp)
     public void imageButtonClicked() {
         slidingUpPanelLayout.setPanelState(PanelState.EXPANDED);
     }
 
-    @OnClick(id.textViewRegister)
+    @OnClick(B.id.textViewRegister)
     public void registerClicked() {
         startActivity(new Intent(this, RegisterActivity.class));
     }
 
-    @OnClick(id.textViewForgotPassword)
+    @OnClick(B.id.textViewForgotPassword)
     public void forgotPasswordClicked() {
         startActivity(new Intent(this, PasswordRecoveryActivity.class));
     }
 
-    @OnClick(id.textViewPaneTitle)
+    @OnClick(B.id.textViewPaneTitle)
     public void textViewPaneClicked() {
         preferenceHelper.putBooleanPref(Preference.LOCAL_CONNECTION, false);
         resetTextView();
@@ -356,7 +357,7 @@ public class LogInActivity extends BaseActivity {
 
     }
 
-    @OnItemClick(id.listViewLogInPane)
+    @OnItemClick(B.id.listViewLogInPane)
     public void onItemClick(int position) {
         setServiceInfoValues(zipatoServiceInfoList.get(position));
         restTemplate.setUseLocal(true);
@@ -420,7 +421,7 @@ public class LogInActivity extends BaseActivity {
             setContentView(layout.activity_start_land);
         }
 
-        ButterKnife.inject(this);
+        ButterFork.bind(this);
         restoreText();
     }
 

@@ -69,6 +69,7 @@ public class GenericAdapterImp<T extends ViewController> extends Adapter impleme
         this.items = items;
         handler = new GenericAdapterHandler(this);
         ((ZipatoApplication) this.context.getApplicationContext()).getObjectGraph().inject(this);
+        TypeViewControllerFactory.setContext(context);
     }
 
     public RecyclerView getRecyclerView() {
@@ -77,15 +78,18 @@ public class GenericAdapterImp<T extends ViewController> extends Adapter impleme
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+        TypeViewControllerFactory.setContext(getContext());
         T viewController = TypeViewControllerFactory.getViewHolder(viewGroup, viewType, recyclerView);
         Log.d(TAG, String.format("onCreateViewHolder will return : %s", viewController.getClass().getSimpleName()));
         if (!isSceneMode() && viewController.hasLogic()) { // ViewController cannot be null anyway ....
             Log.d(TAG, String.format(" %s has logic", viewController.getClass().getSimpleName()));
-            if (mapLogicViewController == null)
+            if (mapLogicViewController == null) {
                 mapLogicViewController = new HashMap<>();
+            }
             if (!mapLogicViewController.containsValue(viewController)) {
                 mapLogicViewController.put(viewType, (ViewControllerLogic) viewController);
-                pushLogic(viewType, (ViewControllerLogic) viewController); //force execution @ onCreateViewHolder?? will this affect performance ?? will this be called constantly after notifyDataSetChanged??
+                pushLogic(viewType,
+                          (ViewControllerLogic) viewController); //force execution @ onCreateViewHolder?? will this affect performance ?? will this be called constantly after notifyDataSetChanged??
             }
         }
         return viewController;
@@ -98,15 +102,16 @@ public class GenericAdapterImp<T extends ViewController> extends Adapter impleme
 
     @Override
     public int getItemViewType(int position) {
-        if ((items == null) || items.isEmpty()) // Should never happened at least not being null
-            return VCDefault.DEFAULT_VIEW_TYPE;
-        return TypeViewControllerFactory.getViewType(items.get(position), attributeRepository);
+        TypeReportItem item = items == null || items.isEmpty() ? null : items.get(0);
+        return TypeViewControllerFactory.getViewType(getContext(), item, attributeRepository);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
         if ((items == null) || items.isEmpty()) // Should never happened at least not being null
+        {
             return;
+        }
         final TypeReportItem item = items.get(i);
         ((ViewController) viewHolder).onBind(item);
     }
@@ -118,18 +123,21 @@ public class GenericAdapterImp<T extends ViewController> extends Adapter impleme
 
     @Override
     public void dataHasChangedNotify() {
-        Log.d(TAG, String.format("dataHasChangedNotify is called canUpdate? %s , hasLogicQueues is empty? %s %d", canUpdate, logicTypeQueues.isEmpty(), logicTypeQueues.size()));
+        Log.d(TAG, String.format("dataHasChangedNotify is called canUpdate? %s , hasLogicQueues is empty? %s %d", canUpdate, logicTypeQueues.isEmpty(),
+                                 logicTypeQueues.size()));
 
-        if (!canUpdate || !logicTypeQueues.isEmpty())
+        if (!canUpdate || !logicTypeQueues.isEmpty()) {
             return;
+        }
 
         if ((mapLogicViewController == null) || (mapLogicViewController.isEmpty())) {
             Log.d(TAG, "calling notifyDataSetChanged");
             notifyDataSetChanged();
         } else {
             for (Entry<Integer, ViewControllerLogic> entry : mapLogicViewController.entrySet()) {
-                if (logicTypeQueues.contains(entry.getKey()))
+                if (logicTypeQueues.contains(entry.getKey())) {
                     continue;
+                }
                 pushLogic(entry.getKey(), entry.getValue());
             }
         }
@@ -156,8 +164,9 @@ public class GenericAdapterImp<T extends ViewController> extends Adapter impleme
             mapLogicViewController = null;
         }
         logicTypeQueues.clear();
-        if (exclusionList != null)
+        if (exclusionList != null) {
             exclusionList.clear();
+        }
     }
 
     private boolean validateWorkersID(int id) {
@@ -175,19 +184,25 @@ public class GenericAdapterImp<T extends ViewController> extends Adapter impleme
                         Log.e(TAG, "Ignoring this as probably coming from an obsolete thread!");
                         return;
                     }
-                    Log.d(TAG, String.format("Refreshing data position: %d for typeView: %s", itemPosition, TypeViewControllerFactory.getCachedVCCls(viewType)));
+                    Log.d(TAG,
+                          String.format("Refreshing data position: %d for typeView: %s", itemPosition, TypeViewControllerFactory.getCachedVCCls(viewType)));
                     final TypeReportItem item = getTypeReportItem(itemPosition);
-                    if ((item != null) && ((exclusionList == null) || !exclusionList.contains(item.getUuid())))
+                    if ((item != null) && ((exclusionList == null) || !exclusionList.contains(item.getUuid()))) {
                         notifyItemChanged(itemPosition);
-                    else
-                        Log.d(TAG, String.format("Could not call notifyItemChanged... is Item null? %s is exclusionList null? %s or exclusionList contain item? %s", (item == null), (exclusionList == null), ((exclusionList != null) && ((item != null) && exclusionList.contains(item.getUuid())))));
+                    } else {
+                        Log.d(TAG,
+                              String.format("Could not call notifyItemChanged... is Item null? %s is exclusionList null? %s or exclusionList contain item? %s",
+                                            (item == null), (exclusionList == null),
+                                            ((exclusionList != null) && ((item != null) && exclusionList.contains(item.getUuid())))));
+                    }
                 }
             });
         }
     }
 
     @Override
-    public void logicExecuted(final int viewType, final boolean notify, final int logicQueuesID) { // make sure you call this please if there is extra logic on a view otherwise it wont update the view
+    public void logicExecuted(final int viewType, final boolean notify,
+                              final int logicQueuesID) { // make sure you call this please if there is extra logic on a view otherwise it wont update the view
         //execute it on the handler as notifyDataSetChanged is a bitch
         synchronized (lock) {
             handler.post(new Runnable() {
@@ -200,15 +215,17 @@ public class GenericAdapterImp<T extends ViewController> extends Adapter impleme
                     }
                     Log.d(TAG, String.format("logic of viewType : %s executed with success!!", TypeViewControllerFactory.getCachedVCCls(viewType)));
                     if (!logicTypeQueues.isEmpty()) {
-                        if (logicTypeQueues.contains(viewType))
+                        if (logicTypeQueues.contains(viewType)) {
                             logicTypeQueues.remove((Integer) viewType);
+                        }
 
                         if ((logicTypeQueues.isEmpty() || notify) && canUpdate) {
                             Log.d(TAG, String.format("refreshing adapter... isNotify? %s isLogicTypeQueues.isEmpty()? %s", notify, logicTypeQueues.isEmpty()));
                             notifyDataSetChanged();
                         }
-                    } else
+                    } else {
                         Log.e(TAG, "Empty logicTypeQueues... waiting for next trigger");
+                    }
                 }
             });
         }
@@ -237,31 +254,36 @@ public class GenericAdapterImp<T extends ViewController> extends Adapter impleme
 
     @Override
     public TypeReportItem getTypeReportItem(int position) {
-        if ((items == null) || items.isEmpty() || (position >= items.size()))
+        if ((items == null) || items.isEmpty() || (position >= items.size())) {
             return null;
+        }
         return items.get(position);
     }
 
     @Override
     public int findTypeReportItemPos(TypeReportKey key) {
-        if ((key == null) || (items == null) || items.isEmpty())
+        if ((key == null) || (items == null) || items.isEmpty()) {
             return -1;
+        }
         final int size = items.size();
         for (int i = size - 1; i >= 0; i--) {
-            if (key.equals(items.get(i).getKey()))
+            if (key.equals(items.get(i).getKey())) {
                 return i;
+            }
         }
         return -1;
     }
 
     @Override
     public int findTypeReportItemPos(UUID key) {
-        if ((key == null) || (items == null) || items.isEmpty())
+        if ((key == null) || (items == null) || items.isEmpty()) {
             return -1;
+        }
         final int size = items.size();
         for (int i = size - 1; i >= 0; i--) {
-            if (key.equals(items.get(i).getUuid()))
+            if (key.equals(items.get(i).getUuid())) {
                 return i;
+            }
         }
         return -1;
     }
@@ -285,17 +307,20 @@ public class GenericAdapterImp<T extends ViewController> extends Adapter impleme
 
     @Override
     public void enableItemUpdate(UUID uuid) {
-        if ((exclusionList == null) || exclusionList.isEmpty())
+        if ((exclusionList == null) || exclusionList.isEmpty()) {
             return;
+        }
         exclusionList.remove(uuid);
     }
 
     @Override
     public void disableItemUpdate(UUID uuid) {
-        if (exclusionList == null)
+        if (exclusionList == null) {
             exclusionList = new ArrayList<>();
-        if (!exclusionList.contains(uuid))
+        }
+        if (!exclusionList.contains(uuid)) {
             exclusionList.add(uuid);
+        }
     }
 
     @Override
@@ -348,6 +373,5 @@ public class GenericAdapterImp<T extends ViewController> extends Adapter impleme
             }
         }
     }
-
 
 }

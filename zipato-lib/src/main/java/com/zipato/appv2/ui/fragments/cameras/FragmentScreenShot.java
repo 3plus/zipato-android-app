@@ -12,7 +12,7 @@ import android.widget.ProgressBar;
 
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.customview.TouchImageView;
 import com.zipato.model.camera.Camera;
 import com.zipato.model.camera.CameraRepository;
@@ -23,7 +23,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.InjectView;
+import butterfork.Bind;
 
 /**
  * Created by murielK on 2/2/2015.
@@ -38,9 +38,9 @@ public class FragmentScreenShot extends BaseCameraFragment {
     protected ApiV2RestTemplate restTemplate;
     @Inject
     protected Picasso picasso;
-    @InjectView(R.id.imageViewSS)
+    @Bind(B.id.imageViewSS)
     TouchImageView image;
-    @InjectView(R.id.progressBarSS)
+    @Bind(B.id.progressBarSS)
     ProgressBar progressBar;
     @Inject
     List<SVFileRest> files;

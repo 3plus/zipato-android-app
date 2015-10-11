@@ -178,5 +178,7 @@
     <string name="base_url">https://my.zipato.com/zipato-web/</string>
     <string name="feedbackMail">support@zipato.com</string>
     <string name="next">next</string>
-
+    <string name="camera_activity_class">com.zipato.appv2.activities.CameraActivity</string>
+    <string-array name="custom_brand_list">
+    </string-array>
 </resources>

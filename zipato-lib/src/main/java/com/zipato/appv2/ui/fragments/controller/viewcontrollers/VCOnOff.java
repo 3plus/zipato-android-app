@@ -12,31 +12,31 @@ import android.widget.TextView;
 
 import com.zipato.annotation.SetTypeFace;
 import com.zipato.annotation.ViewType;
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.R.id;
 import com.zipato.appv2.ui.fragments.vcmenu.BaseTypesFragment;
 import com.zipato.model.attribute.Attribute;
 import com.zipato.model.typereport.TypeReportItem;
 import com.zipato.util.TagFactoryUtils;
 
-import butterknife.InjectView;
-import butterknife.OnClick;
+import butterfork.Bind;
+import butterfork.OnClick;
 
 import static com.zipato.util.Utils.capitalizer;
 
 /**
  * Created by murielK on 7/17/2015.
  */
-@ViewType(R.layout.view_controller_state)
+@ViewType("view_controller_state")
 public class VCOnOff extends AbsBaseSimpleStatus {
 
     private static final String TAG = TagFactoryUtils.getTag(VCOnOff.class);
 
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.buttonOff)
+    @Bind(B.id.buttonOff)
     TextView textViewOff;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.buttonOn)
+    @Bind(B.id.buttonOn)
     TextView textViewOn;
 
     public VCOnOff(View itemView, RecyclerView recyclerView) {
@@ -46,7 +46,7 @@ public class VCOnOff extends AbsBaseSimpleStatus {
     }
 
 
-    @OnClick(id.buttonOff)
+    @OnClick(B.id.buttonOff)
     public void onOffClick(View v) {
 
         defaultBlockResetUpdate();
@@ -66,7 +66,7 @@ public class VCOnOff extends AbsBaseSimpleStatus {
         sendAttributeValue(attribute.getUuid(), "false");
     }
 
-    @OnClick(id.buttonOn)
+    @OnClick(B.id.buttonOn)
     public void onOnClick(View v) {
         defaultBlockResetUpdate();
         final TypeReportItem item = getTypeReportItem();

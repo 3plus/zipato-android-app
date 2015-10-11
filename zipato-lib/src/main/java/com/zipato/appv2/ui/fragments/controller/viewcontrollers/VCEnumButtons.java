@@ -13,6 +13,7 @@ import android.view.animation.Animation;
 import android.widget.TextView;
 
 import com.zipato.annotation.ViewType;
+import com.zipato.appv2.B;
 import com.zipato.appv2.R.layout;
 import com.zipato.model.typereport.TypeReportItem;
 import com.zipato.util.TagFactoryUtils;
@@ -26,7 +27,7 @@ import java.util.Map.Entry;
 /**
  * Created by Mur0 on 8/23/2015.
  */
-@ViewType(layout.view_controller_enum_buttons)
+@ViewType("view_controller_enum_buttons")
 public class VCEnumButtons extends AbsPagePointerAdapter {
 
     private final String TAG = TagFactoryUtils.getTag(VCEnumButtons.class);
@@ -129,7 +130,7 @@ public class VCEnumButtons extends AbsPagePointerAdapter {
                 final TypeReportItem item = getTypeReportItem();
                 sendAttributeValue(item.getAttributes()[item.getMasterIndex()].getUuid(), listKeyValue.get(index).getKey());
                 tempUserSetKey = listKeyValue.get(index).getKey();
-                manualRefresh(null);
+                manualRefresh();
             } catch (Exception e) {
                 Log.d(TAG, "", e);
             }

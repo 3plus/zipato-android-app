@@ -8,7 +8,7 @@ package com.zipato.appv2.ui.fragments.discovery;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.model.client.RestObject;
 import com.zipato.model.device.Device;
 import com.zipato.model.event.Event;

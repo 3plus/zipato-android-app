@@ -17,15 +17,15 @@ import android.widget.TextView;
 
 import com.zipato.annotation.SetTypeFace;
 import com.zipato.annotation.Translated;
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.R.id;
 import com.zipato.model.attribute.Attribute;
 import com.zipato.model.typereport.EntityType;
 import com.zipato.model.typereport.TypeReportItem;
 import com.zipato.util.TagFactoryUtils;
 
-import butterknife.InjectView;
-import butterknife.OnClick;
+import butterfork.Bind;
+import butterfork.OnClick;
 
 import static com.zipato.util.Utils.capitalizer;
 
@@ -37,12 +37,12 @@ public abstract class AbsBaseSimpleStatus extends AbsHeader {
     private static final String VC_CACHE_CURSOR_PSO = "VC_CACHE_CURSOR_PSO";
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @Translated("status")
-    @InjectView(id.textViewStatus)
+    @Bind(B.id.textViewStatus)
     TextView textViewAtrName;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.textViewValue)
+    @Bind(B.id.textViewValue)
     TextView textViewValue;
-    @InjectView(R.id.layoutTextValue)
+    @Bind(B.id.layoutTextValue)
     LinearLayout layout;
 
     public AbsBaseSimpleStatus(View itemView, RecyclerView recyclerView) {
@@ -201,7 +201,7 @@ public abstract class AbsBaseSimpleStatus extends AbsHeader {
     }
 
 
-    @OnClick(id.layoutTextValue)
+    @OnClick(B.id.layoutTextValue)
     public void onClick(View v) {
         if (handleMultiAttr())
             defaultBlockResetUpdate();

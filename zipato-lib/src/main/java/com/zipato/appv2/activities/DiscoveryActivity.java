@@ -17,15 +17,16 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.zipato.annotation.SetTypeFace;
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.R.id;
 import com.zipato.appv2.ui.fragments.discovery.BaseDiscoveryFragment;
 import com.zipato.appv2.ui.fragments.discovery.SDeviceFragment;
 import com.zipato.model.event.Event;
 import com.zipato.model.event.ObjectLauncher;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterfork.ButterFork;
+import butterfork.Bind;
 
 /**
  * Created by murielK on 8/13/2014.
@@ -33,13 +34,13 @@ import butterknife.InjectView;
 public class DiscoveryActivity extends BaseActivity {
 
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.textViewID)
+    @Bind(B.id.textViewID)
     TextView textViewID;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.buttonStep)
+    @Bind(B.id.buttonStep)
     Button buttonStep;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.buttonCancel)
+    @Bind(B.id.buttonCancel)
     Button buttonCancel;
 
 
@@ -55,7 +56,7 @@ public class DiscoveryActivity extends BaseActivity {
 
     @Override
     protected void onPostContentView(Bundle savedInstanceState) {
-        ButterKnife.inject(this);
+        ButterFork.bind(this);
         if (savedInstanceState == null) {
             SDeviceFragment fragment = new SDeviceFragment();
             textViewID.setText(languageManager.translate(fragment.getTitle()));

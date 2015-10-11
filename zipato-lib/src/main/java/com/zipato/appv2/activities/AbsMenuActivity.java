@@ -10,12 +10,12 @@ import android.os.Parcelable;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBar;
 
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.ui.fragments.BaseFragment;
 
 import java.io.Serializable;
 
-import butterknife.ButterKnife;
+import butterfork.ButterFork;
 
 /**
  * Created by Triplus3 on 10/9/2015.
@@ -41,7 +41,7 @@ public abstract class AbsMenuActivity extends BaseActivity {
 
     @Override
     protected void onPostContentView(Bundle savedInstanceState) {
-        ButterKnife.inject(this);
+        ButterFork.bind(this);
         typeFaceUtils.applyTypefaceFor(this);
 
         Intent intent = getIntent();

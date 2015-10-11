@@ -27,7 +27,7 @@ import android.widget.TextView;
 
 import com.zipato.annotation.SetTypeFace;
 import com.zipato.annotation.Translated;
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.R.id;
 import com.zipato.appv2.R.layout;
 import com.zipato.model.wizard.WizardField;
@@ -44,9 +44,9 @@ import java.util.TimerTask;
 
 import javax.inject.Inject;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-import butterknife.OnClick;
+import butterfork.ButterFork;
+import butterfork.Bind;
+import butterfork.OnClick;
 
 /**
  * Created by murielK on 4/2/2015.
@@ -57,38 +57,38 @@ public class WizardActivity extends BaseActivity {
     private static final int DEFAULT_COUNTDOWN = 60;
 
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.buttonStep)
+    @Bind(B.id.buttonStep)
     TextView butStep;
-    @InjectView(id.textViewTitle)
+    @Bind(B.id.textViewTitle)
     @SetTypeFace("helvetica_neue_light.otf")
     TextView title;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.textViewSubTitle)
+    @Bind(B.id.textViewSubTitle)
     TextView titleSubtitle;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.textViewContent)
+    @Bind(B.id.textViewContent)
     TextView content;
-    @InjectView(id.listViewTypeFiled)
+    @Bind(B.id.listViewTypeFiled)
     ListView listViewTypeField;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.textViewCounter)
+    @Bind(B.id.textViewCounter)
     TextView textViewCounter;
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @Translated("cancel")
-    @InjectView(id.buttonCancel)
+    @Bind(B.id.buttonCancel)
     Button buttonCancel;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.buttonOk)
+    @Bind(B.id.buttonOk)
     Button buttonOk;
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @Translated("next")
-    @InjectView(id.buttonNext)
+    @Bind(B.id.buttonNext)
     Button buttonNext;
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @Translated("repeat")
-    @InjectView(id.buttonRep)
+    @Bind(B.id.buttonRep)
     Button buttonRepeat;
-    @InjectView(id.progressBar)
+    @Bind(B.id.progressBar)
     ProgressBar progressBar;
 
     @Inject
@@ -143,7 +143,7 @@ public class WizardActivity extends BaseActivity {
 
     @Override
     protected void onPostContentView(Bundle savedInstanceState) {
-        ButterKnife.inject(this);
+        ButterFork.bind(this);
         typeFaceUtils.applyTypefaceFor(this);
         handler = new Handler();
         fieldViewAdapter = new FieldViewAdapter(this, null);
@@ -246,7 +246,7 @@ public class WizardActivity extends BaseActivity {
         timer.scheduleAtFixedRate(counter, 0, 1000);
     }
 
-    @OnClick(id.buttonNext)
+    @OnClick(B.id.buttonNext)
     public void onNextClick(View v) {
         if (wizardStep.getStepCount() == 0)
             createTransaction();
@@ -254,17 +254,17 @@ public class WizardActivity extends BaseActivity {
             fetchTransaction(TransParam.NEXT);
     }
 
-    @OnClick(id.buttonCancel)
+    @OnClick(B.id.buttonCancel)
     public void onCancelClick(View v) {
         fetchTransaction(TransParam.CANCEL);
     }
 
-    @OnClick(id.buttonOk)
+    @OnClick(B.id.buttonOk)
     public void onOkClick(View v) {
         finish();
     }
 
-    @OnClick(id.buttonRep)
+    @OnClick(B.id.buttonRep)
     public void onRepeatClick(View v) {
         fetchTransaction(TransParam.REPEAT);
     }
@@ -497,14 +497,14 @@ public class WizardActivity extends BaseActivity {
         class ViewHolder {
 
             @SetTypeFace("helvetica_neue_light.otf")
-            @InjectView(id.textViewFieldName)
+            @Bind(B.id.textViewFieldName)
             TextView textViewTile;
             @SetTypeFace("helvetica_neue_light.otf")
-            @InjectView(id.editTextFieldInput)
+            @Bind(B.id.editTextFieldInput)
             EditText input;
 
             public ViewHolder(View v) {
-                ButterKnife.inject(this, v);
+                ButterFork.bind(this, v);
                 typeFaceUtils.applyTypefaceFor(this);
 
             }

@@ -21,6 +21,7 @@ import android.widget.TextView;
 
 import com.zipato.annotation.SetTypeFace;
 import com.zipato.annotation.Translated;
+import com.zipato.appv2.B;
 import com.zipato.appv2.R;
 import com.zipato.appv2.ui.fragments.adapters.BaseListAdapter;
 import com.zipato.model.event.Event;
@@ -34,10 +35,10 @@ import java.util.UUID;
 
 import javax.inject.Inject;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-import butterknife.OnClick;
-import butterknife.OnItemClick;
+import butterfork.Bind;
+import butterfork.ButterFork;
+import butterfork.OnClick;
+import butterfork.OnItemClick;
 
 /**
  * Created by murielK on 7/4/2014.
@@ -49,30 +50,30 @@ public class ScenesIconColorFragment extends BaseTypesFragment {
 
     protected IconGridListAdapter iconGridAdapter;
     protected ColorGridListAdapter colorGridAdapter;
-    @InjectView(R.id.gridViewSceneColor)
+    @Bind(B.id.gridViewSceneColor)
     protected GridView gridViewColor;
-    @InjectView(R.id.gridViewSceneIcon)
+    @Bind(B.id.gridViewSceneIcon)
     protected GridView gridViewIcon;
-    @InjectView(R.id.layout)
+    @Bind(B.id.layout)
     protected LinearLayout layout;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.button1)
+    @Bind(B.id.button1)
     protected Button button1;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.button2)
+    @Bind(B.id.button2)
     protected Button button2;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.progressBar3)
+    @Bind(B.id.progressBar3)
     protected ProgressBar progressBar;
-    @InjectView(R.id.layoutListViews)
+    @Bind(B.id.layoutListViews)
     protected LinearLayout layoutListViews;
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @Translated("choose_icon")
-    @InjectView(R.id.textView)
+    @Bind(B.id.textView)
     TextView chooseICon;
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @Translated("choose_background_color")
-    @InjectView(R.id.textView2)
+    @Bind(B.id.textView2)
     TextView chooseBackGroundColor;
 
     @Inject
@@ -87,8 +88,9 @@ public class ScenesIconColorFragment extends BaseTypesFragment {
 
         int index = -1;
 
-        if ((value == null) || (values == null))
+        if ((value == null) || (values == null)) {
             return index;
+        }
 
         int size = values.length;
 
@@ -102,13 +104,13 @@ public class ScenesIconColorFragment extends BaseTypesFragment {
         return index;
     }
 
-    @OnClick(R.id.button1)
+    @OnClick(B.id.button1)
     public void onDefaultClick(View v) {
         getActivity().setResult(Activity.RESULT_CANCELED);
         getActivity().finish();
     }
 
-    @OnClick(R.id.button2)
+    @OnClick(B.id.button2)
     public void onSaveClick(View v) {
         Intent data = new Intent();
         data.putExtra(COLOR_KEY, currentColor);
@@ -128,7 +130,7 @@ public class ScenesIconColorFragment extends BaseTypesFragment {
         languageManager.translateFields(this);
     }
 
-    @OnItemClick(R.id.gridViewSceneColor)
+    @OnItemClick(B.id.gridViewSceneColor)
     public void onColorClick(int position) {
         colorGridAdapter.removeSelection();
         colorGridAdapter.toggleSelection(position);
@@ -137,7 +139,7 @@ public class ScenesIconColorFragment extends BaseTypesFragment {
         iconGridAdapter.notifySelection();
     }
 
-    @OnItemClick(R.id.gridViewSceneIcon)
+    @OnItemClick(B.id.gridViewSceneIcon)
     public void onIconClick(int position) {
         iconGridAdapter.removeSelection();
         iconGridAdapter.toggleSelection(position);
@@ -193,24 +195,27 @@ public class ScenesIconColorFragment extends BaseTypesFragment {
         button2.setText("OK");
     }
 
-
     public class ColorGridListAdapter extends BaseListAdapter {
 
-        private String[] colors = {"#000000", "#993300", "#333300", "#003300", "#003366", "#000080", "#333399", "#333333", "#800000", "#FF6600", "#808000", "#008000",
-                "#008080", "#0000FF", "#666699", "#808080", "#FF0000", "#FF9900", "#99CC00", "#339966", "#33CCCC", "#3366FF", "#800080", "#969696",
-                "#FF00FF", "#FFCC00", "#FFFF00", "#00FF00", "#00FFFF", "#00CCFF", "#993366", "#C0C0C0", "#FF99CC", "#FFCC99", "#FFFF99", "#CCFFCC",
-                "#CCFFFF", "#99CCFF", "#CC99FF", "#FFFFFF"};
+        private String[] colors = {"#000000", "#993300", "#333300", "#003300", "#003366", "#000080", "#333399", "#333333", "#800000", "#FF6600", "#808000",
+                                   "#008000",
+                                   "#008080", "#0000FF", "#666699", "#808080", "#FF0000", "#FF9900", "#99CC00", "#339966", "#33CCCC", "#3366FF", "#800080",
+                                   "#969696",
+                                   "#FF00FF", "#FFCC00", "#FFFF00", "#00FF00", "#00FFFF", "#00CCFF", "#993366", "#C0C0C0", "#FF99CC", "#FFCC99", "#FFFF99",
+                                   "#CCFFCC",
+                                   "#CCFFFF", "#99CCFF", "#CC99FF", "#FFFFFF"};
 
         public String[] getColors() {
             return colors;
         }
 
         public void setColors(String[] colors) {
-            if (colors == null)
+            if (colors == null) {
                 return;
+            }
 
-                int size = colors.length;
-                this.colors = new String[size];
+            int size = colors.length;
+            this.colors = new String[size];
             System.arraycopy(colors, 0, this.colors, 0, size);
 
         }
@@ -254,12 +259,12 @@ public class ScenesIconColorFragment extends BaseTypesFragment {
 
         class ViewColorHolder {
 
-            @InjectView(R.id.textViewSceneColor)
+            @Bind(B.id.textViewSceneColor)
             TextView textView;
 
             public ViewColorHolder(View v) {
 
-                ButterKnife.inject(this, v);
+                ButterFork.bind(this, v);
             }
 
         }
@@ -288,8 +293,9 @@ public class ScenesIconColorFragment extends BaseTypesFragment {
         }
 
         public void setIcons(String[] strings) {
-            if (strings == null)
+            if (strings == null) {
                 return;
+            }
             icons = new String[strings.length];
             System.arraycopy(strings, 0, icons, 0, strings.length);
         }
@@ -332,7 +338,6 @@ public class ScenesIconColorFragment extends BaseTypesFragment {
                     viewIconHolder.textView.setTextColor(Color.WHITE);
                 }
 
-
                 viewIconHolder.textView.setSelected(true);
             } else {
                 viewIconHolder.textView.setTextColor(getContext().getResources().getColor(R.color.soft_grey));
@@ -346,12 +351,12 @@ public class ScenesIconColorFragment extends BaseTypesFragment {
         class ViewIconHolder {
 
             @SetTypeFace("icomoon.ttf")
-            @InjectView(R.id.textViewSceneIconRow)
+            @Bind(B.id.textViewSceneIconRow)
             TextView textView;
 
             public ViewIconHolder(View v) {
 
-                ButterKnife.inject(this, v);
+                ButterFork.bind(this, v);
                 typeFaceUtils.applyTypefaceFor(this);
             }
         }

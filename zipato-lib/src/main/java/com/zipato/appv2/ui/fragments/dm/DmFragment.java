@@ -25,7 +25,8 @@ import android.widget.TextView;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.nhaarman.listviewanimations.swinginadapters.prepared.SwingBottomInAnimationAdapter;
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.R.drawable;
 import com.zipato.appv2.R.id;
 import com.zipato.appv2.R.layout;
@@ -75,11 +76,11 @@ import java.util.concurrent.ExecutorService;
 
 import javax.inject.Inject;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-import butterknife.OnClick;
-import butterknife.OnItemClick;
-import butterknife.OnItemLongClick;
+import butterfork.ButterFork;
+import butterfork.Bind;
+import butterfork.OnClick;
+import butterfork.OnItemClick;
+import butterfork.OnItemLongClick;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -107,9 +108,9 @@ public abstract class DmFragment<T extends BaseEntityType> extends BaseFragment 
     EventBus eventBus;
     @Inject
     InternetConnectionHelper internetConnectionHelper;
-    @InjectView(id.progressBarDeviceManager)
+    @Bind(B.id.progressBarDeviceManager)
     ProgressBar progressBar;
-    @InjectView(id.listViewDeviceManager)
+    @Bind(B.id.listViewDeviceManager)
     ListView listViewChildren;
     ListView listViewParent;
     @Inject
@@ -184,7 +185,7 @@ public abstract class DmFragment<T extends BaseEntityType> extends BaseFragment 
         listViewChildren.setAdapter(animatedAdapter);
     }
 
-//    @OnItemLongClick(R.id.listViewDeviceManager)
+//    @OnItemLongClick(B.id.listViewDeviceManager)
 //    public boolean onItemLongClickLVC(AdapterView<?> parent, View view, int position, long id) {
 //        deviceManagerAdapter.toggleSelection(position);
 //        final int checkedCount = deviceManagerAdapter.getSelectedCount();
@@ -192,7 +193,7 @@ public abstract class DmFragment<T extends BaseEntityType> extends BaseFragment 
 //        return true;
 //    }
 
-    @OnItemClick(id.listViewDeviceManager)
+    @OnItemClick(B.id.listViewDeviceManager)
     public void onItemClickLVC(int position) {
         if ((mActionMode != null) && !(this instanceof NetworkFragment)) {
             deviceManagerAdapter.toggleSelection(position);
@@ -207,7 +208,7 @@ public abstract class DmFragment<T extends BaseEntityType> extends BaseFragment 
         }
     }
 
-    @OnItemLongClick(id.listViewDeviceManager)
+    @OnItemLongClick(B.id.listViewDeviceManager)
     public boolean onLongItemClickLVC(int position) {
         if ((mActionMode != null) && !(this instanceof NetworkFragment)) {
             deviceManagerAdapter.toggleSelection(position);
@@ -218,7 +219,7 @@ public abstract class DmFragment<T extends BaseEntityType> extends BaseFragment 
     }
 
 
-    @OnItemClick(id.listViewDeviceParent)
+    @OnItemClick(B.id.listViewDeviceParent)
     public void onItemClickLVP(int position) {
         if (mActionMode != null) {
             mActionMode.finish();
@@ -497,22 +498,22 @@ public abstract class DmFragment<T extends BaseEntityType> extends BaseFragment 
 
     class ViewHolder {
 
-        @InjectView(id.textViewBrowserRightName)
+        @Bind(B.id.textViewBrowserRightName)
         TextView name;
-        @InjectView(id.imageViewRightBrowserStatus)
+        @Bind(B.id.imageViewRightBrowserStatus)
         ImageView imageStatus;
-        @InjectView(id.imageViewRightBrowserArrow)
+        @Bind(B.id.imageViewRightBrowserArrow)
         ImageView arrow;
-        @InjectView(id.imageViewUiType)
+        @Bind(B.id.imageViewUiType)
         ImageView uiType;
-        @InjectView(R.id.layout)
+        @Bind(B.id.layout)
         LinearLayout layout;
 
         ViewHolder(View v) {
-            ButterKnife.inject(this, v);
+            ButterFork.bind(this, v);
         }
 
-        @OnClick(id.imageViewUiType)
+        @OnClick(B.id.imageViewUiType)
         public void onClickUiType(final View v) {
 
             if (v.getTag() != null) {
@@ -817,19 +818,19 @@ public abstract class DmFragment<T extends BaseEntityType> extends BaseFragment 
 
         @Override
         public boolean onActionItemClicked(ActionMode actionMode, MenuItem menuItem) {
-            switch (menuItem.getItemId()) {
-                case id.selectAll:
-                    onSelectAll();
-                    break;
-                case id.reapply:
-                    onReApply();
-                    break;
-                case id.edit:
-                    onEdit();
-                    break;
-                case id.delete:
-                    onDelete();
-                    break;
+            int i = menuItem.getItemId();
+            if (i == id.selectAll) {
+                onSelectAll();
+
+            } else if (i == id.reapply) {
+                onReApply();
+
+            } else if (i == id.edit) {
+                onEdit();
+
+            } else if (i == id.delete) {
+                onDelete();
+
             }
             return true;
         }

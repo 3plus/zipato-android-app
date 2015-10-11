@@ -32,7 +32,7 @@ import java.lang.ref.WeakReference;
 
 import javax.inject.Inject;
 
-import butterknife.ButterKnife;
+import butterfork.ButterFork;
 
 /**
  * Created by murielK on 2.7.2014..
@@ -196,7 +196,7 @@ public abstract class BaseFragment extends Fragment {
         }
 
         final View v = inflater.inflate(getResourceView(), null);
-        ButterKnife.inject(this, v);
+        ButterFork.bind(this, v);
 
         v.getViewTreeObserver().addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
             @Override

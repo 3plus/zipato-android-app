@@ -18,7 +18,7 @@ import android.widget.Toast;
 import com.zipato.annotation.SetTypeFace;
 import com.zipato.annotation.Translated;
 import com.zipato.annotation.ViewType;
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.R.id;
 import com.zipato.appv2.R.layout;
 import com.zipato.appv2.activities.AlarmTriggerActivity;
@@ -46,15 +46,15 @@ import java.util.UUID;
 
 import javax.inject.Inject;
 
-import butterknife.InjectView;
-import butterknife.OnClick;
+import butterfork.Bind;
+import butterfork.OnClick;
 
 import static com.zipato.util.Utils.capitalizer;
 
 /**
  * Created by murielK on 8/6/2015.
  */
-@ViewType(layout.view_controller_security)
+@ViewType("view_controller_security")
 public class VCSecurity extends AbsBaseSimpleStatus implements ViewControllerLogic {
 
     private static final String TAG = TagFactoryUtils.getTag(VCSecurity.class);
@@ -68,14 +68,14 @@ public class VCSecurity extends AbsBaseSimpleStatus implements ViewControllerLog
     ApiV2RestTemplate restTemplate;
 
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.butArmHome)
+    @Bind(B.id.butArmHome)
     TextView textViewArmHome;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.butArmAway)
+    @Bind(B.id.butArmAway)
     TextView textViewArmAway;
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @Translated("disarm")
-    @InjectView(id.butDisarm)
+    @Bind(B.id.butDisarm)
     TextView textViewDisarm;
     private int logicQueueID;
 
@@ -124,7 +124,7 @@ public class VCSecurity extends AbsBaseSimpleStatus implements ViewControllerLog
         return partitionRepository.get(typeReportItem.getUuid());
     }
 
-    @OnClick(id.butArmAway)
+    @OnClick(B.id.butArmAway)
     public void onAwayClick(View v) {
         final Partition partition = getPartition();
         final GenericAdapter genericAdapter = getAdapter();
@@ -139,7 +139,7 @@ public class VCSecurity extends AbsBaseSimpleStatus implements ViewControllerLog
         genericAdapter.resetUpdate(DELAY_MILLIS, partition.getUuid());
     }
 
-    @OnClick(id.butDisarm)
+    @OnClick(B.id.butDisarm)
     public void onDisarmClick(View v) {
         final Partition partition = getPartition();
         final GenericAdapter genericAdapter = getAdapter();
@@ -152,7 +152,7 @@ public class VCSecurity extends AbsBaseSimpleStatus implements ViewControllerLog
         genericAdapter.resetUpdate(DELAY_MILLIS, partition.getUuid());
     }
 
-    @OnClick(id.butArmHome)
+    @OnClick(B.id.butArmHome)
     public void onHomeClick(View v) {
         final Partition partition = getPartition();
         final GenericAdapter genericAdapter = getAdapter();

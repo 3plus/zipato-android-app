@@ -10,7 +10,7 @@ import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.helper.PreferenceHelper;
 import com.zipato.helper.PreferenceHelper.Preference;
 import com.zipato.model.language.Language;
@@ -21,6 +21,7 @@ import org.springframework.http.converter.json.MappingJackson2HttpMessageConvert
 import org.springframework.web.client.RestTemplate;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -86,6 +87,8 @@ public class LanguageManager {
             fis = context.openFileInput(LANGUAGE_LIST_FILENAME);
             Log.d("LanguageManager", "downloaded languages found loading new list Languages");//
             list = objectMapper.readValue(fis, Language[].class);
+        } catch (FileNotFoundException e) {
+            Log.d("LanguageManager", e.getMessage());
         } catch (Exception e) {
             Log.d("LanguageManager", "fail loading from downloads files", e);//
         } finally {

@@ -10,7 +10,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.zipato.annotation.ViewType;
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.ui.fragments.adapters.controllers.GenericAdapter;
 import com.zipato.appv2.ui.fragments.vcmenu.BaseTypesFragment;
 import com.zipato.model.attribute.Attribute;
@@ -20,7 +20,7 @@ import com.zipato.util.TagFactoryUtils;
 /**
  * Created by murielK on 8/3/2015.
  */
-@ViewType(R.layout.view_controller_rgb_hue)
+@ViewType("view_controller_rgb_hue")
 public class VCPhilipsHue extends VCZipaRGBW {
 
     private static final String TAG = TagFactoryUtils.getTag(VCPhilipsHue.class);

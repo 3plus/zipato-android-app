@@ -11,7 +11,7 @@ import android.util.Log;
 
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.google.android.gms.iid.InstanceID;
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.ZipatoApplication;
 import com.zipato.appv2.activities.LogInActivity;
 import com.zipato.helper.InternetConnectionHelper;

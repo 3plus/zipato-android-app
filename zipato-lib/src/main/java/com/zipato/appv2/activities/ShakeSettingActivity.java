@@ -28,66 +28,66 @@ import android.widget.TextView;
 
 import com.zipato.annotation.SetTypeFace;
 import com.zipato.annotation.Translated;
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.R.drawable;
 import com.zipato.appv2.R.id;
 import com.zipato.helper.PreferenceHelper.Preference;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterfork.ButterFork;
+import butterfork.Bind;
 
 
 public class ShakeSettingActivity extends BaseActivity implements View.OnClickListener {
 
-    @InjectView(id.checkBox)
+    @Bind(B.id.checkBox)
     CheckBox checkBox;
-    @InjectView(id.EnableShakeLaout)
+    @Bind(B.id.EnableShakeLaout)
     LinearLayout enableShake;
-    @InjectView(id.seekBarShakeForce)
+    @Bind(B.id.seekBarShakeForce)
     SeekBar seekBarForce;
-    @InjectView(id.seekBarShakeTimeOut)
+    @Bind(B.id.seekBarShakeTimeOut)
     SeekBar seekBarTimeOut;
-    @InjectView(id.tryoutLayout)
+    @Bind(B.id.tryoutLayout)
     LinearLayout tryIt;
-    @InjectView(id.imageViewTryIt)
+    @Bind(B.id.imageViewTryIt)
     ImageView myImageView;
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @Translated("pref_shake_speed")
-    @InjectView(id.textViewShakeForceTitle)
+    @Bind(B.id.textViewShakeForceTitle)
     TextView textViewForceTitle;
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @Translated("pref_shake_speed_des")
-    @InjectView(id.textViewShakeForceDes)
+    @Bind(B.id.textViewShakeForceDes)
     TextView textViewForceDes;
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @Translated("pref_shake_timeout")
-    @InjectView(id.textViewTimeOutTitle)
+    @Bind(B.id.textViewTimeOutTitle)
     TextView textViewTimeOutTitle;
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @Translated("pref_shake_timeout_des")
-    @InjectView(id.textViewTimeOutDes)
+    @Bind(B.id.textViewTimeOutDes)
     TextView textViewTimeOutDes;
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @Translated("pref_shake_enable")
-    @InjectView(id.textView)
+    @Bind(B.id.textView)
     TextView textView;
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @Translated("pref_shake_des")
-    @InjectView(id.textView2)
+    @Bind(B.id.textView2)
     TextView textView2;
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @Translated("pref_try_it")
-    @InjectView(id.textViewTryItTittle)
+    @Bind(B.id.textViewTryItTittle)
     TextView textViewTryItTitle;
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @Translated("pref_try_it_des")
-    @InjectView(id.textViewTryItDes)
+    @Bind(B.id.textViewTryItDes)
     TextView textViewTryItDes;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.textViewShakeForce)
+    @Bind(B.id.textViewShakeForce)
     TextView textViewForce;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.textViewTimeOut)
+    @Bind(B.id.textViewTimeOut)
     TextView textViewTimeOut;
     private int force;
     private int timeOut;
@@ -108,7 +108,7 @@ public class ShakeSettingActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     protected void onPostContentView(Bundle savedInstanceState) {
-        ButterKnife.inject(this);
+        ButterFork.bind(this);
         force = preferenceHelper.getInt(Preference.SHAKE_FORCE, 500);
         timeOut = preferenceHelper.getInt(Preference.SHAKE_TIME_OUT, 500);
         enableShake.setOnClickListener(this);
@@ -175,43 +175,42 @@ public class ShakeSettingActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     public void onClick(final View v) {
-        switch (v.getId()) {
-            case id.EnableShakeLaout:
-                if (checkBox.isChecked()) {
-                    checkBox.setChecked(false);
-                    preferenceHelper.putBooleanPref(Preference.SHAKE_ENABLE, false);
-                    shakeUtils.setEnableShake(false);
-                    setDisable();
+        int i = v.getId();
+        if (i == id.EnableShakeLaout) {
+            if (checkBox.isChecked()) {
+                checkBox.setChecked(false);
+                preferenceHelper.putBooleanPref(Preference.SHAKE_ENABLE, false);
+                shakeUtils.setEnableShake(false);
+                setDisable();
 
-                } else {
-                    checkBox.setChecked(true);
-                    preferenceHelper.putBooleanPref(Preference.SHAKE_ENABLE, true);
-                    shakeUtils.setEnableShake(true);
-                    enabler();
+            } else {
+                checkBox.setChecked(true);
+                preferenceHelper.putBooleanPref(Preference.SHAKE_ENABLE, true);
+                shakeUtils.setEnableShake(true);
+                enabler();
+            }
+
+        } else if (i == id.tryoutLayout) {
+            setter();
+            shakeUtils.registerToSensor();
+            Builder builder = new Builder(this);
+            builder.setCancelable(false);
+            LayoutInflater inflater = LayoutInflater.from(this);
+            View view = inflater.inflate(R.layout.layout_shake_try_out, null);
+            TextView textView = (TextView) view.findViewById(id.textView);
+            textView.setText(languageManager.translate("try_message"));
+            builder.setView(view);
+
+            builder.setPositiveButton("OK", new OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    shakeUtils.unRegisterToSensor();
+                    dialog.cancel();
                 }
-                break;
+            });
+            myDialog = builder.create();
+            myDialog.show();
 
-            case id.tryoutLayout:
-                setter();
-                shakeUtils.registerToSensor();
-                Builder builder = new Builder(this);
-                builder.setCancelable(false);
-                LayoutInflater inflater = LayoutInflater.from(this);
-                View view = inflater.inflate(R.layout.layout_shake_try_out, null);
-                TextView textView = (TextView) view.findViewById(id.textView);
-                textView.setText(languageManager.translate("try_message"));
-                builder.setView(view);
-
-                builder.setPositiveButton("OK", new OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        shakeUtils.unRegisterToSensor();
-                        dialog.cancel();
-                    }
-                });
-                myDialog = builder.create();
-                myDialog.show();
-                break;
         }
     }
 

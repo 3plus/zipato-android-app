@@ -31,7 +31,7 @@ import java.util.Map;
 /**
  * Created by murielK on 8/21/2015.
  */
-@ViewType(layout.view_controller_ir)
+@ViewType("view_controller_ir")
 public class VCITach extends AbsIR {
 
     private static final String TAG = TagFactoryUtils.getTag(VCITach.class);

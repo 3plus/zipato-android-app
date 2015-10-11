@@ -17,7 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.google.widgets.SlidingTabLayout;
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.interactor.BrowserManagerInteractor;
 import com.zipato.appv2.services.AutoUpdaterService;
 import com.zipato.appv2.ui.fragments.BaseFragment;
@@ -31,8 +31,8 @@ import com.zipato.translation.LanguageManager;
 import com.zipato.util.TagFactoryUtils;
 import com.zipato.util.Utils;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterfork.ButterFork;
+import butterfork.Bind;
 
 public class BrowserManagerActivity extends BaseActivity {
 
@@ -40,9 +40,9 @@ public class BrowserManagerActivity extends BaseActivity {
     public static final String RESUMING_ACTION = "RESUMING_ACTION";
     private static final String TAG = TagFactoryUtils.getTag(BrowserManagerActivity.class);
 
-    @InjectView(R.id.bmViewPager)
+    @Bind(B.id.bmViewPager)
     CustomViewPager customViewPager;
-    @InjectView(R.id.slidingTabLayout)
+    @Bind(B.id.slidingTabLayout)
     SlidingTabLayout slidingTabLayout;
 
     private BrowserManagerInteractor interactor;
@@ -86,7 +86,7 @@ public class BrowserManagerActivity extends BaseActivity {
         if (savedInstanceState != null)
             interactor.restoreState(savedInstanceState);
 
-        ButterKnife.inject(this);
+        ButterFork.bind(this);
 
         customViewPager.setAdapter(new PageAdapter(getSupportFragmentManager(), languageManager));
 
@@ -144,18 +144,17 @@ public class BrowserManagerActivity extends BaseActivity {
         // as you specify a parent activity in AndroidManifest.xml.
 
         int id = item.getItemId();
-        switch (id) {
-            case R.id.menu_menu:
-                if (slidingMenu != null) {
-                    if (slidingMenu.isSecondaryMenuShowing())
-                        slidingMenu.toggle();
-                    else
-                        slidingMenu.showSecondaryMenu();
-                }
-                return true;
-            case R.id.menu_scene:
-                eventBus.post(new Event(new ObjectLauncher(ObjectLauncher.LAUNCH_SCENES, null, null), Event.EVENT_TYPE_LAUNCHER));
-                return true;
+        if (id == R.id.menu_menu) {
+            if (slidingMenu != null) {
+                if (slidingMenu.isSecondaryMenuShowing())
+                    slidingMenu.toggle();
+                else
+                    slidingMenu.showSecondaryMenu();
+            }
+            return true;
+        } else if (id == R.id.menu_scene) {
+            eventBus.post(new Event(new ObjectLauncher(ObjectLauncher.LAUNCH_SCENES, null, null), Event.EVENT_TYPE_LAUNCHER));
+            return true;
         }
         return super.onOptionsItemSelected(item);
     }

@@ -9,24 +9,24 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 
-import butterknife.InjectView;
-import butterknife.OnClick;
+import butterfork.Bind;
+import butterfork.OnClick;
 
 /**
  * Created by murielK on 8/24/2015.
  */
 public abstract class AbsLevelWithOnOff extends AbsLevel {
 
-    @InjectView(R.id.buttonOnOff)
+    @Bind(B.id.buttonOnOff)
     ImageView imageView;
 
     protected AbsLevelWithOnOff(View itemView, RecyclerView recyclerView) {
         super(itemView, recyclerView);
     }
 
-    @OnClick(R.id.buttonOnOff)
+    @OnClick(B.id.buttonOnOff)
     public void onOnOffClick(View v) {
         handleOnOffClick(v);
     }

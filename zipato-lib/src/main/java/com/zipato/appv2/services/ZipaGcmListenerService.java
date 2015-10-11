@@ -18,7 +18,7 @@ import android.support.v4.app.NotificationCompat.Builder;
 import android.util.Log;
 
 import com.google.android.gms.gcm.GcmListenerService;
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.activities.LogInActivity;
 import com.zipato.util.TagFactoryUtils;
 

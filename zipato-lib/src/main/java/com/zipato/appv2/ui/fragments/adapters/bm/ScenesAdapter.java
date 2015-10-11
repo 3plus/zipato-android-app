@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.zipato.annotation.SetTypeFace;
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.ZipatoApplication;
 import com.zipato.appv2.ui.fragments.adapters.BaseRecyclerViewAdapter;
 import com.zipato.model.scene.Scene;
@@ -27,10 +27,10 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-import butterknife.OnClick;
-import butterknife.OnLongClick;
+import butterfork.ButterFork;
+import butterfork.Bind;
+import butterfork.OnClick;
+import butterfork.OnLongClick;
 
 /**
  * Created by murielK on 10/6/2015.
@@ -79,17 +79,17 @@ public class ScenesAdapter extends BaseRecyclerViewAdapter {
 
 
         @SetTypeFace("helveticaneue_ultra_light.otf")
-        @InjectView(R.id.textViewSceneName)
+        @Bind(B.id.textViewSceneName)
         TextView textView;
         @SetTypeFace("icomoon.ttf")
-        @InjectView(R.id.textViewSceneKK)
+        @Bind(B.id.textViewSceneKK)
         TextView textViewKK;
-        @InjectView(R.id.filterViewClick)
+        @Bind(B.id.filterViewClick)
         View viewClick;
 
         public ScenesViewHolder(View itemView) {
             super(itemView);
-            ButterKnife.inject(this, itemView);
+            ButterFork.bind(this, itemView);
             typeFaceUtils.applyTypefaceFor(this);
         }
 
@@ -108,13 +108,13 @@ public class ScenesAdapter extends BaseRecyclerViewAdapter {
                 ViewCompat.animate(textViewKK).scaleX(1f).scaleY(1).setDuration(225).start();
         }
 
-        @OnClick(R.id.filterViewClick)
+        @OnClick(B.id.filterViewClick)
         public void onClick(View v) {
             if (listener != null)
                 listener.onClick(getAdapterPosition());
         }
 
-        @OnLongClick(R.id.filterViewClick)
+        @OnLongClick(B.id.filterViewClick)
         public boolean onLongClick(View v) {
             if (listener != null)
                 listener.onLongClick(getAdapterPosition());

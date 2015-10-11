@@ -16,7 +16,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.zipato.annotation.Translated;
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.R.id;
 import com.zipato.appv2.R.string;
 import com.zipato.appv2.ZipatoApplication;
@@ -38,9 +39,9 @@ import java.util.concurrent.ExecutorService;
 
 import javax.inject.Inject;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-import butterknife.OnClick;
+import butterfork.ButterFork;
+import butterfork.Bind;
+import butterfork.OnClick;
 
 /**
  * Created by murielK on 8/12/2015.
@@ -64,34 +65,34 @@ public class AlarmTriggerActivity extends Activity {
     @Inject
     ZonesRepository zonesRepository;
 
-    @InjectView(id.keypadLayout)
+    @Bind(B.id.keypadLayout)
     LinearLayout keypad;
-    @InjectView(id.textViewPad0)
+    @Bind(B.id.textViewPad0)
     TextView keyPad0;
-    @InjectView(id.textViewPad1)
+    @Bind(B.id.textViewPad1)
     TextView keyPad1;
-    @InjectView(id.textViewPad2)
+    @Bind(B.id.textViewPad2)
     TextView keyPad2;
-    @InjectView(id.textViewPad3)
+    @Bind(B.id.textViewPad3)
     TextView keyPad3;
-    @InjectView(id.textViewPad4)
+    @Bind(B.id.textViewPad4)
     TextView keyPad4;
-    @InjectView(id.textViewPad5)
+    @Bind(B.id.textViewPad5)
     TextView keyPad5;
-    @InjectView(id.textViewPad6)
+    @Bind(B.id.textViewPad6)
     TextView keyPad6;
-    @InjectView(id.textViewPad7)
+    @Bind(B.id.textViewPad7)
     TextView keyPad7;
-    @InjectView(id.textViewPad8)
+    @Bind(B.id.textViewPad8)
     TextView keyPad8;
-    @InjectView(id.textViewPad9)
+    @Bind(B.id.textViewPad9)
     TextView keyPad9;
-    @InjectView(id.imageViewPin)
+    @Bind(B.id.imageViewPin)
     TextView indicator;
-    @InjectView(id.textViewEnterPin)
+    @Bind(B.id.textViewEnterPin)
     TextView textViewEnterPin;
     @Translated("clear")
-    @InjectView(id.buttonPinClear)
+    @Bind(B.id.buttonPinClear)
     TextView butPinClear;
     private UUID partitionUUID;
     private ArmRequestRest armRequestRest;
@@ -142,58 +143,58 @@ public class AlarmTriggerActivity extends Activity {
 
     }
 
-    @OnClick(id.textViewPad0)
+    @OnClick(B.id.textViewPad0)
     public void onClickKeyPad0(View v) {
         keyPadHandler(v);
     }
 
-    @OnClick(id.textViewPad1)
+    @OnClick(B.id.textViewPad1)
     public void onClickKeyPad1(View v) {
         keyPadHandler(v);
     }
 
-    @OnClick(id.textViewPad2)
+    @OnClick(B.id.textViewPad2)
     public void onClickKeyPad2(View v) {
         keyPadHandler(v);
     }
 
-    @OnClick(id.textViewPad3)
+    @OnClick(B.id.textViewPad3)
     public void onClickKeyPad3(View v) {
         keyPadHandler(v);
     }
 
-    @OnClick(id.textViewPad4)
+    @OnClick(B.id.textViewPad4)
     public void onClickKeyPad4(View v) {
         keyPadHandler(v);
     }
 
-    @OnClick(id.textViewPad5)
+    @OnClick(B.id.textViewPad5)
     public void onClickKeyPad5(View v) {
         keyPadHandler(v);
     }
 
-    @OnClick(id.textViewPad6)
+    @OnClick(B.id.textViewPad6)
     public void onClickKeyPad6(View v) {
         keyPadHandler(v);
     }
 
-    @OnClick(id.textViewPad7)
+    @OnClick(B.id.textViewPad7)
     public void onClickKeyPad7(View v) {
         keyPadHandler(v);
     }
 
-    @OnClick(id.textViewPad8)
+    @OnClick(B.id.textViewPad8)
     public void onClickKeyPad8(View v) {
         keyPadHandler(v);
     }
 
-    @OnClick(id.textViewPad9)
+    @OnClick(B.id.textViewPad9)
     public void onClickKeyPad9(View v) {
         keyPadHandler(v);
 
     }
 
-    @OnClick(id.buttonPinClear)
+    @OnClick(B.id.buttonPinClear)
     public void onClickButPinClear() {
         clearPin();
     }
@@ -330,7 +331,7 @@ public class AlarmTriggerActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm_trigger);
         ((ZipatoApplication) getApplication()).inject(this);
-        ButterKnife.inject(this);
+        ButterFork.bind(this);
         progressDialog = new ProgressDialog(this); //TODO add check for darkTheme or Light theme
         progressDialog.setIndeterminate(true);
         progressDialog.setCancelable(false);

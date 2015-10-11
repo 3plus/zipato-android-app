@@ -13,7 +13,7 @@ import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.util.Log;
 import android.view.View;
 
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.ZipatoApplication;
 import com.zipato.appv2.ui.fragments.adapters.controllers.GenericAdapter;
 import com.zipato.appv2.ui.fragments.adapters.controllers.GenericAdapter.Command;
@@ -41,7 +41,7 @@ import java.util.concurrent.ExecutorService;
 
 import javax.inject.Inject;
 
-import butterknife.ButterKnife;
+import butterfork.ButterFork;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -80,7 +80,7 @@ public abstract class ViewController extends ViewHolder {
 
     public ViewController(View itemView, RecyclerView recyclerView) {
         super(itemView);
-        ButterKnife.inject(this, itemView);
+        ButterFork.bind(this, itemView);
         ((ZipatoApplication) recyclerView.getContext().getApplicationContext()).getObjectGraph().inject(this);
         languageManager.translateFields(this);
         typeFaceUtils.applyTypefaceFor(this);

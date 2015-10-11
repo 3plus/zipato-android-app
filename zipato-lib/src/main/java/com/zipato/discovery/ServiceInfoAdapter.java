@@ -14,7 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.zipato.annotation.SetTypeFace;
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.ZipatoApplication;
 import com.zipato.util.TypeFaceUtils;
 
@@ -22,8 +22,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterfork.ButterFork;
+import butterfork.Bind;
 
 /**
  * Created by murielK on 30.5.2014..
@@ -103,20 +103,20 @@ public class ServiceInfoAdapter extends ArrayAdapter<ZipatoServiceInfo> {
 
     class ViewHolder {
         @SetTypeFace("helvetica_neue_light.otf")
-        @InjectView(R.id.textViewLogZipaBoxName)
+        @Bind(B.id.textViewLogZipaBoxName)
         TextView boxName;
         @SetTypeFace("helveticaneue_ultra_light.otf")
-        @InjectView(R.id.textViewSNValue)
+        @Bind(B.id.textViewSNValue)
         TextView snValue;
         @SetTypeFace("helveticaneue_ultra_light.otf")
-        @InjectView(R.id.textViewIPValue)
+        @Bind(B.id.textViewIPValue)
         TextView ipValue;
         @SetTypeFace("helveticaneue_ultra_light.otf")
-        @InjectView(R.id.textViewMacValue)
+        @Bind(B.id.textViewMacValue)
         TextView macValue;
 
         public ViewHolder(View v) {
-            ButterKnife.inject(this, v);
+            ButterFork.bind(this, v);
             typeFaceUtils.applyTypefaceFor(this);
         }
     }

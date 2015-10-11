@@ -24,6 +24,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.zipato.annotation.SetTypeFace;
+import com.zipato.appv2.B;
 import com.zipato.appv2.R;
 import com.zipato.appv2.ui.fragments.adapters.BaseListAdapter;
 import com.zipato.model.alarm.AlarmLog;
@@ -41,11 +42,10 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterfork.Bind;
+import butterfork.ButterFork;
 import se.emilsjolander.stickylistheaders.StickyListHeadersAdapter;
 import se.emilsjolander.stickylistheaders.StickyListHeadersListView;
-
 
 /**
  * Created by murielK on 8/27/2014.
@@ -56,16 +56,16 @@ public class SecurityEventFragment extends BaseSecurityFragment {
     private static final Map<String, String> messageBody = new HashMap<String, String>();
 
     static {
-        messageBody.put("message", "Darko madafackerrrrrrrrrrrr!");
+        messageBody.put("message", "-");
     }
 
     @Inject
     ApiV2RestTemplate restTemplate;
     @Inject
     TypeFaceUtils typeFaceUtils;
-    @InjectView(R.id.headerListView)
+    @Bind(B.id.headerListView)
     StickyListHeadersListView listHeadersListView;
-    @InjectView(R.id.swipe_container)
+    @Bind(B.id.swipe_container)
     SwipeRefreshLayout swipeRefreshLayout;
     HeaderListAdapter headerAdapter;
     List<AlarmLog> alarmLogList = new ArrayList<AlarmLog>();
@@ -90,8 +90,9 @@ public class SecurityEventFragment extends BaseSecurityFragment {
         listHeadersListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                if (!alarmLogList.get(position).isNeedAck())
+                if (!alarmLogList.get(position).isNeedAck()) {
                     return true;
+                }
                 headerAdapter.toggleSelection(position);
                 setOnActionBarMenu(headerAdapter.getSelectedCount());
                 return true;
@@ -111,8 +112,9 @@ public class SecurityEventFragment extends BaseSecurityFragment {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                if (!isCollectingFlag)
+                if (!isCollectingFlag) {
                     collectData();
+                }
             }
         });
     }
@@ -123,7 +125,6 @@ public class SecurityEventFragment extends BaseSecurityFragment {
         collectData();
     }
 
-
     @Override
     protected void init() {
 
@@ -132,14 +133,16 @@ public class SecurityEventFragment extends BaseSecurityFragment {
     private void collectData() {
 
         if (isDetached() || !checkInternet()) {
-            if (swipeRefreshLayout.isRefreshing())
+            if (swipeRefreshLayout.isRefreshing()) {
                 swipeRefreshLayout.setRefreshing(false);
+            }
             return;
         }
 
         isCollectingFlag = true;
-        if (!swipeRefreshLayout.isRefreshing())
+        if (!swipeRefreshLayout.isRefreshing()) {
             swipeRefreshLayout.setRefreshing(true);
+        }
         alarmLogList.clear();
         headerAdapter.notifyDataSetChanged();
         executor.execute(new Runnable() {
@@ -222,14 +225,14 @@ public class SecurityEventFragment extends BaseSecurityFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (mActionMode != null)
+        if (mActionMode != null) {
             mActionMode.finish();
+        }
     }
 
     public class HeaderListAdapter extends BaseListAdapter implements StickyListHeadersAdapter {
         private final java.text.DateFormat timeFormat;
         private final java.text.DateFormat dateFormat;
-
 
         public HeaderListAdapter() {
             timeFormat = DateFormat.getTimeFormat(getActivity());
@@ -319,12 +322,12 @@ public class SecurityEventFragment extends BaseSecurityFragment {
 
         class HeaderHolder {
             @SetTypeFace("helvetica_neue_light.otf")
-            @InjectView(R.id.textViewDate)
+            @Bind(B.id.textViewDate)
             TextView date;
 
             public HeaderHolder(View v) {
 
-                ButterKnife.inject(this, v);
+                ButterFork.bind(this, v);
                 typeFaceUtils.applyTypefaceFor(this);
             }
         }
@@ -332,26 +335,25 @@ public class SecurityEventFragment extends BaseSecurityFragment {
         class ChildHolder {
 
             @SetTypeFace("helveticaneue_ultra_light.otf")
-            @InjectView(R.id.textViewMessage)
+            @Bind(B.id.textViewMessage)
             TextView messageText;
             @SetTypeFace("helveticaneue_ultra_light.otf")
-            @InjectView(R.id.textViewTime)
+            @Bind(B.id.textViewTime)
             TextView time;
             @SetTypeFace("helveticaneue_ultra_light.otf")
-            @InjectView(R.id.buttonAck)
+            @Bind(B.id.buttonAck)
             Button ack;
-            @InjectView(R.id.imageEventStatus)
+            @Bind(B.id.imageEventStatus)
             ImageView status;
 
             public ChildHolder(View v) {
-                ButterKnife.inject(this, v);
+                ButterFork.bind(this, v);
                 typeFaceUtils.applyTypefaceFor(this);
             }
         }
     }
 
     private final class ModeCallback implements ActionMode.Callback {
-
 
         @Override
         public boolean onCreateActionMode(ActionMode actionMode, Menu menu) {
@@ -376,93 +378,95 @@ public class SecurityEventFragment extends BaseSecurityFragment {
             params.bottomMargin = dpAsPixels;
             params.topMargin = dpAsPixels;
 
-            switch (menuItem.getItemId()) {
-                case R.id.selectAll:
+            int i1 = menuItem.getItemId();
+            if (i1 == R.id.selectAll) {
+                int tempAdapterSize = headerAdapter.getCount();
+                for (int i = 0; i < tempAdapterSize; i++) {
 
-                    int tempAdapterSize = headerAdapter.getCount();
-                    for (int i = 0; i < tempAdapterSize; i++) {
-
-                        if (!selected.get(i) && alarmLogList.get(i).isNeedAck()) {
-                            headerAdapter.toggleSelection(i);
-                        }
+                    if (!selected.get(i) && alarmLogList.get(i).isNeedAck()) {
+                        headerAdapter.toggleSelection(i);
                     }
+                }
 
-                    final int checkedItemCount = headerAdapter
-                            .getSelectedCount();
-                    setOnActionBarMenu(checkedItemCount);
-                    break;
-                case R.id.Acknowledge:
-                    final SparseBooleanArray sparseBooleanArray = headerAdapter.getSelectedIds();
-                    final int size = sparseBooleanArray.size();
-                    executor.execute(new Runnable() {
-                        @Override
-                        public void run() {
-                            final java.text.DateFormat dateFormat = DateFormat.getLongDateFormat(getActivity());
-                            final java.text.DateFormat timeFormat = DateFormat.getTimeFormat(getActivity());
-                            for (int i = 0; i < size; i++) {
-                                final int finalI = i;
-                                baseFragmentHandler.post(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        showProgressDialog(languageManager.translate("acknowledging_event") + ": " + dateFormat.format(alarmLogList.get(sparseBooleanArray.keyAt(finalI)).getTimestamp()) + ", " + timeFormat.format(alarmLogList.get(sparseBooleanArray.keyAt(finalI)).getTimestamp()), true);
+                final int checkedItemCount = headerAdapter
+                        .getSelectedCount();
+                setOnActionBarMenu(checkedItemCount);
 
-                                    }
-                                });
-                                if (internetConnectionHelper.isOnline()) {
+            } else if (i1 == R.id.Acknowledge) {
+                final SparseBooleanArray sparseBooleanArray = headerAdapter.getSelectedIds();
+                final int size = sparseBooleanArray.size();
+                executor.execute(new Runnable() {
+                    @Override
+                    public void run() {
+                        final java.text.DateFormat dateFormat = DateFormat.getLongDateFormat(getActivity());
+                        final java.text.DateFormat timeFormat = DateFormat.getTimeFormat(getActivity());
+                        for (int i = 0; i < size; i++) {
+                            final int finalI = i;
+                            baseFragmentHandler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    showProgressDialog(languageManager.translate("acknowledging_event") + ": " +
+                                                               dateFormat.format(alarmLogList.get(sparseBooleanArray.keyAt(finalI)).getTimestamp()) + ", " +
+                                                               timeFormat.format(alarmLogList.get(sparseBooleanArray.keyAt(finalI)).getTimestamp()), true);
 
-                                    try {
-                                        Log.d(TAG, "Sending acknowledgement...");
-                                        RestObject resp = restTemplate.postForObject("v2/alarm/partitions/{uuidPartition }/events/{evenId}", messageBody, RestObject.class, partition.getUuid(), alarmLogList.get(sparseBooleanArray.keyAt(finalI)).getId());
-                                        if (resp != null) {
+                                }
+                            });
+                            if (internetConnectionHelper.isOnline()) {
 
-                                            Log.d(TAG, "Sent acknowledgement is success? " + resp.isSuccess());
-                                            if (resp.isSuccess()) {
+                                try {
+                                    Log.d(TAG, "Sending acknowledgement...");
+                                    RestObject resp = restTemplate.postForObject("v2/alarm/partitions/{uuidPartition }/events/{evenId}", messageBody,
+                                                                                 RestObject.class, partition.getUuid(),
+                                                                                 alarmLogList.get(sparseBooleanArray.keyAt(finalI)).getId());
+                                    if (resp != null) {
 
-                                            } else {
-                                                Log.d(TAG, "errorMessage: " + resp.getError());
-                                            }
+                                        Log.d(TAG, "Sent acknowledgement is success? " + resp.isSuccess());
+                                        if (resp.isSuccess()) {
+
+                                        } else {
+                                            Log.d(TAG, "errorMessage: " + resp.getError());
                                         }
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
-                                        baseFragmentHandler.post(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                toast(languageManager.translate("connection_error"));
-                                            }
-                                        });
-
-                                        break;
                                     }
-
-
-                                } else {
-
+                                } catch (Exception e) {
+                                    e.printStackTrace();
                                     baseFragmentHandler.post(new Runnable() {
                                         @Override
                                         public void run() {
-                                            toast(languageManager.translate("internet_error"));
+                                            toast(languageManager.translate("connection_error"));
                                         }
                                     });
 
                                     break;
                                 }
 
+                            } else {
+
+                                baseFragmentHandler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        toast(languageManager.translate("internet_error"));
+                                    }
+                                });
+
+                                break;
                             }
-                            isCollectingFlag = false;
 
-                            baseFragmentHandler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    dismissProgressDialog();
-                                    collectData();
-
-                                }
-                            });
                         }
-                    });
-                    // Close CAB
-                    mActionMode.finish();
-                    break;
+                        isCollectingFlag = false;
+
+                        baseFragmentHandler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                dismissProgressDialog();
+                                collectData();
+
+                            }
+                        });
+                    }
+                });
+                // Close CAB
+                mActionMode.finish();
+
             }
             return true;
         }

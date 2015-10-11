@@ -17,7 +17,7 @@ import android.widget.TextView;
 import com.zipato.annotation.SetTypeFace;
 import com.zipato.annotation.Translated;
 import com.zipato.annotation.TranslatedHint;
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.R.bool;
 import com.zipato.appv2.R.id;
 import com.zipato.appv2.R.string;
@@ -27,39 +27,39 @@ import com.zipato.util.Utils;
 
 import javax.inject.Inject;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-import butterknife.OnClick;
+import butterfork.ButterFork;
+import butterfork.Bind;
+import butterfork.OnClick;
 
 public class PasswordRecoveryActivity extends BaseActivity {
 
     private static final String RECOVERY_BOOLEAN_KEY = "RECOVERY_BOOLEAN_KEY";
     private static final String EMAIL_KEY_RECOVERED = "EMAIL_KEY_RECOVERED";
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.buttonRecovery)
+    @Bind(B.id.buttonRecovery)
     Button buttonRecovery;
-    @InjectView(id.linearLayoutRecoveryText)
+    @Bind(B.id.linearLayoutRecoveryText)
     LinearLayout linearLayoutRecoveryText;
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @TranslatedHint("email_address")
-    @InjectView(id.editTextEmail)
+    @Bind(B.id.editTextEmail)
     EditText editTextEmail;
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @Translated("recovery_text1")
-    @InjectView(id.textViewRecovery1)
+    @Bind(B.id.textViewRecovery1)
     TextView textViewRecovery1;
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @Translated("recovery_text2")
-    @InjectView(id.textViewRecovery2)
+    @Bind(B.id.textViewRecovery2)
     TextView textViewRecovery2;
     @SetTypeFace("helveticaneue_ultra_light.otf")
     @Translated("thank_you")
-    @InjectView(id.textViewRecoveryThank_1)
+    @Bind(B.id.textViewRecoveryThank_1)
     TextView textViewRecoveryThankYou;
     @Inject
     InternetConnectionHelper internetConnectionHelper;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.textViewLogInTextMessage)
+    @Bind(B.id.textViewLogInTextMessage)
     TextView textViewLogInTextMessage;
     private boolean recovered; //TODO this will be use for onConfiguration change to set properly the View
     private String email;
@@ -77,7 +77,7 @@ public class PasswordRecoveryActivity extends BaseActivity {
 
     @Override
     protected void onPostContentView(Bundle savedInstanceState) {
-        ButterKnife.inject(this);
+        ButterFork.bind(this);
         buttonRecovery.setText(Utils.capitalizer(languageManager.translate("recovery_password").toLowerCase()));
         handler = new Handler();
     }
@@ -112,7 +112,7 @@ public class PasswordRecoveryActivity extends BaseActivity {
         saveStates.putString(EMAIL_KEY_RECOVERED, email);
     }
 
-    @OnClick(id.buttonRecovery)
+    @OnClick(B.id.buttonRecovery)
     public void onClick() {
         if (!internetConnectionHelper.isOnline()) {
             showAlertDialog(languageManager.translate("no_internet_connection"), languageManager.translate("no_internet_connection_message"), false);

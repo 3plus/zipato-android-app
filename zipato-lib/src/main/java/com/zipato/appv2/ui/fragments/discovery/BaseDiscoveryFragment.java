@@ -16,7 +16,7 @@ import com.zipato.util.TypeFaceUtils;
 
 import javax.inject.Inject;
 
-import butterknife.ButterKnife;
+import butterfork.ButterFork;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -50,7 +50,7 @@ public abstract class BaseDiscoveryFragment extends BaseFragment {
             return super.onCreateView(inflater, container, savedInstanceState);
         }
         View v = inflater.inflate(getResourceView(), null);
-        ButterKnife.inject(this, v);
+        ButterFork.bind(this, v);
         typeFaceUtils.applyTypefaceFor(this);
         frameLayout.addView(v);
         onPostViewCreate();

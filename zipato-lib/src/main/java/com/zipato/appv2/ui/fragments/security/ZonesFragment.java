@@ -24,7 +24,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.zipato.annotation.SetTypeFace;
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.ui.fragments.adapters.BaseListAdapter;
 import com.zipato.helper.DeleteDialogHelper;
 import com.zipato.model.alarm.Zone;
@@ -38,10 +38,10 @@ import java.util.UUID;
 
 import javax.inject.Inject;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-import butterknife.OnClick;
-import butterknife.OnItemClick;
+import butterfork.ButterFork;
+import butterfork.Bind;
+import butterfork.OnClick;
+import butterfork.OnItemClick;
 
 
 /**
@@ -50,9 +50,9 @@ import butterknife.OnItemClick;
 public class ZonesFragment extends BaseSecurityFragment {
 
     private static final String TAG = ZonesFragment.class.getSimpleName();
-    @InjectView(R.id.listViewZone)
+    @Bind(B.id.listViewZone)
     ListView listViewZones;
-    @InjectView(R.id.swipe_container)
+    @Bind(B.id.swipe_container)
     SwipeRefreshLayout swipeRefreshLayout;
 
     @Inject
@@ -79,7 +79,7 @@ public class ZonesFragment extends BaseSecurityFragment {
         });
     }
 
-    @OnItemClick(R.id.listViewZone)
+    @OnItemClick(B.id.listViewZone)
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         adapter.toggleSelection(position);
         setOnActionBarMenu(adapter.getSelectedCount());
@@ -291,28 +291,28 @@ public class ZonesFragment extends BaseSecurityFragment {
 
         class ViewHolder {
             @SetTypeFace("helveticaneue_ultra_light.otf")
-            @InjectView(R.id.textViewZoneName)
+            @Bind(B.id.textViewZoneName)
             TextView textViewName;
             @SetTypeFace("helveticaneue_ultra_light.otf")
-            @InjectView(R.id.textViewZoneStatus)
+            @Bind(B.id.textViewZoneStatus)
             TextView textViewStatus;
             @SetTypeFace("helveticaneue_ultra_light.otf")
-            @InjectView(R.id.buttonBypass)
+            @Bind(B.id.buttonBypass)
             Button buttonBypass;
-            @InjectView(R.id.imageViewZone)
+            @Bind(B.id.imageViewZone)
             ImageView icon;
             @SetTypeFace("helveticaneue_ultra_light.otf")
-            @InjectView(R.id.textViewTripCount)
+            @Bind(B.id.textViewTripCount)
             TextView trippedCount;
 
             public ViewHolder(View v) {
 
-                ButterKnife.inject(this, v);
+                ButterFork.bind(this, v);
                 typeFaceUtils.applyTypefaceFor(this);
 
             }
 
-            @OnClick(R.id.imageViewZone)
+            @OnClick(B.id.imageViewZone)
             public void onIconClick(View v) {
                 previousUpdate = System.currentTimeMillis();
                 int position = (Integer) v.getTag();
@@ -322,7 +322,7 @@ public class ZonesFragment extends BaseSecurityFragment {
 
             }
 
-            @OnClick(R.id.buttonBypass)
+            @OnClick(B.id.buttonBypass)
             public void onButtonClick(View v) {
                 previousUpdate = System.currentTimeMillis();
                 final int position = (Integer) v.getTag();
@@ -361,105 +361,106 @@ public class ZonesFragment extends BaseSecurityFragment {
             final SparseBooleanArray sparseBooleanArray = adapter
                     .getSelectedIds();
             final int size = sparseBooleanArray.size();
-            switch (menuItem.getItemId()) {
-                case R.id.selectAll:
-                    int tempAdapterSize = adapter.getCount();
-                    for (int i = 0; i < tempAdapterSize; i++) {
+            int i1 = menuItem.getItemId();
+            if (i1 == R.id.selectAll) {
+                int tempAdapterSize = adapter.getCount();
+                for (int i = 0; i < tempAdapterSize; i++) {
 
-                        if (!sparseBooleanArray.get(i)) {
-                            adapter.toggleSelection(i);
-                        }
+                    if (!sparseBooleanArray.get(i)) {
+                        adapter.toggleSelection(i);
                     }
+                }
 
-                    final int checkedItemCount = adapter.getSelectedCount();
-                    setOnActionBarMenu(checkedItemCount);
-                    break;
-                case R.id.delete:
-                    if ((partition.getState() != null) && (partition.getState().getArmMode() != null)) {
-                        if ("HOME".equals(partition.getState().getArmMode().name()) || "AWAY".equals(partition.getState().getArmMode().name())) {
-                            toast(languageManager.translate("error_partition_is_armed"));
-                            mActionMode.finish();
+                final int checkedItemCount = adapter.getSelectedCount();
+                setOnActionBarMenu(checkedItemCount);
 
-                            return true;
-                        }
+            } else if (i1 == R.id.delete) {
+                if ((partition.getState() != null) && (partition.getState().getArmMode() != null)) {
+                    if ("HOME".equals(partition.getState().getArmMode().name()) || "AWAY".equals(partition.getState().getArmMode().name())) {
+                        toast(languageManager.translate("error_partition_is_armed"));
+                        mActionMode.finish();
+
+                        return true;
                     }
-                    previousUpdate = System.currentTimeMillis();
-                    List<String> tempList = new ArrayList<String>();
-                    for (int i = 0; i < size; i++) {
-                        tempList.add(listZones.get(sparseBooleanArray.keyAt(i)).getName());
-                    }
-                    String text1 = languageManager.translate("remove_zones_textMsg");
-                    String dialogTitle = (languageManager.translate("dialog_remove_zone_title") + " (" + tempList.size() + ")");
-                    String positiveText = languageManager.translate("remove");
-                    String negativeText = languageManager.translate("cancel");
-                    DeleteDialogHelper deleteDialogHelper = new DeleteDialogHelper(getActivity(), tempList, text1, R.drawable.ic_warning, dialogTitle, negativeText, positiveText, new DeleteDialogHelper.OnPositiveClicked() {
-                        @Override
-                        public void onPositiveClicked() {
-                            executor.execute(new Runnable() {
-                                @Override
-                                public void run() {
-                                    previousUpdate = System.currentTimeMillis();
-                                    for (int i = 0; i < size; i++) {
+                }
+                previousUpdate = System.currentTimeMillis();
+                List<String> tempList = new ArrayList<String>();
+                for (int i = 0; i < size; i++) {
+                    tempList.add(listZones.get(sparseBooleanArray.keyAt(i)).getName());
+                }
+                String text1 = languageManager.translate("remove_zones_textMsg");
+                String dialogTitle = (languageManager.translate("dialog_remove_zone_title") + " (" + tempList.size() + ")");
+                String positiveText = languageManager.translate("remove");
+                String negativeText = languageManager.translate("cancel");
+                DeleteDialogHelper deleteDialogHelper = new DeleteDialogHelper(getActivity(), tempList, text1, R.drawable.ic_warning, dialogTitle, negativeText,
+                                                                               positiveText, new DeleteDialogHelper.OnPositiveClicked() {
+                    @Override
+                    public void onPositiveClicked() {
+                        executor.execute(new Runnable() {
+                            @Override
+                            public void run() {
+                                previousUpdate = System.currentTimeMillis();
+                                for (int i = 0; i < size; i++) {
 
-                                        final int finalI = i;
-                                        baseFragmentHandler.post(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                showProgressDialog(languageManager.translate("removing_zone") + " " + listZones.get(sparseBooleanArray.keyAt(finalI)).getName(), false);
+                                    final int finalI = i;
+                                    baseFragmentHandler.post(new Runnable() {
+                                        @Override
+                                        public void run() {
+                                            showProgressDialog(languageManager.translate("removing_zone") + " " +
+                                                                       listZones.get(sparseBooleanArray.keyAt(finalI)).getName(), false);
 
-                                            }
-                                        });
-                                        if (internetConnectionHelper.isOnline()) {
-                                            UUID uuidZone = listZones.get(sparseBooleanArray.keyAt(i)).getUuid();
-                                            try {
-                                                previousUpdate = System.currentTimeMillis();
-                                                zonesRepository.removeZone(partition.getUuid(), uuidZone);
-                                                zonesRepository.removeBypassedZone(partition.getUuid(), uuidZone);
-                                                zonesRepository.remove(uuidZone);
+                                        }
+                                    });
+                                    if (internetConnectionHelper.isOnline()) {
+                                        UUID uuidZone = listZones.get(sparseBooleanArray.keyAt(i)).getUuid();
+                                        try {
+                                            previousUpdate = System.currentTimeMillis();
+                                            zonesRepository.removeZone(partition.getUuid(), uuidZone);
+                                            zonesRepository.removeBypassedZone(partition.getUuid(), uuidZone);
+                                            zonesRepository.remove(uuidZone);
 
-
-                                            } catch (Exception e) {
-                                                Log.d(TAG, "", e);
-                                                baseFragmentHandler.post(new Runnable() {
-                                                    @Override
-                                                    public void run() {
-                                                        toast(languageManager.translate("connection_error"));
-                                                    }
-                                                });
-
-                                                break;
-                                            }
-
-                                        } else {
-
+                                        } catch (Exception e) {
+                                            Log.d(TAG, "", e);
                                             baseFragmentHandler.post(new Runnable() {
                                                 @Override
                                                 public void run() {
-                                                    toast(languageManager.translate("internet_error"));
+                                                    toast(languageManager.translate("connection_error"));
                                                 }
                                             });
 
                                             break;
                                         }
 
+                                    } else {
+
+                                        baseFragmentHandler.post(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                toast(languageManager.translate("internet_error"));
+                                            }
+                                        });
+
+                                        break;
                                     }
-                                    previousUpdate = System.currentTimeMillis();
-                                    baseFragmentHandler.post(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            init();
-                                            dismissProgressDialog();
-                                            // eventBus.post(SMFragment.REQUEST_FETCH); // TODO CHECK THIS OUT
-                                        }
-                                    });
 
                                 }
-                            });
-                        }
-                    });
-                    deleteDialogHelper.show();
-                    mActionMode.finish();
-                    break;
+                                previousUpdate = System.currentTimeMillis();
+                                baseFragmentHandler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        init();
+                                        dismissProgressDialog();
+                                        // eventBus.post(SMFragment.REQUEST_FETCH); // TODO CHECK THIS OUT
+                                    }
+                                });
+
+                            }
+                        });
+                    }
+                });
+                deleteDialogHelper.show();
+                mActionMode.finish();
+
             }
             return true;
         }

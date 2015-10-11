@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.zipato.annotation.SetTypeFace;
+import com.zipato.appv2.B;
 import com.zipato.appv2.R;
 import com.zipato.appv2.R.bool;
 import com.zipato.appv2.R.drawable;
@@ -66,7 +67,7 @@ import java.util.concurrent.ExecutorService;
 
 import javax.inject.Inject;
 
-import butterknife.InjectView;
+import butterfork.Bind;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -80,7 +81,7 @@ public class SettingMenuFragment extends BaseFragment {
     private final List<Box> boxList = new ArrayList<>();
     private final SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss", Locale.getDefault());
     ExpendableListerViewCustomAdapter listerViewCustomAdapter;
-    @InjectView(id.expandableListView)
+    @Bind(B.id.expandableListView)
     AnimatedExpandableListView expandableListView;
     @Inject
     ApiV2RestTemplate restTemplate;
@@ -98,7 +99,7 @@ public class SettingMenuFragment extends BaseFragment {
     ExecutorService executor;
 
     @SetTypeFace("helvetica_neue_light.otf")
-    @InjectView(id.textView)
+    @Bind(B.id.textView)
     TextView mainMenuText;
 
     private Box currentBox;
@@ -368,8 +369,9 @@ public class SettingMenuFragment extends BaseFragment {
                         public void run() {
                             if (!isDetached()) {
                                 dismissProgressDialog();
-                                if (!finalSuccess)
+                                if (!finalSuccess) {
                                     toast(languageManager.translate("synch_fail"));
+                                }
                             }
                         }
                     });
@@ -389,31 +391,31 @@ public class SettingMenuFragment extends BaseFragment {
             public void onGroupClick(int position) {
                 if ((groupList.get(position).children == null) || groupList.get(position).children.isEmpty()) {
                     //  closeMenu();
-                    switch (groupList.get(position).groupImage) {
-                        case drawable.ic_refresh:
-                            closeMenu();
-                            eventBus.post(new Event(null, Event.EVENT_TYPE_REFRESH_REQUEST));
-                            attributeValueRepository.clearETag();
-                            deviceStateRepository.clearETag();
-                            break;
-                        case drawable.ic_synchronize:
-                            closeMenu();
-                            synchronize();
-                            break;
-                        case drawable.ic_box_offline:
-                            regBoxInit();
-                            break;
-                        case drawable.ic_settings:
-                            eventBus.post(new Event(new ObjectMenu(ObjectMenu.MENU_SETTINGS, null), Event.EVENT_TYPE_TYPE_MENU));
-                            break;
-                        default:
-                            try {
-                                final String key = (String) groupList.get(position).getSelected();
-                                eventBus.post(map.get(key));//
-                            } catch (Exception e) {
-                                Log.d(TAG, "", e);
-                            }
-                            break;
+                    int i = groupList.get(position).groupImage;
+                    if (i == drawable.ic_refresh) {
+                        closeMenu();
+                        eventBus.post(new Event(null, Event.EVENT_TYPE_REFRESH_REQUEST));
+                        attributeValueRepository.clearETag();
+                        deviceStateRepository.clearETag();
+
+                    } else if (i == drawable.ic_synchronize) {
+                        closeMenu();
+                        synchronize();
+
+                    } else if (i == drawable.ic_box_offline) {
+                        regBoxInit();
+
+                    } else if (i == drawable.ic_settings) {
+                        eventBus.post(new Event(new ObjectMenu(ObjectMenu.MENU_SETTINGS, null), Event.EVENT_TYPE_TYPE_MENU));
+
+                    } else {
+                        try {
+                            final String key = (String) groupList.get(position).getSelected();
+                            eventBus.post(map.get(key));//
+                        } catch (Exception e) {
+                            Log.d(TAG, "", e);
+                        }
+
                     }
                     //closeMenu();
                     return;
@@ -439,7 +441,6 @@ public class SettingMenuFragment extends BaseFragment {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
                 //the default clicked language will be set here of course
-                switch (groupList.get(groupPosition).groupImage) {
 //                    case R.drawable.language_group_icon:
 //                        listerViewCustomAdapter.toggleSelection(childPosition);
 //                        groupList.get(groupPosition).selected = groupList.get(groupPosition).children.get(childPosition);
@@ -450,15 +451,14 @@ public class SettingMenuFragment extends BaseFragment {
 //                        listerViewCustomAdapter.notifyDataSetChanged();
 //                        getSherlockActivity().recreate();
 //                        break;
-                    case drawable.ic_box_offline:
-                        if (childPosition == 0) {
+                int i = groupList.get(groupPosition).groupImage;
+                if (i == drawable.ic_box_offline) {
+                    if (childPosition == 0) {
+                        regBoxInit();
+                    } else {
+                        changeBox((Box) groupList.get(groupPosition).children.get(childPosition));
+                    }
 
-                            regBoxInit();
-
-                        } else {
-                            changeBox((Box) groupList.get(groupPosition).children.get(childPosition));
-                        }
-                        break;
                 }
 
                 return false;
@@ -478,8 +478,9 @@ public class SettingMenuFragment extends BaseFragment {
         try {
             BaseActivity baseActivity = (BaseActivity) getActivity();
             final SlidingMenu slidingMenu = baseActivity.getSlidingMenu();
-            if ((slidingMenu != null) && slidingMenu.isMenuShowing())
-            slidingMenu.toggle();
+            if ((slidingMenu != null) && slidingMenu.isMenuShowing()) {
+                slidingMenu.toggle();
+            }
         } catch (Exception e) {
             Log.d(TAG, "", e);
         }
@@ -495,7 +496,8 @@ public class SettingMenuFragment extends BaseFragment {
                              public void run() {
                                  try {
                                      try {
-                                         ResponseEntity resp = restTemplate.postForEntity("v2/box/register?serial={serial}", null, ResponseEntity.class, serial);
+                                         ResponseEntity resp = restTemplate.postForEntity("v2/box/register?serial={serial}", null, ResponseEntity.class,
+                                                                                          serial);
                                          if (!((resp.getStatusCode().value() >= 200) && (resp.getStatusCode().value() < 300))) {
                                              updateBoxList();
                                              eventBus.post(new Event(null, Event.EVENT_TYPE_REFRESH_REQUEST));
@@ -595,10 +597,11 @@ public class SettingMenuFragment extends BaseFragment {
                     baseFragmentHandler.post(new Runnable() {
                         @Override
                         public void run() {
-                            if (!box.getSerial().equals(currentBox.getSerial()))
+                            if (!box.getSerial().equals(currentBox.getSerial())) {
                                 toast(languageManager.translate("fail"));
-                            else
+                            } else {
                                 eventBus.post(new Event(null, Event.EVENT_TYPE_ON_BOX_CHANGE));
+                            }
                             dismissProgressDialog();
                             isChanging = false;
                         }
@@ -631,7 +634,6 @@ public class SettingMenuFragment extends BaseFragment {
         eventBus.unregister(this);
     }
 
-
     @Override
     public void onStart() {
         super.onStart();
@@ -656,9 +658,9 @@ public class SettingMenuFragment extends BaseFragment {
             if (refreshOnResume) {
                 preferenceHelper.putBooleanPref(Preference.REFRESH_ON_RESUME, false);
                 eventBus.post(new Event(null, Event.EVENT_TYPE_REFRESH_REQUEST));
-            } else if (!isMultiAuto)
+            } else if (!isMultiAuto) {
                 multiBoxManual();
-            else {
+            } else {
                 Log.d(TAG, "MAIN MENU: AutoBOX update is running no manual update");
             }
         }

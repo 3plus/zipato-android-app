@@ -27,6 +27,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.zipato.annotation.SetTypeFace;
+import com.zipato.appv2.B;
 import com.zipato.appv2.R.color;
 import com.zipato.appv2.R.id;
 import com.zipato.appv2.ui.fragments.adapters.controllers.GenericAdapter;
@@ -44,8 +45,8 @@ import java.util.concurrent.ExecutorService;
 
 import javax.inject.Inject;
 
-import butterknife.InjectView;
-import butterknife.OnClick;
+import butterfork.Bind;
+import butterfork.OnClick;
 
 import static com.zipato.util.Utils.capitalizer;
 
@@ -61,13 +62,13 @@ public abstract class AbsIR extends AbsPagePointerAdapter implements ViewControl
     private final Animation[] editAnimation = new Animation[1];
     protected int mode;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.textViewStatus)
+    @Bind(B.id.textViewStatus)
     TextView textViewAtrName;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.textViewValue)
+    @Bind(B.id.textViewValue)
     TextView textViewValue;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.butIREdit)
+    @Bind(B.id.butIREdit)
     TextView edit;
     @Inject
     ApiV2RestTemplate restTemplate;
@@ -228,7 +229,7 @@ public abstract class AbsIR extends AbsPagePointerAdapter implements ViewControl
     public abstract String provideReceivedCommand();
 
 
-    @OnClick(id.butIREdit)
+    @OnClick(B.id.butIREdit)
     public void onEditClick(View v) {
         delayedUpdates();
         if (mode == MODE_NORMAL) {
@@ -280,7 +281,7 @@ public abstract class AbsIR extends AbsPagePointerAdapter implements ViewControl
     }
 
     private void refreshNormalMode() {
-        manualRefresh(null);
+        manualRefresh();
     }
 
     private void refreshEditMode() {

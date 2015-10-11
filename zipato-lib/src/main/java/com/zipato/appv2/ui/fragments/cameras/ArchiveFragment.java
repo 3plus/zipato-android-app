@@ -27,7 +27,7 @@ import android.widget.TextView;
 
 import com.melnykov.fab.FloatingActionButton;
 import com.squareup.picasso.Callback;
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.activities.ScreenShotActivity;
 import com.zipato.appv2.ui.fragments.adapters.BaseListAdapter;
 import com.zipato.appv2.ui.fragments.cameras.ArchiveFileProvider.OnUpdateListner;
@@ -46,11 +46,11 @@ import java.util.TimeZone;
 
 import javax.inject.Inject;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-import butterknife.OnClick;
-import butterknife.OnItemClick;
-import butterknife.OnItemLongClick;
+import butterfork.ButterFork;
+import butterfork.Bind;
+import butterfork.OnClick;
+import butterfork.OnItemClick;
+import butterfork.OnItemLongClick;
 
 
 /**
@@ -67,17 +67,17 @@ public class ArchiveFragment extends BaseCameraFragment implements OnUpdateListn
     List<SVFileRest> files;
     @Inject
     ApiV2RestTemplate restTemplate;
-    @InjectView(R.id.progressBarMiddle)
+    @Bind(B.id.progressBarMiddle)
     ProgressBar progressBarMiddle;
-    @InjectView(R.id.progressBarBottom)
+    @Bind(B.id.progressBarBottom)
     ProgressBar progressBarBottom;
-    @InjectView(R.id.gridViewThumb)
+    @Bind(B.id.gridViewThumb)
     GridView gridViewThumb;
-    @InjectView(R.id.buttonCalendar)
+    @Bind(B.id.buttonCalendar)
     FloatingActionButton fab;
-    @InjectView(R.id.textArchiveDate)
+    @Bind(B.id.textArchiveDate)
     TextView date;
-    @InjectView(R.id.swipe_container)
+    @Bind(B.id.swipe_container)
     SwipeRefreshLayout swipeRefreshLayout;
     @Inject
     ArchiveFileProvider archiveFileProvider;
@@ -89,7 +89,7 @@ public class ArchiveFragment extends BaseCameraFragment implements OnUpdateListn
     private ActionMode mActionMode;
 
 
-    @OnClick(R.id.buttonCalendar)
+    @OnClick(B.id.buttonCalendar)
     public void onCalendarClick(View v) {
 
         final Calendar calendar = Calendar.getInstance();
@@ -132,7 +132,7 @@ public class ArchiveFragment extends BaseCameraFragment implements OnUpdateListn
     }
 
 
-    @OnItemLongClick(R.id.gridViewThumb)
+    @OnItemLongClick(B.id.gridViewThumb)
     public boolean onItemLongClick(View v, int position) {
         adapter.toggleSelection(position);
         final int checkedCount = adapter.getSelectedCount();
@@ -140,7 +140,7 @@ public class ArchiveFragment extends BaseCameraFragment implements OnUpdateListn
         return true;
     }
 
-    @OnItemClick(R.id.gridViewThumb)
+    @OnItemClick(B.id.gridViewThumb)
     public void onItemClick(View v, int position) {
         if ((mActionMode == null) || (adapter.getSelectedCount() == 0)) {
 
@@ -400,14 +400,14 @@ public class ArchiveFragment extends BaseCameraFragment implements OnUpdateListn
         }
 
         class ViewHolder {
-            @InjectView(R.id.imageViewThumb)
+            @Bind(B.id.imageViewThumb)
             ImageView thumb;
-            @InjectView(R.id.imageViewChecked)
+            @Bind(B.id.imageViewChecked)
             ImageView imgChecked;
 
             public ViewHolder(View v) {
 
-                ButterKnife.inject(this, v);
+                ButterFork.bind(this, v);
 
             }
         }
@@ -434,105 +434,104 @@ public class ArchiveFragment extends BaseCameraFragment implements OnUpdateListn
             final SparseBooleanArray selected = adapter
                     .getSelectedIds();
 
-            switch (menuItem.getItemId()) {
+            int i1 = menuItem.getItemId();
+            if (i1 == R.id.selectAll) {
+                int tempAdapterSize = adapter.getCount();
+                for (int i = 0; i < tempAdapterSize; i++) {
 
-                case R.id.selectAll:
-                    int tempAdapterSize = adapter.getCount();
-                    for (int i = 0; i < tempAdapterSize; i++) {
-
-                        if (!selected.get(i)) {
-                            adapter.toggleSelection(i);
-                        }
+                    if (!selected.get(i)) {
+                        adapter.toggleSelection(i);
                     }
+                }
 
-                    final int checkedItemCount = adapter.getSelectedCount();
-                    setOnActionBarMenu(checkedItemCount);
-                    break;
+                final int checkedItemCount = adapter.getSelectedCount();
+                setOnActionBarMenu(checkedItemCount);
 
-                case R.id.delete:
-                    Locale locale = getActivity().getResources().getConfiguration().locale;
-                    final SimpleDateFormat time = new SimpleDateFormat("MMM dd, HH:mm:ss", locale);
-                    final SparseBooleanArray sparseBooleanArray = adapter
-                            .getSelectedIds();
-                    final int size = sparseBooleanArray.size();
-                    List<String> tempList = new ArrayList<String>();
-                    for (int i = 0; i < size; i++) {
-                        tempList.add(time.format(files.get(sparseBooleanArray.keyAt(i)).getCreated()));
-                    }
-                    String text1 = languageManager.translate("remove_screen_shot_text_msg");
-                    String dialogTitle = (languageManager.translate("dialog_remove_screen_shot_title") + " (" + tempList.size() + ")");
-                    String positiveText = languageManager.translate("delete");
-                    String negativeText = languageManager.translate("cancel");
+            } else if (i1 == R.id.delete) {
+                Locale locale = getActivity().getResources().getConfiguration().locale;
+                final SimpleDateFormat time = new SimpleDateFormat("MMM dd, HH:mm:ss", locale);
+                final SparseBooleanArray sparseBooleanArray = adapter
+                        .getSelectedIds();
+                final int size = sparseBooleanArray.size();
+                List<String> tempList = new ArrayList<String>();
+                for (int i = 0; i < size; i++) {
+                    tempList.add(time.format(files.get(sparseBooleanArray.keyAt(i)).getCreated()));
+                }
+                String text1 = languageManager.translate("remove_screen_shot_text_msg");
+                String dialogTitle = (languageManager.translate("dialog_remove_screen_shot_title") + " (" + tempList.size() + ")");
+                String positiveText = languageManager.translate("delete");
+                String negativeText = languageManager.translate("cancel");
 
-                    DeleteDialogHelper deleteDialogHelper = new DeleteDialogHelper(getActivity(), tempList, text1, R.drawable.ic_warning, dialogTitle, negativeText, positiveText, new DeleteDialogHelper.OnPositiveClicked() {
-                        @Override
-                        public void onPositiveClicked() {
-                            executor.execute(new Runnable() {
-                                @Override
-                                public void run() {
+                DeleteDialogHelper deleteDialogHelper = new DeleteDialogHelper(getActivity(), tempList, text1, R.drawable.ic_warning, dialogTitle, negativeText,
+                                                                               positiveText, new DeleteDialogHelper.OnPositiveClicked() {
+                    @Override
+                    public void onPositiveClicked() {
+                        executor.execute(new Runnable() {
+                            @Override
+                            public void run() {
 
-                                    if (internetConnectionHelper.isOnline()) {
-                                        if (size == 1) {
-                                            baseFragmentHandler.post(new Runnable() {
-                                                @Override
-                                                public void run() {
-                                                    showProgressDialog(languageManager.translate("removing_screen_shot") + " " + time.format(files.get(sparseBooleanArray.keyAt(0)).getCreated()), false);
-                                                }
-                                            });
-                                            try {
-                                                restTemplate.delete("v2/sv/{uuid}", files.get(sparseBooleanArray.keyAt(0)).getId());
-                                            } catch (Exception e) {
-                                                handlerException(e, TAG);
-                                            }
-
-                                        } else if (size > 1) {
-                                            baseFragmentHandler.post(new Runnable() {
-                                                @Override
-                                                public void run() {
-                                                    showProgressDialog(languageManager.translate("removing_screen_shot"), false);
-                                                }
-                                            });
-                                            final List<String> listIDs = new ArrayList<String>();
-                                            for (int i = 0; i < size; i++) {
-                                                listIDs.add(files.get(sparseBooleanArray.keyAt(i)).getId());
-                                            }
-                                            try {
-                                                restTemplate.postForObject("v2/sv/deleteBatch", listIDs, DynaObject.class);
-                                            } catch (Exception e) {
-                                                handlerException(e, TAG);
-                                            }
-                                        }
-                                    } else {
+                                if (internetConnectionHelper.isOnline()) {
+                                    if (size == 1) {
                                         baseFragmentHandler.post(new Runnable() {
                                             @Override
                                             public void run() {
-                                                toast(languageManager.translate("internet_error"));
+                                                showProgressDialog(languageManager.translate("removing_screen_shot") + " " +
+                                                                           time.format(files.get(sparseBooleanArray.keyAt(0)).getCreated()), false);
                                             }
                                         });
+                                        try {
+                                            restTemplate.delete("v2/sv/{uuid}", files.get(sparseBooleanArray.keyAt(0)).getId());
+                                        } catch (Exception e) {
+                                            handlerException(e, TAG);
+                                        }
 
+                                    } else if (size > 1) {
+                                        baseFragmentHandler.post(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                showProgressDialog(languageManager.translate("removing_screen_shot"), false);
+                                            }
+                                        });
+                                        final List<String> listIDs = new ArrayList<String>();
+                                        for (int i = 0; i < size; i++) {
+                                            listIDs.add(files.get(sparseBooleanArray.keyAt(i)).getId());
+                                        }
+                                        try {
+                                            restTemplate.postForObject("v2/sv/deleteBatch", listIDs, DynaObject.class);
+                                        } catch (Exception e) {
+                                            handlerException(e, TAG);
+                                        }
                                     }
+                                } else {
                                     baseFragmentHandler.post(new Runnable() {
                                         @Override
                                         public void run() {
-                                            try {
-
-                                                restart();
-                                            } catch (Exception e) {
-
-                                            }
-                                            dismissProgressDialog();
+                                            toast(languageManager.translate("internet_error"));
                                         }
                                     });
 
                                 }
-                            });
+                                baseFragmentHandler.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        try {
 
-                        }
-                    });
-                    deleteDialogHelper.show();
-                    if (mActionMode != null)
-                        mActionMode.finish();
-                    break;
+                                            restart();
+                                        } catch (Exception e) {
+
+                                        }
+                                        dismissProgressDialog();
+                                    }
+                                });
+
+                            }
+                        });
+
+                    }
+                });
+                deleteDialogHelper.show();
+                if (mActionMode != null)
+                    mActionMode.finish();
 
             }
             return true;

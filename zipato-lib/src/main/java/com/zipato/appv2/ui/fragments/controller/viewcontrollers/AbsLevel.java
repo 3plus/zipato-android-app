@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.zipato.annotation.SetTypeFace;
+import com.zipato.appv2.B;
 import com.zipato.appv2.R.id;
 import com.zipato.appv2.ui.fragments.controller.ViewController;
 import com.zipato.helper.LongPressHelper;
@@ -26,10 +27,10 @@ import com.zipato.util.TagFactoryUtils;
 import java.lang.ref.WeakReference;
 import java.util.UUID;
 
-import butterknife.InjectView;
-import butterknife.OnClick;
-import butterknife.OnLongClick;
-import butterknife.OnTouch;
+import butterfork.Bind;
+import butterfork.OnClick;
+import butterfork.OnLongClick;
+import butterfork.OnTouch;
 
 import static com.zipato.util.Utils.capitalizer;
 
@@ -44,10 +45,10 @@ public abstract class AbsLevel extends AbsBaseSimpleStatus implements LongPressC
     protected final LongPressHelper longPressHelper;
     protected int current;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.buttonMinus)
+    @Bind(B.id.buttonMinus)
     TextView buttonMinus;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(id.buttonPlus)
+    @Bind(B.id.buttonPlus)
     TextView buttonPlus;
 
     protected AbsLevel(View itemView, RecyclerView recyclerView) {
@@ -133,19 +134,19 @@ public abstract class AbsLevel extends AbsBaseSimpleStatus implements LongPressC
         return (int) cv;
     }
 
-    @OnTouch(id.buttonPlus)
+    @OnTouch(B.id.buttonPlus)
     public boolean onTouchPlus(View v, MotionEvent event) {
         handleOnTouch(v, event);
         return false;
     }
 
-    @OnTouch(id.buttonMinus)
+    @OnTouch(B.id.buttonMinus)
     public boolean onTouchMinus(View v, MotionEvent event) {
         handleOnTouch(v, event);
         return false;
     }
 
-    @OnLongClick(id.buttonPlus)
+    @OnLongClick(B.id.buttonPlus)
     public boolean onPlusLongClick(View v) {
         disableRecyclerScrolling();
         disableAdapterUpdate();
@@ -153,7 +154,7 @@ public abstract class AbsLevel extends AbsBaseSimpleStatus implements LongPressC
         return true;
     }
 
-    @OnLongClick(id.buttonMinus)
+    @OnLongClick(B.id.buttonMinus)
     public boolean onMinusLongClick(View v) {
         disableRecyclerScrolling();
         disableAdapterUpdate();
@@ -161,7 +162,7 @@ public abstract class AbsLevel extends AbsBaseSimpleStatus implements LongPressC
         return true;
     }
 
-    @OnClick(id.buttonMinus)
+    @OnClick(B.id.buttonMinus)
     public void onMinusClick(View v) {
         defaultBlockResetUpdate();
         current -= 1;
@@ -170,7 +171,7 @@ public abstract class AbsLevel extends AbsBaseSimpleStatus implements LongPressC
         update(String.valueOf(current), DELAY_TO_SEND_COMMAND);
     }
 
-    @OnClick(id.buttonPlus)
+    @OnClick(B.id.buttonPlus)
     public void onPlusClick(View v) {
         defaultBlockResetUpdate();
         current += 1;

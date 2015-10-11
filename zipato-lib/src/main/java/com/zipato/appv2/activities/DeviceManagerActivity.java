@@ -14,7 +14,7 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.R.anim;
 import com.zipato.appv2.R.id;
 import com.zipato.appv2.ui.fragments.dm.ConfigObject;

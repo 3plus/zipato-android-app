@@ -7,6 +7,7 @@ package com.zipato.appv2;
 
 import android.app.Application;
 
+import com.zipato.appv2.activities.CameraActivity;
 import com.zipato.icon.IconUpdater;
 
 import dagger.ObjectGraph;
@@ -42,5 +43,6 @@ public class ZipatoApplication extends Application {
     public void inject(Object object) {
         getObjectGraph().inject(object);
     }
+
 }
 

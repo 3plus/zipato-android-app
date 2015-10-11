@@ -18,7 +18,7 @@ import android.view.Gravity;
 import android.widget.EditText;
 import android.widget.LinearLayout.LayoutParams;
 
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.activities.ShowDialogActivity;
 import com.zipato.appv2.ui.fragments.BaseFragment;
 import com.zipato.appv2.ui.fragments.adapters.DividerItemDecoration;
@@ -39,7 +39,7 @@ import java.util.concurrent.ExecutorService;
 
 import javax.inject.Inject;
 
-import butterknife.InjectView;
+import butterfork.Bind;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -57,7 +57,7 @@ public class SceneFragment extends BaseFragment implements RecyclerTouchEventLis
     @Inject
     List<Scene> scenes;
 
-    @InjectView(R.id.recyclerViewScenes)
+    @Bind(B.id.recyclerViewScenes)
     RecyclerView customRecyclerView;
 
     private ScenesAdapter scenesAdapter;

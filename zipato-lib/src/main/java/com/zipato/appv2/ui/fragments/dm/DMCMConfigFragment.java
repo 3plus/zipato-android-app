@@ -12,12 +12,12 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.view.View;
 
 import com.viewpagerindicator.CirclePageIndicator;
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.ui.fragments.BaseFragment;
 import com.zipato.customview.CustomViewPager;
 import com.zipato.util.Utils;
 
-import butterknife.InjectView;
+import butterfork.Bind;
 
 /**
  * Created by murielK on 11/6/2014.
@@ -25,9 +25,9 @@ import butterknife.InjectView;
 public class DMCMConfigFragment extends BaseFragment {
 
     private static final String TAG = DMCMConfigFragment.class.getSimpleName();
-    @InjectView(R.id.viewPager)
+    @Bind(B.id.viewPager)
     CustomViewPager viewPager;
-    @InjectView(R.id.titles)
+    @Bind(B.id.titles)
     CirclePageIndicator circlePageIndicator;
 
     @Override

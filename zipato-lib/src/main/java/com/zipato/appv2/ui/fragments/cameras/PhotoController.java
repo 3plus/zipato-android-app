@@ -11,6 +11,7 @@ import android.graphics.Rect;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,11 +21,9 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
 
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 
 import java.lang.reflect.Method;
-
-import io.vov.vitamio.utils.Log;
 
 /**
  * Created by murielK on 2/3/2015.
@@ -196,9 +195,8 @@ public class PhotoController implements View.OnClickListener {
         if (listner == null)
             return;
         final int id = v.getId();
-        switch (id) {
-            case R.id.imageButtonDel:
-                listner.onDeleteClick();
+        if (id == R.id.imageButtonDel) {
+            listner.onDeleteClick();
         }
     }
 

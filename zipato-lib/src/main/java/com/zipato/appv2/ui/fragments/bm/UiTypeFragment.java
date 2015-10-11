@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.ui.fragments.BaseFragment;
 import com.zipato.appv2.ui.fragments.adapters.BaseListAdapter;
 import com.zipato.helper.AssetLoaderHelper;
@@ -31,8 +31,8 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import butterknife.InjectView;
-import butterknife.OnItemClick;
+import butterfork.Bind;
+import butterfork.OnItemClick;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -45,7 +45,7 @@ public class UiTypeFragment extends BaseFragment {
     private static final String TAG = UiTypeFragment.class.getSimpleName();
     @Inject
     EventBus eventBus;
-    @InjectView(R.id.listViewBrowserLeft)
+    @Bind(B.id.listViewBrowserLeft)
     ListView listViewLeft;
     @Inject
     AssetLoaderHelper assetLoaderHelper;
@@ -83,7 +83,7 @@ public class UiTypeFragment extends BaseFragment {
 
     }
 
-    @OnItemClick(R.id.listViewBrowserLeft)
+    @OnItemClick(B.id.listViewBrowserLeft)
     public void onLeftItemClick(int position) {
         if (!leftViewAdapter.getSelectedIds().get(position)) {
             leftViewAdapter.toggleSelection(position);

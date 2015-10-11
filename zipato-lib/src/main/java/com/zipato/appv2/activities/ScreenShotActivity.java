@@ -21,7 +21,7 @@ import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import android.widget.Toast;
 
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.ZipatoApplication;
 import com.zipato.appv2.ui.fragments.cameras.ArchiveFragment;
 import com.zipato.appv2.ui.fragments.cameras.FragmentScreenShot;
@@ -40,8 +40,8 @@ import java.util.concurrent.ExecutorService;
 
 import javax.inject.Inject;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
+import butterfork.ButterFork;
+import butterfork.Bind;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -49,7 +49,7 @@ import de.greenrobot.event.EventBus;
  */
 public class ScreenShotActivity extends AppCompatActivity implements PhotoController.OnPhotoControlListner {
 
-    @InjectView(R.id.viewPagerSS)
+    @Bind(B.id.viewPagerSS)
     CustomViewPager viewPager;
     @Inject
     ExecutorService executor;
@@ -91,7 +91,7 @@ public class ScreenShotActivity extends AppCompatActivity implements PhotoContro
                 isConfigChange = false;
             }
         });
-        ButterKnife.inject(this);
+        ButterFork.bind(this);
         EventBus.getDefault().register(this); //FIXME  this is to receive even when files are behind modify : its a stupid hack to fix the stupid viewpager getCount being call somewhere even tough the activity is closed  :FUCK YOU GOOGLE
         photoController = new PhotoController.Builder(this).setListner(this).build();
         pageAdapter = new PageAdapter(getSupportFragmentManager());

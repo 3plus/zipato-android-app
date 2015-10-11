@@ -22,7 +22,7 @@ import java.util.concurrent.ExecutorService;
 
 import javax.inject.Inject;
 
-import butterknife.ButterKnife;
+import butterfork.ButterFork;
 import de.greenrobot.event.EventBus;
 
 
@@ -64,7 +64,7 @@ public abstract class BaseSceneFragment extends BaseFragment {
             return super.onCreateView(inflater, container, savedInstanceState);
         }
         View v = inflater.inflate(getResourceView(), null);
-        ButterKnife.inject(this, v);
+        ButterFork.bind(this, v);
         onPostViewCreate();
         return v;
 

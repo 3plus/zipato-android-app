@@ -14,7 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.zipato.annotation.SetTypeFace;
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.ui.fragments.BaseFragment;
 import com.zipato.model.event.Event;
 import com.zipato.model.event.ObjectMenu;
@@ -22,9 +22,9 @@ import com.zipato.util.TypeFaceUtils;
 
 import javax.inject.Inject;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-import butterknife.OnClick;
+import butterfork.ButterFork;
+import butterfork.Bind;
+import butterfork.OnClick;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -32,16 +32,16 @@ import de.greenrobot.event.EventBus;
  */
 abstract class AbsBaseSubMenu extends BaseFragment {
 
-    @InjectView(R.id.buttonsBack)
+    @Bind(B.id.buttonsBack)
     protected ImageView back;
     @SetTypeFace("helvetica_neue_light.otf")
-    @InjectView(R.id.textViewTitleSub)
+    @Bind(B.id.textViewTitleSub)
     protected TextView textViewTitleSub;
     @Inject
     protected EventBus eventBus;
     @Inject
     TypeFaceUtils typeFaceUtils;
-    @InjectView(R.id.layoutSubHeader)
+    @Bind(B.id.layoutSubHeader)
     LinearLayout layoutSubHeader;
 
     protected abstract int getResourceView();
@@ -56,14 +56,14 @@ abstract class AbsBaseSubMenu extends BaseFragment {
             return super.onCreateView(inflater, container, savedInstanceState);
         }
         final View v = inflater.inflate(getResourceView(), null);
-        ButterKnife.inject(this, v);
+        ButterFork.bind(this, v);
         typeFaceUtils.applyTypefaceFor(this);
         setView();
         onPostViewCreate();
         return v;
     }
 
-    @OnClick(R.id.layoutSubHeader)
+    @OnClick(B.id.layoutSubHeader)
     public void onLayoutClick(View v) {
         backToMain();
     }

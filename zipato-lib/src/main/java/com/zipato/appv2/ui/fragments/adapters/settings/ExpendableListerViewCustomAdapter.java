@@ -15,7 +15,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.ui.fragments.settings.AnimatedExpandableListView.AnimatedExpandableListAdapter;
 import com.zipato.appv2.ui.fragments.settings.SettingMenuFragment.Helper;
 import com.zipato.helper.InternetConnectionHelper;
@@ -168,76 +168,71 @@ public class ExpendableListerViewCustomAdapter extends AnimatedExpandableListAda
         try {
             convertView = inflater.inflate(groupList.get(groupPosition).layout, null);
 
-            switch (groupList.get(groupPosition).layout) {
+            int i = groupList.get(groupPosition).layout;
+            if (i == R.layout.row_expendable_list_view_item) {
+                if (selectedItemsIds.get(childPosition)) {
+                    convertView.setBackgroundColor(context.getResources().getColor(R.color.soft_green));
+                }
+                TextView txtListChild = (TextView) convertView.findViewById(R.id.textViewExpendableChild);
+                txtListChild.setTypeface(typeFaceUtils.getTypeFace("helveticaneue_ultra_light.otf"));
+                txtListChild.setText(getChild(groupPosition, childPosition).toString());
 
-                case R.layout.row_expendable_list_view_item:
-                    if (selectedItemsIds.get(childPosition)) {
-                        convertView.setBackgroundColor(context.getResources().getColor(R.color.soft_green));
-                    }
-                    TextView txtListChild = (TextView) convertView.findViewById(R.id.textViewExpendableChild);
-                    txtListChild.setTypeface(typeFaceUtils.getTypeFace("helveticaneue_ultra_light.otf"));
-                    txtListChild.setText(getChild(groupPosition, childPosition).toString());
-                    break;
-
-                case R.layout.row_expendable_list_view_item_edit:
-                    final EditText editText = (EditText) convertView.findViewById(R.id.editTextChild);
-                    editText.setTypeface(typeFaceUtils.getTypeFace("helveticaneue_ultra_light.otf"));
-                    editText.setText(getChild(groupPosition, childPosition).toString());
-                    editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                        @Override
-                        public void onFocusChange(View v, boolean hasFocus) {
-                            if (!hasFocus) {
-                                try {
-                                    String url = editText.getText().toString();
-                                    if (!url.equals(getChild(groupPosition, childPosition).toString()))
-                                        ;
-                                    onServerUrlChangedListner.onServerUrlChanged(url);
+            } else if (i == R.layout.row_expendable_list_view_item_edit) {
+                final EditText editText = (EditText) convertView.findViewById(R.id.editTextChild);
+                editText.setTypeface(typeFaceUtils.getTypeFace("helveticaneue_ultra_light.otf"));
+                editText.setText(getChild(groupPosition, childPosition).toString());
+                editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                    @Override
+                    public void onFocusChange(View v, boolean hasFocus) {
+                        if (!hasFocus) {
+                            try {
+                                String url = editText.getText().toString();
+                                if (!url.equals(getChild(groupPosition, childPosition).toString()))
+                                    ;
+                                onServerUrlChangedListner.onServerUrlChanged(url);
 
 //                                String url = editText.getText().toString();
 //                                preferenceManager.putStringPref(PreferenceManager.Preference.SERVER_URL, url);
 //                                groupList.get(groupPosition).children = Collections.singletonList(url);
-                                } catch (Exception e) {
-                                    //
-                                }
+                            } catch (Exception e) {
+                                //
                             }
                         }
-                    });
-                    break;
+                    }
+                });
 
-                case R.layout.row_multibox_children:
-
-                    ImageView imageView = (ImageView) convertView.findViewById(R.id.imageViewBoxStatus);
-                    TextView textView = (TextView) convertView.findViewById(R.id.textViewBoxName);
-                    textView.setTypeface(typeFaceUtils.getTypeFace("helveticaneue_ultra_light.otf"));
-                    if (childPosition > 0) {
-                        Box boxChild = (Box) getChild(groupPosition, childPosition);
-                        if (boxChild != null) {
-                            if ((boxChild.getName() != null) && !boxChild.getName().isEmpty()) {
-                                textView.setText(boxChild.getName());
-                            } else if (boxChild.getSerial() != null) {
-                                textView.setText(boxChild.getSerial());
-                            } else {
-                                textView.setText("-");
-                            }
-                            if (boxChild.isOnline() && internetConnectionHelper.isOnline()) {
-                                imageView.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.ic_box_online));
-                            } else {
-                                imageView.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.ic_box_offline));
-                            }
-                            Box box = (Box) groupList.get(groupPosition).box;
-                            if ((box != null) && box.getSerial().equals(boxChild.getSerial()))
-                                convertView.setBackgroundColor(context.getResources().getColor(R.color.soft_green));
+            } else if (i == R.layout.row_multibox_children) {
+                ImageView imageView = (ImageView) convertView.findViewById(R.id.imageViewBoxStatus);
+                TextView textView = (TextView) convertView.findViewById(R.id.textViewBoxName);
+                textView.setTypeface(typeFaceUtils.getTypeFace("helveticaneue_ultra_light.otf"));
+                if (childPosition > 0) {
+                    Box boxChild = (Box) getChild(groupPosition, childPosition);
+                    if (boxChild != null) {
+                        if ((boxChild.getName() != null) && !boxChild.getName().isEmpty()) {
+                            textView.setText(boxChild.getName());
+                        } else if (boxChild.getSerial() != null) {
+                            textView.setText(boxChild.getSerial());
                         } else {
                             textView.setText("-");
+                        }
+                        if (boxChild.isOnline() && internetConnectionHelper.isOnline()) {
+                            imageView.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.ic_box_online));
+                        } else {
                             imageView.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.ic_box_offline));
                         }
+                        Box box = (Box) groupList.get(groupPosition).box;
+                        if ((box != null) && box.getSerial().equals(boxChild.getSerial()))
+                            convertView.setBackgroundColor(context.getResources().getColor(R.color.soft_green));
                     } else {
-                        imageView.setVisibility(View.INVISIBLE);
-                        final String textTemp = languageManager.translate("register_product_name");
-                        final String textFinal = textTemp.replace("{productName}", context.getResources().getString(R.string.reg_box));
-                        textView.setText(textFinal);
+                        textView.setText("-");
+                        imageView.setBackgroundDrawable(context.getResources().getDrawable(R.drawable.ic_box_offline));
                     }
-                    break;
+                } else {
+                    imageView.setVisibility(View.INVISIBLE);
+                    final String textTemp = languageManager.translate("register_product_name");
+                    final String textFinal = textTemp.replace("{productName}", context.getResources().getString(R.string.reg_box));
+                    textView.setText(textFinal);
+                }
 
             }
         } catch (Exception e) {

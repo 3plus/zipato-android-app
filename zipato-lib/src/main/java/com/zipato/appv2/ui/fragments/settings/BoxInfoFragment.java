@@ -9,6 +9,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -17,7 +18,7 @@ import android.widget.TextView;
 
 import com.zipato.annotation.SetTypeFace;
 import com.zipato.annotation.Translated;
-import com.zipato.appv2.R;
+import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.model.DynaObject;
 import com.zipato.model.box.Box;
 import com.zipato.v2.client.ApiV2RestTemplate;
@@ -26,9 +27,8 @@ import java.util.concurrent.ExecutorService;
 
 import javax.inject.Inject;
 
-import butterknife.InjectView;
-import butterknife.OnClick;
-import io.vov.vitamio.utils.Log;
+import butterfork.Bind;
+import butterfork.OnClick;
 
 /**
  * Created by murielK on 2/25/2015.
@@ -39,62 +39,62 @@ public class BoxInfoFragment extends AbsBaseSubMenu {
     private static final String TAG = BoxInfoFragment.class.getSimpleName();
     @SetTypeFace("helvetica_neue_light.otf")
     @Translated("controller_name")
-    @InjectView(R.id.textViewName)
+    @Bind(B.id.textViewName)
     TextView textViewName;
     @SetTypeFace("helvetica_neue_light.otf")
     @Translated("serial_number")
-    @InjectView(R.id.textViewSerial)
+    @Bind(B.id.textViewSerial)
     TextView textViewSerial;
     @SetTypeFace("helvetica_neue_light.otf")
     @Translated("local_ip")
-    @InjectView(R.id.textViewLocalIp)
+    @Bind(B.id.textViewLocalIp)
     TextView textViewLocalIp;
     @SetTypeFace("helvetica_neue_light.otf")
     @Translated("remote_ip")
-    @InjectView(R.id.textViewRemoteIp)
+    @Bind(B.id.textViewRemoteIp)
     TextView textViewRemoteIp;
     @SetTypeFace("helvetica_neue_light.otf")
     @Translated("firmware_version")
-    @InjectView(R.id.textViewFirmware)
+    @Bind(B.id.textViewFirmware)
     TextView textViewFirmware;
     @SetTypeFace("helvetica_neue_light.otf")
     @Translated("time_zone")
-    @InjectView(R.id.textViewTImeZone)
+    @Bind(B.id.textViewTImeZone)
     TextView textViewTImeZone;
     @SetTypeFace("helvetica_neue_light.otf")
     @Translated("new_firmware")
-    @InjectView(R.id.textViewNewFirmware)
+    @Bind(B.id.textViewNewFirmware)
     TextView textViewNewFirmware;
     @SetTypeFace("helvetica_neue_light.otf")
     @Translated("update_fw")
-    @InjectView(R.id.buttonUpdate)
+    @Bind(B.id.buttonUpdate)
     Button buttonUpdateFW;
 
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.textViewNValue)
+    @Bind(B.id.textViewNValue)
     TextView textViewNValue;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.textViewSValue)
+    @Bind(B.id.textViewSValue)
     TextView textViewSValue;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.textViewLIPValue)
+    @Bind(B.id.textViewLIPValue)
     TextView textViewLIPValue;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.textViewRIPValue)
+    @Bind(B.id.textViewRIPValue)
     TextView textViewRIPValue;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.textViewFVersionValue)
+    @Bind(B.id.textViewFVersionValue)
     TextView textViewFVersionValue;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.textViewTZValue)
+    @Bind(B.id.textViewTZValue)
     TextView textViewTZValue;
     @SetTypeFace("helveticaneue_ultra_light.otf")
-    @InjectView(R.id.textViewNFValue)
+    @Bind(B.id.textViewNFValue)
     TextView textViewNFValue;
 
-    @InjectView(R.id.layoutNewFirmware)
+    @Bind(B.id.layoutNewFirmware)
     LinearLayout linearLayoutFW;
-    @InjectView(R.id.layoutFWUpDivider)
+    @Bind(B.id.layoutFWUpDivider)
     LinearLayout layoutFWUpDivider;
 
     @Inject
@@ -129,7 +129,7 @@ public class BoxInfoFragment extends AbsBaseSubMenu {
 
     }
 
-    @OnClick(R.id.buttonUpdate)
+    @OnClick(B.id.buttonUpdate)
     public void onUpdateClick() {
         if (!checkBox())
             return;
