@@ -19,7 +19,6 @@ We hope the source code for this app is useful for you as a reference or startin
 Copyright 2014 Tri plus grupa d.o.o. All rights reserved.
 
 Licensed under the GNU General Public License v2.0
-you may not use this file except in compliance with the License.
 
 * [GPLv2](https://github.com/3plus/zipato-android-app/blob/master/LICENSE.md)
 
