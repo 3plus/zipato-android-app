@@ -10,12 +10,13 @@ import android.view.View;
 
 import com.zipato.annotation.ViewType;
 import com.zipato.appv2.R.layout;
+import com.zipato.appv2.ui.fragments.adapters.controllers.TypeViewControllerFactory;
 import com.zipato.model.typereport.TypeReportItem;
 
 /**
  * Created by murielK on 8/20/2015.
  */
-@ViewType("view_controller_ir")
+@ViewType(TypeViewControllerFactory.VC_ID_REMOTEC)
 public class VCRemotec extends AbsIR {
 
     public VCRemotec(View itemView, RecyclerView recyclerView) {

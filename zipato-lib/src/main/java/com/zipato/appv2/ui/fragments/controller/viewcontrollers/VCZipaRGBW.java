@@ -11,8 +11,8 @@ import android.util.Log;
 import android.view.View;
 
 import com.zipato.annotation.ViewType;
-import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.ui.fragments.adapters.controllers.GenericAdapter.Command;
+import com.zipato.appv2.ui.fragments.adapters.controllers.TypeViewControllerFactory;
 import com.zipato.appv2.ui.fragments.vcmenu.BaseTypesFragment;
 import com.zipato.customview.TempPickerView;
 import com.zipato.model.attribute.Attribute;
@@ -21,7 +21,7 @@ import com.zipato.model.typereport.TypeReportItem;
 /**
  * Created by murielK on 7/29/2015.
  */
-@ViewType("view_controller_rgbw_zipato")
+@ViewType(TypeViewControllerFactory.VC_ID_ZIPATO_RGBW)
 public class VCZipaRGBW extends AbsRGBW {
 
     private static final String TAG = VCZipaRGBW.class.getSimpleName();

@@ -23,9 +23,6 @@ import com.zipato.annotation.ViewType;
 import com.zipato.appv2.B;
 import com.zipato.appv2.R;
 import com.zipato.appv2.R.drawable;
-import com.zipato.appv2.R.id;
-import com.zipato.appv2.R.layout;
-import com.zipato.appv2.ZipatoApplication;
 import com.zipato.appv2.activities.BaseCameraActivity;
 import com.zipato.appv2.activities.CameraActivity;
 import com.zipato.appv2.activities.MjpegStreamActivity;
@@ -53,7 +50,7 @@ import butterfork.OnClick;
  * Created by murielK on 8/18/2015.
  */
 
-@ViewType("view_controller_camera")
+@ViewType(TypeViewControllerFactory.VC_ID_CAMERA)
 public class VCCamera extends AbsHeader implements ViewControllerLogic {
 
     private static final String TAG = TagFactoryUtils.getTag(VCCamera.class);
@@ -151,7 +148,7 @@ public class VCCamera extends AbsHeader implements ViewControllerLogic {
             clazz = (Class<? extends Activity>) Class.forName(className);
         } catch (Exception e) {
             Log.e(TAG, "no class " + className);
-           clazz = CameraActivity.class;
+            clazz = CameraActivity.class;
         }
         Intent intent = new Intent(genericAdapter.getContext(), clazz);
         intent.putExtra(BaseFragment.PARCELABLE_KEY, item.getKey());
@@ -221,8 +218,7 @@ public class VCCamera extends AbsHeader implements ViewControllerLogic {
     public void run() {
         final ThreadLocal<Integer> localLogicID = new ThreadLocal<>();
         localLogicID.set(logicID);
-        final String viewTypeStr = VCCamera.class.getAnnotation(ViewType.class).value();
-        int viewType = TypeViewControllerFactory.idOf(getContext(), viewTypeStr);
+        int viewType = TypeViewControllerFactory.VC_ID_CAMERA;
         final GenericAdapter genericAdapter = getAdapter();
         try {
             cameraRepository.fetchAll();

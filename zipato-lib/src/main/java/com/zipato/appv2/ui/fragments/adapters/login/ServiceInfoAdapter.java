@@ -3,7 +3,7 @@
  *  All rights reserved.
  */
 
-package com.zipato.discovery;
+package com.zipato.appv2.ui.fragments.adapters.login;
 
 import android.content.Context;
 import android.util.SparseBooleanArray;
@@ -16,6 +16,7 @@ import android.widget.TextView;
 import com.zipato.annotation.SetTypeFace;
 import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.appv2.ZipatoApplication;
+import com.zipato.discovery.ZipatoServiceInfo;
 import com.zipato.util.TypeFaceUtils;
 
 import java.util.List;

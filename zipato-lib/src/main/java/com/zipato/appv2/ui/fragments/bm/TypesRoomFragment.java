@@ -55,10 +55,6 @@ public class TypesRoomFragment extends BaseFragment {
     @Inject
     @Named("rooms")
     List<TypeReportItem> roomTypes;
-    @Inject
-    @Named("typeReportPool")
-    RecycledViewPool recycledViewPool;
-
     GenericAdapterImp adapter;
     private Handler handler;
 
@@ -149,7 +145,6 @@ public class TypesRoomFragment extends BaseFragment {
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemViewCacheSize(4);
-        recyclerView.setRecycledViewPool(recycledViewPool);
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), R.drawable.line_separator_empty, DividerItemDecoration.VERTICAL_LIST));
     }
 

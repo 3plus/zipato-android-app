@@ -18,12 +18,12 @@ import android.widget.Toast;
 import com.zipato.annotation.SetTypeFace;
 import com.zipato.annotation.Translated;
 import com.zipato.annotation.ViewType;
-import com.zipato.appv2.B;import com.zipato.appv2.R;
-import com.zipato.appv2.R.id;
-import com.zipato.appv2.R.layout;
+import com.zipato.appv2.B;
+import com.zipato.appv2.R;
 import com.zipato.appv2.activities.AlarmTriggerActivity;
 import com.zipato.appv2.activities.ShowVCMenu;
 import com.zipato.appv2.ui.fragments.adapters.controllers.GenericAdapter;
+import com.zipato.appv2.ui.fragments.adapters.controllers.TypeViewControllerFactory;
 import com.zipato.appv2.ui.fragments.controller.ViewControllerLogic;
 import com.zipato.appv2.ui.fragments.vcmenu.BaseTypesFragment;
 import com.zipato.model.UUIDObject;
@@ -54,7 +54,7 @@ import static com.zipato.util.Utils.capitalizer;
 /**
  * Created by murielK on 8/6/2015.
  */
-@ViewType("view_controller_security")
+@ViewType(TypeViewControllerFactory.VC_ID_SECURITY)
 public class VCSecurity extends AbsBaseSimpleStatus implements ViewControllerLogic {
 
     private static final String TAG = TagFactoryUtils.getTag(VCSecurity.class);

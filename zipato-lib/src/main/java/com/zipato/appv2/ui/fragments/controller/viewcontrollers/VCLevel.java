@@ -9,7 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.zipato.annotation.ViewType;
-import com.zipato.appv2.R.layout;
+import com.zipato.appv2.ui.fragments.adapters.controllers.TypeViewControllerFactory;
 import com.zipato.appv2.ui.fragments.vcmenu.BaseTypesFragment;
 import com.zipato.model.attribute.Attribute;
 import com.zipato.model.typereport.TypeReportItem;
@@ -18,7 +18,7 @@ import com.zipato.model.typereport.TypeReportItem;
  * Created by murielK on 7/17/2015.
  */
 
-@ViewType("view_controller_level")
+@ViewType(TypeViewControllerFactory.VC_ID_LEVEL)
 public class VCLevel extends AbsLevelWithOnOff {
 
 

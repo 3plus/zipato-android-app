@@ -33,6 +33,7 @@ import com.zipato.appv2.R.id;
 import com.zipato.appv2.R.layout;
 import com.zipato.appv2.ui.fragments.adapters.BaseListAdapter;
 import com.zipato.appv2.ui.fragments.adapters.controllers.GenericAdapter;
+import com.zipato.appv2.ui.fragments.adapters.controllers.TypeViewControllerFactory;
 import com.zipato.appv2.ui.fragments.controller.ViewController;
 import com.zipato.appv2.ui.fragments.controller.ViewControllerLogic;
 import com.zipato.appv2.ui.fragments.controller.viewcontrollers.AbsLevel.Queuer;
@@ -72,7 +73,7 @@ import static com.zipato.util.Utils.capitalizer;
 /**
  * Created by murielK on 8/27/2015.
  */
-@ViewType("view_controller_thermostat")
+@ViewType(TypeViewControllerFactory.VC_ID_THERMOSTAT)
 public class VCThermostat extends AbsHeader implements ViewControllerLogic, OnClickListener, OnLongClickListener, OnTouchListener, LongPressController {
 
     private static final String TAG = TagFactoryUtils.getTag(VCThermostat.class);
@@ -278,13 +279,13 @@ public class VCThermostat extends AbsHeader implements ViewControllerLogic, OnCl
             case OFF:
                 try {
                     sendAttributeValue(heatingOperation.getAttributes()[heatingOperation.getAttributeIntMap().get(BaseTypesFragment.DISABLE)].getUuid(),
-                                       "true");
+                            "true");
                 } catch (Exception e) {
                     Log.d(TAG, "", e);
                 }
                 try {
                     sendAttributeValue(coolingOperation.getAttributes()[coolingOperation.getAttributeIntMap().get(BaseTypesFragment.DISABLE)].getUuid(),
-                                       "true");
+                            "true");
                 } catch (Exception e) {
                     Log.d(TAG, "", e);
                 }
@@ -294,9 +295,9 @@ public class VCThermostat extends AbsHeader implements ViewControllerLogic, OnCl
                 coolOpDisable = false;
                 try {
                     sendAttributeValue(heatingOperation.getAttributes()[heatingOperation.getAttributeIntMap().get(BaseTypesFragment.DISABLE)].getUuid(),
-                                       "false");
+                            "false");
                     sendAttributeValue(coolingOperation.getAttributes()[coolingOperation.getAttributeIntMap().get(BaseTypesFragment.DISABLE)].getUuid(),
-                                       "false");
+                            "false");
                 } catch (Exception e) {
                     Log.d(TAG, "", e);
                 }
@@ -306,9 +307,9 @@ public class VCThermostat extends AbsHeader implements ViewControllerLogic, OnCl
                 coolOpDisable = false;
                 try {
                     sendAttributeValue(coolingOperation.getAttributes()[coolingOperation.getAttributeIntMap().get(BaseTypesFragment.DISABLE)].getUuid(),
-                                       "false");
+                            "false");
                     sendAttributeValue(heatingOperation.getAttributes()[heatingOperation.getAttributeIntMap().get(BaseTypesFragment.DISABLE)].getUuid(),
-                                       "true");
+                            "true");
                 } catch (Exception e) {
                     Log.d(TAG, "", e);
                 }
@@ -318,9 +319,9 @@ public class VCThermostat extends AbsHeader implements ViewControllerLogic, OnCl
                 coolOpDisable = true;
                 try {
                     sendAttributeValue(heatingOperation.getAttributes()[heatingOperation.getAttributeIntMap().get(BaseTypesFragment.DISABLE)].getUuid(),
-                                       "false");
+                            "false");
                     sendAttributeValue(coolingOperation.getAttributes()[coolingOperation.getAttributeIntMap().get(BaseTypesFragment.DISABLE)].getUuid(),
-                                       "true");
+                            "true");
                 } catch (Exception e) {
                     Log.d(TAG, "", e);
                 }
@@ -356,7 +357,7 @@ public class VCThermostat extends AbsHeader implements ViewControllerLogic, OnCl
         DataObject dataCooling = null;
         try {
             dataCooling = new DataObject(heatingOperation.getAttributes()[heatingOperation.getAttributeIntMap().get(BaseTypesFragment.TARGET)].getUuid(),
-                                         String.valueOf(heating));
+                    String.valueOf(heating));
         } catch (Exception e) {
             Log.d(TAG, "", e);
         }
@@ -364,7 +365,7 @@ public class VCThermostat extends AbsHeader implements ViewControllerLogic, OnCl
         DataObject dataHeating = null;
         try {
             dataHeating = new DataObject(coolingOperation.getAttributes()[coolingOperation.getAttributeIntMap().get(BaseTypesFragment.TARGET)].getUuid(),
-                                         String.valueOf(cooling));
+                    String.valueOf(cooling));
         } catch (Exception e) {
             Log.d(TAG, "", e);
         }
@@ -889,7 +890,7 @@ public class VCThermostat extends AbsHeader implements ViewControllerLogic, OnCl
 
     private void updateCurrentTemperature(double temperature) {
         final String currentTemp = languageManager.translate("t_currently_value").replace("{temp_value}",
-                                                                                          String.valueOf(temperature + BaseTypesFragment.DEGREE));
+                String.valueOf(temperature + BaseTypesFragment.DEGREE));
         textCurrentValue.setText(currentTemp);
     }
 

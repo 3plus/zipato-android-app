@@ -14,6 +14,7 @@ import com.zipato.appv2.B;import com.zipato.appv2.R;
 import com.zipato.helper.PreferenceHelper;
 import com.zipato.helper.PreferenceHelper.Preference;
 import com.zipato.model.language.Language;
+import com.zipato.model.types.SystemTypes;
 
 import org.springframework.http.converter.ByteArrayHttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
@@ -25,7 +26,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.DateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
@@ -143,6 +146,13 @@ public class LanguageManager {
     public void setLanguage(Language language) {
         if (language == null) {
             language = getLanguages().get("en");
+        }
+
+        if (language == null) {
+            language = new Language();
+            language.setLanguage("english");
+            language.setCode("en");
+            language.setModified(new Date(System.currentTimeMillis()));
         }
 
         this.language = language;

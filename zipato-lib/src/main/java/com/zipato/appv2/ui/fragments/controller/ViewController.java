@@ -213,12 +213,19 @@ public abstract class ViewController extends ViewHolder {
 
     public void sendAttributeValue(final UUID key, final String value) {
         sendCommand(new Command(key, value));
-        final GenericAdapter genericAdapter = getAdapter();
-        if ((genericAdapter != null) && genericAdapter.isSceneMode())
-            sceneRepository.putSettingValueFor(key, value);
     }
 
     public void sendCommand(final Command... command) {
+
+        final GenericAdapter genericAdapter = getAdapter();
+        if ((genericAdapter != null) && genericAdapter.isSceneMode())
+
+        {
+            for (Command cmd : command){
+                sceneRepository.putSettingValueFor(cmd.key, cmd.value);
+            }
+        }
+
         executor.execute(new Runnable() {
             @Override
             public void run() {

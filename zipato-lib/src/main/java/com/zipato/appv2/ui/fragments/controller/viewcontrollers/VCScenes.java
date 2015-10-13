@@ -13,7 +13,8 @@ import android.widget.TextView;
 
 import com.zipato.annotation.SetTypeFace;
 import com.zipato.annotation.ViewType;
-import com.zipato.appv2.B;import com.zipato.appv2.R;
+import com.zipato.appv2.B;
+import com.zipato.appv2.ui.fragments.adapters.controllers.TypeViewControllerFactory;
 import com.zipato.model.scene.SceneRepository;
 import com.zipato.model.typereport.TypeReportItem;
 import com.zipato.util.TagFactoryUtils;
@@ -30,7 +31,7 @@ import static com.zipato.util.Utils.capitalizer;
 /**
  * Created by murielK on 9/14/2015.
  */
-@ViewType("view_controller_scenes")
+@ViewType(TypeViewControllerFactory.VC_ID_SCENES)
 public class VCScenes extends AbsHeader {
 
     @SetTypeFace("helveticaneue_ultra_light.otf")

@@ -44,10 +44,6 @@ public class TypesScenesFragment extends BaseFragment {
     @Inject
     @Named("scenes")
     List<TypeReportItem> scenesTypes;
-    @Inject
-    @Named("typeReportPool")
-    RecycledViewPool recycledViewPool;
-
 
     GenericAdapterImp adapter;
 
@@ -69,7 +65,6 @@ public class TypesScenesFragment extends BaseFragment {
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemViewCacheSize(4);
-        recyclerView.setRecycledViewPool(recycledViewPool);
         recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), R.drawable.line_separator_empty, DividerItemDecoration.VERTICAL_LIST));
         adapter = new GenericAdapterImp(getContext(), scenesTypes, recyclerView);
         recyclerView.setAdapter(adapter);

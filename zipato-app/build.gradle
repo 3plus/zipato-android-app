@@ -29,8 +29,7 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 22
-        // Enabling multidex support.
-        //       multiDexEnabled true
+
         versionName = advancedVersioning.versionName
         versionCode = advancedVersioning.versionCode
         minSdkVersion 14

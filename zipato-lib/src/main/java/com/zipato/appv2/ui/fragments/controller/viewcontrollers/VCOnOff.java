@@ -12,8 +12,8 @@ import android.widget.TextView;
 
 import com.zipato.annotation.SetTypeFace;
 import com.zipato.annotation.ViewType;
-import com.zipato.appv2.B;import com.zipato.appv2.R;
-import com.zipato.appv2.R.id;
+import com.zipato.appv2.B;
+import com.zipato.appv2.ui.fragments.adapters.controllers.TypeViewControllerFactory;
 import com.zipato.appv2.ui.fragments.vcmenu.BaseTypesFragment;
 import com.zipato.model.attribute.Attribute;
 import com.zipato.model.typereport.TypeReportItem;
@@ -27,7 +27,7 @@ import static com.zipato.util.Utils.capitalizer;
 /**
  * Created by murielK on 7/17/2015.
  */
-@ViewType("view_controller_state")
+@ViewType(TypeViewControllerFactory.VC_ID_ON_OFF)
 public class VCOnOff extends AbsBaseSimpleStatus {
 
     private static final String TAG = TagFactoryUtils.getTag(VCOnOff.class);

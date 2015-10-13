@@ -9,14 +9,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.zipato.annotation.ViewType;
-import com.zipato.appv2.R;
+import com.zipato.appv2.ui.fragments.adapters.controllers.TypeViewControllerFactory;
 import com.zipato.model.attribute.Attribute;
 import com.zipato.model.typereport.TypeReportItem;
 
 /**
  * Created by murielK on 7/15/2015.
  */
-@ViewType("view_controller_default")
+@ViewType(TypeViewControllerFactory.VC_ID_DEFAULT)
 public class VCDefault extends AbsBaseSimpleStatus {
 
     public VCDefault(View itemView, RecyclerView recyclerView) {

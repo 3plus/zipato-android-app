@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.zipato.annotation.ViewType;
 import com.zipato.appv2.R.color;
 import com.zipato.appv2.R.layout;
+import com.zipato.appv2.ui.fragments.adapters.controllers.TypeViewControllerFactory;
 import com.zipato.model.endpoint.ClusterEndpoint;
 import com.zipato.model.typereport.TypeReportItem;
 import com.zipato.util.TagFactoryUtils;
@@ -31,7 +32,7 @@ import java.util.Map;
 /**
  * Created by murielK on 8/21/2015.
  */
-@ViewType("view_controller_ir")
+@ViewType(TypeViewControllerFactory.VC_ID_I_TACH)
 public class VCITach extends AbsIR {
 
     private static final String TAG = TagFactoryUtils.getTag(VCITach.class);

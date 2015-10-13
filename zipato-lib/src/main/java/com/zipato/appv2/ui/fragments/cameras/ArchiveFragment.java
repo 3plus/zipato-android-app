@@ -6,6 +6,7 @@
 package com.zipato.appv2.ui.fragments.cameras;
 
 import android.app.DatePickerDialog;
+import android.app.DatePickerDialog.OnDateSetListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -19,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
 import android.widget.DatePicker;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -27,7 +29,8 @@ import android.widget.TextView;
 
 import com.melnykov.fab.FloatingActionButton;
 import com.squareup.picasso.Callback;
-import com.zipato.appv2.B;import com.zipato.appv2.R;
+import com.zipato.appv2.B;
+import com.zipato.appv2.R;
 import com.zipato.appv2.activities.ScreenShotActivity;
 import com.zipato.appv2.ui.fragments.adapters.BaseListAdapter;
 import com.zipato.appv2.ui.fragments.cameras.ArchiveFileProvider.OnUpdateListner;
@@ -46,17 +49,16 @@ import java.util.TimeZone;
 
 import javax.inject.Inject;
 
-import butterfork.ButterFork;
 import butterfork.Bind;
+import butterfork.ButterFork;
 import butterfork.OnClick;
 import butterfork.OnItemClick;
 import butterfork.OnItemLongClick;
 
-
 /**
  * Created by murielK on 1/29/2015.
  */
-public class ArchiveFragment extends BaseCameraFragment implements OnUpdateListner {
+public class ArchiveFragment extends BaseCameraFragment implements OnUpdateListner, OnScrollListener {
 
 
     public static final int ON_FILES_CHANGE = 500;
@@ -93,7 +95,7 @@ public class ArchiveFragment extends BaseCameraFragment implements OnUpdateListn
     public void onCalendarClick(View v) {
 
         final Calendar calendar = Calendar.getInstance();
-        final DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
+        final DatePickerDialog datePickerDialog = new DatePickerDialog(getActivity(), new OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
 
@@ -116,7 +118,8 @@ public class ArchiveFragment extends BaseCameraFragment implements OnUpdateListn
                 onDateSetFetch();
 
             }
-        }, calendar.get(Calendar.YEAR), calendar.get(calendar.MONTH), calendar.get(calendar.DAY_OF_MONTH));
+        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+
         datePickerDialog.show();
     }
 
@@ -166,38 +169,11 @@ public class ArchiveFragment extends BaseCameraFragment implements OnUpdateListn
         archiveFileProvider.registerUpdate(this);
         adapter = new ThumbnailListAdapter();
         gridViewThumb.setAdapter(adapter);
-        gridViewThumb.setOnScrollListener(new AbsListView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(AbsListView view, int scrollState) {
-
-            }
-
-            @Override
-            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-
-                if (noMoreFlag || archiveFileProvider.isRunning() || (totalItemCount == 0)) {
-                    //    Log.d(TAG, "returning onScroll, noMoreFlag? " + noMoreFlag + " isArchiveRunning? " + archiveFileProvider.isRunning() + " totalCount: " + totalItemCount + " page " + page);
-                    return;
-                }
-                if ((firstVisibleItem + visibleItemCount) == totalItemCount)
-                    archiveFileProvider.fetchSVFile(ArchiveFragment.this, startDate, endDate, page);
-                //  Log.d(TAG, view.getId() + " firstVisibleItem: " + view.getFirstVisiblePosition() + " visibleItemCount: " + visibleItemCount + " totalItemCount: " + totalItemCount + " page: " + page);
-
-            }
-        });
-        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-
-
-                restart();
-            }
-        });
-
         archiveFileProvider.fetchSVFile
                 (this, page);
 
-        fab.attachToListView(gridViewThumb);
+
+        fab.attachToListView(gridViewThumb, null, this);
         date.setText(languageManager.translate("recent"));
 
     }
@@ -337,6 +313,23 @@ public class ArchiveFragment extends BaseCameraFragment implements OnUpdateListn
         }
     }
 
+    @Override
+    public void onScrollStateChanged(AbsListView view, int scrollState) {
+
+    }
+
+    @Override
+    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+        if (noMoreFlag || archiveFileProvider.isRunning() || (totalItemCount == 0)) {
+            Log.d(TAG, "returning onScroll, noMoreFlag? " + noMoreFlag + " isArchiveRunning? " + archiveFileProvider.isRunning() + " totalCount: " + totalItemCount + " page " + page);
+            return;
+        }
+        if ((firstVisibleItem + visibleItemCount) == totalItemCount)
+            archiveFileProvider.fetchSVFile(this, startDate, endDate, page);
+        Log.d(TAG, view.getId() + " firstVisibleItem: " + view.getFirstVisiblePosition() + " visibleItemCount: " + visibleItemCount + " totalItemCount: " + totalItemCount + " page: " + page);
+
+    }
+
     class ThumbnailListAdapter extends BaseListAdapter {
 
         @Override
@@ -462,8 +455,7 @@ public class ArchiveFragment extends BaseCameraFragment implements OnUpdateListn
                 String positiveText = languageManager.translate("delete");
                 String negativeText = languageManager.translate("cancel");
 
-                DeleteDialogHelper deleteDialogHelper = new DeleteDialogHelper(getActivity(), tempList, text1, R.drawable.ic_warning, dialogTitle, negativeText,
-                                                                               positiveText, new DeleteDialogHelper.OnPositiveClicked() {
+                DeleteDialogHelper deleteDialogHelper = new DeleteDialogHelper(getActivity(), tempList, text1, R.drawable.ic_warning, dialogTitle, negativeText, positiveText, new DeleteDialogHelper.OnPositiveClicked() {
                     @Override
                     public void onPositiveClicked() {
                         executor.execute(new Runnable() {
@@ -475,8 +467,7 @@ public class ArchiveFragment extends BaseCameraFragment implements OnUpdateListn
                                         baseFragmentHandler.post(new Runnable() {
                                             @Override
                                             public void run() {
-                                                showProgressDialog(languageManager.translate("removing_screen_shot") + " " +
-                                                                           time.format(files.get(sparseBooleanArray.keyAt(0)).getCreated()), false);
+                                                showProgressDialog(languageManager.translate("removing_screen_shot") + " " + time.format(files.get(sparseBooleanArray.keyAt(0)).getCreated()), false);
                                             }
                                         });
                                         try {

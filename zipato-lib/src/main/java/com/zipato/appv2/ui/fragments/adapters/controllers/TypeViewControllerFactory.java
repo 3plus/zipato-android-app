@@ -5,14 +5,15 @@
 
 package com.zipato.appv2.ui.fragments.adapters.controllers;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.zipato.annotation.ViewType;
+import com.zipato.appv2.R;
 import com.zipato.appv2.ui.fragments.controller.ViewController;
 import com.zipato.appv2.ui.fragments.controller.viewcontrollers.VCBlindRoller;
 import com.zipato.appv2.ui.fragments.controller.viewcontrollers.VCCamera;
@@ -48,21 +49,33 @@ import java.util.UUID;
  */
 public final class TypeViewControllerFactory {
 
-    private static final String TAG = TagFactoryUtils.getTag(TypeViewControllerFactory.class);
+    public static final int VC_ID_DEFAULT = 0;
+    public static final int VC_ID_LEVEL = 1;
+    public static final int VC_ID_BLINDER = 2;
+    public static final int VC_ID_CAMERA = 3;
+    public static final int VC_ID_ON_OFF = 4;
+    public static final int VC_ID_VC_ENUM_BUTTONS = 5;
+    public static final int VC_ID_I_TACH = 6;
+    public static final int VC_ID_MEDIA_PLAYER = 7;
+    public static final int VC_ID_OS_RAM_RGB = 8;
+    public static final int VC_ID_OS_RAM_RGBW = 9;
+    public static final int VC_ID_OS_RAM_TEMP = 10;
+    public static final int VC_ID_PHILIPS_HUE = 11;
+    public static final int VC_ID_REMOTEC = 12;
+    public static final int VC_ID_SCENES = 13;
+    public static final int VC_ID_SECURITY = 14;
+    public static final int VC_ID_THERMOSTAT = 15;
+    public static final int VC_ID_WEATHER = 16;
+    public static final int VC_ID_ZIPATO_RGBW = 17;
 
+    private static final String TAG = TagFactoryUtils.getTag(TypeViewControllerFactory.class);
     private static final Map<String, Class<? extends ViewController>> VIEW_CONTROLLER_MAP = new HashMap<>();
-    private static final Map<Integer, Class<? extends ViewController>> VIEW_TYPE_MAP = new HashMap<>();
+    private static final Map<Integer, Class<? extends ViewController>> VIEW_TYPE_VIEW_HOLDER_MAP = new HashMap<>();
+    private static final SparseIntArray VIEW_ID_RES_MAP = new SparseIntArray();
+
     private static HashMap<UUID, Integer> cache;
 
-    public static int defaultViewType;
-
     static {
-
-        /* this is not going to be very good idea with a huge map (size = 20-30+)but there is much more chances that a user do not have that much types of devices or that much
-         types of devices in the same list than having the ViewPool (RecyclerViewPool) swapping in and out ViewHolders
-         (which will lead to something like constantly creating the ViewHolder every time a viewHolder is require)
-          */
-
         //TODO cluster class like sensor can be added in the map to speedup things???
         VIEW_CONTROLLER_MAP.put("com.zipato.cluster.OnOff", VCOnOff.class);//
         VIEW_CONTROLLER_MAP.put("com.zipato.cluster.LevelControl", VCLevel.class);//ZIPA_RGBW
@@ -88,54 +101,58 @@ public final class TypeViewControllerFactory {
     }
 
     static {
-        VIEW_TYPE_MAP.put(defaultViewType, VCDefault.class);
+        // this is to avoid the expensive getIdentifier
+        VIEW_ID_RES_MAP.put(VC_ID_ON_OFF, R.layout.view_controller_state);
+        VIEW_ID_RES_MAP.put(VC_ID_LEVEL, R.layout.view_controller_level);
+        VIEW_ID_RES_MAP.put(VC_ID_BLINDER, R.layout.view_controller_level);
+        VIEW_ID_RES_MAP.put(VC_ID_CAMERA, R.layout.view_controller_camera);
+        VIEW_ID_RES_MAP.put(VC_ID_VC_ENUM_BUTTONS, R.layout.view_controller_enum_buttons);
+        VIEW_ID_RES_MAP.put(VC_ID_I_TACH, R.layout.view_controller_ir);
+        VIEW_ID_RES_MAP.put(VC_ID_MEDIA_PLAYER, R.layout.view_controller_media);
+        VIEW_ID_RES_MAP.put(VC_ID_OS_RAM_RGB, R.layout.view_controller_rgb_zigbee);
+        VIEW_ID_RES_MAP.put(VC_ID_OS_RAM_RGBW, R.layout.view_controller_rgbw_zigbee);
+        VIEW_ID_RES_MAP.put(VC_ID_OS_RAM_TEMP, R.layout.view_controller_temp_zigbee);
+        VIEW_ID_RES_MAP.put(VC_ID_PHILIPS_HUE, R.layout.view_controller_rgb_hue);
+        VIEW_ID_RES_MAP.put(VC_ID_REMOTEC, R.layout.view_controller_ir);
+        VIEW_ID_RES_MAP.put(VC_ID_SCENES, R.layout.view_controller_scenes);
+        VIEW_ID_RES_MAP.put(VC_ID_SECURITY, R.layout.view_controller_security);
+        VIEW_ID_RES_MAP.put(VC_ID_THERMOSTAT, R.layout.view_controller_thermostat);
+        VIEW_ID_RES_MAP.put(VC_ID_WEATHER, R.layout.view_controller_weather_station);
+        VIEW_ID_RES_MAP.put(VC_ID_ZIPATO_RGBW, R.layout.view_controller_rgbw_zipato);
+        VIEW_ID_RES_MAP.put(VC_ID_DEFAULT, R.layout.view_controller_default); //
     }
 
+    static {
+        VIEW_TYPE_VIEW_HOLDER_MAP.put(VC_ID_DEFAULT, VCDefault.class);
+    }
 
     private TypeViewControllerFactory() {
     }
 
-    public static void setContext(Context context) {
-        if (defaultViewType == 0) {
-            defaultViewType = idOf(context, "view_controller_default");
-        }
-    }
-
     public static Class<? extends ViewController> getCachedVCCls(int viewType) {
-        return VIEW_TYPE_MAP.get(viewType);
+        return VIEW_TYPE_VIEW_HOLDER_MAP.get(viewType);
     }
 
     public static <T extends ViewController> T getViewHolder(ViewGroup viewGroup, int viewType, RecyclerView recyclerView) {
         Log.d(TAG, String.format("getViewHolder for viewType: %d", viewType));
-        if (VIEW_TYPE_MAP.containsKey(viewType)) {
-            Class<? extends ViewController> cls = VIEW_TYPE_MAP.get(viewType);
-            Log.d(TAG, String.format("found viewHolder for viewType: %d, viewHolder name = %s", viewType, cls.getSimpleName()));
             try {
+                Class<? extends ViewController> cls = VIEW_TYPE_VIEW_HOLDER_MAP.get(viewType);
+                Log.d(TAG, String.format("found viewHolder for viewType: %d, viewHolder name = %s", viewType, cls.getSimpleName()));
                 Constructor<T> constructor = (Constructor<T>) cls.getConstructor(View.class, RecyclerView.class);
-                return constructor.newInstance(LayoutInflater.from(viewGroup.getContext()).inflate(viewType, viewGroup, false), recyclerView);
+                final int resID = VIEW_ID_RES_MAP.get(viewType);
+                return constructor.newInstance(LayoutInflater.from(viewGroup.getContext()).inflate(resID, viewGroup, false), recyclerView);
             } catch (Exception e) {
                 Log.d(TAG, "Moderfucker!", e);
+                return (T) new VCDefault(LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.view_controller_default, viewGroup, false), recyclerView);
             }
-        }
-        return (T) new VCDefault(LayoutInflater.from(viewGroup.getContext()).inflate(defaultViewType, viewGroup, false), recyclerView);
     }
 
-    private static int findViewType(Context context, String key) {
+    private static int findViewType(String key) {
         Class<? extends ViewController> cls = VIEW_CONTROLLER_MAP.get(key);
-        final int viewType = idOf(context, cls.getAnnotation(ViewType.class).value());
-        if (viewType == 0)
-            throw new IllegalStateException("Invalid resource ID for a layout (ViewType) please make sure you properly use @ViewType(R.layout.example) in your class type to pass the res ID of the desire layout");
-        VIEW_TYPE_MAP.put(viewType, cls);
+        final int viewType = cls.getAnnotation(ViewType.class).value();
+        if (!VIEW_TYPE_VIEW_HOLDER_MAP.containsKey(viewType))
+        VIEW_TYPE_VIEW_HOLDER_MAP.put(viewType, cls);
         return viewType;
-    }
-
-    public static int idOf(Context context, String viewType) {
-        int id = context.getResources().getIdentifier(viewType, "layout", context.getPackageName());
-        if (id == 0) {
-            Log.e(TAG, "could not find resource id." + viewType);
-            // this will crash sooner or later
-        }
-        return id;
     }
 
     public static <T extends ViewController> void onViewRecycled(T t) {
@@ -148,21 +165,21 @@ public final class TypeViewControllerFactory {
 //        }
     }
 
-    public static int getViewType(Context context, TypeReportItem item, Map attributeRepository) {
+    public static int getViewType(TypeReportItem item, Map attributeRepository) {
         if (item == null)
-            return defaultViewType;
+            return VC_ID_DEFAULT;
 
         Log.d(TAG, String.format("item name = %s entityType %s", item.getName(), item.getEntityType()));
 
         if (item.getEntityType() == EntityType.ATTRIBUTE) {// in case the controller it is an attribute itself
             try {
                 final Attribute attribute = (Attribute) attributeRepository.get(item.getUuid());
-                final int viewType = findViewType(context, attribute.getDefinition().getCluster());
+                final int viewType = findViewType(attribute.getDefinition().getCluster());
                 Log.d(TAG, String.format("item  viewType found = %d", viewType));
                 return viewType;
             } catch (Exception e) {
                 //
-                return defaultViewType;
+                return VC_ID_DEFAULT;
             }
         }
 
@@ -170,17 +187,17 @@ public final class TypeViewControllerFactory {
             Log.d(TAG, String.format("item  has templateID = %s", item.getTemplateId()));
 
             try {
-                final int viewType = findViewType(context, item.getTemplateId());
+                final int viewType = findViewType(item.getTemplateId());
                 Log.d(TAG, String.format("item  viewType found = %d", viewType));
                 return viewType;
             } catch (Exception e) {
-                return defaultViewType;
+                return VC_ID_DEFAULT;
 
             }
         }
 
         if (item.getAttributes() == null)
-            return defaultViewType;
+            return VC_ID_DEFAULT;
 
         //look on cache to speedup attributes look up!
         if ((cache != null) && cache.containsKey(item.getUuid())) {
@@ -191,7 +208,7 @@ public final class TypeViewControllerFactory {
         for (Attribute attr : item.getAttributes()) {
             try {
                 final Attribute attribute = (Attribute) attributeRepository.get(attr.getUuid());
-                final int viewType = findViewType(context, attribute.getDefinition().getCluster());
+                final int viewType = findViewType(attribute.getDefinition().getCluster());
                 Log.d(TAG, String.format("item  viewType found = %d", viewType));
                 if (viewType != 0) {
                     if (cache == null)
@@ -204,7 +221,8 @@ public final class TypeViewControllerFactory {
             }
         }
 
-        return defaultViewType;
+        return VC_ID_DEFAULT;
     }
+
 
 }

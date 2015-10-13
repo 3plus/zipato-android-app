@@ -69,7 +69,6 @@ public class GenericAdapterImp<T extends ViewController> extends Adapter impleme
         this.items = items;
         handler = new GenericAdapterHandler(this);
         ((ZipatoApplication) this.context.getApplicationContext()).getObjectGraph().inject(this);
-        TypeViewControllerFactory.setContext(context);
     }
 
     public RecyclerView getRecyclerView() {
@@ -78,7 +77,6 @@ public class GenericAdapterImp<T extends ViewController> extends Adapter impleme
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        TypeViewControllerFactory.setContext(getContext());
         T viewController = TypeViewControllerFactory.getViewHolder(viewGroup, viewType, recyclerView);
         Log.d(TAG, String.format("onCreateViewHolder will return : %s", viewController.getClass().getSimpleName()));
         if (!isSceneMode() && viewController.hasLogic()) { // ViewController cannot be null anyway ....
@@ -102,8 +100,8 @@ public class GenericAdapterImp<T extends ViewController> extends Adapter impleme
 
     @Override
     public int getItemViewType(int position) {
-        TypeReportItem item = items == null || items.isEmpty() ? null : items.get(0);
-        return TypeViewControllerFactory.getViewType(getContext(), item, attributeRepository);
+        TypeReportItem item = items == null || items.isEmpty() ? null : items.get(position);
+        return TypeViewControllerFactory.getViewType(item, attributeRepository);
     }
 
     @Override

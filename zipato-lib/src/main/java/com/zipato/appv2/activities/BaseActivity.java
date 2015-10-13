@@ -309,6 +309,7 @@ public abstract class BaseActivity extends AppCompatActivity implements OnShakeL
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        if (provideMenu())
         getMenuInflater().inflate(R.menu.base_menu, menu);
 //        if ((slidingMenu != null) && !slidingMenu.isMenuShowing()) {
 //            slidingMenu.setSlidingEnabled(false);

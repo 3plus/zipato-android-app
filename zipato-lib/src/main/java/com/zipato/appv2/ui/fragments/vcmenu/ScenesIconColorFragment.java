@@ -184,7 +184,7 @@ public class ScenesIconColorFragment extends BaseTypesFragment {
                 if (colorIndex != -1) {
                     currentColor = colorGridAdapter.getItem(colorIndex);
                     colorGridAdapter.toggleSelection(colorIndex);
-                    gridViewColor.smoothScrollToPosition(iconIndex);
+                    gridViewColor.smoothScrollToPosition(colorIndex);
                 }
             }
         }
@@ -198,12 +198,12 @@ public class ScenesIconColorFragment extends BaseTypesFragment {
     public class ColorGridListAdapter extends BaseListAdapter {
 
         private String[] colors = {"#000000", "#993300", "#333300", "#003300", "#003366", "#000080", "#333399", "#333333", "#800000", "#FF6600", "#808000",
-                                   "#008000",
-                                   "#008080", "#0000FF", "#666699", "#808080", "#FF0000", "#FF9900", "#99CC00", "#339966", "#33CCCC", "#3366FF", "#800080",
-                                   "#969696",
-                                   "#FF00FF", "#FFCC00", "#FFFF00", "#00FF00", "#00FFFF", "#00CCFF", "#993366", "#C0C0C0", "#FF99CC", "#FFCC99", "#FFFF99",
-                                   "#CCFFCC",
-                                   "#CCFFFF", "#99CCFF", "#CC99FF", "#FFFFFF"};
+                "#008000",
+                "#008080", "#0000FF", "#666699", "#808080", "#FF0000", "#FF9900", "#99CC00", "#339966", "#33CCCC", "#3366FF", "#800080",
+                "#969696",
+                "#FF00FF", "#FFCC00", "#FFFF00", "#00FF00", "#00FFFF", "#00CCFF", "#993366", "#C0C0C0", "#FF99CC", "#FFCC99", "#FFFF99",
+                "#CCFFCC",
+                "#CCFFFF", "#99CCFF", "#CC99FF", "#FFFFFF"};
 
         public String[] getColors() {
             return colors;
@@ -247,12 +247,10 @@ public class ScenesIconColorFragment extends BaseTypesFragment {
                 viewColorHolder = (ViewColorHolder) convertView.getTag();
             }
 
-            viewColorHolder.textView.setBackgroundColor(Color.parseColor(colors[position]));
-            if (isSelected(position)) {
-                viewColorHolder.textView.setText(Utils.getHexForKitKat("2713"));
-            } else {
-                viewColorHolder.textView.setText("");
-            }
+            if (isSelected(position))
+                viewColorHolder.textView.setBackgroundColor(Color.WHITE);
+            else
+                viewColorHolder.textView.setBackgroundColor(Color.parseColor(colors[position]));
 
             return convertView;
         }
@@ -265,6 +263,7 @@ public class ScenesIconColorFragment extends BaseTypesFragment {
             public ViewColorHolder(View v) {
 
                 ButterFork.bind(this, v);
+                textView.setText(Utils.getHexForKitKat("2713"));
             }
 
         }

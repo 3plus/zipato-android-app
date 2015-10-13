@@ -17,6 +17,7 @@ import com.zipato.annotation.ViewType;
 import com.zipato.appv2.B;
 import com.zipato.appv2.R;
 import com.zipato.appv2.ui.fragments.adapters.controllers.GenericAdapter;
+import com.zipato.appv2.ui.fragments.adapters.controllers.TypeViewControllerFactory;
 import com.zipato.appv2.ui.fragments.controller.ViewControllerLogic;
 import com.zipato.appv2.ui.fragments.vcmenu.BaseTypesFragment;
 import com.zipato.model.attribute.Attribute;
@@ -38,7 +39,7 @@ import butterfork.OnClick;
 /**
  * Created by murielK on 8/21/2015.
  */
-@ViewType("view_controller_media")
+@ViewType(TypeViewControllerFactory.VC_ID_MEDIA_PLAYER)
 public class VCMediaPlayer extends AbsLevel implements ViewControllerLogic {
 
     private static final String VC_CACHE_ENTRY_ACTIONS = "VC_CACHE_ENTRY_ACTIONS";

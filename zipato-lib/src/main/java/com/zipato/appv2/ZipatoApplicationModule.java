@@ -8,7 +8,6 @@ package com.zipato.appv2;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v4.util.ArrayMap;
-import android.support.v7.widget.RecyclerView.RecycledViewPool;
 
 import com.squareup.picasso.Cache;
 import com.squareup.picasso.Downloader;
@@ -89,7 +88,7 @@ import com.zipato.appv2.ui.fragments.vcmenu.EventFragment;
 import com.zipato.appv2.ui.fragments.vcmenu.IconConfigColorFragment;
 import com.zipato.appv2.ui.fragments.vcmenu.ScenesIconColorFragment;
 import com.zipato.discovery.DiscoveryManager;
-import com.zipato.discovery.ServiceInfoAdapter;
+import com.zipato.appv2.ui.fragments.adapters.login.ServiceInfoAdapter;
 import com.zipato.helper.AssetLoaderHelper;
 import com.zipato.helper.AttributesHelper;
 import com.zipato.helper.DeviceStateHelper;
@@ -423,13 +422,6 @@ public class ZipatoApplicationModule {
     @Singleton
     public PreferenceHelper providePreferenceHelper(Lazy<LanguageManager> languageManagerLazy, Lazy<ApiV2RestTemplate> restTemplateLazy) {
         return new PreferenceHelper(context, languageManagerLazy, restTemplateLazy);
-    }
-
-    @Named("typeReportPool")
-    @Provides
-    @Singleton
-    public RecycledViewPool provideRecycledViewPool() {
-        return new RecycledViewPool();
     }
 
 }
